@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/blizzard_wizzard.iml" filepath="$PROJECT_DIR$/blizzard_wizzard.iml" />
+      <module fileurl="file://$PROJECT_DIR$/blizzard_wizzard_android.iml" filepath="$PROJECT_DIR$/blizzard_wizzard_android.iml" />
+    </modules>
+  </component>
+</project>
