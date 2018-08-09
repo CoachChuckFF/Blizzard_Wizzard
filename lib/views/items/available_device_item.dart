@@ -6,7 +6,7 @@ import 'package:blizzard_wizzard/controllers/artnet_server.dart';
 import 'package:blizzard_wizzard/architecture/keys.dart';
 
 class AvailableDeviceItem extends StatelessWidget {
-  final GestureTapCallback onTap;
+  final Function(int) onTap;
   final Profile profile;
 
   AvailableDeviceItem({
@@ -19,7 +19,7 @@ class AvailableDeviceItem extends StatelessWidget {
     return new Dismissible(
       key: BlizzardWizzardKeys.availableDevice(profile.id.toString()),
       child: new ListTile(
-        onTap: onTap,
+        onTap: () => onTap(profile.id),
         leading: new Text(
           profile.name,
           key: BlizzardWizzardKeys.availableDeviceName(profile.id.toString()),

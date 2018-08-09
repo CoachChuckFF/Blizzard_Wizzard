@@ -29,7 +29,7 @@ class MainScreenState extends State<MainScreen> {
     );
   }
 
-  _tapThing(Profile p){
-    print("Tapped: " + p.name);
+  _tapThing(int p){
+    print("Tapped: $p");
   }
 }

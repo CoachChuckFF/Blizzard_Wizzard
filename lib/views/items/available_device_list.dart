@@ -8,7 +8,7 @@ import 'package:blizzard_wizzard/views/items/available_device_item.dart';
 
 class AvailableDevicesList extends StatelessWidget {
   final List<Profile> availableDevices;
-  final Function(Profile) onTap;
+  final Function(int) onTap;
 
   AvailableDevicesList({
     Key key,
@@ -37,7 +37,7 @@ class AvailableDevicesList extends StatelessWidget {
 
         return new AvailableDeviceItem(
           profile: profile,
-          onTap: () => onTap,
+          onTap: onTap,
         );
       },
     );
