@@ -12,9 +12,11 @@ class ArtnetController{
 
   final Store store;
   ArtnetServer server;
+  List<WaitForPacket> waitingList;
 
   ArtnetController(this.store){
     server = ArtnetServer(_onConnection, _onPoll, _handlePacket);
+    waitingList = new List<WaitForPacket>();
   }
 
   void _onPoll(){
@@ -35,6 +37,8 @@ class ArtnetController{
   }
 
   void _handlePacket(Datagram gram){
+
+    _checkWaitingList(gram);
 
     switch(ArtnetGetOpCode(gram.data)){
       case ArtnetPollPacket.opCode:
@@ -61,6 +65,32 @@ class ArtnetController{
       default:
         return; //unknown packet
     }
+  }
+
+  void addToWaitingList(WaitForPacket wait){
+    waitingList.add(wait);
+    wait.timer = Timer(Duration(milliseconds: wait.timeout), () => _removeFromWaitingList(wait.id, null));
+  }
+
+  void _checkWaitingList(Datagram gram){
+
+    waitingList.where((wait) => wait.address == gram.address)
+      .toList()
+      .forEach((wait){
+        if(wait.packetType == ArtnetGetOpCode(gram.data)){
+          wait.timer.cancel();
+          _removeFromWaitingList(wait.id, gram.data);
+        }
+      });
+  }
+
+  void _removeFromWaitingList(int id, List<int> data){
+    int waitingIndex = waitingList.indexWhere((wait) => wait.id == id);
+
+    if(waitingIndex != -1){
+      waitingList[waitingIndex].callback(data);
+      waitingList.removeAt(waitingIndex);
+    }    
   }
 
   void _handleDeviceList(Profile profile){
@@ -108,7 +138,11 @@ class ArtnetController{
 
   Profile _packetToProfile(ArtnetPollReplyPacket packet, InternetAddress ip){
 
-    return Profile(packet.longName, "unknown", ip, packet.universe);
+    return Profile(packet.longName,
+                  packet.blizzardType, 
+                  ip, 
+                  packet.isBlizzardDevice,
+                  packet.universe);
 
   }
 

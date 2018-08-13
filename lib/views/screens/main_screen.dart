@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'dart:typed_data';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:blizzard_wizzard/views/items/available_device_list.dart';
+import 'package:blizzard_wizzard/views/items/available_device_items/available_device_list.dart';
+import 'package:blizzard_wizzard/views/screens/config_wizzard_screen.dart';
 import 'package:blizzard_wizzard/models/models.dart';
 import 'package:blizzard_wizzard/architecture/globals.dart';
 import 'package:d_artnet/d_artnet.dart';
@@ -33,15 +34,16 @@ class MainScreenState extends State<MainScreen> {
   }
 
   _tapThing(int id){
-    Profile p = StoreProvider.of<AppState>(context).state.availableDevices.firstWhere((profile) => profile.id == id);
+    Profile profile = StoreProvider.of<AppState>(context).state.availableDevices.firstWhere((profile) => profile.id == id);
 
-    if(p != null){
-      print("Tapped: ${p.name}");
-      print(p.address.toString());
-      ArtnetDataPacket d = ArtnetDataPacket();
-      d.setDmxValue(33, 0xFF);
-      d.setDmxValue(35, 0xFF);
-      tron.server.sendPacket(d.udpPacket, p.address);
+    if(profile != null){
+      Navigator.of(context).push(
+        new MaterialPageRoute(
+          builder: (context) {
+            return ConfigWizzardScreen(profile: profile);
+          },
+        ),
+      );
     }
   }
 }

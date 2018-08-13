@@ -13,6 +13,9 @@ class BlizzardWizzardKeys {
   static final availableDeviceIp = (String id) => new Key('availableDevice__${id}__Ip');
   static final availableDeviceType = (String id) => new Key('availableDevice__${id}__Type');
 
+  // Config Wizzard Screen
+  static final configWizzardScreen = const Key('__configWizzardScreen__');
+
   // Tabs
   static final tabs = const Key('__tabs__');
   static final todoTab = const Key('__todoTab__');

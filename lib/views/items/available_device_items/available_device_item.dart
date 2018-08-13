@@ -16,7 +16,7 @@ class AvailableDeviceItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return new Dismissible(
+    return new GestureDetector(
       key: BlizzardWizzardKeys.availableDevice(profile.id.toString()),
       child: new ListTile(
         onTap: () => onTap(profile.id),
@@ -32,7 +32,7 @@ class AvailableDeviceItem extends StatelessWidget {
           style: Theme.of(context).textTheme.title,
         ),
         subtitle: new Text(
-          profile.type,
+          BlizzardDevices.getDevice(profile.typeId),
           key: BlizzardWizzardKeys.availableDeviceType(profile.id.toString()),
           style: Theme.of(context).textTheme.title,
         ),
