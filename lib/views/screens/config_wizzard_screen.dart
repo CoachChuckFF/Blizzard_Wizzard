@@ -8,6 +8,8 @@ import 'package:blizzard_wizzard/views/items/config_items/device_config_list.dar
 import 'package:blizzard_wizzard/views/items/config_items/config_cards/device_name_card.dart';
 import 'package:blizzard_wizzard/views/items/config_items/config_cards/dmx_control_card.dart';
 import 'package:blizzard_wizzard/views/items/config_items/config_cards/info_card.dart';
+import 'package:blizzard_wizzard/views/items/config_items/config_cards/ssid_pass_card.dart';
+import 'package:blizzard_wizzard/views/items/config_items/config_cards/ap_pass_card.dart';
 
 class ConfigWizzardScreen extends StatefulWidget {
 
@@ -53,6 +55,8 @@ class ConfigWizzardScreenState extends State<ConfigWizzardScreen> {
 
     list.add(InfoCard(profile, _alertSnackBar));
     list.add(DeviceNameCard(profile, _alertSnackBar));
+    if(profile.isBlizzard) list.add(SSIDPasswordCard(profile, _alertSnackBar));
+    if(profile.isBlizzard) list.add(APPasswordCard(profile, _alertSnackBar));
     list.add(DMXControlCard(profile, _alertSnackBar));
 
     return list;

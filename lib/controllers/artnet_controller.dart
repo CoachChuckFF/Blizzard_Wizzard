@@ -100,6 +100,11 @@ class ArtnetController{
 
     for(final listProfile in temp){
       if(listProfile == profile){
+        if(!listProfile.compare(profile)){
+          profile.id = listProfile.id;
+          profile.patchAddress = listProfile.patchAddress;
+          store.dispatch(UpdateAvailableDevice(profile));
+        }
         newDevice = false;
         store.dispatch(TickResetAvailableDevice(listProfile));
         break;
@@ -137,12 +142,15 @@ class ArtnetController{
   }
 
   Profile _packetToProfile(ArtnetPollReplyPacket packet, InternetAddress ip){
+    Profile profile = Profile(packet.mac);
 
-    return Profile(packet.longName,
-                  packet.blizzardType, 
-                  ip, 
-                  packet.isBlizzardDevice,
-                  packet.universe);
+    profile.name = packet.longName;
+    profile.isBlizzard = packet.isBlizzardDevice;
+    profile.typeId = packet.blizzardType;
+    profile.universe = packet.universe;
+    profile.address = ip;
+
+    return profile;
 
   }
 

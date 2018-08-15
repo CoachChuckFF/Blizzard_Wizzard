@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:flutter/foundation.dart';
+import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:d_artnet/d_artnet.dart';
 import 'package:blizzard_wizzard/models/models.dart';
@@ -8,11 +9,13 @@ import 'package:blizzard_wizzard/architecture/globals.dart';
 import 'package:blizzard_wizzard/controllers/artnet_server.dart';
 import 'package:blizzard_wizzard/architecture/globals.dart';
 
-class DeviceNameCard extends ConfigCard {
+class SSIDPasswordCard extends ConfigCard {
+  String _ssid;
+  String _pass;
 
   static GlobalKey<FormState> _formKey = new GlobalKey<FormState>();
 
-  DeviceNameCard(profile, alertMessage) : super(profile, alertMessage);
+  SSIDPasswordCard(profile, alertMessage) : super(profile, alertMessage);
 
   @override
   Widget build(BuildContext context) {
@@ -25,12 +28,21 @@ class DeviceNameCard extends ConfigCard {
             TextFormField(
               decoration: InputDecoration(
                 border: InputBorder.none,
-                hintText: 'Device Name'
+                hintText: 'SSID'
               ),
-              maxLength: BlizzardWizzardConfigs.longNameLength,
+              maxLength: BlizzardWizzardConfigs.ssidLength,
               maxLengthEnforced: true,
-              validator: _validate,
-              onSaved: _onSave,
+              validator: (ssid){_ssid = ssid; return (_ssid.length == 0) ? "SSID can't be blank" : null;},
+            ),
+            TextFormField(
+              decoration: InputDecoration(
+                border: InputBorder.none,
+                hintText: 'Password',
+              ),
+              obscureText: true,
+              maxLength: BlizzardWizzardConfigs.passwordLength,
+              maxLengthEnforced: true,
+              validator: (pass){_pass = pass; return null;},
             ),
             new ButtonTheme.bar( // make buttons use the appropriate styles for cards
               child: new ButtonBar(
@@ -56,30 +68,13 @@ class DeviceNameCard extends ConfigCard {
   // First validate form.
     print("submit");
     if (_formKey.currentState.validate()) {
-      print("save");
-      _formKey.currentState.save(); // Save our form now.
+      print("$_ssid, $_pass");
+      tron.server.sendPacket(_populateConfigPacket().udpPacket, this.profile.address);
     }
   }
 
-  String _validate(String input){
-    return null;
-  }
-
   void _onClear(){
-    print("clear");
     _formKey.currentState.reset();
-  }
-
-  void _onSave(String input){
-
-    tron.addToWaitingList(WaitForPacket(_submitCallback,
-        this.profile.address, 
-        ArtnetPollReplyPacket.opCode, 
-        BlizzardWizzardConfigs.artnetConfigCallbackTimout)
-    );
-
-    tron.server.sendPacket(_populateConfigPacket(input).udpPacket, this.profile.address);
-
   }
 
   void _submitCallback(List<int> data){
@@ -90,18 +85,16 @@ class DeviceNameCard extends ConfigCard {
     }
   }
 
-  ArtnetAddressPacket _populateConfigPacket(String name){
-    ArtnetAddressPacket packet = ArtnetAddressPacket();
-    String longName = (name.length > BlizzardWizzardConfigs.longNameLength) ? name.substring(0, BlizzardWizzardConfigs.longNameLength - 1) : name;
-    String shortName = (name.length > BlizzardWizzardConfigs.shortNameLength) ? name.substring(0, BlizzardWizzardConfigs.shortNameLength - 1) : name;
+  ArtnetCommandPacket _populateConfigPacket(){
+    ArtnetCommandPacket packet = ArtnetCommandPacket();
 
+    Map<String, dynamic> command = {
+      "Action" : BlizzardActions.setSSIDAndPass,
+      "SSID" : _ssid,
+      "Pass" : _pass,
+    };
 
-    packet.programNetSwitchEnable = false;
-    packet.programSubSwitchEnable = false;
-    packet.programUniverseEnable = false;
-
-    packet.longName = longName;
-    packet.shortName = shortName;
+    packet.data = json.encode(command).codeUnits;
 
     return packet;
   }

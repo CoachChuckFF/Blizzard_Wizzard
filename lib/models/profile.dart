@@ -6,26 +6,38 @@ class Profile{
 
   static int idCount = 0;
 
-  final String name;
-  final int typeId;
-  final InternetAddress address;
-  final bool isBlizzard;
+  final List<int> mac;
 
+  String name;
+  int typeId;
+  InternetAddress address;
+  bool isBlizzard;
+
+  int channelMode = 0;
+  int patchAddress = 0;
+  int activeTick = BlizzardWizzardConfigs.availableTimoutTick;
   int universe;
   int id;
-  int channelMode = 0;
-  int activeTick = BlizzardWizzardConfigs.availableTimoutTick;
 
-  Profile(this.name, this.typeId, this.address, this.isBlizzard, this.universe){
+
+  Profile(this.mac){
     id = idCount++;
   }
 
-    @override
+  bool compare(Profile other){
+    return (name == other.name &&
+            address == other.address);
+  }
+
+  @override
   bool operator == (Object other) =>
-      identical(this, other) ||
       other is Profile &&
-          name == other.name &&
-          typeId == other.typeId &&
-          address == other.address;
+        other.mac.length == 6 &&
+        other.mac[0] == mac[0] &&
+        other.mac[1] == mac[1] &&
+        other.mac[2] == mac[2] &&
+        other.mac[3] == mac[3] &&
+        other.mac[4] == mac[4] &&
+        other.mac[5] == mac[5];
 
 }

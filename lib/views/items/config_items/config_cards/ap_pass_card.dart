@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'dart:convert';
 import 'package:d_artnet/d_artnet.dart';
 import 'package:blizzard_wizzard/models/models.dart';
 import 'package:blizzard_wizzard/controllers/artnet_controller.dart';
@@ -8,11 +9,11 @@ import 'package:blizzard_wizzard/architecture/globals.dart';
 import 'package:blizzard_wizzard/controllers/artnet_server.dart';
 import 'package:blizzard_wizzard/architecture/globals.dart';
 
-class DeviceNameCard extends ConfigCard {
+class APPasswordCard extends ConfigCard {
 
   static GlobalKey<FormState> _formKey = new GlobalKey<FormState>();
 
-  DeviceNameCard(profile, alertMessage) : super(profile, alertMessage);
+  APPasswordCard(profile, alertMessage) : super(profile, alertMessage);
 
   @override
   Widget build(BuildContext context) {
@@ -25,9 +26,9 @@ class DeviceNameCard extends ConfigCard {
             TextFormField(
               decoration: InputDecoration(
                 border: InputBorder.none,
-                hintText: 'Device Name'
+                hintText: 'AP Pass'
               ),
-              maxLength: BlizzardWizzardConfigs.longNameLength,
+              maxLength: BlizzardWizzardConfigs.passwordLength,
               maxLengthEnforced: true,
               validator: _validate,
               onSaved: _onSave,
@@ -72,13 +73,15 @@ class DeviceNameCard extends ConfigCard {
 
   void _onSave(String input){
 
+  /*
     tron.addToWaitingList(WaitForPacket(_submitCallback,
         this.profile.address, 
         ArtnetPollReplyPacket.opCode, 
         BlizzardWizzardConfigs.artnetConfigCallbackTimout)
     );
-
+*/
     tron.server.sendPacket(_populateConfigPacket(input).udpPacket, this.profile.address);
+
 
   }
 
@@ -90,18 +93,19 @@ class DeviceNameCard extends ConfigCard {
     }
   }
 
-  ArtnetAddressPacket _populateConfigPacket(String name){
-    ArtnetAddressPacket packet = ArtnetAddressPacket();
-    String longName = (name.length > BlizzardWizzardConfigs.longNameLength) ? name.substring(0, BlizzardWizzardConfigs.longNameLength - 1) : name;
-    String shortName = (name.length > BlizzardWizzardConfigs.shortNameLength) ? name.substring(0, BlizzardWizzardConfigs.shortNameLength - 1) : name;
+  ArtnetCommandPacket _populateConfigPacket(String pass){
+    ArtnetCommandPacket packet = ArtnetCommandPacket();
 
+    Map<String, dynamic> command = {
+      "Action" : BlizzardActions.setGeneralConfig,
+      "key" : BlizzardDefines.apPassKey,
+      "Type" : BlizzardDefines.dataString,
+      "Change_Device" : 0,
+      "Change_Mask" : 0,
+      "Data" : pass,
+    };
 
-    packet.programNetSwitchEnable = false;
-    packet.programSubSwitchEnable = false;
-    packet.programUniverseEnable = false;
-
-    packet.longName = longName;
-    packet.shortName = shortName;
+    packet.data = json.encode(command).codeUnits;
 
     return packet;
   }

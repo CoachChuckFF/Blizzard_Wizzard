@@ -3,6 +3,7 @@ import 'package:redux/redux.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:blizzard_wizzard/views/screens/main_screen.dart';
+import 'package:blizzard_wizzard/views/screens/controller_screen.dart';
 import 'package:blizzard_wizzard/controllers/artnet_server.dart';
 import 'package:blizzard_wizzard/controllers/artnet_controller.dart';
 import 'package:blizzard_wizzard/controllers/reducers.dart';
@@ -16,9 +17,7 @@ void main(){
     initialState: AppState.init(),
   );
 
-  tron = ArtnetController(store);
-
-  print(store.state.availableDevices.toString());
+  //tron = ArtnetController(store);
 
   runApp(MyApp(
     title: 'Artnet Tester',
@@ -41,7 +40,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.deepPurple,
         ),
-        home: MainScreen(),
+        home: ControllerScreen(),//MainScreen(),
       ),
     );
   }
