@@ -13,6 +13,10 @@ class ArtnetServer{
   Function _connectionCallback, _packetCallback, _pollCallback;
   RawDatagramSocket _socket;
   bool _connected = false;
+  bool _beeped = false;
+  bool _espBroadcast = false;
+  bool _espEnabled = false;
+  int _checkIpTO = BlizzardWizzardConfigs.checkIpTO;
   int _uuid = 0;
 
   ArtnetServer(this._connectionCallback, this._pollCallback, this._packetCallback){
@@ -31,6 +35,7 @@ class ArtnetServer{
       packet = ArtnetBeepBeepPacket(null, gram.data);
       if(packet.uuid == _uuid){
         _ownIp = gram.address;
+        _beeped = true;
       }
     }
 
@@ -45,7 +50,7 @@ class ArtnetServer{
 
     RawDatagramSocket.bind(InternetAddress.anyIPv4, BlizzardWizzardConfigs.artnetPort).then((RawDatagramSocket socket){
       _socket = socket;
-      _uuid = ArtnetGenerateBeepBeepUUID(3);
+      _uuid = ArtnetGenerateBeepBeepUUID(DateTime.now().millisecondsSinceEpoch);
       print('UDP ready to receive');
       print('${socket.address.address}:${socket.port} - $_uuid');
       _connected = true;
@@ -55,7 +60,7 @@ class ArtnetServer{
       _connectionCallback();
 
       //Kick off Timers!
-      sendPacket(ArtnetBeepBeepPacket(_uuid).udpPacket, BlizzardWizzardConfigs.broadcast, BlizzardWizzardConfigs.artnetPort);
+      sendPacket(ArtnetBeepBeepPacket(_uuid).udpPacket);
       Timer(Duration(seconds: BlizzardWizzardConfigs.artnetPollDelay), _tick);
       Timer(Duration(seconds: BlizzardWizzardConfigs.artnetBeepDelay), _beep);
     });
@@ -68,23 +73,11 @@ class ArtnetServer{
     _socket.close();
   }
 
-  void sendPacket(List<int> packet,[ip, int port]){
-    InternetAddress ipToSend = InternetAddress(BlizzardWizzardConfigs.broadcast);
+  void sendPacket(List<int> packet,[InternetAddress ip, int port]){
+    InternetAddress ipToSend = (_espEnabled) ? InternetAddress(BlizzardWizzardConfigs.espIp) : ((ip == null) ? InternetAddress(BlizzardWizzardConfigs.broadcast) : ip);
     int portToSend = (port == null) ? BlizzardWizzardConfigs.artnetPort : port; 
 
-    if(ip != null){
-      if(ip is String){
-        if(isIP(ip)){
-          ipToSend = InternetAddress(ip);
-        } else return;
-      } else if(ip is InternetAddress){
-        ipToSend = ip;
-      } else return;
-    }
-    
-
     if(_connected) _socket.send(packet, ipToSend, portToSend);
-  
   }
 
 
@@ -94,7 +87,7 @@ class ArtnetServer{
 
     _pollCallback();
 
-    sendPacket(packet.udpPacket, BlizzardWizzardConfigs.broadcast, BlizzardWizzardConfigs.artnetPort);
+    sendPacket(packet.udpPacket);
     print("Tick");
     
     if(_connected){
@@ -105,7 +98,30 @@ class ArtnetServer{
   void _beep(){
     ArtnetBeepBeepPacket packet = ArtnetBeepBeepPacket(_uuid);
 
-    sendPacket(packet.udpPacket, BlizzardWizzardConfigs.broadcast, BlizzardWizzardConfigs.artnetPort);
+    if(_beeped){
+      if(!_espEnabled && _espBroadcast){
+        _espEnabled = true;
+      } else if(_checkIpTO-- <= 0 && !_espEnabled && !_espBroadcast){
+        _checkIpTO = BlizzardWizzardConfigs.checkIpTO;
+        _espBroadcast = true;
+      }
+    } else {
+      if(_espEnabled){
+        if(_espBroadcast){
+          _espBroadcast = false;
+          _espEnabled = false;
+        }
+      } else {
+        if(_espBroadcast){
+          _espBroadcast = false;
+        } else {
+          _espBroadcast = true;
+        }
+      }
+    }
+    _beeped = false;
+
+    sendPacket(packet.udpPacket, InternetAddress((_espBroadcast) ? BlizzardWizzardConfigs.espIp : BlizzardWizzardConfigs.broadcast));
     print("Beep");
     
     if(_connected){

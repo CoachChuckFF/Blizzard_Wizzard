@@ -7,6 +7,7 @@ import 'package:blizzard_wizzard/architecture/keys.dart';
 import 'package:blizzard_wizzard/views/items/config_items/device_config_list.dart';
 import 'package:blizzard_wizzard/views/items/config_items/config_cards/device_name_card.dart';
 import 'package:blizzard_wizzard/views/items/config_items/config_cards/dmx_control_card.dart';
+import 'package:blizzard_wizzard/views/items/config_items/config_cards/info_card.dart';
 
 class ConfigWizzardScreen extends StatefulWidget {
 
@@ -26,7 +27,9 @@ class ConfigWizzardScreenState extends State<ConfigWizzardScreen> {
 
   ConfigWizzardScreenState({
     @required this.profile,
-  });
+  }){
+    print("created!");
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -48,6 +51,7 @@ class ConfigWizzardScreenState extends State<ConfigWizzardScreen> {
   List<ConfigCard> _profileToConfigList(){
     List<ConfigCard> list = List<ConfigCard>();
 
+    list.add(InfoCard(profile, _alertSnackBar));
     list.add(DeviceNameCard(profile, _alertSnackBar));
     list.add(DMXControlCard(profile, _alertSnackBar));
 
@@ -68,5 +72,6 @@ class ConfigWizzardScreenState extends State<ConfigWizzardScreen> {
     // Find the Scaffold in the Widget tree and use it to show a SnackBar!
     _scaffoldKey.currentState.showSnackBar(snackBar);
   }
+
 }
 
