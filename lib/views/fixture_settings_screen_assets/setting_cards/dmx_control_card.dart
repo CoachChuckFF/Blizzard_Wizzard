@@ -1,18 +1,14 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:d_artnet_4/d_artnet_4.dart';
-import 'dart:async';
-import 'package:blizzard_wizzard/models/models.dart';
-import 'package:blizzard_wizzard/controllers/artnet_controller.dart';
-import 'package:blizzard_wizzard/architecture/globals.dart';
-import 'package:blizzard_wizzard/controllers/artnet_server.dart';
-import 'package:blizzard_wizzard/architecture/globals.dart';
+import 'package:blizzard_wizzard/models/fixture.dart';
+import 'package:blizzard_wizzard/models/globals.dart';
+import 'package:blizzard_wizzard/views/fixture_settings_screen_assets/setting_cards/settings_card.dart';
 
-class DMXControlCard extends ConfigCard {
+class DMXControlCard extends SettingsCard {
 
   final ArtnetDataPacket _packet = new ArtnetDataPacket();
 
-  DMXControlCard(Profile profile, Function alertMessage) : super(profile, alertMessage);
+  DMXControlCard(Fixture fixture, Function alertMessage) : super(fixture, alertMessage);
 
   @override
   Widget build(BuildContext context) {
@@ -94,7 +90,7 @@ class DMXControlCard extends ConfigCard {
   }
 
   void _updateDMX(){
-    tron.server.sendPacket(_packet.udpPacket, this.profile.address);
+    tron.server.sendPacket(_packet.udpPacket, this.fixture.address);
   }
 
 }

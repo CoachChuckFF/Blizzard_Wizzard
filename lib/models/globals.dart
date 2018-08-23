@@ -3,7 +3,6 @@ import 'package:blizzard_wizzard/controllers/artnet_controller.dart';
 //Global Varables
 ArtnetController tron;
 
-
 /*Configurations*/
 class BlizzardWizzardConfigs{
   //Maxes
@@ -66,9 +65,10 @@ class LightingConfigState{
 }
 
 class PageState{
-  static const int fixturesState = 1;
-  static const int sceneCreateState = 2;
-  static const int sceneEditState = 3;
-  static const int scenePlayState = 4;
-  static const int helpState = 5; 
+  static const int manager = 1;
+  static const int fixtureSettings = 2;
+  static const int creator = 3;
+  static const int editor = 4;
+  static const int player = 5;
+  static const int helper = 6; 
 }

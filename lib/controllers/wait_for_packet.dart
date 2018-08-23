@@ -1,8 +1,5 @@
 import 'dart:io';
 import 'dart:async';
-import 'package:d_artnet_4/d_artnet_4.dart';
-import 'package:blizzard_wizzard/architecture/globals.dart';
-import 'package:blizzard_wizzard/models/models.dart';
 
 class WaitForPacket{
   static int idCount = 0;
@@ -13,7 +10,7 @@ class WaitForPacket{
   final int timeout;
 
   int id;
-  Timer timer = null;
+  Timer timer;
 
   WaitForPacket(this.callback, this.address, this.packetType, this.timeout){
     id = idCount++;

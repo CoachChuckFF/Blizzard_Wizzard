@@ -1,21 +1,16 @@
-import 'dart:io';
-import 'package:flutter/foundation.dart';
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:d_artnet_4/d_artnet_4.dart';
-import 'package:blizzard_wizzard/models/models.dart';
-import 'package:blizzard_wizzard/controllers/artnet_controller.dart';
-import 'package:blizzard_wizzard/architecture/globals.dart';
-import 'package:blizzard_wizzard/controllers/artnet_server.dart';
-import 'package:blizzard_wizzard/architecture/globals.dart';
+import 'package:blizzard_wizzard/models/globals.dart';
+import 'package:blizzard_wizzard/views/fixture_settings_screen_assets/setting_cards/settings_card.dart';
 
-class SSIDPasswordCard extends ConfigCard {
+class SSIDPasswordCard extends SettingsCard {
   String _ssid;
   String _pass;
 
   static GlobalKey<FormState> _formKey = new GlobalKey<FormState>();
 
-  SSIDPasswordCard(profile, alertMessage) : super(profile, alertMessage);
+  SSIDPasswordCard(fixture, alertMessage) : super(fixture, alertMessage);
 
   @override
   Widget build(BuildContext context) {
@@ -69,7 +64,7 @@ class SSIDPasswordCard extends ConfigCard {
     print("submit");
     if (_formKey.currentState.validate()) {
       print("$_ssid, $_pass");
-      tron.server.sendPacket(_populateConfigPacket().udpPacket, this.profile.address);
+      tron.server.sendPacket(_populateConfigPacket().udpPacket, this.fixture.address);
     }
   }
 

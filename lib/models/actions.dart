@@ -1,4 +1,4 @@
-import 'package:blizzard_wizzard/models/models.dart';
+import 'package:blizzard_wizzard/models/fixture.dart';
 
 /* Is Loading */
 class SetLoaded{}
@@ -6,31 +6,31 @@ class ClearLoaded{}
 
 /* Available Devices List */
 class TickDownAvailableDevice{
-  final Profile profile;
+  final Fixture fixture;
 
-  TickDownAvailableDevice(this.profile);
+  TickDownAvailableDevice(this.fixture);
 }
 
 class TickResetAvailableDevice{
-  final Profile profile;
+  final Fixture fixture;
 
-  TickResetAvailableDevice(this.profile);
+  TickResetAvailableDevice(this.fixture);
 }
 
 class AddAvailableDevice{
-  final Profile profile;
+  final Fixture fixture;
 
-  AddAvailableDevice(this.profile);
+  AddAvailableDevice(this.fixture);
 }
 
 class RemoveAvailableDevice{
-  final Profile profile;
+  final Fixture fixture;
 
-  RemoveAvailableDevice(this.profile);
+  RemoveAvailableDevice(this.fixture);
 }
 
 class UpdateAvailableDevice{
-  final Profile profile;
+  final Fixture fixture;
 
-  UpdateAvailableDevice(this.profile);
+  UpdateAvailableDevice(this.fixture);
 }

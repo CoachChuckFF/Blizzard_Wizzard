@@ -1,9 +1,7 @@
-import 'dart:io';
 import 'dart:async';
-import 'package:blizzard_wizzard/architecture/globals.dart';
+import 'dart:io';
 import 'package:d_artnet_4/d_artnet_4.dart';
-import 'package:validator/validator.dart';
-import 'package:blizzard_wizzard/controllers/artnet_controller.dart';
+import 'package:blizzard_wizzard/models/globals.dart';
 
 
 class ArtnetServer{
@@ -152,8 +150,8 @@ class ArtnetServer{
     reply.estaManHi = 0x01;
     reply.estaManLo = 0x04;
 
-    reply.shortName = "Baa";
-    reply.longName = "Blizzard Art-Net Analyzer - Baa";
+    reply.shortName = "Blizzard Wizzard";
+    reply.longName = "Blizzard Wizzard";
 
     reply.nodeReport = "!Enjoy the little things!";
     reply.packet.setUint8(ArtnetPollReplyPacket.nodeReportIndex, 0); //Sometimes you have to look for the little things

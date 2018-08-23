@@ -1,9 +1,8 @@
 import 'dart:io';
 import 'dart:typed_data';
-import 'package:blizzard_wizzard/architecture/globals.dart';
-import 'package:blizzard_wizzard/models/models.dart';
+import 'package:blizzard_wizzard/models/globals.dart';
 
-class Profile{
+class Fixture{
 
   static int idCount = 0;
 
@@ -20,23 +19,23 @@ class Profile{
   int universe;
   int id;
 
-  Uint8List dmx = Uint8List(512);
+  ByteData dmx = ByteData(512);
   List<int> redChannels;
   List<int> greenChannels;
   List<int> blueChannels;
 
-  Profile(this.mac){
+  Fixture(this.mac){
     id = idCount++;
   }
 
-  bool compare(Profile other){
+  bool compare(Fixture other){
     return (name == other.name &&
             address == other.address);
   }
 
   @override
   bool operator == (Object other) =>
-      other is Profile &&
+      other is Fixture &&
         other.mac.length == 6 &&
         other.mac[0] == mac[0] &&
         other.mac[1] == mac[1] &&

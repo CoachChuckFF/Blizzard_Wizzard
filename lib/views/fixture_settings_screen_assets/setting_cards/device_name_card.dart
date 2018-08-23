@@ -1,19 +1,14 @@
-import 'dart:io';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'dart:convert';
 import 'package:d_artnet_4/d_artnet_4.dart';
-import 'package:blizzard_wizzard/models/models.dart';
-import 'package:blizzard_wizzard/controllers/artnet_controller.dart';
-import 'package:blizzard_wizzard/architecture/globals.dart';
-import 'package:blizzard_wizzard/controllers/artnet_server.dart';
-import 'package:blizzard_wizzard/architecture/globals.dart';
+import 'package:blizzard_wizzard/models/globals.dart';
+import 'package:blizzard_wizzard/views/fixture_settings_screen_assets/setting_cards/settings_card.dart';
+import 'package:blizzard_wizzard/controllers/wait_for_packet.dart';
 
-class APPasswordCard extends ConfigCard {
+class DeviceNameCard extends SettingsCard {
 
   static GlobalKey<FormState> _formKey = new GlobalKey<FormState>();
 
-  APPasswordCard(profile, alertMessage) : super(profile, alertMessage);
+  DeviceNameCard(fixture, alertMessage) : super(fixture, alertMessage);
 
   @override
   Widget build(BuildContext context) {
@@ -26,9 +21,9 @@ class APPasswordCard extends ConfigCard {
             TextFormField(
               decoration: InputDecoration(
                 border: InputBorder.none,
-                hintText: 'AP Pass'
+                hintText: 'Device Name'
               ),
-              maxLength: BlizzardWizzardConfigs.passwordLength,
+              maxLength: BlizzardWizzardConfigs.longNameLength,
               maxLengthEnforced: true,
               validator: _validate,
               onSaved: _onSave,
@@ -73,15 +68,13 @@ class APPasswordCard extends ConfigCard {
 
   void _onSave(String input){
 
-  /*
     tron.addToWaitingList(WaitForPacket(_submitCallback,
-        this.profile.address, 
+        this.fixture.address, 
         ArtnetPollReplyPacket.opCode, 
         BlizzardWizzardConfigs.artnetConfigCallbackTimout)
     );
-*/
-    tron.server.sendPacket(_populateConfigPacket(input).udpPacket, this.profile.address);
 
+    tron.server.sendPacket(_populateConfigPacket(input).udpPacket, this.fixture.address);
 
   }
 
@@ -93,19 +86,18 @@ class APPasswordCard extends ConfigCard {
     }
   }
 
-  ArtnetCommandPacket _populateConfigPacket(String pass){
-    ArtnetCommandPacket packet = ArtnetCommandPacket();
+  ArtnetAddressPacket _populateConfigPacket(String name){
+    ArtnetAddressPacket packet = ArtnetAddressPacket();
+    String longName = (name.length > BlizzardWizzardConfigs.longNameLength) ? name.substring(0, BlizzardWizzardConfigs.longNameLength - 1) : name;
+    String shortName = (name.length > BlizzardWizzardConfigs.shortNameLength) ? name.substring(0, BlizzardWizzardConfigs.shortNameLength - 1) : name;
 
-    Map<String, dynamic> command = {
-      "Action" : BlizzardActions.setGeneralConfig,
-      "key" : BlizzardDefines.apPassKey,
-      "Type" : BlizzardDefines.dataString,
-      "Change_Device" : 0,
-      "Change_Mask" : 0,
-      "Data" : pass,
-    };
 
-    packet.data = json.encode(command).codeUnits;
+    packet.programNetSwitchEnable = false;
+    packet.programSubSwitchEnable = false;
+    packet.programUniverseEnable = false;
+
+    packet.longName = longName;
+    packet.shortName = shortName;
 
     return packet;
   }

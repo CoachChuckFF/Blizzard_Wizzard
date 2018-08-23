@@ -1,28 +1,21 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:d_artnet_4/d_artnet_4.dart';
-import 'package:blizzard_wizzard/architecture/globals.dart';
-import 'dart:async';
-import 'package:blizzard_wizzard/models/models.dart';
-import 'package:blizzard_wizzard/controllers/artnet_controller.dart';
-import 'package:blizzard_wizzard/architecture/globals.dart';
-import 'package:blizzard_wizzard/controllers/artnet_server.dart';
-import 'package:blizzard_wizzard/architecture/globals.dart';
+import 'package:blizzard_wizzard/models/globals.dart';
 
-class ConfigButtonBar extends StatefulWidget {
+class SceneManipulatorButtonBar extends StatefulWidget {
   final ValueChanged<int> callback;
   final int state;
 
-  ConfigButtonBar({
+  SceneManipulatorButtonBar({
     this.callback,
     this.state: LightingConfigState.colorState,
   });
 
   @override
-  createState() => ConfigButtonBarState();
+  createState() => SceneManipulatorButtonBarState();
 }
 
-class ConfigButtonBarState extends State<ConfigButtonBar> {
+class SceneManipulatorButtonBarState extends State<SceneManipulatorButtonBar> {
   int state;
 
   _update(int state){

@@ -1,5 +1,3 @@
-
-
 class BlizzardDevices{
   static const Map<int, String> deviceMap = {
     0x34:'Blizzard Bridge'

@@ -1,21 +1,20 @@
 import 'package:meta/meta.dart';
-import 'package:blizzard_wizzard/architecture/globals.dart';
-import 'package:blizzard_wizzard/models/models.dart';
+import 'package:blizzard_wizzard/models/fixture.dart';
 
 @immutable
 class AppState {
   final bool isLoading;
-  final List<Profile> availableDevices;
+  final List<Fixture> availableDevices;
 
   AppState(
       {this.isLoading = true,
        this.availableDevices = const []});
 
-  factory AppState.init() => new AppState(isLoading: true, availableDevices: new List<Profile>());
+  factory AppState.init() => new AppState(isLoading: true, availableDevices: new List<Fixture>());
 
   AppState copyWith({
     bool isLoading,
-    List<Profile> availableDevices,
+    List<Fixture> availableDevices,
   }) {
     return new AppState(
       isLoading: isLoading ?? this.isLoading,

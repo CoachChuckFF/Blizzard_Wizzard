@@ -1,21 +1,31 @@
-import 'package:flutter/foundation.dart';
 import 'dart:io';
-import 'package:blizzard_wizzard/views/items/controller_items/config_button_bar.dart';
-import 'package:blizzard_wizzard/views/items/config_items/config_cards/dmx_control_card.dart';
-import 'package:blizzard_wizzard/architecture/globals.dart';
-import 'package:blizzard_wizzard/models/models.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:lw_color_picker/lw_color_picker.dart';
+import 'package:blizzard_wizzard/models/fixture.dart';
+import 'package:blizzard_wizzard/models/globals.dart';
+import 'package:blizzard_wizzard/views/creator_screen_assets/dmx_control_area.dart';
 
-class SceneConfigArea extends StatelessWidget {
+
+class SceneManipulatorArea extends StatelessWidget {
   final int state;
-  SceneConfigArea({
+  SceneManipulatorArea({
     @required this.state,
   });
 
 @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
+
+    /*TODO
+      takeout
+    */
+    List<Fixture> testFixtures = List<Fixture>();
+    testFixtures.add(Fixture(
+            [0x00,0x00,0x00,0x00,0x00,0x00]
+          )..address = InternetAddress("255.255.255.255"),
+        );
+
     switch(this.state){
       case LightingConfigState.colorState:
         return Center(
@@ -24,11 +34,8 @@ class SceneConfigArea extends StatelessWidget {
           ),
         );
       case LightingConfigState.dmxState:
-        return DMXControlCard(
-          Profile(
-            [0x00,0x00,0x00,0x00,0x00,0x00]
-          )..address = InternetAddress("192.168.1.1"),
-          (string) => print(string)
+        return DMXControlArea(
+          testFixtures
         );
       case LightingConfigState.settingsState:
         return Text("Keypad");

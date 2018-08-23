@@ -1,12 +1,12 @@
-import 'package:redux/redux.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_redux/flutter_redux.dart';
-import 'dart:io';
 import 'dart:async';
+import 'dart:io';
 import 'package:d_artnet_4/d_artnet_4.dart';
+import 'package:redux/redux.dart';
+import 'package:blizzard_wizzard/models/actions.dart';
+import 'package:blizzard_wizzard/models/app_state.dart';
+import 'package:blizzard_wizzard/models/fixture.dart';
 import 'package:blizzard_wizzard/controllers/artnet_server.dart';
-import 'package:blizzard_wizzard/models/models.dart';
-import 'package:blizzard_wizzard/architecture/globals.dart';
+import 'package:blizzard_wizzard/controllers/wait_for_packet.dart';
 
 class ArtnetController{
 
@@ -21,13 +21,13 @@ class ArtnetController{
 
   void _onPoll(){
 
-    List<Profile> temp = List.from((store.state as AppState).availableDevices);
+    List<Fixture> temp = List.from((store.state as AppState).availableDevices);
 
-    for(final listProfile in temp){
-      if(listProfile.activeTick <= 0){
-        store.dispatch(RemoveAvailableDevice(listProfile));
+    for(final listFixture in temp){
+      if(listFixture.activeTick <= 0){
+        store.dispatch(RemoveAvailableDevice(listFixture));
       } else {
-        store.dispatch(TickDownAvailableDevice(listProfile));
+        store.dispatch(TickDownAvailableDevice(listFixture));
       }
     }
   }
@@ -48,7 +48,7 @@ class ArtnetController{
       case ArtnetPollReplyPacket.opCode:
         /*Important*/
         _handlePollReply();
-        _handleDeviceList(_packetToProfile(ArtnetPollReplyPacket(gram.data), gram.address));
+        _handleDeviceList(_packetToFixture(ArtnetPollReplyPacket(gram.data), gram.address));
       break;
       case ArtnetIpProgReplyPacket.opCode:
         /*Important*/
@@ -93,26 +93,26 @@ class ArtnetController{
     }    
   }
 
-  void _handleDeviceList(Profile profile){
+  void _handleDeviceList(Fixture fixture){
     bool newDevice = true;
 
-    List<Profile> temp = List.from((store.state as AppState).availableDevices);
+    List<Fixture> temp = List.from((store.state as AppState).availableDevices);
 
-    for(final listProfile in temp){
-      if(listProfile == profile){
-        if(!listProfile.compare(profile)){
-          profile.id = listProfile.id;
-          profile.patchAddress = listProfile.patchAddress;
-          store.dispatch(UpdateAvailableDevice(profile));
+    for(final listFixture in temp){
+      if(listFixture == fixture){
+        if(!listFixture.compare(fixture)){
+          fixture.id = listFixture.id;
+          fixture.patchAddress = listFixture.patchAddress;
+          store.dispatch(UpdateAvailableDevice(fixture));
         }
         newDevice = false;
-        store.dispatch(TickResetAvailableDevice(listProfile));
+        store.dispatch(TickResetAvailableDevice(listFixture));
         break;
       }
     }
 
     if(newDevice){
-      store.dispatch(AddAvailableDevice(profile));
+      store.dispatch(AddAvailableDevice(fixture));
     }
   }
 
@@ -141,16 +141,16 @@ class ArtnetController{
   void waitForPacket(){
   }
 
-  Profile _packetToProfile(ArtnetPollReplyPacket packet, InternetAddress ip){
-    Profile profile = Profile(packet.mac);
+  Fixture _packetToFixture(ArtnetPollReplyPacket packet, InternetAddress ip){
+    Fixture fixture = Fixture(packet.mac);
 
-    profile.name = packet.longName;
-    profile.isBlizzard = packet.isBlizzardDevice;
-    profile.typeId = packet.blizzardType;
-    profile.universe = packet.universe;
-    profile.address = ip;
+    fixture.name = packet.longName;
+    fixture.isBlizzard = packet.isBlizzardDevice;
+    fixture.typeId = packet.blizzardType;
+    fixture.universe = packet.universe;
+    fixture.address = ip;
 
-    return profile;
+    return fixture;
 
   }
 

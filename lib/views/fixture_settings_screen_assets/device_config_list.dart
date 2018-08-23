@@ -1,13 +1,9 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:blizzard_wizzard/models/models.dart';
-import 'package:blizzard_wizzard/architecture/globals.dart';
-import 'package:blizzard_wizzard/controllers/artnet_server.dart';
-import 'package:blizzard_wizzard/architecture/keys.dart';
-import 'package:blizzard_wizzard/views/items/available_device_items/available_device_item.dart';
+import 'package:blizzard_wizzard/models/keys.dart';
+import 'package:blizzard_wizzard/views/fixture_settings_screen_assets/setting_cards/settings_card.dart';
 
 class DeviceConfigList extends StatelessWidget {
-  final List<ConfigCard> configurations;
+  final List<SettingsCard> configurations;
 
   DeviceConfigList({
     Key key,
