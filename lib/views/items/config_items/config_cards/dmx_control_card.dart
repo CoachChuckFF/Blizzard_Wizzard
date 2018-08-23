@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:d_artnet/d_artnet.dart';
+import 'package:d_artnet_4/d_artnet_4.dart';
 import 'dart:async';
 import 'package:blizzard_wizzard/models/models.dart';
 import 'package:blizzard_wizzard/controllers/artnet_controller.dart';
@@ -21,7 +21,6 @@ class DMXControlCard extends ConfigCard {
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
-          new Text("DMX"),
           new ButtonTheme.bar( // make buttons use the appropriate styles for cards
             child: new ButtonBar(
               children: <Widget>[
@@ -32,44 +31,46 @@ class DMXControlCard extends ConfigCard {
               ],
             ),
           ),
-          new GridView.count(
-            scrollDirection: Axis.vertical,
-            // Create a grid with 2 columns. If you change the scrollDirection to
-            // horizontal, this would produce 2 rows.
-            crossAxisCount: 8,
-            shrinkWrap: true,
-            primary: false,
-            // Generate 100 Widgets that display their index in the List
-            children: List.generate(512, (index) {
-              return new InkWell(
-                onLongPress: () {
-                  _zeroChannel(index + 1);
-                },
-                onDoubleTap: () {
-                  _maxChannel(index + 1);
-                },
-                onTap: () {
-                  print("short");
-                  showDialog(
-                    context: context,
-                    child: new DMXDialog(
-                      packet: _packet,
-                      index: index,
-                      changedCallback: _updateDMX,
-                    )
-                  );
-                },
-                child: new SizedBox(
-                  height: 33.0,
-                  child: new Center(
-                    child: new Text(
-                      '${index + 1}'
+          new Expanded(
+            child: GridView.count(
+              scrollDirection: Axis.vertical,
+              // Create a grid with 2 columns. If you change the scrollDirection to
+              // horizontal, this would produce 2 rows.
+              crossAxisCount: 8,
+              shrinkWrap: true,
+              primary: false,
+              // Generate 100 Widgets that display their index in the List
+              children: List.generate(512, (index) {
+                return new InkWell(
+                  onLongPress: () {
+                    _zeroChannel(index + 1);
+                  },
+                  onDoubleTap: () {
+                    _maxChannel(index + 1);
+                  },
+                  onTap: () {
+                    print("short");
+                    showDialog(
+                      context: context,
+                      child: new DMXDialog(
+                        packet: _packet,
+                        index: index,
+                        changedCallback: _updateDMX,
+                      )
+                    );
+                  },
+                  child: new SizedBox(
+                    height: 33.0,
+                    child: new Center(
+                      child: new Text(
+                        '${index + 1}'
+                      ),
                     ),
-                  ),
-                )
-              );
-            }),
-          ), 
+                  )
+                );
+              }),
+            ), 
+          ),
         ],
       ),
     );

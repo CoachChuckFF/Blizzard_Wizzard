@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:d_artnet/d_artnet.dart';
+import 'package:d_artnet_4/d_artnet_4.dart';
 import 'package:blizzard_wizzard/architecture/globals.dart';
 import 'dart:async';
 import 'package:blizzard_wizzard/models/models.dart';
@@ -27,20 +27,29 @@ class PatchesCardState extends State<PatchesCard> {
   @override
   Widget build(BuildContext context) {
     return Card(
-      child: GridView.builder(
-        gridDelegate: new SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: cols),
-        itemCount: BlizzardWizzardConfigs.artnetMaxUniverses,
-        itemBuilder: (BuildContext context, int index) {
-          return SizedBox(
-            height: 33.0,
-            child: new Center(
-              child: new Text(
-                '${index + 1}'
-              ),
-            ),
-          );
-        },
-      ) 
+      child: Column(
+        children: <Widget>[
+          Text(
+            "Patches",
+          ),
+          Expanded(
+            child: GridView.builder(
+              gridDelegate: new SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: cols),
+              itemCount: BlizzardWizzardConfigs.artnetMaxUniverses,
+              itemBuilder: (BuildContext context, int index) {
+                return SizedBox(
+                  height: 33.0,
+                  child: new Center(
+                    child: new Text(
+                      '${index + 1}'
+                    ),
+                  ),
+                );
+              },
+            ) 
+          )
+        ],
+      )
     );
   }
 }

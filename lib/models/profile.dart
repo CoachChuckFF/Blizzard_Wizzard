@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'dart:typed_data';
 import 'package:blizzard_wizzard/architecture/globals.dart';
 import 'package:blizzard_wizzard/models/models.dart';
 
@@ -19,6 +20,10 @@ class Profile{
   int universe;
   int id;
 
+  Uint8List dmx = Uint8List(512);
+  List<int> redChannels;
+  List<int> greenChannels;
+  List<int> blueChannels;
 
   Profile(this.mac){
     id = idCount++;

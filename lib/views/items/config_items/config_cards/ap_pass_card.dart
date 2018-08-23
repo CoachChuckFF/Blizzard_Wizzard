@@ -2,7 +2,7 @@ import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'dart:convert';
-import 'package:d_artnet/d_artnet.dart';
+import 'package:d_artnet_4/d_artnet_4.dart';
 import 'package:blizzard_wizzard/models/models.dart';
 import 'package:blizzard_wizzard/controllers/artnet_controller.dart';
 import 'package:blizzard_wizzard/architecture/globals.dart';

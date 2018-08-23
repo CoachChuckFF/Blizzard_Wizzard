@@ -78,15 +78,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.1.2"
-  d_artnet:
+  d_artnet_4:
     dependency: "direct main"
     description:
-      path: "."
-      ref: HEAD
-      resolved-ref: "26be4a344f8f2ac14c9310134a22704c94e6aa34"
-      url: "https://github.com/TheOnlyCaky/d_artnet.git"
-    source: git
-    version: "0.1.0"
+      name: d_artnet_4
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.1.1"
   flutter:
     dependency: "direct main"
     description: flutter
@@ -174,6 +172,15 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.11.3+1"
+  lw_color_picker:
+    dependency: "direct main"
+    description:
+      path: "."
+      ref: HEAD
+      resolved-ref: "9837f1dae4d0e66373ed1084e062de989bbfc4d6"
+      url: "git://github.com/TheOnlyCaky/d_lw_color_picker.git"
+    source: git
+    version: "0.0.1"
   matcher:
     dependency: transitive
     description:

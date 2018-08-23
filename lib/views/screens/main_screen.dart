@@ -5,7 +5,7 @@ import 'package:blizzard_wizzard/views/items/available_device_items/available_de
 import 'package:blizzard_wizzard/views/screens/config_wizzard_screen.dart';
 import 'package:blizzard_wizzard/models/models.dart';
 import 'package:blizzard_wizzard/architecture/globals.dart';
-import 'package:d_artnet/d_artnet.dart';
+import 'package:d_artnet_4/d_artnet_4.dart';
 
 class MainScreen extends StatefulWidget {
   @override

@@ -12,9 +12,10 @@ dependencies:
   redux: "^3.0.0"
   flutter_redux: ^0.5.2
   validator: ">=0.0.4 <0.1.0"
-  d_artnet:
+  d_artnet_4: ^0.1.1
+  lw_color_picker:
     git:
-      url: https://github.com/TheOnlyCaky/d_artnet.git
+      url: git://github.com/TheOnlyCaky/d_lw_color_picker.git
 
 dev_dependencies:
   flutter_test:

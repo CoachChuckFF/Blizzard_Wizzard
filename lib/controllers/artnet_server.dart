@@ -1,7 +1,7 @@
 import 'dart:io';
 import 'dart:async';
 import 'package:blizzard_wizzard/architecture/globals.dart';
-import 'package:d_artnet/d_artnet.dart';
+import 'package:d_artnet_4/d_artnet_4.dart';
 import 'package:validator/validator.dart';
 import 'package:blizzard_wizzard/controllers/artnet_controller.dart';
 
