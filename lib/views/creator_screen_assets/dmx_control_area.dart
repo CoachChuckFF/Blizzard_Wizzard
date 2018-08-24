@@ -73,10 +73,17 @@ class DMXControlAreaState extends State<DMXControlArea> {
                 },
                 child: new SizedBox(
                   height: 33.0,
-                  child: new Center(
-                    child: new Text(
-                      '${index + 1}'
-                    ),
+                  child: Column(
+                    children: <Widget>[
+                      Text(
+                        '${index + 1}',
+                        textAlign: TextAlign.center,
+                      ),
+                      Text(
+                        '${_packet.dmx[index]}',
+                        textAlign: TextAlign.center,
+                      ),
+                    ],
                   ),
                 )
               );
@@ -108,6 +115,7 @@ class DMXControlAreaState extends State<DMXControlArea> {
     for(int i = 0; i < widget.fixtures.length; i++){
       tron.server.sendPacket(_packet.udpPacket, widget.fixtures[i].address);
     }
+    setState(() {});
   }
 
 }

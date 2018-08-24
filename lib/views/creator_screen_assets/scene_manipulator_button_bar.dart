@@ -8,7 +8,7 @@ class SceneManipulatorButtonBar extends StatefulWidget {
 
   SceneManipulatorButtonBar({
     this.callback,
-    this.state: LightingConfigState.colorState,
+    this.state: LightingConfigState.color,
   });
 
   @override
@@ -41,65 +41,65 @@ class SceneManipulatorButtonBarState extends State<SceneManipulatorButtonBar> {
         children: <Widget>[
           Expanded(
             child: new FlatButton(
-              color: (state == LightingConfigState.colorState) ?
-                Colors.deepPurpleAccent : Colors.white,
+              color: (state == LightingConfigState.color) ?
+                Theme.of(context).primaryColor : Colors.white,
               child: new Text(
                 "Color",
                 style: TextStyle(
-                  color: (state == LightingConfigState.colorState) ?
+                  color: (state == LightingConfigState.color) ?
                   Colors.white : Colors.black,
                 ),
               ),
               onPressed: (){
-                _update(LightingConfigState.colorState);
+                _update(LightingConfigState.color);
               },
             )
           ),
           Expanded(
             child: new FlatButton(
-              color: (state == LightingConfigState.dmxState) ?
-                Colors.deepPurpleAccent : Colors.white,
+              color: (state == LightingConfigState.preset) ?
+                Theme.of(context).primaryColor : Colors.white,
+              child: new Text(
+                "Presets",
+                style: TextStyle(
+                  color: (state == LightingConfigState.preset) ?
+                  Colors.white : Colors.black,
+                ),
+              ),
+              onPressed: (){
+                _update(LightingConfigState.preset);
+              },
+            )
+          ),
+          Expanded(
+            child: new FlatButton(
+              color: (state == LightingConfigState.dmx) ?
+                Theme.of(context).primaryColor : Colors.white,
               child: new Text(
                 "DMX",
                 style: TextStyle(
-                  color: (state == LightingConfigState.dmxState) ?
+                  color: (state == LightingConfigState.dmx) ?
                   Colors.white : Colors.black,
                 ),
               ),
               onPressed: (){
-                _update(LightingConfigState.dmxState);
+                _update(LightingConfigState.dmx);
               },
             )
           ),
           Expanded(
             child: new FlatButton(
-              color: (state == LightingConfigState.keypadState) ?
-                Colors.deepPurpleAccent : Colors.white,
+              color: (state == LightingConfigState.keypad) ?
+                Theme.of(context).primaryColor : Colors.white,
               child: new Text(
                 "Keypad",
                 style: TextStyle(
-                  color: (state == LightingConfigState.keypadState) ?
+                  color: (state == LightingConfigState.keypad) ?
                   Colors.white : Colors.black,
                 ),
               ),
               onPressed: (){
-                _update(LightingConfigState.keypadState);
-              },
-            )
-          ),
-          Expanded(
-            child: new FlatButton(
-              color: (state == LightingConfigState.settingsState) ?
-                Colors.deepPurpleAccent : Colors.white,
-              child: new Text(
-                "Settings",
-                style: TextStyle(
-                  color: (state == LightingConfigState.settingsState) ?
-                  Colors.white : Colors.black,
-                ),
-              ),
-              onPressed: (){
-                _update(LightingConfigState.settingsState);
+                _update(LightingConfigState.keypad);
               },
             )
           ),

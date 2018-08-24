@@ -17,21 +17,21 @@ class SceneButtonBarState extends State<SceneButtonBar> {
           Expanded(
             child: new IconButton(
               icon: new Icon(Icons.save),
-              tooltip: 'save',
+              tooltip: 'Save Scene',
               onPressed: () { print("Save"); },
             ),
           ),
           Expanded(
             child: new IconButton(
               icon: new Icon(Icons.schedule),
-              tooltip: 'black',
+              tooltip: 'Load Scene',
               onPressed: () { print("Load"); },
             ),
           ),
           Expanded(
             child: new IconButton(
               icon: new Icon(Icons.clear),
-              tooltip: 'delete',
+              tooltip: 'Blackout',
               onPressed: () { print("Blackout"); },
             ),
           )

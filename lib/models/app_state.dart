@@ -4,11 +4,13 @@ import 'package:blizzard_wizzard/models/fixture.dart';
 @immutable
 class AppState {
   final bool isLoading;
+  final bool hasKeyboard;
   final List<Fixture> availableDevices;
 
   AppState(
       {this.isLoading = true,
-       this.availableDevices = const []});
+      this.hasKeyboard = false,
+      this.availableDevices = const []});
 
   factory AppState.init() => new AppState(isLoading: true, availableDevices: new List<Fixture>());
 

@@ -4,6 +4,10 @@ import 'package:blizzard_wizzard/models/fixture.dart';
 class SetLoaded{}
 class ClearLoaded{}
 
+/* Has Keyboard */
+class SetHasKeyboard{}
+class ClearHasKeyboard{}
+
 /* Available Devices List */
 class TickDownAvailableDevice{
   final Fixture fixture;

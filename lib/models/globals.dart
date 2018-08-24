@@ -58,10 +58,11 @@ class BlizzardDefines{
 }
 
 class LightingConfigState{
-  static const int colorState = 1;
-  static const int dmxState = 2;
-  static const int settingsState = 3;
-  static const int keypadState = 4;
+  static const int color = 1;
+  static const int dmx = 2;
+  static const int settings= 3;
+  static const int keypad = 4;
+  static const int preset = 5;
 }
 
 class PageState{
@@ -71,4 +72,9 @@ class PageState{
   static const int editor = 4;
   static const int player = 5;
   static const int helper = 6; 
+}
+
+class DeviceFixtureGridState{
+  static const int device = 1;
+  static const int fixture = 2;
 }

@@ -1,12 +1,7 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_redux/flutter_redux.dart';
 import 'package:blizzard_wizzard/models/globals.dart';
 import 'package:blizzard_wizzard/views/screens/creator_screen.dart'; 
-import 'package:blizzard_wizzard/views/screens/editor_screen.dart'; 
-import 'package:blizzard_wizzard/views/screens/helper_screen.dart'; 
 import 'package:blizzard_wizzard/views/screens/manager_screen.dart';
-import 'package:blizzard_wizzard/views/screens/player_screen.dart';  
 
 
 class BlizzardScreen extends StatefulWidget {
@@ -50,6 +45,7 @@ class BlizzardScreenState extends State<BlizzardScreen> {
 
     return Scaffold (
       backgroundColor: Colors.white,
+      resizeToAvoidBottomPadding: false,
       appBar: new AppBar(
         title: new Text('Blizzard Pro'),
         actions: <Widget>[

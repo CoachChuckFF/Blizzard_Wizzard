@@ -177,7 +177,7 @@ packages:
     description:
       path: "."
       ref: HEAD
-      resolved-ref: "9837f1dae4d0e66373ed1084e062de989bbfc4d6"
+      resolved-ref: "64f032a36521a1d679368d656dd06aca70c299e1"
       url: "git://github.com/TheOnlyCaky/d_lw_color_picker.git"
     source: git
     version: "0.0.1"

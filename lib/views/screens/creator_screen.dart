@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lw_color_picker/lw_color_picker.dart';
 import 'package:blizzard_wizzard/models/globals.dart';
-import 'package:blizzard_wizzard/views/creator_screen_assets/dmx_control_area.dart';
 import 'package:blizzard_wizzard/views/creator_screen_assets/fixture_grid.dart';
 import 'package:blizzard_wizzard/views/creator_screen_assets/scene_button_bar.dart';
 import 'package:blizzard_wizzard/views/creator_screen_assets/scene_manipulator_area.dart';
@@ -19,7 +17,7 @@ class CreatorScreenState extends State<CreatorScreen> {
   @override
   void initState() {
     super.initState();
-    configState = LightingConfigState.colorState;
+    configState = LightingConfigState.color;
   }
 
   @override
@@ -46,12 +44,11 @@ class CreatorScreenState extends State<CreatorScreen> {
           ),
         ),
         Expanded(
-          flex: 6,
+          flex: 5,
           child: SceneManipulatorArea(state: configState)
         )
       ],
     );
 
   }
-
 }

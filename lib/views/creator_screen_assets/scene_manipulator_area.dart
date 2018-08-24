@@ -1,14 +1,19 @@
 import 'dart:io';
+import 'package:flutter_redux/flutter_redux.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:lw_color_picker/lw_color_picker.dart';
+import 'package:blizzard_wizzard/models/app_state.dart';
 import 'package:blizzard_wizzard/models/fixture.dart';
 import 'package:blizzard_wizzard/models/globals.dart';
+import 'package:blizzard_wizzard/views/creator_screen_assets/color_picker_area.dart';
 import 'package:blizzard_wizzard/views/creator_screen_assets/dmx_control_area.dart';
+import 'package:blizzard_wizzard/views/creator_screen_assets/keypad.dart';
+import 'package:blizzard_wizzard/views/creator_screen_assets/preset_area.dart';
 
 
 class SceneManipulatorArea extends StatelessWidget {
   final int state;
+
   SceneManipulatorArea({
     @required this.state,
   });
@@ -16,30 +21,43 @@ class SceneManipulatorArea extends StatelessWidget {
 @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
-
     /*TODO
       takeout
     */
     List<Fixture> testFixtures = List<Fixture>();
     testFixtures.add(Fixture(
-            [0x00,0x00,0x00,0x00,0x00,0x00]
-          )..address = InternetAddress("255.255.255.255"),
-        );
+        [0x00,0x00,0x00,0x00,0x00,0x00]
+      )..address = InternetAddress("255.255.255.255"),
+    );
+
+    StoreProvider.of<AppState>(context);
 
     switch(this.state){
-      case LightingConfigState.colorState:
+      case LightingConfigState.color:
         return Center(
           child: Card(
-            child: LWColorPicker(width: width * 0.89, heightToWidthRatio: 0.6,),
+            child: ColorPickerArea(
+              width: width * 0.89, 
+              heightToWidthRatio: 0.5,
+              hasKeyboard: (hasKeyboard){
+                /*if(hasKeyboard){
+                  StoreProvider.of<AppState>(context).dispatch(SetHasKeyboard());
+                } else {
+                  StoreProvider.of<AppState>(context).dispatch(ClearHasKeyboard());
+                }*/
+              },
+            ),
           ),
         );
-      case LightingConfigState.dmxState:
+      case LightingConfigState.preset:
+        return PresetGrid();
+      case LightingConfigState.dmx:
         return DMXControlArea(
           testFixtures
         );
-      case LightingConfigState.settingsState:
-        return Text("Keypad");
-      case LightingConfigState.settingsState:
+      case LightingConfigState.keypad:
+        return KeypadArea();
+      case LightingConfigState.settings:
         return Text("Settings");
       default:
         return Text("Error");
