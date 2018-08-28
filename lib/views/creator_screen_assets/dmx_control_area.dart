@@ -7,9 +7,7 @@ import 'package:blizzard_wizzard/models/globals.dart';
 
 class DMXControlArea extends StatefulWidget{
 
-  final List<Fixture> fixtures;
-
-  DMXControlArea(this.fixtures);
+  DMXControlArea();
 
   @override
   createState() => DMXControlAreaState();
@@ -22,9 +20,9 @@ class DMXControlAreaState extends State<DMXControlArea> {
     @override
   void initState() {
     super.initState();
-    if(widget.fixtures.length != 0){
+    /*if(widget.fixtures.length != 0){
       _packet.copyDmxToPacket(widget.fixtures[0].dmx);
-    }
+    }*/
   }
 
   @override
@@ -112,9 +110,9 @@ class DMXControlAreaState extends State<DMXControlArea> {
   }
 
   void _updateDMX(){
-    for(int i = 0; i < widget.fixtures.length; i++){
+    /*for(int i = 0; i < widget.fixtures.length; i++){
       tron.server.sendPacket(_packet.udpPacket, widget.fixtures[i].address);
-    }
+    }*/
     setState(() {});
   }
 

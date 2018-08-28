@@ -43,7 +43,7 @@ class CreatorScreenState extends State<CreatorScreen> {
             },
           ),
         ),
-        Expanded(
+      Expanded(
           flex: 5,
           child: SceneManipulatorArea(state: configState)
         )

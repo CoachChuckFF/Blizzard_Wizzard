@@ -4,7 +4,7 @@ import 'package:d_artnet_4/d_artnet_4.dart';
 import 'package:redux/redux.dart';
 import 'package:blizzard_wizzard/models/actions.dart';
 import 'package:blizzard_wizzard/models/app_state.dart';
-import 'package:blizzard_wizzard/models/fixture.dart';
+import 'package:blizzard_wizzard/models/device.dart';
 import 'package:blizzard_wizzard/controllers/artnet_server.dart';
 import 'package:blizzard_wizzard/controllers/wait_for_packet.dart';
 
@@ -21,13 +21,13 @@ class ArtnetController{
 
   void _onPoll(){
 
-    List<Fixture> temp = List.from((store.state as AppState).availableDevices);
+    List<Device> temp = List.from((store.state as AppState).availableDevices);
 
-    for(final listFixture in temp){
-      if(listFixture.activeTick <= 0){
-        store.dispatch(RemoveAvailableDevice(listFixture));
+    for(final listDevice in temp){
+      if(listDevice.activeTick <= 0){
+        store.dispatch(RemoveAvailableDevice(listDevice));
       } else {
-        store.dispatch(TickDownAvailableDevice(listFixture));
+        store.dispatch(TickDownAvailableDevice(listDevice));
       }
     }
   }
@@ -48,7 +48,7 @@ class ArtnetController{
       case ArtnetPollReplyPacket.opCode:
         /*Important*/
         _handlePollReply();
-        _handleDeviceList(_packetToFixture(ArtnetPollReplyPacket(gram.data), gram.address));
+        _handleDeviceList(_packetToDevice(ArtnetPollReplyPacket(gram.data), gram.address));
       break;
       case ArtnetIpProgReplyPacket.opCode:
         /*Important*/
@@ -93,26 +93,24 @@ class ArtnetController{
     }    
   }
 
-  void _handleDeviceList(Fixture fixture){
+  void _handleDeviceList(Device device){
     bool newDevice = true;
 
-    List<Fixture> temp = List.from((store.state as AppState).availableDevices);
+    List<Device> temp = List.from((store.state as AppState).availableDevices);
 
-    for(final listFixture in temp){
-      if(listFixture == fixture){
-        if(!listFixture.compare(fixture)){
-          fixture.id = listFixture.id;
-          fixture.patchAddress = listFixture.patchAddress;
-          store.dispatch(UpdateAvailableDevice(fixture));
+    for(final listDevice in temp){
+      if(listDevice == device){
+        if(!listDevice.compare(device)){
+          store.dispatch(UpdateAvailableDevice(device));
         }
         newDevice = false;
-        store.dispatch(TickResetAvailableDevice(listFixture));
+        store.dispatch(TickResetAvailableDevice(listDevice));
         break;
       }
     }
 
     if(newDevice){
-      store.dispatch(AddAvailableDevice(fixture));
+      store.dispatch(AddAvailableDevice(device));
     }
   }
 
@@ -141,16 +139,14 @@ class ArtnetController{
   void waitForPacket(){
   }
 
-  Fixture _packetToFixture(ArtnetPollReplyPacket packet, InternetAddress ip){
-    Fixture fixture = Fixture(packet.mac);
-
-    fixture.name = packet.longName;
-    fixture.isBlizzard = packet.isBlizzardDevice;
-    fixture.typeId = packet.blizzardType;
-    fixture.universe = packet.universe;
-    fixture.address = ip;
-
-    return fixture;
+  Device _packetToDevice(ArtnetPollReplyPacket packet, InternetAddress ip){
+    Device device = Device(packet.mac,
+    name: packet.longName,
+    isBlizzard: packet.isBlizzardDevice,
+    typeId: packet.blizzardType,
+    address: ip);
+    
+    return device;
 
   }
 

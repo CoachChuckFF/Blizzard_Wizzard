@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:blizzard_wizzard/models/app_state.dart';
 import 'package:blizzard_wizzard/models/fixture.dart';
 import 'package:blizzard_wizzard/models/globals.dart';
+import 'package:blizzard_wizzard/models/mac.dart';
 import 'package:blizzard_wizzard/views/creator_screen_assets/color_picker_area.dart';
 import 'package:blizzard_wizzard/views/creator_screen_assets/dmx_control_area.dart';
 import 'package:blizzard_wizzard/views/creator_screen_assets/keypad.dart';
@@ -21,14 +22,6 @@ class SceneManipulatorArea extends StatelessWidget {
 @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
-    /*TODO
-      takeout
-    */
-    List<Fixture> testFixtures = List<Fixture>();
-    testFixtures.add(Fixture(
-        [0x00,0x00,0x00,0x00,0x00,0x00]
-      )..address = InternetAddress("255.255.255.255"),
-    );
 
     StoreProvider.of<AppState>(context);
 
@@ -52,9 +45,7 @@ class SceneManipulatorArea extends StatelessWidget {
       case LightingConfigState.preset:
         return PresetGrid();
       case LightingConfigState.dmx:
-        return DMXControlArea(
-          testFixtures
-        );
+        return DMXControlArea();
       case LightingConfigState.keypad:
         return KeypadArea();
       case LightingConfigState.settings:

@@ -1,4 +1,6 @@
-import 'package:blizzard_wizzard/models/fixture.dart';
+import 'package:blizzard_wizzard/models/device.dart';
+import 'package:blizzard_wizzard/models/patch_fixture.dart';
+import 'package:blizzard_wizzard/models/patch_que.dart';
 
 /* Is Loading */
 class SetLoaded{}
@@ -10,31 +12,80 @@ class ClearHasKeyboard{}
 
 /* Available Devices List */
 class TickDownAvailableDevice{
-  final Fixture fixture;
+  final Device device;
 
-  TickDownAvailableDevice(this.fixture);
+  TickDownAvailableDevice(this.device);
 }
 
 class TickResetAvailableDevice{
-  final Fixture fixture;
+  final Device device;
 
-  TickResetAvailableDevice(this.fixture);
+  TickResetAvailableDevice(this.device);
 }
 
 class AddAvailableDevice{
-  final Fixture fixture;
+  final Device device;
 
-  AddAvailableDevice(this.fixture);
+  AddAvailableDevice(this.device);
 }
 
 class RemoveAvailableDevice{
-  final Fixture fixture;
+  final Device device;
 
-  RemoveAvailableDevice(this.fixture);
+  RemoveAvailableDevice(this.device);
 }
 
 class UpdateAvailableDevice{
-  final Fixture fixture;
+  final Device device;
 
-  UpdateAvailableDevice(this.fixture);
+  UpdateAvailableDevice(this.device);
 }
+
+/* Show */
+class ChangeShowName{
+  final String name;
+
+  ChangeShowName(this.name);
+}
+
+// Patched Ques
+class AddPatchQue{
+  final PatchQue patchQue;
+
+  AddPatchQue(this.patchQue);
+
+}
+
+class RemovePatchQue{
+  final PatchQue patchQue;
+
+  RemovePatchQue(this.patchQue);
+}
+
+class UpdatePatchQue{
+  final List<PatchQue> patchQues;
+
+  UpdatePatchQue(this.patchQues);
+}
+
+class AddPatchFixture{
+  final PatchFixture patchFixture;
+
+  AddPatchFixture(this.patchFixture);
+
+}
+
+// Patched Fixtures
+class RemovePatchFixture{
+  final PatchFixture patchFixture;
+
+  RemovePatchFixture(this.patchFixture);
+}
+
+class UpdatePatchFixture{
+  final List<PatchFixture> patchFixtures;
+
+  UpdatePatchFixture(this.patchFixtures);
+}
+
+// Ques

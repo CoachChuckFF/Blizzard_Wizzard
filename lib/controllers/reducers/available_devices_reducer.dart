@@ -1,52 +1,53 @@
 import 'package:redux/redux.dart';
 import 'package:blizzard_wizzard/models/actions.dart';
-import 'package:blizzard_wizzard/models/fixture.dart';
+import 'package:blizzard_wizzard/models/device.dart';
+import 'package:blizzard_wizzard/models/device.dart';
 import 'package:blizzard_wizzard/models/globals.dart';
 
 
-final availableDevicesReducer = combineReducers<List<Fixture>>([
-  new TypedReducer<List<Fixture>, TickDownAvailableDevice>(_tickDownAvailableDevices),
-  new TypedReducer<List<Fixture>, TickResetAvailableDevice>(_tickResetAvailableDevice),
-  new TypedReducer<List<Fixture>, AddAvailableDevice>(_addAvailableDevice),
-  new TypedReducer<List<Fixture>, RemoveAvailableDevice>(_removeAvailableDevice),
-  new TypedReducer<List<Fixture>, UpdateAvailableDevice>(_updateAvailableDevice)
+final availableDevicesReducer = combineReducers<List<Device>>([
+  new TypedReducer<List<Device>, TickDownAvailableDevice>(_tickDownAvailableDevices),
+  new TypedReducer<List<Device>, TickResetAvailableDevice>(_tickResetAvailableDevice),
+  new TypedReducer<List<Device>, AddAvailableDevice>(_addAvailableDevice),
+  new TypedReducer<List<Device>, RemoveAvailableDevice>(_removeAvailableDevice),
+  new TypedReducer<List<Device>, UpdateAvailableDevice>(_updateAvailableDevice)
 ]);
 
-List<Fixture> _tickDownAvailableDevices(List<Fixture> state, TickDownAvailableDevice action) {
+List<Device> _tickDownAvailableDevices(List<Device> state, TickDownAvailableDevice action) {
   return state
-        .map<Fixture>((fixture){
-          if(fixture.id == action.fixture.id){
-            fixture.activeTick--;
+        .map<Device>((device){
+          if(device == action.device){
+            device.activeTick--;
           }
 
-          return fixture;
+          return device;
         })
         .toList();
 }
 
-List<Fixture> _tickResetAvailableDevice(List<Fixture> state, TickResetAvailableDevice action){
+List<Device> _tickResetAvailableDevice(List<Device> state, TickResetAvailableDevice action){
   return state
-        .map<Fixture>((fixture){
-          if(fixture.id == action.fixture.id){
-            fixture.activeTick = BlizzardWizzardConfigs.availableTimoutTick;
+        .map<Device>((device){
+          if(device == action.device){
+            device.activeTick = BlizzardWizzardConfigs.availableTimoutTick;
           }
 
-          return fixture;
+          return device;
         })
         .toList();
 }
 
-List<Fixture> _addAvailableDevice(List<Fixture> state, AddAvailableDevice action){
-  return new List.from(state)..add(action.fixture);
+List<Device> _addAvailableDevice(List<Device> state, AddAvailableDevice action){
+  return new List.from(state)..add(action.device);
 }
 
-List<Fixture> _removeAvailableDevice(List<Fixture> state, RemoveAvailableDevice action){
-  return state.where((fixture) => fixture.id != action.fixture.id).toList();
+List<Device> _removeAvailableDevice(List<Device> state, RemoveAvailableDevice action){
+  return state.where((device) => device != action.device).toList();
 }
 
-List<Fixture> _updateAvailableDevice(List<Fixture> state, UpdateAvailableDevice action){
+List<Device> _updateAvailableDevice(List<Device> state, UpdateAvailableDevice action){
   return state
-      .map<Fixture>((fixture) => fixture.id == action.fixture.id ? action.fixture : fixture)
+      .map<Device>((device) => device == action.device ? action.device : device)
       .toList();
 
 }

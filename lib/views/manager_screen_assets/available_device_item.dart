@@ -1,38 +1,39 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:blizzard_wizzard/models/devices.dart';
-import 'package:blizzard_wizzard/models/fixture.dart';
+import 'package:blizzard_wizzard/models/blizzard_devices.dart';
+import 'package:blizzard_wizzard/models/device.dart';
 import 'package:blizzard_wizzard/models/keys.dart';
+import 'package:blizzard_wizzard/models/mac.dart';
 
 class AvailableDeviceItem extends StatelessWidget {
-  final Function(int) onTap;
-  final Fixture fixture;
+  final Function(Mac) onTap;
+  final Device device;
 
   AvailableDeviceItem({
     @required this.onTap,
-    @required this.fixture,
+    @required this.device,
   });
 
   @override
   Widget build(BuildContext context) {
     return new GestureDetector(
-      key: BlizzardWizzardKeys.availableDevice(fixture.id.toString()),
+      key: BlizzardWizzardKeys.availableDevice(device.mac.toString()),
       child: new ListTile(
-        onTap: () => onTap(fixture.id),
+        onTap: () => onTap(device.mac),
         leading: new Text(
-          fixture.name,
-          key: BlizzardWizzardKeys.availableDeviceName(fixture.id.toString()),
+          device.name,
+          key: BlizzardWizzardKeys.availableDeviceName(device.mac.toString()),
           style: Theme.of(context).textTheme.title,
         ),
         title: new Text(
-          //ArtnetServer.internetAddressToString(fixture.address),
-          fixture.activeTick.toString(),
-          key: BlizzardWizzardKeys.availableDeviceIp(fixture.id.toString()),
+          //ArtnetServer.internetAddressToString(device.address),
+          device.activeTick.toString(),
+          key: BlizzardWizzardKeys.availableDeviceIp(device.mac.toString()),
           style: Theme.of(context).textTheme.title,
         ),
         subtitle: new Text(
-          BlizzardDevices.getDevice(fixture.typeId),
-          key: BlizzardWizzardKeys.availableDeviceType(fixture.id.toString()),
+          BlizzardDevices.getDevice(device.typeId),
+          key: BlizzardWizzardKeys.availableDeviceType(device.mac.toString()),
           style: Theme.of(context).textTheme.title,
         ),
       ),

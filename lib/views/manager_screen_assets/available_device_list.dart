@@ -1,12 +1,13 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:blizzard_wizzard/models/fixture.dart';
+import 'package:blizzard_wizzard/models/device.dart';
 import 'package:blizzard_wizzard/models/keys.dart';
+import 'package:blizzard_wizzard/models/mac.dart';
 import 'package:blizzard_wizzard/views/manager_screen_assets/available_device_item.dart';
 
 class AvailableDevicesList extends StatelessWidget {
-  final List<Fixture> availableDevices;
-  final Function(int) onTap;
+  final List<Device> availableDevices;
+  final Function(Mac) onTap;
 
   AvailableDevicesList({
     Key key,
@@ -31,10 +32,10 @@ class AvailableDevicesList extends StatelessWidget {
       key: BlizzardWizzardKeys.availableDevicesList,
       itemCount: availableDevices.length,
       itemBuilder: (BuildContext context, int index) {
-        final fixture = availableDevices[index];
+        final device = availableDevices[index];
 
         return new AvailableDeviceItem(
-          fixture: fixture,
+          device: device,
           onTap: onTap,
         );
       },

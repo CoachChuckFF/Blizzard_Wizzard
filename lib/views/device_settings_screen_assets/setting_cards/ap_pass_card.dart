@@ -2,14 +2,14 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:d_artnet_4/d_artnet_4.dart';
 import 'package:blizzard_wizzard/models/globals.dart';
-import 'package:blizzard_wizzard/views/fixture_settings_screen_assets/setting_cards/settings_card.dart';
+import 'package:blizzard_wizzard/views/device_settings_screen_assets/setting_cards/settings_card.dart';
 
 
 class APPasswordCard extends SettingsCard {
 
   static GlobalKey<FormState> _formKey = new GlobalKey<FormState>();
 
-  APPasswordCard(fixture, alertMessage) : super(fixture, alertMessage);
+  APPasswordCard(device, alertMessage) : super(device, alertMessage);
 
   @override
   Widget build(BuildContext context) {
@@ -71,12 +71,12 @@ class APPasswordCard extends SettingsCard {
 
   /*
     tron.addToWaitingList(WaitForPacket(_submitCallback,
-        this.fixture.address, 
+        this.device.address, 
         ArtnetPollReplyPacket.opCode, 
         BlizzardWizzardConfigs.artnetConfigCallbackTimout)
     );
 */
-    tron.server.sendPacket(_populateConfigPacket(input).udpPacket, this.fixture.address);
+    tron.server.sendPacket(_populateConfigPacket(input).udpPacket, this.device.address);
 
 
   }

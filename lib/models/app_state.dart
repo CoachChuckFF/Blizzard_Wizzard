@@ -1,33 +1,45 @@
 import 'package:meta/meta.dart';
-import 'package:blizzard_wizzard/models/fixture.dart';
+import 'package:blizzard_wizzard/models/device.dart';
+import 'package:blizzard_wizzard/models/show.dart';
 
 @immutable
 class AppState {
   final bool isLoading;
   final bool hasKeyboard;
-  final List<Fixture> availableDevices;
+  final List<Device> availableDevices;
+  final Show show;
 
   AppState(
       {this.isLoading = true,
       this.hasKeyboard = false,
-      this.availableDevices = const []});
+      this.availableDevices = const [],
+      this.show});
 
-  factory AppState.init() => new AppState(isLoading: true, availableDevices: new List<Fixture>());
+  factory AppState.init() => new AppState(isLoading: true, 
+    availableDevices: new List<Device>(), 
+    hasKeyboard: false, 
+    show: Show("Test"));
 
   AppState copyWith({
     bool isLoading,
-    List<Fixture> availableDevices,
+    bool hasKeyboard,
+    List<Device> availableDevices,
+    Show show
   }) {
     return new AppState(
       isLoading: isLoading ?? this.isLoading,
+      hasKeyboard: isLoading ?? this.isLoading,
       availableDevices: availableDevices ?? this.availableDevices,
+      show: show ?? this.show,
     );
   }
 
   @override
   int get hashCode =>
       isLoading.hashCode ^
-      availableDevices.hashCode;
+      hasKeyboard.hashCode ^
+      availableDevices.hashCode ^
+      show.hashCode;
 
   @override
   bool operator ==(Object other) =>
@@ -35,7 +47,9 @@ class AppState {
       other is AppState &&
           runtimeType == other.runtimeType &&
           isLoading == other.isLoading &&
-          availableDevices == other.availableDevices;
+          hasKeyboard == other.hasKeyboard &&
+          availableDevices == other.availableDevices &&
+          show == other.show;
 
   @override
   String toString() {

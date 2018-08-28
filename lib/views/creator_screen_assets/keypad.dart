@@ -75,6 +75,8 @@ class KeypadAreaState extends State<KeypadArea> {
             child: Text(
               _commandToString(),
               textAlign: TextAlign.center,
+              overflow: TextOverflow.ellipsis,
+              maxLines: 1,
               style: TextStyle(
                 fontSize: littlefontSize,
                 fontFamily: fontFamily,
