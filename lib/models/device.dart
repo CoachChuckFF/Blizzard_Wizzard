@@ -1,7 +1,7 @@
 import 'dart:io';
-import 'dart:typed_data';
 import 'package:d_artnet_4/d_artnet_4.dart';
 import 'package:blizzard_wizzard/models/globals.dart';
+import 'package:blizzard_wizzard/models/fixture.dart';
 import 'package:blizzard_wizzard/models/mac.dart';
 
 class Device{
@@ -11,14 +11,21 @@ class Device{
   String name;
   int typeId;
   bool isBlizzard;
+  bool isConnected;
+
+  List<Fixture> fixtures;
 
   InternetAddress address;
   int activeTick = BlizzardWizzardConfigs.availableTimoutTick;
 
   ArtnetDataPacket dmxData = ArtnetDataPacket(); //can be more universes
 
-  Device(List<int> mac, {this.name, this.typeId, this.isBlizzard, this.address}){
+  Device(List<int> mac, {this.name, this.typeId, this.isBlizzard, this.address, this.isConnected = false, this.fixtures}){
+    if(this.fixtures == null){
+      this.fixtures = List<Fixture>();
+    }
     this.mac = Mac(mac);
+
   }
 
   bool compare(Device other){

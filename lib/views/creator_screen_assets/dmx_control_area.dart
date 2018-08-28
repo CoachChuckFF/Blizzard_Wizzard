@@ -17,7 +17,7 @@ class DMXControlAreaState extends State<DMXControlArea> {
 
   ArtnetDataPacket _packet = ArtnetDataPacket();
 
-    @override
+  @override
   void initState() {
     super.initState();
     /*if(widget.fixtures.length != 0){

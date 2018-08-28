@@ -1,5 +1,6 @@
 import 'package:meta/meta.dart';
 import 'package:blizzard_wizzard/models/device.dart';
+import 'package:blizzard_wizzard/models/mac.dart';
 import 'package:blizzard_wizzard/models/show.dart';
 
 @immutable
@@ -18,7 +19,13 @@ class AppState {
   factory AppState.init() => new AppState(isLoading: true, 
     availableDevices: new List<Device>(), 
     hasKeyboard: false, 
-    show: Show("Test"));
+    show: Show(
+      ques: const [],
+      patchedDevices: Map<int,Mac>(),
+      patchedQues: Map<int,int>(),
+      patchedFixtures: Map<int,int>(), 
+      name: "Test"
+    ));
 
   AppState copyWith({
     bool isLoading,

@@ -3,8 +3,10 @@ import 'dart:io';
 import 'package:d_artnet_4/d_artnet_4.dart';
 import 'package:redux/redux.dart';
 import 'package:blizzard_wizzard/models/actions.dart';
+import 'package:blizzard_wizzard/models/blizzard_devices.dart';
 import 'package:blizzard_wizzard/models/app_state.dart';
 import 'package:blizzard_wizzard/models/device.dart';
+import 'package:blizzard_wizzard/models/fixture.dart';
 import 'package:blizzard_wizzard/controllers/artnet_server.dart';
 import 'package:blizzard_wizzard/controllers/wait_for_packet.dart';
 
@@ -140,16 +142,31 @@ class ArtnetController{
   }
 
   Device _packetToDevice(ArtnetPollReplyPacket packet, InternetAddress ip){
+    DeviceInfo self;
+
     Device device = Device(packet.mac,
     name: packet.longName,
     isBlizzard: packet.isBlizzardDevice,
     typeId: packet.blizzardType,
+    fixtures: List<Fixture>(),
     address: ip);
-    
+
+    self = BlizzardDevices.getDevice(device.typeId);
+
+    //set profile
+    if(self.self != null){
+      device.fixtures.add(Fixture(
+        packet.mac,
+        name: device.name,
+        profile: self.self,
+        universe: 1,
+        isConnected: true,
+        patchAddress: 1
+      ));
+    }
+
     return device;
-
   }
-
 }
 
 

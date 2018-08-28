@@ -1,20 +1,34 @@
-import 'package:blizzard_wizzard/models/patch_device.dart';
-import 'package:blizzard_wizzard/models/patch_fixture.dart';
-import 'package:blizzard_wizzard/models/patch_que.dart';
+import 'package:blizzard_wizzard/models/mac.dart';
 import 'package:blizzard_wizzard/models/que.dart';
 
 class Show{
-  List<Que> ques;
-  List<PatchFixture> pathcedFixtures;
-  List<PatchQue> patchedQues;
-  List<PatchDevice> patchedDevices;
-  String name;
+  final List<Que> ques;
+  final Map<int, int> patchedFixtures;
+  final Map<int, int> patchedQues;
+  final Map<int, Mac> patchedDevices;
+  final String name;
 
-  Show(this.name){
-    ques = List<Que>();
-    pathcedFixtures = List<PatchFixture>();
-    patchedQues = List<PatchQue>();
-    patchedDevices = List<PatchDevice>();
+  Show({
+    this.ques,
+    this.patchedDevices,
+    this.patchedQues,
+    this.patchedFixtures,
+    this.name
+  });
+
+  Show copyWith({
+    List<Que> ques,
+    Map<int, int> patchedFixtures,
+    Map<int, int> patchedQues,
+    Map<int, Mac> patchedDevices,
+    String name }){
+    return Show(
+      ques: ques ?? this.ques,
+      patchedFixtures: patchedFixtures ?? this.patchedFixtures,
+      patchedQues: patchedQues ?? this.patchedQues,
+      patchedDevices: patchedDevices ?? this.patchedDevices,
+      name: name ?? this.name,
+    );
   }
 
 }

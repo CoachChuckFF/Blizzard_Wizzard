@@ -1,6 +1,5 @@
 import 'package:blizzard_wizzard/models/device.dart';
-import 'package:blizzard_wizzard/models/patch_fixture.dart';
-import 'package:blizzard_wizzard/models/patch_que.dart';
+import 'package:blizzard_wizzard/models/mac.dart';
 
 /* Is Loading */
 class SetLoaded{}
@@ -49,43 +48,17 @@ class ChangeShowName{
 }
 
 // Patched Ques
-class AddPatchQue{
-  final PatchQue patchQue;
 
-  AddPatchQue(this.patchQue);
-
-}
-
-class RemovePatchQue{
-  final PatchQue patchQue;
-
-  RemovePatchQue(this.patchQue);
-}
-
-class UpdatePatchQue{
-  final List<PatchQue> patchQues;
-
-  UpdatePatchQue(this.patchQues);
-}
-
-class AddPatchFixture{
-  final PatchFixture patchFixture;
-
-  AddPatchFixture(this.patchFixture);
-
-}
 
 // Patched Fixtures
-class RemovePatchFixture{
-  final PatchFixture patchFixture;
 
-  RemovePatchFixture(this.patchFixture);
+
+// Patched Devices
+class AddPatchDevice{
+  final int slot;
+  final Mac mac;
+
+  AddPatchDevice(this.slot, this.mac);
 }
 
-class UpdatePatchFixture{
-  final List<PatchFixture> patchFixtures;
 
-  UpdatePatchFixture(this.patchFixtures);
-}
-
-// Ques
