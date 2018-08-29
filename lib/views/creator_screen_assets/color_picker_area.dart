@@ -1,5 +1,7 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:blizzard_wizzard/models/device.dart';
+import 'package:blizzard_wizzard/models/globals.dart';
 
 /*
   This file was inspired by fuyumi's flutter color picker @ https://github.com/mchome/flutter_colorpicker
@@ -7,14 +9,12 @@ import 'package:flutter/material.dart';
 
 class ColorPickerArea extends StatefulWidget{
   ColorPickerArea({
-    this.callback,
-    this.hasKeyboard,
+    @required this.devices,
     this.width: 300.0,
     this.heightToWidthRatio: .69,
     }
   );
-  final ValueChanged<Color> callback;
-  final ValueChanged<bool> hasKeyboard;
+  final List<Device> devices;
   final double width;
   final double heightToWidthRatio;
 
@@ -37,9 +37,24 @@ class ColorPickerAreaState extends State<ColorPickerArea> {
   }
 
   void _callback(){
-    if(widget.callback != null){
-      widget.callback(getCurrentColor());
-    }
+    Color color = getCurrentColor();
+    widget.devices.forEach((device){
+      device.fixtures.forEach((fixture) {
+        if(fixture.profile.redChannel != -1){
+          device.dmxData.setDmxValue(fixture.profile.redChannel, color.red);
+        }
+        if(fixture.profile.greenChannel != -1){
+          device.dmxData.setDmxValue(fixture.profile.greenChannel, color.green);
+        }
+        if(fixture.profile.blueChannel != -1){
+          device.dmxData.setDmxValue(fixture.profile.blueChannel, color.blue);
+        }
+        if(fixture.profile.uvChannel != -1){
+
+        }
+      });
+      tron.server.sendPacket(device.dmxData.udpPacket, device.address);
+    });
   }
 
   void setCurrentColor(Color color){
@@ -87,31 +102,12 @@ class ColorPickerAreaState extends State<ColorPickerArea> {
     return val;
   }
 
-  void _focusChanged(){
-    bool retVal = false;
-    if(_focusR.hasFocus){
-      retVal = true;
-    }
-    if(_focusG.hasFocus){
-      retVal = true;
-    }
-    if(_focusB.hasFocus){
-      retVal = true;
-    }
-    if(widget.hasKeyboard != null){
-      widget.hasKeyboard(retVal);
-    }
 
-  }
 
   @override
   initState() {
     super.initState();
     HSVColor color = HSVColor.fromColor(Colors.purple);
-
-    _focusR.addListener(_focusChanged);
-    _focusG.addListener(_focusChanged);
-    _focusB.addListener(_focusChanged);
 
     hue = color.hue;
     saturation = color.saturation;
@@ -123,7 +119,7 @@ class ColorPickerAreaState extends State<ColorPickerArea> {
   Widget build(BuildContext context) {
     double width = widget.width;
     double height = width * widget.heightToWidthRatio;
-    double hieghtOffset = 60.0;
+    double heightOffset = 60.0;
     TextEditingController _controllerR = new TextEditingController();
     TextEditingController _controllerG = new TextEditingController();
     TextEditingController _controllerB = new TextEditingController();
@@ -133,7 +129,7 @@ class ColorPickerAreaState extends State<ColorPickerArea> {
         Container(
           key: Key("RGB"),
           width: width,
-          height: hieghtOffset,
+          height: heightOffset,
           child: Row(
             children: <Widget>[
               Expanded(
@@ -249,7 +245,7 @@ class ColorPickerAreaState extends State<ColorPickerArea> {
               Offset localOffset = box.globalToLocal(details.globalPosition);
               setState(() {
                 this.hue = ((localOffset.dx.clamp(0.0, width) / width) * 300.0);
-                this.saturation = 1 - (localOffset.dy.clamp(hieghtOffset, height + hieghtOffset) - hieghtOffset) / height;
+                this.saturation = 1 - (localOffset.dy.clamp(heightOffset, height + heightOffset) - heightOffset) / height;
                 _callback();
               });
             },

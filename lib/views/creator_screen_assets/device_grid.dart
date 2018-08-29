@@ -6,6 +6,7 @@ import 'package:blizzard_wizzard/models/app_state.dart';
 import 'package:blizzard_wizzard/models/device.dart';
 import 'package:blizzard_wizzard/models/globals.dart';
 import 'package:blizzard_wizzard/models/mac.dart';
+import 'package:blizzard_wizzard/models/patched_device.dart';
 import 'package:blizzard_wizzard/views/fixes/list_view_alert_dialog.dart';
 
 
@@ -13,7 +14,7 @@ class DeviceGrid extends StatelessWidget {
   final int cols;
   final double fontSize = 20.0;
   final String fontFamily = "Roboto";
-  final Map<int, Mac> patchedDevices;
+  final Map<int, PatchedDevice> patchedDevices;
   final List<int> selectedDevices;
   final ValueChanged<List<int>> callback;
 
@@ -30,12 +31,36 @@ class DeviceGrid extends StatelessWidget {
       gridDelegate: new SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: cols),
       itemCount: BlizzardWizzardConfigs.artnetMaxUniverses,
       itemBuilder: (BuildContext context, int index) {
+        bool isPatched = false;
+        bool isConnected = false;
+        bool isSelected = false;
         Color textColor = Colors.lightBlue;
         Color boxColor = Colors.white;
+        String info = "${index + 1}";
 
         if(selectedDevices.contains(index)){
           textColor = Colors.white;
           boxColor = Colors.lightBlue;
+          isSelected = true;
+        }
+
+        if(patchedDevices.containsKey(index)){
+          Mac searchMac = patchedDevices[index].mac;
+
+
+          Device dev = StoreProvider.of<AppState>(context).state.availableDevices.firstWhere((device) => device.mac == searchMac, orElse: () => null);
+          if(dev == null){
+            if(isSelected){
+              callback(List.from(selectedDevices)..remove(index));
+            }
+            info = patchedDevices[index].name;
+            boxColor = Colors.grey;
+            textColor = Colors.white;
+          } else {
+            info = dev.name;
+            isConnected = true;
+          }
+          isPatched = true;
         }
 
         return GestureDetector(
@@ -44,7 +69,7 @@ class DeviceGrid extends StatelessWidget {
             child: Container(
               child: Center(
                 child: Text(
-                  '${index + 1}',
+                  info,
                   style: TextStyle(
                     fontSize: fontSize,
                     fontFamily: fontFamily,
@@ -59,9 +84,9 @@ class DeviceGrid extends StatelessWidget {
           ),
           onTap: (){
             if(callback != null){
-              if(patchedDevices.containsKey(index)){
+              if(isPatched && isConnected){
                 callback(List<int>()..add(index));
-              } else {
+              } else if(!isPatched){
                 showDialog(
                   context: context,
                   child: StoreConnector<AppState, List<Device>>(
@@ -79,8 +104,8 @@ class DeviceGrid extends StatelessWidget {
           },
           onDoubleTap: (){
             if(callback != null){
-              if(patchedDevices.containsKey(index)){
-                if(selectedDevices.contains(index)){
+              if(isPatched && isConnected){
+                if(isSelected){
                   callback(List.from(selectedDevices)..remove(index));
                 } else {
                   callback(List.from(selectedDevices)..add(index));
@@ -91,9 +116,9 @@ class DeviceGrid extends StatelessWidget {
             }
           },
           onLongPress: (){
-            if(callback != null){
+            if(isPatched && isConnected){
               if(patchedDevices.containsKey(index)){
-                if(selectedDevices.contains(index)){
+                if(isSelected){
                   //remove patch?
                 } else {
                   //info?
@@ -147,7 +172,10 @@ class PatchDeviceDialogState extends State<PatchDeviceDialog> {
               ),
             ),
             onTap: (){
-              StoreProvider.of<AppState>(context).dispatch(AddPatchDevice(widget.index, widget.devices[widget.index].mac));
+              StoreProvider.of<AppState>(context).dispatch(AddPatchDevice(
+                widget.index, 
+                widget.devices[widget.index].mac,
+                widget.devices[widget.index].name));
               Navigator.pop(context);
             },
           );

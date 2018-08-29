@@ -57,8 +57,9 @@ class ChangeShowName{
 class AddPatchDevice{
   final int slot;
   final Mac mac;
+  final String name;
 
-  AddPatchDevice(this.slot, this.mac);
+  AddPatchDevice(this.slot, this.mac, this.name);
 }
 
 

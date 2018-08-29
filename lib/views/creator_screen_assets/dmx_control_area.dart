@@ -1,13 +1,14 @@
 
 import 'package:flutter/material.dart';
 import 'package:d_artnet_4/d_artnet_4.dart';
-import 'package:blizzard_wizzard/models/fixture.dart';
+import 'package:blizzard_wizzard/models/device.dart';
 import 'package:blizzard_wizzard/models/globals.dart';
 
 
 class DMXControlArea extends StatefulWidget{
+  final List<Device> devices;
 
-  DMXControlArea();
+  DMXControlArea({@required this.devices});
 
   @override
   createState() => DMXControlAreaState();
@@ -15,18 +16,22 @@ class DMXControlArea extends StatefulWidget{
 
 class DMXControlAreaState extends State<DMXControlArea> {
 
-  ArtnetDataPacket _packet = ArtnetDataPacket();
 
   @override
   void initState() {
     super.initState();
-    /*if(widget.fixtures.length != 0){
-      _packet.copyDmxToPacket(widget.fixtures[0].dmx);
-    }*/
   }
 
   @override
   Widget build(BuildContext context) {
+    bool hasSelected = false;
+    Device firstDev;
+
+    if(widget.devices.length != 0){
+      hasSelected = true;
+      firstDev = widget.devices.first;
+    }
+
     return new Column(
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -36,7 +41,7 @@ class DMXControlAreaState extends State<DMXControlArea> {
             children: <Widget>[
               new FlatButton(
                 child: const Text('BLACKOUT'),
-                onPressed: () { _blackout(); },
+                onPressed: () { if(hasSelected){_blackout();} },
               ),
             ],
           ),
@@ -53,21 +58,26 @@ class DMXControlAreaState extends State<DMXControlArea> {
             children: List.generate(512, (index) {
               return new InkWell(
                 onLongPress: () {
-                  _zeroChannel(index + 1);
+                  if(hasSelected){
+                    _zeroChannel(index + 1);
+                  }
                 },
                 onDoubleTap: () {
-                  _maxChannel(index + 1);
+                  if(hasSelected){
+                    _maxChannel(index + 1);
+                  }
                 },
                 onTap: () {
-                  print("short");
-                  showDialog(
-                    context: context,
-                    child: new DMXDialog(
-                      packet: _packet,
-                      index: index,
-                      changedCallback: _updateDMX,
-                    )
-                  );
+                  if(hasSelected){
+                    showDialog(
+                      context: context,
+                      child: DMXDialog(
+                        startValue: firstDev.dmxData.dmx[index],
+                        index: index,
+                        callback: (value) => _setChannel(index + 1, value),
+                      )
+                    );
+                  }
                 },
                 child: new SizedBox(
                   height: 33.0,
@@ -78,7 +88,8 @@ class DMXControlAreaState extends State<DMXControlArea> {
                         textAlign: TextAlign.center,
                       ),
                       Text(
-                        '${_packet.dmx[index]}',
+                        (hasSelected) ? 
+                        '${firstDev.dmxData.dmx[index]}' : 'N/A',
                         textAlign: TextAlign.center,
                       ),
                     ],
@@ -95,34 +106,48 @@ class DMXControlAreaState extends State<DMXControlArea> {
   
 
   void _blackout(){
-    _packet.blackout();
+    widget.devices.forEach((device){
+      device.dmxData.blackout();
+    });
     _updateDMX();
   }
 
   void _maxChannel(int index){
-    _packet.setDmxValue(index, 0xFF);
+    widget.devices.forEach((device){
+      device.dmxData.setDmxValue(index, 0xFF);
+    });
     _updateDMX();
   }
 
   void _zeroChannel(int index){
-    _packet.setDmxValue(index, 0x00);
+    widget.devices.forEach((device){
+      device.dmxData.setDmxValue(index, 0x00);
+    });
+    _updateDMX();
+  }
+
+  void _setChannel(int index, int value){
+    widget.devices.forEach((device){
+      device.dmxData.setDmxValue(index, value);
+    });
     _updateDMX();
   }
 
   void _updateDMX(){
-    /*for(int i = 0; i < widget.fixtures.length; i++){
-      tron.server.sendPacket(_packet.udpPacket, widget.fixtures[i].address);
-    }*/
+    widget.devices.forEach((device){
+      tron.server.sendPacket(device.dmxData.udpPacket, device.address);
+    });
+
     setState(() {});
   }
 
 }
 
 class DMXDialog extends StatefulWidget {
-  const DMXDialog({this.packet, this.index, this.changedCallback});
+  const DMXDialog({this.startValue, this.index, this.callback});
 
-  final Function changedCallback;
-  final ArtnetDataPacket packet;
+  final ValueChanged<int> callback;
+  final int startValue;
   final int index;
 
   @override
@@ -130,32 +155,29 @@ class DMXDialog extends StatefulWidget {
 }
 
 class DMXDialogState extends State<DMXDialog> {
-  ArtnetDataPacket _packet;
-  Function _callback;
-  int _index;
+  int _value;
+
 
   @override
   void initState() {
     super.initState();
-    _packet = widget.packet;
-    _index = widget.index;
-    _callback = widget.changedCallback;
+    _value = widget.startValue;
   }
 
   Widget build(BuildContext context) {
+
     return new AlertDialog(
-      title: new Text("Set Channel: ${_index+1} : ${_packet.dmx[_index]}"),
+      title: new Text("Set Channel: ${widget.index} : $_value"),
       actions: [
         new Slider(
-          value: _packet.dmx[_index].toDouble(),
+          value: _value.toDouble(),
           min: 0.0,
           max:255.0,
           divisions: 256,
           onChanged: (double value) {
-            
-            _packet.dmx[_index] = value.toInt();
             setState(() {
-              _callback();
+              _value = value.toInt();
+              widget.callback(_value);
             });
           },
           //onChangeEnd: (double value) => print("end: ${value.toString()}"),

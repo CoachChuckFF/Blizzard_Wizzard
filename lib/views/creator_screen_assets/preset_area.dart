@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:blizzard_wizzard/models/device.dart';
+import 'package:blizzard_wizzard/models/globals.dart';
 
 class ColorProfile{
   final Color color;
@@ -24,8 +26,9 @@ class ColorPresets{
 }
 
 class PresetGrid extends StatefulWidget {
+  List<Device> devices;
 
-  PresetGrid();
+  PresetGrid({@required this.devices});
 
   @override
   createState() => PresetGridState();
@@ -55,7 +58,7 @@ class PresetGridState extends State<PresetGrid> {
                       elevation: 5.0,
                       splashColor: ColorPresets.presets[index].splash,
                       onPressed: () {
-
+                        _updateColor(ColorPresets.presets[index].color);
                       },
                     ),
                   )
@@ -67,4 +70,25 @@ class PresetGridState extends State<PresetGrid> {
       )
     );
   }
+
+  void _updateColor(Color color){
+    widget.devices.forEach((device){
+      device.fixtures.forEach((fixture) {
+        if(fixture.profile.redChannel != -1){
+          device.dmxData.setDmxValue(fixture.profile.redChannel, color.red);
+        }
+        if(fixture.profile.greenChannel != -1){
+          device.dmxData.setDmxValue(fixture.profile.greenChannel, color.green);
+        }
+        if(fixture.profile.blueChannel != -1){
+          device.dmxData.setDmxValue(fixture.profile.blueChannel, color.blue);
+        }
+        if(fixture.profile.uvChannel != -1){
+
+        }
+      });
+      tron.server.sendPacket(device.dmxData.udpPacket, device.address);
+    });
+  }
+
 }

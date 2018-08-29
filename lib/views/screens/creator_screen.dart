@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:blizzard_wizzard/models/app_state.dart';
+import 'package:blizzard_wizzard/models/device.dart';
 import 'package:blizzard_wizzard/models/globals.dart';
 import 'package:blizzard_wizzard/models/mac.dart';
+import 'package:blizzard_wizzard/models/patched_device.dart';
 import 'package:blizzard_wizzard/views/creator_screen_assets/device_grid.dart';
 import 'package:blizzard_wizzard/views/creator_screen_assets/fixture_grid.dart';
 import 'package:blizzard_wizzard/views/creator_screen_assets/scene_button_bar.dart';
@@ -36,6 +38,20 @@ class CreatorScreenState extends State<CreatorScreen> {
 
   @override
   Widget build(BuildContext context) {
+    List<Device> devices = List<Device>();
+
+    selectedDevices.forEach((index){
+      if(StoreProvider.of<AppState>(context).state.show.patchedDevices.containsKey(index)){
+        Mac searchMac = StoreProvider.of<AppState>(context).state.show.patchedDevices[index].mac;
+        Device addDev = StoreProvider.of<AppState>(context).state.availableDevices.firstWhere((device){
+          return device.mac == searchMac;
+        }, orElse: (){ return null; });
+        if(addDev != null){
+          devices.add(addDev);
+        }
+      }
+    });
+
     return Column(
       children: <Widget>[
         Expanded(
@@ -119,7 +135,7 @@ class CreatorScreenState extends State<CreatorScreen> {
                             );
                           },
                         ) :
-                        StoreConnector<AppState, Map<int,Mac>>(
+                        StoreConnector<AppState, Map<int,PatchedDevice>>(
                           converter: (store) => store.state.show.patchedDevices,
                           builder: (context, patchedDevices) {
                             return DeviceGrid(
@@ -158,7 +174,10 @@ class CreatorScreenState extends State<CreatorScreen> {
         ),
       Expanded(
           flex: 5,
-          child: SceneManipulatorArea(state: configState)
+          child: SceneManipulatorArea(
+            state: configState,
+            devices: devices,  
+          )
         )
       ],
     );
