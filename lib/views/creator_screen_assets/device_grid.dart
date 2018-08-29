@@ -63,7 +63,8 @@ class DeviceGrid extends StatelessWidget {
           isPatched = true;
         }
 
-        return GestureDetector(
+        return InkWell(
+          splashColor: Theme.of(context).accentColor,
           child: SizedBox(
             height: 33.0,
             child: Container(

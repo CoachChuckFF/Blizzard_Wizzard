@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:blizzard_wizzard/models/globals.dart';
 import 'package:blizzard_wizzard/views/screens/creator_screen.dart'; 
+import 'package:blizzard_wizzard/views/screens/editor_screen.dart'; 
 import 'package:blizzard_wizzard/views/screens/manager_screen.dart';
 
 
@@ -30,7 +31,7 @@ class BlizzardScreenState extends State<BlizzardScreen> {
         screen = CreatorScreen();
         break;
       case PageState.editor:
-        screen = Text("Editor");
+        screen = EditorScreen();
         break;
       case PageState.player:
         screen = Text("Player");
