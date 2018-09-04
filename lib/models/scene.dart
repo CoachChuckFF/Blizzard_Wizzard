@@ -1,10 +1,27 @@
 import 'package:blizzard_wizzard/models/mac.dart';
 
 class Scene{
-  List<SceneUniverse> scene = List<SceneUniverse>();
-  String name = "";
+  static int sceneCount = 1;
+  List<SceneUniverse> scene;
+  String name;
+  double xFade;
+  double hold;
+  double fadeIn;
+  double fadeOut;
 
-  Scene(this.name);
+  Scene({
+    this.name, 
+    this.xFade = 1.0, 
+    this.hold = 1.0,
+    this.fadeIn = 1.0,
+    this.fadeOut = 1.0,
+    this.scene = const <SceneUniverse>[],
+  }){
+    if(this.name == null){
+      name = "Scene $sceneCount";
+    }
+    sceneCount++;
+  }
 
 }
 

@@ -2,10 +2,11 @@ import 'package:blizzard_wizzard/models/scene.dart';
 
 class Que{
   static int idCount = 1;
+  QueMode mode;
 
   String name;
   int id = 0;
-  List<QueItem> scenes;
+  List<Scene> scenes;
 
   Que(this.name, {this.id}){
     if(this.id == 0){
@@ -15,7 +16,7 @@ class Que{
         idCount = this.id + 1;
       }
     }
-    scenes = List<QueItem>();
+    scenes = List<Scene>();
 
   }
 
@@ -24,13 +25,4 @@ class Que{
 class QueMode{
   static const int chase = 1;
   static const int step = 2;
-}
-
-class QueItem{
-  Scene scene;
-  QueMode mode;
-  double wait;
-  double xFade;
-
-  QueItem({this.scene, this.mode, this.wait, this.xFade});
 }
