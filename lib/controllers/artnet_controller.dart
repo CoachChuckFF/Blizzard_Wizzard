@@ -142,7 +142,6 @@ class ArtnetController{
   }
 
   Device _packetToDevice(ArtnetPollReplyPacket packet, InternetAddress ip){
-    DeviceInfo self;
 
     Device device = Device(packet.mac,
     name: packet.longName,
@@ -151,18 +150,26 @@ class ArtnetController{
     fixtures: List<Fixture>(),
     address: ip);
 
-    self = BlizzardDevices.getDevice(device.typeId);
-
-    //set profile
-    if(self.self != null){
-      device.fixtures.add(Fixture(
-        packet.mac,
-        name: device.name,
-        profile: self.self,
-        universe: 1,
-        isConnected: true,
-        patchAddress: 1
-      ));
+    if(packet.isBlizzardDevice){
+      ChannelMode mode = ChannelMode(
+        name: "5 Channel",
+        channels: <Channel>[
+          Channel(name: "Red", number: 0),
+          Channel(name: "Green", number: 1),
+          Channel(name: "Blue", number: 2),
+          Channel(name: "Amber", number: 3),
+          Channel(name: "White", number: 4),
+        ],  
+      );
+      device.fixtures.add(
+        Fixture(
+          packet.mac,
+          name: BlizzardDevices.getDevice(packet.blizzardType),
+          patchAddress: 33,
+          channelMode: 0,
+          profile: List<ChannelMode>()..add(mode)
+        )
+      );
     }
 
     return device;

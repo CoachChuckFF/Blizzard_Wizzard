@@ -40,17 +40,24 @@ class ColorPickerAreaState extends State<ColorPickerArea> {
     Color color = getCurrentColor();
     widget.devices.forEach((device){
       device.fixtures.forEach((fixture) {
-        if(fixture.profile.redChannel != -1){
-          device.dmxData.setDmxValue(fixture.profile.redChannel, color.red);
-        }
-        if(fixture.profile.greenChannel != -1){
-          device.dmxData.setDmxValue(fixture.profile.greenChannel, color.green);
-        }
-        if(fixture.profile.blueChannel != -1){
-          device.dmxData.setDmxValue(fixture.profile.blueChannel, color.blue);
-        }
-        if(fixture.profile.uvChannel != -1){
+        int redChannel, greenChannel, blueChannel, dimmerChannel;
+      
+        redChannel = fixture.getCurrentChannels().getChannelOffset("Red");
+        greenChannel = fixture.getCurrentChannels().getChannelOffset("Green");
+        blueChannel = fixture.getCurrentChannels().getChannelOffset("Blue");
+        dimmerChannel = fixture.getCurrentChannels().getChannelOffset("Dimmer");
 
+        if(redChannel != -1){
+          device.dmxData.setDmxValue(redChannel + fixture.patchAddress, color.red);
+        }
+        if(greenChannel != -1){
+          device.dmxData.setDmxValue(greenChannel + fixture.patchAddress, color.green);
+        }
+        if(blueChannel != -1){
+          device.dmxData.setDmxValue(blueChannel + fixture.patchAddress, color.blue);
+        }
+        if(dimmerChannel != -1){
+          device.dmxData.setDmxValue(dimmerChannel + fixture.patchAddress, (color.computeLuminance() * 255).toInt());
         }
       });
       tron.server.sendPacket(device.dmxData.udpPacket, device.address);

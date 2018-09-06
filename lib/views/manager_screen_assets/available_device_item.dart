@@ -32,7 +32,7 @@ class AvailableDeviceItem extends StatelessWidget {
           style: Theme.of(context).textTheme.title,
         ),
         subtitle: new Text(
-          BlizzardDevices.getDevice(device.typeId).name,
+          BlizzardDevices.getDevice(device.typeId),
           key: BlizzardWizzardKeys.availableDeviceType(device.mac.toString()),
           style: Theme.of(context).textTheme.title,
         ),

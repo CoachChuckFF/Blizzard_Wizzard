@@ -7,16 +7,20 @@ class Fixture{
 
   Mac mac;
   String name;
+  String brand;
   bool isConnected;
 
-  Profile profile;
+  List<ChannelMode> profile;
   int patchAddress = 1;
-  int universe = 1;
+  int channelMode = 0;
   int id = 0;
 
+  ChannelMode getCurrentChannels(){
+    return this.profile[this.channelMode];
+  }
 
-  Fixture(List<int> mac, {this.id, this.name, this.profile, this.universe, 
-    this.isConnected, this.patchAddress}){
+  Fixture(List<int> mac, {this.id, this.name, this.profile,
+    this.isConnected, this.patchAddress, this.channelMode}){
     if(this.id == null){
       this.id = idCount++;
     } else {
@@ -42,11 +46,49 @@ class Fixture{
 
 }
 
-class Profile{
-  final int redChannel;
-  final int greenChannel;
-  final int blueChannel;
-  final int uvChannel;
+class ChannelMode{
+  String name;
+  List<Channel> channels;
 
-  const Profile({this.redChannel = -1, this.greenChannel = -1, this.blueChannel = -1, this.uvChannel = -1});
+  ChannelMode({this.name, this.channels});
+
+  /* Returns -1 on failure */
+  int getChannelOffset(String name){
+    if(this.channels != null){
+      Channel temp = this.channels.firstWhere((channel){
+        return channel.name == name;
+      }, orElse: (){return null;});
+
+      if(temp != null){
+        return temp.number;
+      }
+    }
+    return -1;
+  }
+}
+
+class Channel{
+  String name;
+  int number;
+  List<Segment> segments;
+
+  bool hasSegments(){
+    if(this.segments != null){
+      if(this.segments.length != 0){
+        return true;
+      }
+    }
+
+    return false;
+  }
+
+  Channel({this.name, this.number, this.segments});
+}
+
+class Segment{
+  String name;
+  int start;
+  int end;
+  
+  Segment({this.name, this.start, this.end});
 }

@@ -1,26 +1,14 @@
-import 'package:blizzard_wizzard/models/fixture.dart';
+
 
 class BlizzardDevices{
-  static const Map<int, DeviceInfo> deviceMap = {
-    0x34:DeviceInfo(name: "Blizzard Wizzard", self: Profile(
-      redChannel: 33,
-      greenChannel: 34,
-      blueChannel: 35,
-    )),
+  static const Map<int, String> deviceMap = {
+    0x34: "Blizzard Wizzard",
   };
 
-  static DeviceInfo getDevice(int key){
+  static String getDevice(int key){
     if(deviceMap.containsKey(key)){
       return deviceMap[key];
     }
-    return DeviceInfo(name: "unkown");
+    return "Unknown";
   }
-}
-
-class DeviceInfo{
-  final String name;
-  final Profile self;
-
-  const DeviceInfo({this.name, this.self});
-
 }
