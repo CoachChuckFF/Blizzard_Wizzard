@@ -22,14 +22,13 @@ class ManagerScreenState extends State<ManagerScreen> {
       builder: (context, availableDevices) {
         return AvailableDevicesList(
           availableDevices: availableDevices,
-          onTap: _tapThing,
+          onTap: _onItemTap,
         );
       },
     );
   }
 
-  _tapThing(Mac mac){
-    Device device = StoreProvider.of<AppState>(context).state.availableDevices.firstWhere((device) => device.mac == mac);
+  _onItemTap(Device device){
 
     if(device != null){
       Navigator.of(context).push(

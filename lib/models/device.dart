@@ -20,7 +20,14 @@ class Device{
 
   ArtnetDataPacket dmxData = ArtnetDataPacket(); //can be more universes
 
-  Device(List<int> mac, {this.name, this.typeId, this.isBlizzard, this.address, this.isConnected = false, this.fixtures}){
+  Device(List<int> mac, {this.name, 
+    this.typeId, 
+    this.isBlizzard = false, 
+    this.address, 
+    this.isConnected = false, 
+    this.fixtures})
+  {
+
     if(this.fixtures == null){
       this.fixtures = List<Fixture>();
     }

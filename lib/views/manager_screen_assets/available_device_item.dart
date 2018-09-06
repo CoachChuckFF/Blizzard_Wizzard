@@ -6,7 +6,7 @@ import 'package:blizzard_wizzard/models/keys.dart';
 import 'package:blizzard_wizzard/models/mac.dart';
 
 class AvailableDeviceItem extends StatelessWidget {
-  final Function(Mac) onTap;
+  final Function(Device) onTap;
   final Device device;
 
   AvailableDeviceItem({
@@ -19,7 +19,7 @@ class AvailableDeviceItem extends StatelessWidget {
     return new GestureDetector(
       key: BlizzardWizzardKeys.availableDevice(device.mac.toString()),
       child: new ListTile(
-        onTap: () => onTap(device.mac),
+        onTap: () => onTap(device),
         leading: new Text(
           device.name,
           key: BlizzardWizzardKeys.availableDeviceName(device.mac.toString()),

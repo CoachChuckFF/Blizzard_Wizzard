@@ -70,8 +70,13 @@ class ArtnetController{
   }
 
   void addToWaitingList(WaitForPacket wait){
-    waitingList.add(wait);
-    wait.timer = Timer(Duration(milliseconds: wait.timeout), () => _removeFromWaitingList(wait.id, null));
+    if(wait.preWaiting){
+      wait.preWaiting = false;
+      Timer(wait.preWait, () => addToWaitingList(wait));
+    } else {
+      waitingList.add(wait);
+      wait.timer = Timer(wait.timeout, () => _removeFromWaitingList(wait.id, null));
+    }
   }
 
   void _checkWaitingList(Datagram gram){
@@ -90,7 +95,7 @@ class ArtnetController{
     int waitingIndex = waitingList.indexWhere((wait) => wait.id == id);
 
     if(waitingIndex != -1){
-      waitingList[waitingIndex].callback(data);
+      waitingList[waitingIndex].callCallback(data);
       waitingList.removeAt(waitingIndex);
     }    
   }

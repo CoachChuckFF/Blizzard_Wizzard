@@ -22,7 +22,9 @@ class BlizzardWizzardConfigs{
   static final int artnetPollDelay = 5; //sec
   static final int artnetBeepDelay = 3; //sec
   static final int checkIpTO = 3; //times
-  static final int artnetConfigCallbackTimout = 3000; //ms 
+  static final int artnetConfigCallbackPreWait= 500; //ms 
+  static final int artnetConfigCallbackTimeout = 3000; //ms
+  static final int artnetConfigDisconnectTimeout = 2; //seconds
 
   //Available Device Configs
   static final int availableTimoutTick = 3;

@@ -7,7 +7,7 @@ import 'package:blizzard_wizzard/views/manager_screen_assets/available_device_it
 
 class AvailableDevicesList extends StatelessWidget {
   final List<Device> availableDevices;
-  final Function(Mac) onTap;
+  final Function(Device) onTap;
 
   AvailableDevicesList({
     Key key,
@@ -18,11 +18,6 @@ class AvailableDevicesList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    /*return new AppLoading(builder: (context, loading) {
-      return loading
-          ? new LoadingIndicator(key: ArchSampleKeys.todosLoading)
-          : _buildListView();
-    });*/
 
     return _buildListView();
   }

@@ -8,8 +8,7 @@ class DeviceConfigList extends StatelessWidget {
   DeviceConfigList({
     Key key,
     @required this.configurations,
-  })
-      : super(key: key);
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

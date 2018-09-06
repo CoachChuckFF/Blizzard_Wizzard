@@ -12,12 +12,12 @@ class AppState {
   final Show show;
 
   AppState(
-      {this.isLoading = true,
+      {this.isLoading = false,
       this.hasKeyboard = false,
       this.availableDevices = const [],
       this.show});
 
-  factory AppState.init() => new AppState(isLoading: true, 
+  factory AppState.init() => new AppState(isLoading: false, 
     availableDevices: new List<Device>(), 
     hasKeyboard: false, 
     show: Show(

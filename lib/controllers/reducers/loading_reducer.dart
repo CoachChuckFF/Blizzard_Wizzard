@@ -7,9 +7,9 @@ final loadingReducer = combineReducers<bool>([
 ]);
 
 bool _setLoaded(bool state, action) {
-  return true;
+  return false;
 }
 
 bool _clearLoaded(bool state, action){
-  return false;
+  return true;
 }
