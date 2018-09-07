@@ -12,6 +12,7 @@ class Device{
   int typeId;
   bool isBlizzard;
   bool isConnected;
+  bool isPatched;
 
   List<Fixture> fixtures;
 
@@ -25,7 +26,8 @@ class Device{
     this.isBlizzard = false, 
     this.address, 
     this.isConnected = false, 
-    this.fixtures})
+    this.fixtures,
+    this.isPatched = false})
   {
 
     if(this.fixtures == null){

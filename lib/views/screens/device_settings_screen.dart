@@ -4,11 +4,13 @@ import 'package:flutter_redux/flutter_redux.dart';
 import 'package:blizzard_wizzard/models/app_state.dart';
 import 'package:blizzard_wizzard/models/device.dart';
 import 'package:blizzard_wizzard/models/globals.dart';
+import 'package:blizzard_wizzard/views/device_settings_screen_assets/config_button_bar.dart';
 import 'package:blizzard_wizzard/views/device_settings_screen_assets/device_config_list.dart';
 //import 'package:blizzard_wizzard/views/device_settings_screen_assets/setting_cards/ap_pass_card.dart';
 import 'package:blizzard_wizzard/views/device_settings_screen_assets/setting_cards/device_name_card.dart';
+import 'package:blizzard_wizzard/views/device_settings_screen_assets/setting_cards/header_card.dart';
 import 'package:blizzard_wizzard/views/device_settings_screen_assets/setting_cards/info_card.dart';
-import 'package:blizzard_wizzard/views/device_settings_screen_assets/setting_cards/settings_card.dart';
+import 'package:blizzard_wizzard/views/device_settings_screen_assets/setting_cards/ssid_pass_card.dart';
 //import 'package:blizzard_wizzard/views/device_settings_screen_assets/setting_cards/ssid_pass_card.dart';
 
 
@@ -29,13 +31,15 @@ class DeviceSettingsScreenState extends State<DeviceSettingsScreen> {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   Device device;
   String loadingMessage;
-  bool isLoading;
+  bool _isLoading;
+  int _state;
 
   DeviceSettingsScreenState({
     @required this.device,
   }){
     loadingMessage = "";
-    isLoading = false;
+    _isLoading = false;
+    _state = DeviceConfigureCategoryState.device;
   }
 
   @override
@@ -49,7 +53,7 @@ class DeviceSettingsScreenState extends State<DeviceSettingsScreen> {
       body: new SafeArea(
         top: false,
         bottom: false,
-        child: (this.isLoading) ? 
+        child: (this._isLoading) ? 
         Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -60,21 +64,73 @@ class DeviceSettingsScreenState extends State<DeviceSettingsScreen> {
             ]
           ),
         ) :
-        DeviceConfigList(
-          configurations: _deviceToConfigList()
+        Column(
+          children: <Widget>[
+            InfoCard(device),
+            ConfigButtonBar(
+              state: _state,
+              callback: (newState){
+                if(newState != _state){
+                  setState(() {
+                    _state = newState;                    
+                  });
+                }
+              }
+            ),
+            Expanded(
+              child: Theme(
+                data: _categoryToThemeData(),
+                child: DeviceConfigList(
+                  configurations: _deviceToConfigList()
+                )
+              ),
+            ),
+          ],
         )
       ),
+    );
+  }
+
+  ThemeData _categoryToThemeData(){
+    switch(_state){
+      case DeviceConfigureCategoryState.device:
+        return ThemeData(
+          primarySwatch: DeviceConfigureCategoryColor.device,
+        );
+      case DeviceConfigureCategoryState.protocol:
+        return ThemeData(
+          primarySwatch: DeviceConfigureCategoryColor.protocol,
+        );
+      case DeviceConfigureCategoryState.network:
+        return ThemeData(
+          primarySwatch: DeviceConfigureCategoryColor.network,
+        );
+    }
+
+    return ThemeData(
+      primarySwatch: Colors.black,
     );
   }
 
   List<Widget> _deviceToConfigList(){
     List<Widget> list = List<Widget>();
 
-    list.add(InfoCard(device));
-    list.add(DeviceNameCard(device, _preLoad, _postLoad));
-    //if(device.isBlizzard) list.add(SSIDPasswordCard(device, _alertSnackBar));
-    //if(device.isBlizzard) list.add(APPasswordCard(device, _alertSnackBar));
-    //list.add(DMXControlCard(device, _alertSnackBar));
+    switch(_state){
+      case DeviceConfigureCategoryState.device:
+        list.add(HeaderCard("Device Configurations"));
+        list.add(DeviceNameCard(device, _preLoad, _postLoad));
+      break;
+      case DeviceConfigureCategoryState.protocol:
+        list.add(HeaderCard("Protocol Configurations"));
+      break;
+      case DeviceConfigureCategoryState.network:
+        list.add(HeaderCard("Network Configurations"));
+        if(device.isBlizzard) list.add(SSIDPassCard(device, _preLoad, _postLoad));
+      break;
+      default:
+        list.add(HeaderCard("42"));
+      break;
+    }
 
     return list;
   }
@@ -82,7 +138,7 @@ class DeviceSettingsScreenState extends State<DeviceSettingsScreen> {
   void _preLoad(String message){
     setState(() {
       loadingMessage = message;
-      isLoading = true;      
+      _isLoading = true;      
     });
   }
 
@@ -102,7 +158,7 @@ class DeviceSettingsScreenState extends State<DeviceSettingsScreen> {
       });
     } else {
       setState(() {
-        isLoading = false;
+        _isLoading = false;
       });
     }  
 

@@ -2,8 +2,10 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:blizzard_wizzard/models/blizzard_devices.dart';
 import 'package:blizzard_wizzard/models/device.dart';
+import 'package:blizzard_wizzard/models/globals.dart';
 import 'package:blizzard_wizzard/models/keys.dart';
-import 'package:blizzard_wizzard/models/mac.dart';
+import 'package:blizzard_wizzard/views/manager_screen_assets/health_bar.dart';
+import 'package:blizzard_wizzard/views/manager_screen_assets/rs_health_bar.dart';
 
 class AvailableDeviceItem extends StatelessWidget {
   final Function(Device) onTap;
@@ -18,25 +20,29 @@ class AvailableDeviceItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return new GestureDetector(
       key: BlizzardWizzardKeys.availableDevice(device.mac.toString()),
-      child: new ListTile(
-        onTap: () => onTap(device),
-        leading: new Text(
-          device.name,
-          key: BlizzardWizzardKeys.availableDeviceName(device.mac.toString()),
-          style: Theme.of(context).textTheme.title,
+      child: Card(
+        child: ListTile(
+          onTap: () => onTap(device),
+          leading: Tooltip(
+            message: "Connection Strength",
+            child: RSHealthBar(
+              strength: device.activeTick,
+              maxStrength: BlizzardWizzardConfigs.checkIpTO,
+              size: 30.0,
+            ),
+          ),
+          title: new Text(
+            device.name,
+            style: Theme.of(context).textTheme.title,
+          ),
+          trailing: Tooltip(
+            message: (device.isPatched) ? "${device.name} is patched" : "${device.name} is not patched",
+            child: Icon(
+              (device.isPatched) ? Icons.memory : Icons.crop_square
+            ),
+          )
         ),
-        title: new Text(
-          //ArtnetServer.internetAddressToString(device.address),
-          device.activeTick.toString(),
-          key: BlizzardWizzardKeys.availableDeviceIp(device.mac.toString()),
-          style: Theme.of(context).textTheme.title,
-        ),
-        subtitle: new Text(
-          BlizzardDevices.getDevice(device.typeId),
-          key: BlizzardWizzardKeys.availableDeviceType(device.mac.toString()),
-          style: Theme.of(context).textTheme.title,
-        ),
-      ),
+      )
     );
   }
 }

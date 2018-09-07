@@ -46,14 +46,14 @@ class InfoCardState extends State<InfoCard> {
             textAlign: TextAlign.center,
             style: TextStyle(
               fontFamily: "Roboto",
-              fontSize: 25.0,
+              fontSize: 23.0,
               color: Theme.of(context).accentColor
             ),
           ),
-          Container(height: 21.0),
+          Container(height: 13.0),
           Row(
             children: <Widget>[
-              Container(width: 21.0),
+              Container(width: 13.0),
               Expanded(
                 flex: 2,
                 child: GestureDetector(
@@ -89,10 +89,10 @@ class InfoCardState extends State<InfoCard> {
               )
             ],
           ),
-          Container(height: 13.0),
+          Container(height: 5.0),
           Row(
             children: <Widget>[
-              Container(width: 21.0),
+              Container(width: 13.0),
               Expanded(
                 flex: 2,
                 child: Text(
@@ -130,10 +130,10 @@ class InfoCardState extends State<InfoCard> {
               )
             ],
           ),
-          Container(height: 13.0),
+          Container(height: 5.0),
           Row(
             children: <Widget>[
-              Container(width: 21.0),
+              Container(width: 13.0),
               Expanded(
                 flex: 2,
                 child: GestureDetector(
@@ -168,11 +168,11 @@ class InfoCardState extends State<InfoCard> {
               ),
             ],
           ),
-          Container(height: 13.0),
+          Container(height: 5.0),
           (widget.device.isBlizzard && _egg) ? 
           Row(
             children: <Widget>[
-              Container(width: 21.0),
+              Container(width: 13.0),
               Expanded(
                 flex: 2,
                 child: Text(
@@ -199,7 +199,7 @@ class InfoCardState extends State<InfoCard> {
             ],
           ) : 
           Container(height: 0.0),
-          Container(height: 13.0),
+          Container(height: 5.0),
         ],
       ),
     );

@@ -8,7 +8,6 @@ import 'package:blizzard_wizzard/models/app_state.dart';
 import 'package:blizzard_wizzard/models/blizzard_devices.dart';
 import 'package:blizzard_wizzard/models/device.dart';
 import 'package:blizzard_wizzard/models/globals.dart';
-
 import 'package:blizzard_wizzard/views/screens/blizzard_screen.dart';
 import 'package:blizzard_wizzard/controllers/artnet_controller.dart';
 import 'package:blizzard_wizzard/controllers/reducers.dart';
@@ -16,14 +15,17 @@ import 'package:blizzard_wizzard/controllers/reducers.dart';
 Device blizzardDev;
 Device genDev;
 Store _store;
+int _ticker;
 
 void initTestStructs(Store store){
   _store = store;
+  _ticker = 1;
 
   blizzardDev = Device([0x00, 0x01, 0x02, 0x03, 0x04, 0x05],
     name: "Blizzard Device",
     typeId: 0x34,
     isBlizzard: true,
+    isPatched: true,
     address: InternetAddress("192.168.1.89"),
   );
 
@@ -34,13 +36,15 @@ void initTestStructs(Store store){
   );
 
   _store.dispatch(AddAvailableDevice(blizzardDev));
-  _store.dispatch(AddAvailableDevice(genDev));
 
   _resetDeviceTick();
 }
 
 void _resetDeviceTick(){
   _store.dispatch(TickResetAvailableDevice(blizzardDev));
-  _store.dispatch(TickResetAvailableDevice(genDev));
+  if(_ticker++ % 4 == 0){
+    genDev.activeTick = BlizzardWizzardConfigs.checkIpTO;
+    _store.dispatch(AddAvailableDevice(genDev));
+  }
   Timer(Duration(seconds: 5), _resetDeviceTick);
 }

@@ -4,7 +4,7 @@ import 'package:blizzard_wizzard/models/globals.dart';
 import 'package:blizzard_wizzard/views/device_settings_screen_assets/setting_cards/settings_card.dart';
 import 'package:blizzard_wizzard/controllers/wait_for_packet.dart';
 
-class DeviceNameCard extends SettingsCard {
+class SSIDPassCard extends SettingsCard {
   static GlobalKey<FormState> _formKey = new GlobalKey<FormState>();
   static int submitCount = 0;
   static const List<String> responses = [
@@ -15,7 +15,7 @@ class DeviceNameCard extends SettingsCard {
     "love me",
   ];
 
-  DeviceNameCard(device, onSubmit, onReturn) : super(device, onSubmit, onReturn);
+  SSIDPassCard(device, onSubmit, onReturn) : super(device, onSubmit, onReturn);
   
   @override
   Widget build(BuildContext context) {
@@ -37,8 +37,36 @@ class DeviceNameCard extends SettingsCard {
                   child: TextFormField(
                     decoration: InputDecoration(
                       border: InputBorder.none,
-                      hintText: device.name,
-                      labelText: "Device Name",
+                      hintText: "New SSID",
+                      labelText: "SSID",
+                      isDense: true,
+                    ),
+                    maxLength: BlizzardWizzardConfigs.ssidLength,
+                    maxLengthEnforced: true,
+                    validator: _validate,
+                    onSaved: _onSave,
+                  ),
+                ),
+                Expanded(
+                  flex: 1,
+                  child: Container()
+                ),
+              ],
+            ),
+            Container(height: 3.0),
+            Row(
+              children: <Widget>[
+                Expanded(
+                  flex: 1,
+                  child: Container()
+                ),
+                Expanded(
+                  flex: 13,
+                  child: TextFormField(
+                    decoration: InputDecoration(
+                      border: InputBorder.none,
+                      hintText: "New Password",
+                      labelText: "Password",
                       isDense: true,
                     ),
                     maxLength: BlizzardWizzardConfigs.longNameLength,
@@ -63,7 +91,7 @@ class DeviceNameCard extends SettingsCard {
                 Expanded(
                   flex: 1,
                   child: Tooltip(
-                    message: "Unique device name",
+                    message: "Will attempt to connect ${device.name} to the given SSID",
                     preferBelow: false,
                     child: Icon(
                       Icons.info_outline,

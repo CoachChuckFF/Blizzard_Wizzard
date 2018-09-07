@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:blizzard_wizzard/controllers/artnet_controller.dart';
 
 //Global Varables
@@ -79,4 +80,22 @@ class PageState{
 class DeviceFixtureGridState{
   static const int device = 1;
   static const int fixture = 2;
+}
+
+class DeviceConfigureCategoryState{
+  static const int device = 1;
+  static const int fixture = 2;
+  static const int network = 3;
+  static const int protocol = 4;
+}
+
+class DeviceConfigureCategoryColor{
+  static const Color device = Colors.deepOrange;
+  static const Color deviceAccent = Colors.deepOrangeAccent;
+
+  static const Color protocol = Colors.deepPurple;
+  static const Color protocolAccent = Colors.deepPurpleAccent;
+
+  static const Color network = Colors.green;
+  static const Color networkAccent = Colors.greenAccent;
 }
