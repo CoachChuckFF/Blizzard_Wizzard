@@ -26,4 +26,17 @@ class Mac{
     other.mac.getUint8(3) == mac.getUint8(3) &&
     other.mac.getUint8(4) == mac.getUint8(4) &&
     other.mac.getUint8(5) == mac.getUint8(5);
+
+  @override
+  String toString(){
+    String zero = (mac.getUint8(0).toRadixString(16).length == 1) ? "0${mac.getUint8(0).toRadixString(16)}" : "${mac.getUint8(0).toRadixString(16)}";
+    String one = (mac.getUint8(1).toRadixString(16).length == 1) ? "0${mac.getUint8(1).toRadixString(16)}" : "${mac.getUint8(1).toRadixString(16)}";
+    String two = (mac.getUint8(2).toRadixString(16).length == 1) ? "0${mac.getUint8(2).toRadixString(16)}" : "${mac.getUint8(2).toRadixString(16)}";
+    String three = (mac.getUint8(3).toRadixString(16).length == 1) ? "0${mac.getUint8(3).toRadixString(16)}" : "${mac.getUint8(3).toRadixString(16)}";
+    String four = (mac.getUint8(4).toRadixString(16).length == 1) ? "0${mac.getUint8(4).toRadixString(16)}" : "${mac.getUint8(4).toRadixString(16)}";
+    String five = (mac.getUint8(5).toRadixString(16).length == 1) ? "0${mac.getUint8(5).toRadixString(16)}" : "${mac.getUint8(5).toRadixString(16)}";
+
+
+    return "$zero.$one.$two.$three.$four.$five";
+  }
 }

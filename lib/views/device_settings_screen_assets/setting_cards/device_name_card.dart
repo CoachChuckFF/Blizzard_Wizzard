@@ -28,7 +28,7 @@ class DeviceNameCard extends SettingsCard {
         child: new Column(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
-
+            Container(height: 3.0),
             TextFormField(
               decoration: InputDecoration(
                 border: InputBorder.none,
@@ -41,6 +41,7 @@ class DeviceNameCard extends SettingsCard {
               validator: _validate,
               onSaved: _onSave,
             ),
+            Container(height: 2.0),
             ButtonTheme.bar( // make buttons use the appropriate styles for cards
               child: ButtonBar(
                 children: <Widget>[
@@ -55,6 +56,7 @@ class DeviceNameCard extends SettingsCard {
                 ],
               ),
             ),
+            Container(height: 3.0),
           ],
         ),
       ),
@@ -80,7 +82,7 @@ class DeviceNameCard extends SettingsCard {
 
   void _onSave(String input){
     
-    this.onSubmit("Beep Boop");
+    this.onSubmit("Beep Boop Beep");
 
     tron.addToWaitingList(
       WaitForPacket(this.onReturn,

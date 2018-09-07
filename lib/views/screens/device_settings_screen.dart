@@ -7,7 +7,7 @@ import 'package:blizzard_wizzard/models/globals.dart';
 import 'package:blizzard_wizzard/views/device_settings_screen_assets/device_config_list.dart';
 //import 'package:blizzard_wizzard/views/device_settings_screen_assets/setting_cards/ap_pass_card.dart';
 import 'package:blizzard_wizzard/views/device_settings_screen_assets/setting_cards/device_name_card.dart';
-//import 'package:blizzard_wizzard/views/device_settings_screen_assets/setting_cards/info_card.dart';
+import 'package:blizzard_wizzard/views/device_settings_screen_assets/setting_cards/info_card.dart';
 import 'package:blizzard_wizzard/views/device_settings_screen_assets/setting_cards/settings_card.dart';
 //import 'package:blizzard_wizzard/views/device_settings_screen_assets/setting_cards/ssid_pass_card.dart';
 
@@ -44,7 +44,7 @@ class DeviceSettingsScreenState extends State<DeviceSettingsScreen> {
     return new Scaffold(
       key: _scaffoldKey,
       appBar: new AppBar(
-        title: Text('Configuration Wizzard - ${device.name}'),
+        title: Text('Configuration Wizzard'),
       ),
       body: new SafeArea(
         top: false,
@@ -67,10 +67,10 @@ class DeviceSettingsScreenState extends State<DeviceSettingsScreen> {
     );
   }
 
-  List<SettingsCard> _deviceToConfigList(){
-    List<SettingsCard> list = List<SettingsCard>();
+  List<Widget> _deviceToConfigList(){
+    List<Widget> list = List<Widget>();
 
-    //list.add(InfoCard(device, () {}, () {})));
+    list.add(InfoCard(device));
     list.add(DeviceNameCard(device, _preLoad, _postLoad));
     //if(device.isBlizzard) list.add(SSIDPasswordCard(device, _alertSnackBar));
     //if(device.isBlizzard) list.add(APPasswordCard(device, _alertSnackBar));

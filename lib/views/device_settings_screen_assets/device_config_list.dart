@@ -3,7 +3,7 @@ import 'package:blizzard_wizzard/models/keys.dart';
 import 'package:blizzard_wizzard/views/device_settings_screen_assets/setting_cards/settings_card.dart';
 
 class DeviceConfigList extends StatelessWidget {
-  final List<SettingsCard> configurations;
+  final List<Widget> configurations;
 
   DeviceConfigList({
     Key key,
