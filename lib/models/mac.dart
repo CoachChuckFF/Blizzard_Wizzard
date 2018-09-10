@@ -29,12 +29,12 @@ class Mac{
 
   @override
   String toString(){
-    String zero = (mac.getUint8(0).toRadixString(16).length == 1) ? "0${mac.getUint8(0).toRadixString(16)}" : "${mac.getUint8(0).toRadixString(16)}";
-    String one = (mac.getUint8(1).toRadixString(16).length == 1) ? "0${mac.getUint8(1).toRadixString(16)}" : "${mac.getUint8(1).toRadixString(16)}";
-    String two = (mac.getUint8(2).toRadixString(16).length == 1) ? "0${mac.getUint8(2).toRadixString(16)}" : "${mac.getUint8(2).toRadixString(16)}";
-    String three = (mac.getUint8(3).toRadixString(16).length == 1) ? "0${mac.getUint8(3).toRadixString(16)}" : "${mac.getUint8(3).toRadixString(16)}";
-    String four = (mac.getUint8(4).toRadixString(16).length == 1) ? "0${mac.getUint8(4).toRadixString(16)}" : "${mac.getUint8(4).toRadixString(16)}";
-    String five = (mac.getUint8(5).toRadixString(16).length == 1) ? "0${mac.getUint8(5).toRadixString(16)}" : "${mac.getUint8(5).toRadixString(16)}";
+    String zero = (mac.getUint8(0).toRadixString(16).length == 1) ? "0${mac.getUint8(0).toRadixString(16).toUpperCase()}" : "${mac.getUint8(0).toRadixString(16).toUpperCase()}";
+    String one = (mac.getUint8(1).toRadixString(16).length == 1) ? "0${mac.getUint8(1).toRadixString(16).toUpperCase()}" : "${mac.getUint8(1).toRadixString(16).toUpperCase()}";
+    String two = (mac.getUint8(2).toRadixString(16).length == 1) ? "0${mac.getUint8(2).toRadixString(16).toUpperCase()}" : "${mac.getUint8(2).toRadixString(16).toUpperCase()}";
+    String three = (mac.getUint8(3).toRadixString(16).length == 1) ? "0${mac.getUint8(3).toRadixString(16).toUpperCase()}" : "${mac.getUint8(3).toRadixString(16).toUpperCase()}";
+    String four = (mac.getUint8(4).toRadixString(16).length == 1) ? "0${mac.getUint8(4).toRadixString(16).toUpperCase()}" : "${mac.getUint8(4).toRadixString(16).toUpperCase()}";
+    String five = (mac.getUint8(5).toRadixString(16).length == 1) ? "0${mac.getUint8(5).toRadixString(16).toUpperCase()}" : "${mac.getUint8(5).toRadixString(16).toUpperCase()}";
 
 
     return "$zero.$one.$two.$three.$four.$five";

@@ -1,23 +1,17 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:d_artnet_4/d_artnet_4.dart';
 import 'package:blizzard_wizzard/models/globals.dart';
 import 'package:blizzard_wizzard/views/device_settings_screen_assets/setting_cards/settings_card.dart';
 import 'package:blizzard_wizzard/controllers/wait_for_packet.dart';
 
-class DeviceNameCard extends SettingsCard {
+class APPassCard extends SettingsCard {
   static GlobalKey<FormState> _formKey = new GlobalKey<FormState>();
   static int submitCount = 0;
-  static const List<String> responses = [
-    "Please enter a name",
-    "You need need to make up a name",
-    "*BLANK* is not a name",
-    "A name has more than 0 charecters",
-    "love me",
-  ];
 
-  DeviceNameCard(device, onSubmit, onReturn) : super(device, onSubmit, onReturn);
+  APPassCard(device, onSubmit, onReturn) : super(device, onSubmit, onReturn);
   
-  String name;
+  String pass;
 
   @override
   Widget build(BuildContext context) {
@@ -39,14 +33,14 @@ class DeviceNameCard extends SettingsCard {
                   child: TextFormField(
                     decoration: InputDecoration(
                       border: InputBorder.none,
-                      hintText: device.name,
-                      labelText: "Device Name",
+                      hintText: "password",
+                      labelText: "Ap Pass",
                       isDense: true,
                     ),
                     maxLength: BlizzardWizzardConfigs.longNameLength,
                     maxLengthEnforced: true,
                     validator: _validate,
-                    onSaved: (name){this.name = name;},
+                    onSaved: (pass){this.pass = pass;},
                   ),
                 ),
                 Expanded(
@@ -65,7 +59,7 @@ class DeviceNameCard extends SettingsCard {
                 Expanded(
                   flex: 1,
                   child: Tooltip(
-                    message: "Unique device name",
+                    message: "A new AP Password, used to connect to the ${device.name} device",
                     preferBelow: false,
                     child: Icon(
                       Icons.info_outline,
@@ -108,9 +102,7 @@ class DeviceNameCard extends SettingsCard {
   }
 
   String _validate(String input){
-    if(input.length == 0){
-      return responses[submitCount++%responses.length];
-    }
+
     return null;
   }
 
@@ -120,34 +112,40 @@ class DeviceNameCard extends SettingsCard {
 
   void _sendCommand(){
     
-    this.onSubmit("Beep Boop Beep");
+    this.onSubmit("Doing computer things...");
 
     tron.addToWaitingList(
       WaitForPacket(this.onReturn,
         this.device.address, 
-        ArtnetPollReplyPacket.opCode, 
+        ArtnetCommandPacket.opCode, 
         Duration(milliseconds: BlizzardWizzardConfigs.artnetConfigCallbackTimeout),
-        preWait: Duration(milliseconds: BlizzardWizzardConfigs.artnetConfigCallbackPreWait),
-        onFailure: "Failed to change name...",
-        onSuccess: "Name changed to $name",
+        onFailure: "Failed to change ap password...",
+        onSuccess: "Ap pass changed!",
       )
     );
 
     tron.server.sendPacket(_populateConfigPacket().udpPacket, this.device.address);
   }
 
-  ArtnetAddressPacket _populateConfigPacket(){
-    ArtnetAddressPacket packet = ArtnetAddressPacket();
-    String longName = (name.length > BlizzardWizzardConfigs.longNameLength) ? name.substring(0, BlizzardWizzardConfigs.longNameLength - 1) : name;
-    String shortName = (name.length > BlizzardWizzardConfigs.shortNameLength) ? name.substring(0, BlizzardWizzardConfigs.shortNameLength - 1) : name;
+  ArtnetCommandPacket _populateConfigPacket(){
+    ArtnetCommandPacket packet = ArtnetCommandPacket();
+    var info = {
+      "Action" : BlizzardActions.setGeneralConfig,
+      "Key" : BlizzardDefines.apPassKey,
+      "Type" : BlizzardDefines.dataString,
+      "Data" : this.pass,
+      "Change_Device" : 0,
+      "Change_Mask" : 0
+    };
+ 
+    List<int> data = json.encode(info).codeUnits;
 
+    for(int i = 0; i < data.length; i++){
+      packet.data[i] = data[i];
+    }
 
-    packet.programNetSwitchEnable = false;
-    packet.programSubSwitchEnable = false;
-    packet.programUniverseEnable = false;
-
-    packet.longName = longName;
-    packet.shortName = shortName;
+    //null terminate
+    packet.data[data.length] = 0x00;
 
     return packet;
   }

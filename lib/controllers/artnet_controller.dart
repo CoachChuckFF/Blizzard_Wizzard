@@ -149,11 +149,20 @@ class ArtnetController{
   Device _packetToDevice(ArtnetPollReplyPacket packet, InternetAddress ip){
 
     Device device = Device(packet.mac,
-    name: packet.longName,
-    isBlizzard: packet.isBlizzardDevice,
-    typeId: packet.blizzardType,
-    fixtures: List<Fixture>(),
-    address: ip);
+      name: packet.longName,
+      isBlizzard: packet.isBlizzardDevice,
+      typeId: packet.blizzardType,
+      fixtures: List<Fixture>(),
+      address: ip,
+      isLTP: (packet.goodOutput[0] & 0x02 == 0x02),
+      isArtnet: (packet.goodOutput[0] & 0x01 == 0x00),
+      canSwitch: (packet.status2 & 0x10 == 0x10),
+      isDHCP: packet.status2IpIsSetManually,
+      canDHCP: packet.status2DHCPCapable,
+      indicatorState: packet.status1IndicatorState,
+      universe: packet.universe,
+      estaCode: packet.estaMan,
+    );
 
     if(packet.isBlizzardDevice){
       ChannelMode mode = ChannelMode(

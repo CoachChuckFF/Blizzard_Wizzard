@@ -13,6 +13,15 @@ class Device{
   bool isBlizzard;
   bool isConnected;
   bool isPatched;
+  bool isArtnet; //otherwise sACN
+  bool canSwitch;
+  bool isLTP;
+  bool isDHCP;
+  bool canDHCP;
+  int indicatorState;
+  int estaCode;
+  int universe;
+
 
   List<Fixture> fixtures;
 
@@ -21,13 +30,23 @@ class Device{
 
   ArtnetDataPacket dmxData = ArtnetDataPacket(); //can be more universes
 
-  Device(List<int> mac, {this.name, 
+  Device(List<int> mac, 
+    {this.name, 
     this.typeId, 
     this.isBlizzard = false, 
     this.address, 
     this.isConnected = false, 
     this.fixtures,
-    this.isPatched = false})
+    this.isPatched = false,
+    this.isLTP = false,
+    this.isArtnet = true,
+    this.canSwitch = true,
+    this.isDHCP = true,
+    this.canDHCP = true,
+    this.universe = 1,
+    this.indicatorState = 1,
+    this.estaCode = 0,
+    })
   {
 
     if(this.fixtures == null){

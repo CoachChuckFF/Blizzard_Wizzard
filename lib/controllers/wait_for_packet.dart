@@ -27,7 +27,9 @@ class WaitForPacket{
   }
 
   void callCallback(List<int> data){
-    this.callback(data, (data == null) ? this.onFailure : this.onSuccess);
+    if(this.callback != null){
+      this.callback(data, (data == null) ? this.onFailure : this.onSuccess);
+    }
   }
 
 }

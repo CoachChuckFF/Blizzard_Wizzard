@@ -6,12 +6,12 @@ import 'package:blizzard_wizzard/models/device.dart';
 import 'package:blizzard_wizzard/models/globals.dart';
 import 'package:blizzard_wizzard/views/device_settings_screen_assets/config_button_bar.dart';
 import 'package:blizzard_wizzard/views/device_settings_screen_assets/device_config_list.dart';
-//import 'package:blizzard_wizzard/views/device_settings_screen_assets/setting_cards/ap_pass_card.dart';
+import 'package:blizzard_wizzard/views/device_settings_screen_assets/setting_cards/ap_pass_card.dart';
+import 'package:blizzard_wizzard/views/device_settings_screen_assets/setting_cards/artnet_scan_card.dart';
 import 'package:blizzard_wizzard/views/device_settings_screen_assets/setting_cards/device_name_card.dart';
 import 'package:blizzard_wizzard/views/device_settings_screen_assets/setting_cards/header_card.dart';
 import 'package:blizzard_wizzard/views/device_settings_screen_assets/setting_cards/info_card.dart';
 import 'package:blizzard_wizzard/views/device_settings_screen_assets/setting_cards/ssid_pass_card.dart';
-//import 'package:blizzard_wizzard/views/device_settings_screen_assets/setting_cards/ssid_pass_card.dart';
 
 
 
@@ -122,9 +122,11 @@ class DeviceSettingsScreenState extends State<DeviceSettingsScreen> {
       break;
       case DeviceConfigureCategoryState.protocol:
         list.add(HeaderCard("Protocol Configurations"));
+        if(device.canSwitch) list.add(ArtnetSACNCard(device, _preLoad, _postLoad));
       break;
       case DeviceConfigureCategoryState.network:
         list.add(HeaderCard("Network Configurations"));
+        if(device.isBlizzard) list.add(APPassCard(device, _preLoad, _postLoad));
         if(device.isBlizzard) list.add(SSIDPassCard(device, _preLoad, _postLoad));
       break;
       default:
@@ -167,7 +169,6 @@ class DeviceSettingsScreenState extends State<DeviceSettingsScreen> {
       action: SnackBarAction(
         label: 'Close',
         onPressed: () {
-          this.dispose();
         },
       ),
     );

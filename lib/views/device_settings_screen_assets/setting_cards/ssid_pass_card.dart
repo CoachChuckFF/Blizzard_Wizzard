@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:d_artnet_4/d_artnet_4.dart';
 import 'package:blizzard_wizzard/models/globals.dart';
@@ -8,12 +9,11 @@ class SSIDPassCard extends SettingsCard {
   static GlobalKey<FormState> _formKey = new GlobalKey<FormState>();
   static int submitCount = 0;
   static const List<String> responses = [
-    "Please enter a name",
-    "You need need to make up a name",
-    "*BLANK* is not a name",
-    "A name has more than 0 charecters",
-    "love me",
+    "Please enter an SSID",
   ];
+
+  String pass;
+  String ssid;
 
   SSIDPassCard(device, onSubmit, onReturn) : super(device, onSubmit, onReturn);
   
@@ -43,8 +43,8 @@ class SSIDPassCard extends SettingsCard {
                     ),
                     maxLength: BlizzardWizzardConfigs.ssidLength,
                     maxLengthEnforced: true,
-                    validator: _validate,
-                    onSaved: _onSave,
+                    validator: _validateSSID,
+                    onSaved: (ssid){this.ssid = ssid;},
                   ),
                 ),
                 Expanded(
@@ -71,8 +71,8 @@ class SSIDPassCard extends SettingsCard {
                     ),
                     maxLength: BlizzardWizzardConfigs.longNameLength,
                     maxLengthEnforced: true,
-                    validator: _validate,
-                    onSaved: _onSave,
+                    validator: _validatePass,
+                    onSaved: (pass){this.pass = pass;},
                   ),
                 ),
                 Expanded(
@@ -129,13 +129,19 @@ class SSIDPassCard extends SettingsCard {
   void _submit() {
     if (_formKey.currentState.validate()) {
       _formKey.currentState.save();
+      _sendCommand();
     }
   }
 
-  String _validate(String input){
+  String _validateSSID(String input){
     if(input.length == 0){
       return responses[submitCount++%responses.length];
     }
+    return null;
+  }
+
+  String _validatePass(String input){
+
     return null;
   }
 
@@ -143,36 +149,39 @@ class SSIDPassCard extends SettingsCard {
     _formKey.currentState.reset();
   }
 
-  void _onSave(String input){
+  void _sendCommand(){
     
-    this.onSubmit("Beep Boop Beep");
+    this.onSubmit("${device.name} will now try to connect to $ssid. It will loose connection, so please back out of this page.");
 
     tron.addToWaitingList(
       WaitForPacket(this.onReturn,
         this.device.address, 
         ArtnetPollReplyPacket.opCode, 
-        Duration(milliseconds: BlizzardWizzardConfigs.artnetConfigCallbackTimeout),
-        preWait: Duration(milliseconds: BlizzardWizzardConfigs.artnetConfigCallbackPreWait),
-        onFailure: "Failed to change name...",
-        onSuccess: "Name changed to $input",
+        Duration(seconds: BlizzardWizzardConfigs.artnetConfigNeverReturnTimeout),
+        onFailure: "Failed to change networks",
+        onSuccess: "Failed to change networks",
       )
     );
 
-    tron.server.sendPacket(_populateConfigPacket(input).udpPacket, this.device.address);
+    tron.server.sendPacket(_populateConfigPacket().udpPacket, this.device.address);
   }
 
-  ArtnetAddressPacket _populateConfigPacket(String name){
-    ArtnetAddressPacket packet = ArtnetAddressPacket();
-    String longName = (name.length > BlizzardWizzardConfigs.longNameLength) ? name.substring(0, BlizzardWizzardConfigs.longNameLength - 1) : name;
-    String shortName = (name.length > BlizzardWizzardConfigs.shortNameLength) ? name.substring(0, BlizzardWizzardConfigs.shortNameLength - 1) : name;
+  ArtnetCommandPacket _populateConfigPacket(){
+    ArtnetCommandPacket packet = ArtnetCommandPacket();
+    var info = {
+      "Action" : BlizzardActions.setSSIDAndPass,
+      "SSID" : this.ssid,
+      "Pass" : this.pass,
+    };
+ 
+    List<int> data = json.encode(info).codeUnits;
 
+    for(int i = 0; i < data.length; i++){
+      packet.data[i] = data[i];
+    }
 
-    packet.programNetSwitchEnable = false;
-    packet.programSubSwitchEnable = false;
-    packet.programUniverseEnable = false;
-
-    packet.longName = longName;
-    packet.shortName = shortName;
+    //null terminate
+    packet.data[data.length] = 0x00;
 
     return packet;
   }
