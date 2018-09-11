@@ -15,6 +15,7 @@ class Device{
   bool isPatched;
   bool isArtnet; //otherwise sACN
   bool canSwitch;
+  bool isMerging;
   bool isLTP;
   bool isDHCP;
   bool canDHCP;
@@ -38,13 +39,14 @@ class Device{
     this.isConnected = false, 
     this.fixtures,
     this.isPatched = false,
+    this.isMerging = false,
     this.isLTP = false,
     this.isArtnet = true,
     this.canSwitch = true,
     this.isDHCP = true,
     this.canDHCP = true,
     this.universe = 1,
-    this.indicatorState = 1,
+    this.indicatorState = 0x03,
     this.estaCode = 0,
     })
   {

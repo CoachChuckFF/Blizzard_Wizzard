@@ -35,7 +35,7 @@ class BlizzardWizzardConfigs{
 class BlizzardActions{
   //actions
   static final int setGeneralConfig = 1;
-  static final int getGeneralConfig = 1;
+  static final int getGeneralConfig = 2;
 
   static final int setDhcp = 3;
   static final int getDhcp = 4;
@@ -47,6 +47,12 @@ class BlizzardActions{
   static final int getConnectionInfo = 10;
   static final int setSSIDAndPass = 11;
   static final int getMac = 112;
+
+  static final int ota = 26;
+  static final int reboot = 27;
+  static final int reset = 28;
+  static final int blackout = 32;
+  static final int setDmx = 33;
 }
 
 class BlizzardDefines{
@@ -59,6 +65,12 @@ class BlizzardDefines{
 
   //keys
   static final String apPassKey = "AP_PASS";
+}
+
+class ArtnetMergeState{
+  static const int none = 1;
+  static const int htp = 2;
+  static const int ltp = 3;
 }
 
 class LightingConfigState{

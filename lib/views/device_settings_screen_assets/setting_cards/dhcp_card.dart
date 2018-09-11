@@ -4,9 +4,9 @@ import 'package:blizzard_wizzard/models/globals.dart';
 import 'package:blizzard_wizzard/views/device_settings_screen_assets/setting_cards/settings_card.dart';
 import 'package:blizzard_wizzard/controllers/wait_for_packet.dart';
 
-class ArtnetSACNCard extends SettingsCard {
+class DHCPCard extends SettingsCard {
 
-  ArtnetSACNCard(device, onSubmit, onReturn) : super(device, onSubmit, onReturn);
+  DHCPCard(device, onSubmit, onReturn) : super(device, onSubmit, onReturn);
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +23,7 @@ class ArtnetSACNCard extends SettingsCard {
               Expanded(
                 flex: 2,
                 child: Text(
-                  "sACN",
+                  "DHCP",
                   style: TextStyle(
                     fontSize: 18.0,
                     color: Theme.of(context).hintColor
@@ -39,18 +39,7 @@ class ArtnetSACNCard extends SettingsCard {
                 )
               ),
               Expanded(
-                flex: 2,
-                child: Text(
-                  "Artnet",
-                  style: TextStyle(
-                    fontSize: 18.0,
-                    color: Theme.of(context).hintColor
-                  ),
-                  textAlign: TextAlign.right,
-                )
-              ),
-              Expanded(
-                flex: 1,
+                flex: 3,
                 child: Container()
               )
             ],
@@ -65,7 +54,7 @@ class ArtnetSACNCard extends SettingsCard {
               Expanded(
                 flex: 1,
                 child: Tooltip(
-                  message: "Active protocol will change to ${(device.isArtnet) ? 'sACN' : 'Artnet'}",
+                  message: "Turn ${(device.isDHCP) ? 'off' : 'on'} DHCP",
                   preferBelow: false,
                   child: Icon(
                     Icons.info_outline,
@@ -89,28 +78,26 @@ class ArtnetSACNCard extends SettingsCard {
 
   void _sendCommand(){
     
-    this.onSubmit("Crunching the Numbers");
+    this.onSubmit("01101001");
 
     tron.addToWaitingList(
       WaitForPacket(this.onReturn,
         this.device.address, 
-        ArtnetPollReplyPacket.opCode, 
-        Duration(milliseconds: BlizzardWizzardConfigs.artnetConfigCallbackTimeout),
-        preWait: Duration(milliseconds: BlizzardWizzardConfigs.artnetConfigCallbackPreWait),
-        onFailure: "Could not switch to ${(device.isArtnet) ? 'sACN' : 'Artnet'}",
-        onSuccess: "Protocol switched to ${(!device.isArtnet) ? 'sACN' : 'Artnet'}",
+        ArtnetIpProgPacket.opCode, 
+        Duration(seconds: BlizzardWizzardConfigs.artnetConfigNeverReturnTimeout),
+        onFailure: (device.isDHCP) ? "Failed to turn off DHCP" : "Failed to turn on DHCP",
+        onSuccess: "DHCP turned ${(device.isDHCP) ? 'off' : 'on'} successfully!",
       )
     );
 
     tron.server.sendPacket(_populateConfigPacket().udpPacket, this.device.address);
   }
 
-  ArtnetAddressPacket _populateConfigPacket(){
-    ArtnetAddressPacket packet = ArtnetAddressPacket();
+  ArtnetIpProgPacket _populateConfigPacket(){
+    ArtnetIpProgPacket packet = ArtnetIpProgPacket();
 
-    packet.command = (device.isArtnet) ? 
-      ArtnetAddressPacket.commandOptionAcnSel0 : 
-      ArtnetAddressPacket.commandOptionArtNetSel0;
+    packet.commandProgrammingEnable = true;
+    packet.commandDHCPEnable = (!device.isDHCP);
 
     return packet;
   }
