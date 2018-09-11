@@ -28,6 +28,9 @@ class BlizzardWizzardConfigs{
   static final int artnetConfigDisconnectTimeout = 2; //seconds
   static final int artnetConfigNeverReturnTimeout = 8; //seconds
 
+  //sACN Configs
+  static final int sACNMaxUniverses = 64000;
+
   //Available Device Configs
   static final int availableTimoutTick = 3;
 }

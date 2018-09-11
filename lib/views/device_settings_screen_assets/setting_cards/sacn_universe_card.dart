@@ -4,13 +4,13 @@ import 'package:blizzard_wizzard/models/globals.dart';
 import 'package:blizzard_wizzard/views/device_settings_screen_assets/setting_cards/settings_card.dart';
 import 'package:blizzard_wizzard/controllers/wait_for_packet.dart';
 
-class SubnetCard extends SettingsCard {
+class SACNUniverseCard extends SettingsCard {
   static GlobalKey<FormState> _formKey = new GlobalKey<FormState>();
 
-  List<int> subnet = List<int>(4);
-
-  SubnetCard(device, onSubmit, onReturn) : super(device, onSubmit, onReturn);
+  SACNUniverseCard(device, onSubmit, onReturn) : super(device, onSubmit, onReturn);
   
+  int universe;
+
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -27,66 +27,17 @@ class SubnetCard extends SettingsCard {
                   child: Container()
                 ),
                 Expanded(
-                  flex:2,
-                  child: Text(
-                    "Subnet",
-                    textAlign: TextAlign.left,
-                    style: TextStyle(
-                      fontSize: 17.0,
-                      color: Theme.of(context).hintColor
-                    ),
-                  ),
-                ),
-                Expanded(
-                  flex: 2,
+                  flex: 13,
                   child: TextFormField(
                     decoration: InputDecoration(
-                      hintText: "255",
+                      border: InputBorder.none,
+                      hintText: device.universe.toString(),
+                      labelText: "sACN Universe",
                       isDense: true,
                     ),
-                    enabled: !device.isDHCP,
                     keyboardType: TextInputType.number,
-                    validator: _validateIP,
-                    onSaved: (subnet){this.subnet[0] = int.parse(subnet);},
-                  ),
-                ),
-                Expanded(
-                  flex: 2,
-                  child: TextFormField(
-                    decoration: InputDecoration(
-                      hintText: "255",
-                      isDense: true,
-                    ),
-                    enabled: !device.isDHCP,
-                    keyboardType: TextInputType.number,
-                    validator: _validateIP,
-                    onSaved: (subnet){this.subnet[1] = int.parse(subnet);},
-                  ),
-                ),
-                Expanded(
-                  flex: 2,
-                  child: TextFormField(
-                    decoration: InputDecoration(
-                      hintText: "255",
-                      isDense: true,
-                    ),
-                    enabled: !device.isDHCP,
-                    keyboardType: TextInputType.number,
-                    validator: _validateIP,
-                    onSaved: (subnet){this.subnet[2] = int.parse(subnet);},
-                  ),
-                ),
-                Expanded(
-                  flex: 2,
-                  child: TextFormField(
-                    decoration: InputDecoration(
-                      hintText: "0",
-                      isDense: true,
-                    ),
-                    enabled: !device.isDHCP,
-                    keyboardType: TextInputType.number,
-                    validator: _validateIP,
-                    onSaved: (subnet){this.subnet[3] = int.parse(subnet);},
+                    validator: _validate,
+                    onSaved: (universe){this.universe = int.parse(universe);},
                   ),
                 ),
                 Expanded(
@@ -105,7 +56,7 @@ class SubnetCard extends SettingsCard {
                 Expanded(
                   flex: 1,
                   child: Tooltip(
-                    message: (device.isDHCP) ? "Turn off DHCP to edit Submask" : "Edit the Subnet of the device",
+                    message: "sACN universe this device listens to",
                     preferBelow: false,
                     child: Icon(
                       Icons.info_outline,
@@ -147,14 +98,15 @@ class SubnetCard extends SettingsCard {
     }
   }
 
-  String _validateIP(String input){
+  String _validate(String input){
     var val = int.parse(input);
     if(val is int){
-      if(val <= 0xFF && val >= 0x00){
+      if(val <= BlizzardWizzardConfigs.sACNMaxUniverses && val >= 0x00){
         return null;
       }
     }
-    return "0-255";
+
+    return "0-${BlizzardWizzardConfigs.sACNMaxUniverses}";
   }
 
   void _onClear(){
@@ -163,29 +115,28 @@ class SubnetCard extends SettingsCard {
 
   void _sendCommand(){
     
-    this.onSubmit("Dehance");
+    this.onSubmit("Redrum");
 
     tron.addToWaitingList(
       WaitForPacket(this.onReturn,
         this.device.address, 
-        ArtnetIpProgPacket.opCode, 
-        Duration(seconds: BlizzardWizzardConfigs.artnetConfigNeverReturnTimeout),
-        onFailure: "Failed to change Netmask",
-        onSuccess: "Netmask changed",
+        ArtnetPollReplyPacket.opCode, 
+        Duration(milliseconds: BlizzardWizzardConfigs.artnetConfigCallbackTimeout),
+        preWait: Duration(milliseconds: BlizzardWizzardConfigs.artnetConfigCallbackPreWait),
+        onFailure: "Failed to change sACN Universe...",
+        onSuccess: "sACN Universe Changed",
       )
     );
 
     tron.server.sendPacket(_populateConfigPacket().udpPacket, this.device.address);
   }
 
-  ArtnetIpProgPacket _populateConfigPacket(){
-    ArtnetIpProgPacket packet = ArtnetIpProgPacket();
+  ArtnetAddressPacket _populateConfigPacket(){
+    ArtnetAddressPacket packet = ArtnetAddressPacket();
 
-    packet.commandProgrammingEnable = true;
-    packet.commandDHCPEnable = false;
-    packet.commandProgramSubnet = true;
-
-    packet.ip = this.subnet;
+    packet.programUniverseEnable;
+    packet.universe = this.universe;
+    packet.command = ArtnetAddressPacket.commandOptionAcnSel0;
 
     return packet;
   }

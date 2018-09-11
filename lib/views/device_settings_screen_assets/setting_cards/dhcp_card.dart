@@ -34,7 +34,7 @@ class DHCPCard extends SettingsCard {
               Expanded(
                 flex: 5,
                 child: Switch(
-                  value: device.isArtnet,
+                  value: device.isDHCP,
                   onChanged:(val){ _sendCommand(); }
                 )
               ),

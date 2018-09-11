@@ -13,10 +13,12 @@ import 'package:blizzard_wizzard/views/device_settings_screen_assets/setting_car
 import 'package:blizzard_wizzard/views/device_settings_screen_assets/setting_cards/blizzard_controls_card.dart';
 import 'package:blizzard_wizzard/views/device_settings_screen_assets/setting_cards/device_name_card.dart';
 import 'package:blizzard_wizzard/views/device_settings_screen_assets/setting_cards/dhcp_card.dart';
+import 'package:blizzard_wizzard/views/device_settings_screen_assets/setting_cards/dmx_card.dart';
 import 'package:blizzard_wizzard/views/device_settings_screen_assets/setting_cards/header_card.dart';
 import 'package:blizzard_wizzard/views/device_settings_screen_assets/setting_cards/indicator_card.dart';
 import 'package:blizzard_wizzard/views/device_settings_screen_assets/setting_cards/info_card.dart';
 import 'package:blizzard_wizzard/views/device_settings_screen_assets/setting_cards/ip_card.dart';
+import 'package:blizzard_wizzard/views/device_settings_screen_assets/setting_cards/sacn_universe_card.dart';
 import 'package:blizzard_wizzard/views/device_settings_screen_assets/setting_cards/ssid_pass_card.dart';
 import 'package:blizzard_wizzard/views/device_settings_screen_assets/setting_cards/submask_card.dart';
 
@@ -127,12 +129,14 @@ class DeviceSettingsScreenState extends State<DeviceSettingsScreen> {
         list.add(HeaderCard("Device Configurations"));
         list.add(DeviceNameCard(device, _preLoad, _postLoad));
         list.add(IndicatorCard(device, _preLoad, _postLoad));
-        list.add(BlizzardControlsCard(device, _preLoad, _postLoad));
+        if(device.isBlizzard) list.add(BlizzardControlsCard(device, _preLoad, _postLoad));
+        list.add(DMXCard(device));
 
       break;
       case DeviceConfigureCategoryState.protocol:
         list.add(HeaderCard("Protocol Configurations"));
         if(device.canSwitch) list.add(ArtnetSACNCard(device, _preLoad, _postLoad));
+        if(!device.isArtnet) list.add(SACNUniverseCard(device, _preLoad, _postLoad));
         if(device.isArtnet) list.add(ArtnetUniverseCard(device, _preLoad, _postLoad));
         if(device.isArtnet) list.add(ArtnetMergeCard(device, _preLoad, _postLoad));
       break;
