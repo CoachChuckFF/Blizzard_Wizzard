@@ -21,6 +21,11 @@ class ArtnetController{
     waitingList = new List<WaitForPacket>();
   }
 
+  void dispose(){
+    waitingList.clear();
+    this.server.stopServer();
+  }
+
   void _onPoll(){
 
     List<Device> temp = List.from((store.state as AppState).availableDevices);
@@ -40,8 +45,6 @@ class ArtnetController{
 
   void _handlePacket(Datagram gram){
 
-    _checkWaitingList(gram);
-
     switch(ArtnetGetOpCode(gram.data)){
       case ArtnetPollPacket.opCode:
         server.sendPacket(server.populateOutgoingPollReply(), gram.address);
@@ -51,18 +54,22 @@ class ArtnetController{
         /*Important*/
         _handlePollReply();
         _handleDeviceList(_packetToDevice(ArtnetPollReplyPacket(gram.data), gram.address));
+        _checkWaitingList(gram);
       break;
       case ArtnetIpProgReplyPacket.opCode:
         /*Important*/
         _handleProgReply();
+        _checkWaitingList(gram);
       break;
       case ArtnetCommandPacket.opCode:
         /*Important*/
         _handleCommand();
+        _checkWaitingList(gram);
       break;
       case ArtnetFirmwareReplyPacket.opCode:
         /*Importnant*/
         _handleFirmwareReply();
+        _checkWaitingList(gram);
       break;
       default:
         return; //unknown packet

@@ -23,10 +23,10 @@ class BlizzardWizzardConfigs{
   static final int artnetPollDelay = 5; //sec
   static final int artnetBeepDelay = 3; //sec
   static final int checkIpTO = 3; //times
-  static final int artnetConfigCallbackPreWait= 144; //ms 
+  static final int artnetConfigCallbackPreWait= 0; //ms 
   static final int artnetConfigCallbackTimeout = 3000; //ms
-  static final int artnetConfigDisconnectTimeout = 2; //seconds
-  static final int artnetConfigNeverReturnTimeout = 8; //seconds
+  static final int artnetConfigDisconnectTimeout = 5; //seconds
+    static final int artnetConfigNeverReturnTimeout = 13; //seconds
 
   //sACN Configs
   static final int sACNMaxUniverses = 64000;

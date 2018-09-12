@@ -158,7 +158,8 @@ class ArtnetMergeCard extends SettingsCard {
       WaitForPacket(this.onReturn,
         this.device.address, 
         ArtnetPollReplyPacket.opCode, 
-        Duration(seconds: BlizzardWizzardConfigs.artnetConfigNeverReturnTimeout),
+        Duration(milliseconds: BlizzardWizzardConfigs.artnetConfigCallbackTimeout),
+        preWait: Duration(milliseconds: BlizzardWizzardConfigs.artnetConfigCallbackPreWait),
         onFailure: "Failed change merge mode",
         onSuccess: onSuccess,
       )

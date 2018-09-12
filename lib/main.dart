@@ -16,29 +16,60 @@ void main(){
     initialState: AppState.init(),
   );
 
-  tron = ArtnetController(store);
-  initTestStructs(store);
-
   runApp(MyApp(
     title: 'Artnet Tester',
     store: store,
   ));
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   final Store<AppState> store;
   final String title;
 
-  MyApp({Key key, this.store, this.title}) : super(key: key){
+  MyApp({Key key, this.store, this.title}){
     SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+  }
+
+  @override
+  MyAppState createState() => MyAppState();
+}
+
+class MyAppState extends State<MyApp> with WidgetsBindingObserver{
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addObserver(this);
+    tron = ArtnetController(widget.store);
+    initTestStructs(widget.store);
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    super.dispose();
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    print(state);
+    switch(state){
+      case AppLifecycleState.paused:
+      case AppLifecycleState.inactive:
+      case AppLifecycleState.suspending:
+        tron.dispose();
+        break;
+      case AppLifecycleState.resumed:
+        tron = ArtnetController(widget.store);
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     return StoreProvider<AppState>(
-      store: store,
+      store: widget.store,
       child: MaterialApp(
-        title: title,
+        title: widget.title,
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),

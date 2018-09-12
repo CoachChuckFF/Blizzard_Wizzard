@@ -165,9 +165,9 @@ class DeviceSettingsScreenState extends State<DeviceSettingsScreen> {
 
   void _postLoad(List<int> data, String message){
 
-    device = StoreProvider.of<AppState>(context).state.availableDevices.firstWhere((dev){
+    this.device = StoreProvider.of<AppState>(context).state.availableDevices.firstWhere((dev){
       return dev == device;
-    }, orElse: (){return null;});
+      }, orElse: (){return null;}); 
 
     if(device == null){
       Timer(Duration(seconds: BlizzardWizzardConfigs.artnetConfigDisconnectTimeout), _handleDisconnect);

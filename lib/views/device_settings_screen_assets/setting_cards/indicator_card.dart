@@ -52,8 +52,8 @@ class IndicatorCard extends SettingsCard {
                         ),
                       ),
                       onPressed: (){
-                        if(device.indicatorState == ArtnetPollReplyPacket.status1IndicatorStateOptionNormal ||
-                        device.indicatorState == ArtnetPollReplyPacket.status1IndicatorStateOptionUnkown)
+                        if(!(device.indicatorState == ArtnetPollReplyPacket.status1IndicatorStateOptionNormal ||
+                        device.indicatorState == ArtnetPollReplyPacket.status1IndicatorStateOptionUnkown))
                           _sendCommand(ArtnetPollReplyPacket.status1IndicatorStateOptionNormal);
                       },
                     )
@@ -143,7 +143,7 @@ class IndicatorCard extends SettingsCard {
     this.onSubmit("Blink Blink");
     String onSuccess = "";
 
-    switch(state){
+      switch(state){
       case ArtnetPollReplyPacket.status1IndicatorStateOptionLocate:
         onSuccess = "Indicator mode set to locate";
       break;
@@ -158,7 +158,8 @@ class IndicatorCard extends SettingsCard {
       WaitForPacket(this.onReturn,
         this.device.address, 
         ArtnetPollReplyPacket.opCode, 
-        Duration(seconds: BlizzardWizzardConfigs.artnetConfigNeverReturnTimeout),
+        Duration(milliseconds: BlizzardWizzardConfigs.artnetConfigCallbackTimeout),
+        preWait: Duration(milliseconds: BlizzardWizzardConfigs.artnetConfigCallbackPreWait),
         onFailure: "Failed to change indication mode",
         onSuccess: onSuccess,
       )

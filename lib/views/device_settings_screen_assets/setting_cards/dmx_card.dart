@@ -15,10 +15,12 @@ class DMXCard extends StatefulWidget{
 
 class DMXCardState extends State<DMXCard> {
 
+  bool _showGrid;
 
   @override
   void initState() {
     super.initState();
+    _showGrid = false;
   }
 
   @override
@@ -28,7 +30,7 @@ class DMXCardState extends State<DMXCard> {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: <Widget>[
+        children: (_showGrid) ? <Widget>[
           Container(height: 13.0,),
           Row(
             children: <Widget>[
@@ -107,7 +109,67 @@ class DMXCardState extends State<DMXCard> {
               );
             }),
           ), 
-        ],
+        ] : <Widget>[
+          Container(height: 13.0,),
+          Row(
+            children: <Widget>[
+              Expanded(
+                flex: 1,
+                child: Container()
+              ),
+              Expanded(
+                flex:3,
+                child: Text(
+                  "DMX",
+                  textAlign: TextAlign.left,
+                  style: TextStyle(
+                    fontSize: 17.0,
+                    color: Theme.of(context).hintColor
+                  ),
+                ),
+              ),
+              Expanded(
+                flex: 9,
+                child: Container()
+              ),
+            ],
+          ),
+          Container(height: 13.0),
+          Row(
+            children: <Widget>[
+              Expanded(
+                flex: 1,
+                child: Container()
+              ),
+              Expanded(
+                flex:13,
+                child: RaisedButton(
+                  color: Theme.of(context).primaryColor,
+                  splashColor: Theme.of(context).accentColor,
+                  child: Text(
+                    "Control DMX",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 21.0,
+                      fontFamily: "Robot",
+                    ),
+                  ),
+                  onPressed: (){
+                    setState(() {
+                      _showGrid = true;                      
+                    });
+                  },
+                )
+              ),
+              Expanded(
+                flex: 1,
+                child: Container()
+              ),
+            ],
+          ),
+          Container(height: 21.0),
+        ]
       )
     );
   }

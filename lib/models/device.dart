@@ -60,7 +60,13 @@ class Device{
 
   bool compare(Device other){
     return (name == other.name &&
-            address == other.address);
+            address == other.address &&
+            isMerging == other.isMerging &&
+            isLTP == other.isLTP &&
+            isArtnet == other.isArtnet &&
+            isDHCP == other.isDHCP &&
+            universe == other.universe &&
+            indicatorState == other.indicatorState);
   }
 
   @override
