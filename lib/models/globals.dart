@@ -82,6 +82,9 @@ class LightingConfigState{
   static const int settings= 3;
   static const int keypad = 4;
   static const int preset = 5;
+  static const int channels = 6;
+  static const int fx = 7;
+  static const int classic = 8;
 }
 
 class PageState{

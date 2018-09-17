@@ -23,8 +23,7 @@ class Device{
   int estaCode;
   int universe;
 
-
-  List<Fixture> fixtures;
+  Fixture fixture;
 
   InternetAddress address;
   int activeTick = BlizzardWizzardConfigs.availableTimoutTick;
@@ -37,7 +36,7 @@ class Device{
     this.isBlizzard = false, 
     this.address, 
     this.isConnected = false, 
-    this.fixtures,
+    this.fixture,
     this.isPatched = false,
     this.isMerging = false,
     this.isLTP = false,
@@ -51,9 +50,6 @@ class Device{
     })
   {
 
-    if(this.fixtures == null){
-      this.fixtures = List<Fixture>();
-    }
     this.mac = Mac(mac);
 
   }

@@ -32,7 +32,7 @@ class ArtnetUniverseCard extends SettingsCard {
                     decoration: InputDecoration(
                       border: InputBorder.none,
                       hintText: device.universe.toString(),
-                      labelText: "Artnet Universe",
+                      labelText: "Artnet Universe: ${device.universe.toString()}",
                       isDense: true,
                     ),
                     keyboardType: TextInputType.number,
@@ -134,7 +134,7 @@ class ArtnetUniverseCard extends SettingsCard {
   ArtnetAddressPacket _populateConfigPacket(){
     ArtnetAddressPacket packet = ArtnetAddressPacket();
 
-    packet.programUniverseEnable;
+    packet.programUniverseEnable = true;
     packet.universe = this.universe;
 
     return packet;

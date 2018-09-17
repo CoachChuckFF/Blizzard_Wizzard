@@ -32,7 +32,7 @@ class SACNUniverseCard extends SettingsCard {
                     decoration: InputDecoration(
                       border: InputBorder.none,
                       hintText: device.universe.toString(),
-                      labelText: "sACN Universe",
+                      labelText: "sACN Universe: ${device.universe.toString()}",
                       isDense: true,
                     ),
                     keyboardType: TextInputType.number,
@@ -134,9 +134,10 @@ class SACNUniverseCard extends SettingsCard {
   ArtnetAddressPacket _populateConfigPacket(){
     ArtnetAddressPacket packet = ArtnetAddressPacket();
 
-    packet.programUniverseEnable;
     packet.universe = this.universe;
-    packet.command = ArtnetAddressPacket.commandOptionAcnSel0;
+    packet.programUniverseEnable = true;
+
+    print(packet);
 
     return packet;
   }

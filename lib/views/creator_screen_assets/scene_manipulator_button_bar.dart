@@ -2,36 +2,16 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:blizzard_wizzard/models/globals.dart';
 
-class SceneManipulatorButtonBar extends StatefulWidget {
+class SceneManipulatorButtonBar extends StatelessWidget {
   final ValueChanged<int> callback;
   final int state;
+  final int fixtureState;
 
   SceneManipulatorButtonBar({
     this.callback,
     this.state: LightingConfigState.color,
+    this.fixtureState,
   });
-
-  @override
-  createState() => SceneManipulatorButtonBarState();
-}
-
-class SceneManipulatorButtonBarState extends State<SceneManipulatorButtonBar> {
-  int state;
-
-  _update(int state){
-    setState(() {
-      this.state = state; 
-      if(widget.callback != null){
-        widget.callback(state);
-      }
-    });
-  }
-
-  @override
-  initState() {
-    super.initState();
-    state = widget.state;
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +31,7 @@ class SceneManipulatorButtonBarState extends State<SceneManipulatorButtonBar> {
                 ),
               ),
               onPressed: (){
-                _update(LightingConfigState.color);
+                callback(LightingConfigState.color);
               },
             )
           ),
@@ -67,10 +47,11 @@ class SceneManipulatorButtonBarState extends State<SceneManipulatorButtonBar> {
                 ),
               ),
               onPressed: (){
-                _update(LightingConfigState.preset);
+                callback(LightingConfigState.preset);
               },
             )
           ),
+          (fixtureState == DeviceFixtureGridState.device) ?
           Expanded(
             child: new FlatButton(
               color: (state == LightingConfigState.dmx) ?
@@ -83,7 +64,23 @@ class SceneManipulatorButtonBarState extends State<SceneManipulatorButtonBar> {
                 ),
               ),
               onPressed: (){
-                _update(LightingConfigState.dmx);
+                callback(LightingConfigState.dmx);
+              },
+            )
+          ) :
+          Expanded(
+            child: new FlatButton(
+              color: (state == LightingConfigState.channels) ?
+                Theme.of(context).primaryColor : Colors.white,
+              child: new Text(
+                "Channels",
+                style: TextStyle(
+                  color: (state == LightingConfigState.channels) ?
+                  Colors.white : Colors.black,
+                ),
+              ),
+              onPressed: (){
+                callback(LightingConfigState.channels);
               },
             )
           ),
@@ -99,7 +96,7 @@ class SceneManipulatorButtonBarState extends State<SceneManipulatorButtonBar> {
                 ),
               ),
               onPressed: (){
-                _update(LightingConfigState.keypad);
+                callback(LightingConfigState.keypad);
               },
             )
           ),

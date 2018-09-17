@@ -27,6 +27,28 @@ class CreatorScreenState extends State<CreatorScreen> {
   int configState;
   int deviceFixtureState;
 
+  List<Device> _generateDeviceList(){
+    List<Device> devices = List<Device>();
+
+    if(deviceFixtureState == DeviceFixtureGridState.device){
+      selectedDevices.forEach((index){
+        if(StoreProvider.of<AppState>(context).state.show.patchedDevices.containsKey(index)){
+          Mac searchMac = StoreProvider.of<AppState>(context).state.show.patchedDevices[index].mac;
+          Device addDev = StoreProvider.of<AppState>(context).state.availableDevices.firstWhere((device){
+            return device.mac == searchMac;
+          }, orElse: (){ return null; });
+          if(addDev != null){
+            devices.add(addDev);
+          }
+        }
+      });
+    } else {
+
+    }
+
+    return devices;
+  }
+
   @override
   void initState() {
     super.initState();
@@ -38,19 +60,7 @@ class CreatorScreenState extends State<CreatorScreen> {
 
   @override
   Widget build(BuildContext context) {
-    List<Device> devices = List<Device>();
-
-    selectedDevices.forEach((index){
-      if(StoreProvider.of<AppState>(context).state.show.patchedDevices.containsKey(index)){
-        Mac searchMac = StoreProvider.of<AppState>(context).state.show.patchedDevices[index].mac;
-        Device addDev = StoreProvider.of<AppState>(context).state.availableDevices.firstWhere((device){
-          return device.mac == searchMac;
-        }, orElse: (){ return null; });
-        if(addDev != null){
-          devices.add(addDev);
-        }
-      }
-    });
+    List<Device> devices = _generateDeviceList();
 
     return Column(
       children: <Widget>[
@@ -75,6 +85,9 @@ class CreatorScreenState extends State<CreatorScreen> {
                             onPressed: (){
                               if(deviceFixtureState != DeviceFixtureGridState.device){
                                 setState(() {
+                                  if(configState == LightingConfigState.channels){
+                                    configState = LightingConfigState.dmx;
+                                  }
                                   deviceFixtureState = DeviceFixtureGridState.device;
                                 });
                               }
@@ -94,6 +107,9 @@ class CreatorScreenState extends State<CreatorScreen> {
                             onPressed: (){
                               if(deviceFixtureState != DeviceFixtureGridState.fixture){
                                 setState(() {
+                                  if(configState == LightingConfigState.dmx){
+                                    configState = LightingConfigState.channels;
+                                  }
                                   deviceFixtureState = DeviceFixtureGridState.fixture;
                                 });
                               }
@@ -165,6 +181,7 @@ class CreatorScreenState extends State<CreatorScreen> {
           flex: 1,
           child: SceneManipulatorButtonBar(
             state: configState,
+            fixtureState: deviceFixtureState,
             callback: (state){
               setState(() {
                 configState = state;                

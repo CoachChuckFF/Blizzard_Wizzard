@@ -2,41 +2,23 @@ import 'package:flutter/material.dart';
 import 'package:blizzard_wizzard/models/device.dart';
 import 'package:blizzard_wizzard/models/globals.dart';
 
-class ColorProfile{
-  final Color color;
-  final Color splash;
-  final String name;
+class ChannelControlArea extends StatefulWidget {
+  final List<Device> devices;
 
-  const ColorProfile(this.color, this.splash, this.name);
-}
+  ChannelControlArea({@required this.devices});
 
-class ColorPresets{
-  static const List<ColorProfile> presets = [
-    const ColorProfile(Colors.red, Colors.redAccent, "Firetruck Red"),
-    const ColorProfile(Colors.orange, Colors.orangeAccent, "Orange Orange"),
-    const ColorProfile(Colors.yellow, Colors.yellowAccent, "Empire Yellow"),
-    const ColorProfile(Colors.green, Colors.greenAccent, "Money Green"),
-    const ColorProfile(Colors.cyan, Colors.cyanAccent, "Joel Blue"),
-    const ColorProfile(Colors.blue, Colors.blueAccent, "Blizzard Blue"),
-    const ColorProfile(Colors.indigo, Colors.indigoAccent, "Indi Gogo"),
-    const ColorProfile(Colors.purple, Colors.purpleAccent,"People Eater Purple"),
-    const ColorProfile(Colors.black, Colors.white, "'Like My Soul' Black"),
-    const ColorProfile(Colors.white, Colors.black, "Fresh Linen Scent"), 
-  ]; 
-}
-
-class PresetGrid extends StatefulWidget {
-  List<Device> devices;
-
-  PresetGrid({@required this.devices});
+  List<String> _populateChannels(){
+    return null;
+  }
 
   @override
-  createState() => PresetGridState();
+  createState() => ChannelControlAreaState(_populateChannels());
 }
 
-class PresetGridState extends State<PresetGrid> {
+class ChannelControlAreaState extends State<ChannelControlArea> {
+  List<String> channels;
 
-  PresetGridState();
+  ChannelControlAreaState(this.channels);
 
   @override
   Widget build(BuildContext context) {

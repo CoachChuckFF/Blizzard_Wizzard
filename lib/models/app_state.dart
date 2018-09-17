@@ -2,6 +2,7 @@ import 'package:meta/meta.dart';
 import 'package:blizzard_wizzard/models/device.dart';
 import 'package:blizzard_wizzard/models/mac.dart';
 import 'package:blizzard_wizzard/models/patched_device.dart';
+import 'package:blizzard_wizzard/models/patched_fixture.dart';
 import 'package:blizzard_wizzard/models/show.dart';
 
 @immutable
@@ -23,7 +24,7 @@ class AppState {
     show: Show(
       ques: const [],
       patchedDevices: Map<int,PatchedDevice>(),
-      patchedQues: Map<int,int>(),
+      patchedQues: Map<int,PatchedFixture>(),
       patchedFixtures: Map<int,int>(), 
       name: "Test"
     ));

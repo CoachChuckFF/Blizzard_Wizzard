@@ -159,7 +159,6 @@ class ArtnetController{
       name: packet.longName,
       isBlizzard: packet.isBlizzardDevice,
       typeId: packet.blizzardType,
-      fixtures: List<Fixture>(),
       address: ip,
       isMerging: packet.getGoodOutputIsMerging(0),
       isLTP: packet.getGoodOutputMergeIsLTP(0),
@@ -181,17 +180,16 @@ class ArtnetController{
           Channel(name: "Blue", number: 2),
           Channel(name: "Amber", number: 3),
           Channel(name: "White", number: 4),
+          Channel(name: "UV", number: 4),
         ],  
       );
-      device.fixtures.add(
-        Fixture(
-          packet.mac,
+      device.fixture = Fixture(
           name: BlizzardDevices.getDevice(packet.blizzardType),
-          patchAddress: 33,
+          patchAddress: 1,
           channelMode: 0,
           profile: List<ChannelMode>()..add(mode)
-        )
-      );
+        );
+ 
     }
 
     return device;
