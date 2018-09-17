@@ -24,8 +24,8 @@ class AppState {
     show: Show(
       ques: const [],
       patchedDevices: Map<int,PatchedDevice>(),
-      patchedQues: Map<int,PatchedFixture>(),
-      patchedFixtures: Map<int,int>(), 
+      patchedCues: Map<int,int>(),
+      patchedFixtures: Map<int,PatchedFixture>(), 
       name: "Test"
     ));
 

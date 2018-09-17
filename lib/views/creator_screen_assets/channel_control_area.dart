@@ -7,10 +7,6 @@ class ChannelControlArea extends StatefulWidget {
 
   ChannelControlArea({@required this.devices});
 
-  List<String> _populateChannels(){
-    return null;
-  }
-
   @override
   createState() => ChannelControlAreaState(_populateChannels());
 }

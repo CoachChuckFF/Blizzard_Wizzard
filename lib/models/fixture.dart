@@ -1,6 +1,3 @@
-import 'dart:typed_data';
-import 'package:blizzard_wizzard/models/mac.dart';
-
 class Fixture{
 
   static int idCount = 1;

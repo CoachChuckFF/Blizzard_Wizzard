@@ -5,7 +5,7 @@ class PatchedFixture{
   final Mac mac;
   final Fixture fixture;
   final String name;
-  final int index;
+  final bool fromDevice;
 
-  PatchedFixture({this.mac, this.name, this.fixture, this.index});
+  PatchedFixture({this.mac, this.name, this.fixture, this.fromDevice = false});
 }

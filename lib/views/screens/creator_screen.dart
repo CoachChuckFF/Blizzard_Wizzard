@@ -43,9 +43,18 @@ class CreatorScreenState extends State<CreatorScreen> {
         }
       });
     } else {
-
+      selectedFixtures.forEach((index){
+        if(StoreProvider.of<AppState>(context).state.show.patchedFixtures.containsKey(index)){
+          Mac searchMac = StoreProvider.of<AppState>(context).state.show.patchedFixtures[index].mac;
+          Device addDev = StoreProvider.of<AppState>(context).state.availableDevices.firstWhere((device){
+            return device.mac == searchMac;
+          }, orElse: (){ return null; });
+          if(addDev != null){
+            devices.add(addDev);
+          }
+        }
+      });
     }
-
     return devices;
   }
 
@@ -137,7 +146,7 @@ class CreatorScreenState extends State<CreatorScreen> {
                       Expanded(
                         flex: 8,
                         child: (deviceFixtureState == DeviceFixtureGridState.fixture) ? 
-                        StoreConnector<AppState, Map<int,int>>(
+                        /*StoreConnector<AppState, Map<int,int>>(
                           converter: (store) => store.state.show.patchedFixtures,
                           builder: (context, patchedFixtures) {
                             return FixtureGrid(
@@ -150,7 +159,8 @@ class CreatorScreenState extends State<CreatorScreen> {
                               },
                             );
                           },
-                        ) :
+                        )*/ 
+                        Text("hi"):
                         StoreConnector<AppState, Map<int,PatchedDevice>>(
                           converter: (store) => store.state.show.patchedDevices,
                           builder: (context, patchedDevices) {

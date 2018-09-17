@@ -7,6 +7,7 @@ import 'package:blizzard_wizzard/models/actions.dart';
 import 'package:blizzard_wizzard/models/app_state.dart';
 import 'package:blizzard_wizzard/models/blizzard_devices.dart';
 import 'package:blizzard_wizzard/models/device.dart';
+import 'package:blizzard_wizzard/models/fixture.dart';
 import 'package:blizzard_wizzard/models/globals.dart';
 import 'package:blizzard_wizzard/views/screens/blizzard_screen.dart';
 import 'package:blizzard_wizzard/controllers/artnet_controller.dart';
@@ -28,6 +29,27 @@ void initTestStructs(Store store){
     isPatched: true,
     address: InternetAddress("192.168.1.89"),
   );
+
+ 
+  ChannelMode mode = ChannelMode(
+    name: "5 Channel",
+    channels: <Channel>[
+      Channel(name: "Red", number: 0),
+      Channel(name: "Green", number: 1),
+      Channel(name: "Blue", number: 2),
+      Channel(name: "Amber", number: 3),
+      Channel(name: "White", number: 4),
+      Channel(name: "UV", number: 4),
+    ],  
+  );
+  blizzardDev.fixture = Fixture(
+    name: BlizzardDevices.getDevice(0x34),
+    patchAddress: 1,
+    channelMode: 0,
+    profile: List<ChannelMode>()..add(mode)
+  );
+ 
+  
 
   genDev = Device([0x03, 0x01, 0x02, 0x03, 0x04, 0x05],
     name: "Generic Device",

@@ -80,20 +80,21 @@ class DMXControlAreaState extends State<DMXControlArea> {
                   }
                 },
                 child: new SizedBox(
-                  height: 33.0,
-                  child: Column(
-                    children: <Widget>[
-                      Text(
-                        '${index + 1}',
-                        textAlign: TextAlign.center,
-                      ),
-                      Text(
-                        (hasSelected) ? 
-                        '${firstDev.dmxData.dmx[index]}' : 'N/A',
-                        textAlign: TextAlign.center,
-                      ),
-                    ],
-                  ),
+                  child: Center(
+                    child: Column(
+                      children: <Widget>[
+                        Text(
+                          '${index + 1}',
+                          textAlign: TextAlign.center,
+                        ),
+                        Text(
+                          (hasSelected) ? 
+                          '${firstDev.dmxData.dmx[index]}' : 'N/A',
+                          textAlign: TextAlign.center,
+                        ),
+                      ],
+                    ),
+                  )
                 )
               );
             }),

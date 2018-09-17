@@ -1,4 +1,6 @@
 import 'package:blizzard_wizzard/models/device.dart';
+import 'package:blizzard_wizzard/models/patched_device.dart';
+import 'package:blizzard_wizzard/models/patched_fixture.dart';
 import 'package:blizzard_wizzard/models/mac.dart';
 
 /* Is Loading */
@@ -56,10 +58,27 @@ class ChangeShowName{
 // Patched Devices
 class AddPatchDevice{
   final int slot;
-  final Mac mac;
-  final String name;
+  final PatchedDevice device;
 
-  AddPatchDevice(this.slot, this.mac, this.name);
+  AddPatchDevice(this.slot, this.device);
+}
+
+class RemovePatchDevice{
+  final int slot;
+
+  RemovePatchDevice(this.slot);
+}
+
+class ClearPatchDevice{
+
+  ClearPatchDevice();
+}
+
+class AddPatchFixture{
+  final int slot;
+  final PatchedFixture fixture;
+
+  AddPatchFixture(this.slot, this.fixture);
 }
 
 
