@@ -8,6 +8,7 @@ import 'package:blizzard_wizzard/models/globals.dart';
 import 'package:blizzard_wizzard/models/mac.dart';
 import 'package:blizzard_wizzard/models/patched_device.dart';
 import 'package:blizzard_wizzard/models/patched_fixture.dart';
+import 'package:blizzard_wizzard/views/creator_screen_assets/fixture_grid_assets/patch_fixture_dialog.dart';
 import 'package:blizzard_wizzard/views/fixes/list_view_alert_dialog.dart';
 
 
@@ -87,20 +88,15 @@ class FixtureGrid extends StatelessWidget {
                       callback(List.from(selectedFixtures)..add(index));
                     }
                   } else if(!isPatched){
-                    /*showDialog(
+                    showDialog(
                       context: context,
                       child: StoreConnector<AppState, List<Device>>(
                         converter: (store) => store.state.availableDevices,
                         builder: (context, availableDevices) {
-                          return PatchDeviceDialog(
-                            index: index,
-                            devices: availableDevices,
-                            patchedDevices: patchedDevices,
-                            callback: callback,
-                          );
+                          return PatchFixtureDialog();
                         },
                       ),
-                    );*/
+                    );
                   }
                 }
               },
@@ -242,7 +238,7 @@ class PatchDeviceDialog extends StatelessWidget {
                       fromDevice: true,
                     )));
                 }
-              }
+              } 
  
               callback([this.index]);
               Navigator.pop(context);

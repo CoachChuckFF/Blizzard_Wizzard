@@ -96,6 +96,18 @@ class PageState{
   static const int helper = 6; 
 }
 
+class PatchFixtureState{
+  static const int exit = -1;
+  static const int main = 1;
+  static const int library = 2;
+  static const int dmxChannels = 3;
+  static const int manufacturer = 4;
+  static const int fixtureType = 5;
+  static const int channel = 6;
+  static const int verify = 7;
+  static const int patch = 8;
+}
+
 class DeviceFixtureGridState{
   static const int device = 1;
   static const int fixture = 2;

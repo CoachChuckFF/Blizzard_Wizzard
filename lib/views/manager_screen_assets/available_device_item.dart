@@ -32,7 +32,7 @@ class AvailableDeviceItem extends StatelessWidget {
         child: ListTile(
           onTap: () => onTap(device),
           leading: Tooltip(
-            message: "Connection Strength",
+            message: "HP",
             child: RSHealthBar(
               strength: device.activeTick,
               maxStrength: BlizzardWizzardConfigs.checkIpTO,

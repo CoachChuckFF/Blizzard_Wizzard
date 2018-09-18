@@ -32,7 +32,7 @@ class ChannelMode{
   String name;
   List<Channel> channels;
 
-  ChannelMode({this.name, this.channels});
+  ChannelMode({this.name, this.channels = const <Channel>[]});
 
   /* Returns -1 on failure */
   int getChannelOffset(String name){
