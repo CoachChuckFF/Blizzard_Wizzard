@@ -1,6 +1,7 @@
 import 'package:redux/redux.dart';
 import 'package:blizzard_wizzard/models/actions.dart';
 import 'package:blizzard_wizzard/models/patched_device.dart';
+import 'package:blizzard_wizzard/models/patched_fixture.dart';
 import 'package:blizzard_wizzard/models/show.dart';
 
 
@@ -20,9 +21,20 @@ Show _addPatchDevice(Show state, AddPatchDevice action) {
 
 Show _removePatchDevice(Show state, RemovePatchDevice action) {
 
+  PatchedDevice devToRemove;
+
   return state.copyWith(
     patchedDevices: Map.from(state.patchedDevices)..removeWhere((index, device){
+      if(action.slot == index){
+        devToRemove = device;
+      }
       return action.slot == index;
+    }),
+    patchedFixtures: Map.from(state.patchedFixtures)..removeWhere((index, fixture){
+      if(devToRemove == null){
+        return false;
+      }
+      return fixture.mac == devToRemove.mac;
     })
   ); 
 }
@@ -30,7 +42,8 @@ Show _removePatchDevice(Show state, RemovePatchDevice action) {
 Show _clearPatchDevice(Show state, ClearPatchDevice action) {
 
   return state.copyWith(
-    patchedDevices: Map<int, PatchedDevice>()
+    patchedDevices: Map<int, PatchedDevice>(),
+    patchedFixtures: Map<int, PatchedFixture>()
   ); 
 }
 

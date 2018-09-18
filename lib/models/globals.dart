@@ -118,3 +118,8 @@ class DeviceConfigureCategoryColor{
   static const Color network = Colors.green;
   static const Color networkAccent = Colors.greenAccent;
 }
+
+class DeviceFixtureGridColor{
+  static const Color device = Colors.lightBlue;
+  static const Color fixture = Colors.purple;
+}

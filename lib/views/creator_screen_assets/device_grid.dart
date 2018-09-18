@@ -35,7 +35,7 @@ class DeviceGrid extends StatelessWidget {
         bool isPatched = false;
         bool isConnected = false;
         bool isSelected = false;
-        Color textColor = Colors.lightBlue;
+        Color textColor = Theme.of(context).primaryColor;
         Color boxColor = Colors.white;
         String info = "${index + 1}";
 
@@ -57,7 +57,7 @@ class DeviceGrid extends StatelessWidget {
 
           if(selectedDevices.contains(index)){
             textColor = Colors.white;
-            boxColor = Colors.lightBlue;
+            boxColor = Theme.of(context).primaryColor;
             isSelected = true;
           }
         }
@@ -193,63 +193,106 @@ class PatchDeviceDialog extends StatelessWidget {
     });
 
     return ListViewAlertDialog(
-      title: new Text('Pick Device to Patch to slot ${index + 1}'),
-      actions: <Widget>[
-        new FlatButton(
-          child: const Text("Cancel"),
-          onPressed: ()=> Navigator.pop(context),
+      title: Text('Select Device to Patch',
+        style: TextStyle(
+          fontSize: 23.0,
+          fontWeight: FontWeight.bold,
+          fontFamily: "Robot",
         ),
-      ],
-      content: 
-      (availableDevices.length == 0) ?
-      Text(
-        "No Available Devices",
-        style: Theme.of(context).textTheme.title,
-      ) :
-      ListView.builder(
-        itemCount: availableDevices.length,
-        shrinkWrap: true,
-        itemBuilder: (BuildContext buildContext, int index){
-          return InkWell(
-            child: new ListTile(
-              title: new Text(
-                availableDevices[index].name,
+      ),
+      content: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: <Widget>[
+          Expanded(
+            flex: 8,
+            child: (availableDevices.length == 0) ?
+            Tooltip(
+              preferBelow: false,
+              message: "Stop that tickles",
+              child: Text(
+                "No Devices Found",
                 style: Theme.of(context).textTheme.title,
               ),
+            ) :
+            ListView.builder(
+              itemCount: availableDevices.length,
+              shrinkWrap: true,
+              itemBuilder: (BuildContext buildContext, int index){
+                return InkWell(
+                  child: Card(
+                    child: ListTile(
+                      title: Text(
+                        availableDevices[index].name,
+                        style: Theme.of(context).textTheme.title,
+                      ),
+                    ),
+                  ),
+                  onTap: (){
+                    StoreProvider.of<AppState>(context).dispatch(AddPatchDevice(
+                      this.index, 
+                      PatchedDevice(
+                        mac: availableDevices[index].mac,
+                        name: availableDevices[index].name,
+                      )));
+
+
+                    if(availableDevices[index].fixture != null){
+                      patchedFixtures = StoreProvider.of<AppState>(context).state.show.patchedFixtures;
+                      PatchedFixture fixture = patchedFixtures.values.firstWhere((fix){
+                        return fix.fromDevice;
+                      }, orElse: (){return null;});
+
+                      if(fixture == null){
+                        int freeIndex = 0;
+                        while(true){ //this scares me
+                          if(!StoreProvider.of<AppState>(context).state.show.patchedFixtures.containsKey(freeIndex)){
+                            break;
+                          }
+                          freeIndex++;
+                        }
+                        StoreProvider.of<AppState>(context).dispatch(AddPatchFixture(
+                          freeIndex, 
+                          PatchedFixture(
+                            mac: availableDevices[index].mac,
+                            name: "D ${availableDevices[index].fixture.name}",
+                            fixture: availableDevices[index].fixture,
+                            fromDevice: true,
+                          )));
+                      }
+                    }
+      
+                    callback([this.index]);
+                    Navigator.pop(context);
+                  },
+                );
+              },
             ),
-            onTap: (){
-              StoreProvider.of<AppState>(context).dispatch(AddPatchDevice(
-                this.index, 
-                PatchedDevice(
-                  mac: availableDevices[index].mac,
-                  name: availableDevices[index].name,
-                )));
-
-
-              if(availableDevices[index].fixture != null){
-                patchedFixtures = StoreProvider.of<AppState>(context).state.show.patchedFixtures;
-                PatchedFixture fixture = patchedFixtures.values.firstWhere((fix){
-                  return fix.fromDevice;
-                }, orElse: (){return null;});
-
-                if(fixture == null){
-                  StoreProvider.of<AppState>(context).dispatch(AddPatchFixture(
-                    this.index, 
-                    PatchedFixture(
-                      mac: availableDevices[index].mac,
-                      name: "D ${availableDevices[index].fixture.name}",
-                      fixture: availableDevices[index].fixture,
-                      fromDevice: true,
-                    )));
-                }
-              }
- 
-              callback([this.index]);
-              Navigator.pop(context);
-            },
-          );
-        },
-      ),
+          ),
+          Expanded(
+            flex: 1,
+            child: Material(
+              color: Colors.blue,
+              child: Container(
+                child: InkWell(
+                  child: Center(
+                    child: Text(
+                      "Cancel",
+                      style: TextStyle(
+                        fontSize: 21.0,
+                        fontFamily: "Robot",
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                  onTap: (){
+                    Navigator.pop(context);
+                  },
+                ),
+              )
+            )
+          ),
+        ]
+      )
     );
   }
 }
@@ -292,43 +335,50 @@ class EditDeviceDialogState extends State<EditDeviceDialog> {
     });
 
     return ListViewAlertDialog(
-      title: new Text('Fixtures Connected to ${widget.patchedDevices[widget.index].name}'),
-      actions: <Widget>[
-        new FlatButton(
-          child: const Text("Exit"),
-          onPressed: ()=> Navigator.pop(context),
+      title: Text('Fixtures Connected to ${widget.patchedDevices[widget.index].name}',
+        style: TextStyle(
+          fontSize: 23.0,
+          fontWeight: FontWeight.bold,
+          fontFamily: "Robot",
         ),
-      ],
+      ),
       content: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           Expanded(
             flex: 8,
             child: (fixtures.length == 0) ?
-            Text(
-              "No Fixtures Connected",
-              style: Theme.of(context).textTheme.title,
+            Tooltip(
+              preferBelow: false,
+              message: "Oh hello there",
+              child: Text(
+                "No Fixtures Connected",
+                style: Theme.of(context).textTheme.title,
+              ),
             ) :
             ListView.builder(
               itemCount: fixtures.length,
               shrinkWrap: true,
               itemBuilder: (BuildContext buildContext, int index){
                 return Tooltip(
-                  message: fixtures[index].name,
-                  child: ListTile(
-                    title: Text(
-                      fixtures[index].name,
-                      style: Theme.of(context).textTheme.title,
-                      overflow: TextOverflow.ellipsis,
-                      maxLines: 1,
+                  preferBelow: false,
+                  message: "${fixtures[index].name} patched at address ${fixtures[index].fixture.patchAddress}",
+                  child: Card(
+                    child: ListTile(
+                      title: Text(
+                        fixtures[index].name,
+                        style: Theme.of(context).textTheme.title,
+                        overflow: TextOverflow.fade,
+                        maxLines: 1,
+                      ),
+                      trailing: Text(
+                        "${fixtures[index].fixture.patchAddress}",
+                        style: Theme.of(context).textTheme.title,
+                        overflow: TextOverflow.ellipsis,
+                        maxLines: 1,
+                      ),
                     ),
-                    trailing: Text(
-                      "Address: ${fixtures[index].fixture.patchAddress}",
-                      style: Theme.of(context).textTheme.title,
-                      overflow: TextOverflow.ellipsis,
-                      maxLines: 1,
-                    ),
-                  ),
+                  )
                 );
               },
             ),
@@ -341,7 +391,7 @@ class EditDeviceDialogState extends State<EditDeviceDialog> {
                 child: InkWell(
                   child: Center(
                     child: Text(
-                      (clearAll) ? "Unpatch All" : "Unpatch",
+                      (clearAll) ? "Unpatch All Devices" : "Unpatch Device",
                       style: TextStyle(
                         fontSize: 21.0,
                         fontFamily: "Robot",
@@ -367,7 +417,30 @@ class EditDeviceDialogState extends State<EditDeviceDialog> {
                 ),
               )
             )
-          )
+          ),
+          Expanded(
+            flex: 1,
+            child: Material(
+              color: Colors.blue,
+              child: Container(
+                child: InkWell(
+                  child: Center(
+                    child: Text(
+                      "Cancel",
+                      style: TextStyle(
+                        fontSize: 21.0,
+                        fontFamily: "Robot",
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                  onTap: (){
+                    Navigator.pop(context);
+                  },
+                ),
+              )
+            )
+          ),
         ]
       )
     );

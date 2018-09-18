@@ -5,6 +5,7 @@ import 'package:blizzard_wizzard/models/device.dart';
 import 'package:blizzard_wizzard/models/globals.dart';
 import 'package:blizzard_wizzard/models/mac.dart';
 import 'package:blizzard_wizzard/models/patched_device.dart';
+import 'package:blizzard_wizzard/models/patched_fixture.dart';
 import 'package:blizzard_wizzard/views/creator_screen_assets/device_grid.dart';
 import 'package:blizzard_wizzard/views/creator_screen_assets/fixture_grid.dart';
 import 'package:blizzard_wizzard/views/creator_screen_assets/scene_button_bar.dart';
@@ -136,7 +137,7 @@ class CreatorScreenState extends State<CreatorScreen> {
                       Expanded(
                         flex: 2,
                         child: Text(
-                          (deviceFixtureState == DeviceFixtureGridState.device) ? "Devices" : "Fixtures",
+                          (deviceFixtureState == DeviceFixtureGridState.device) ? "Patched Devices" : "Pathced Fixtures",
                           style: TextStyle(
                             fontSize: 20.0,
                             fontFamily: fontFamily
@@ -146,34 +147,39 @@ class CreatorScreenState extends State<CreatorScreen> {
                       Expanded(
                         flex: 8,
                         child: (deviceFixtureState == DeviceFixtureGridState.fixture) ? 
-                        /*StoreConnector<AppState, Map<int,int>>(
-                          converter: (store) => store.state.show.patchedFixtures,
-                          builder: (context, patchedFixtures) {
-                            return FixtureGrid(
-                              patchedFixtures: patchedFixtures,
-                              selectedFixtures: selectedFixtures,
-                              callback: (selectedFixtures){
-                                setState(() {
-                                    this.selectedFixtures = selectedFixtures;                               
-                                });
-                              },
-                            );
-                          },
-                        )*/ 
-                        Text("hi"):
-                        StoreConnector<AppState, Map<int,PatchedDevice>>(
-                          converter: (store) => store.state.show.patchedDevices,
-                          builder: (context, patchedDevices) {
-                            return DeviceGrid(
-                              patchedDevices: patchedDevices,
-                              selectedDevices: selectedDevices,
-                              callback: (selectedDevices){
-                                setState(() {
-                                    this.selectedDevices = selectedDevices;                               
-                                });
-                              },
-                            );
-                          },
+                        Theme(
+                          data: ThemeData(primarySwatch: DeviceFixtureGridColor.fixture),
+                          child: StoreConnector<AppState, Map<int,PatchedFixture>>(
+                            converter: (store) => store.state.show.patchedFixtures,
+                            builder: (context, patchedFixtures) {
+                              return FixtureGrid(
+                                patchedFixtures: patchedFixtures,
+                                selectedFixtures: selectedFixtures,
+                                callback: (selectedFixtures){
+                                  setState(() {
+                                      this.selectedFixtures = selectedFixtures;                               
+                                  });
+                                },
+                              );
+                            },
+                          ),
+                        ) :
+                        Theme(
+                          data: ThemeData(primarySwatch: DeviceFixtureGridColor.device),
+                          child: StoreConnector<AppState, Map<int,PatchedDevice>>(
+                            converter: (store) => store.state.show.patchedDevices,
+                            builder: (context, patchedDevices) {
+                              return DeviceGrid(
+                                patchedDevices: patchedDevices,
+                                selectedDevices: selectedDevices,
+                                callback: (selectedDevices){
+                                  setState(() {
+                                      this.selectedDevices = selectedDevices;                               
+                                  });
+                                },
+                              );
+                            },
+                          ),
                         ),
                       )
                     ],
