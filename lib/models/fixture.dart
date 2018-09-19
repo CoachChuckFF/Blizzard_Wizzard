@@ -2,8 +2,8 @@ class Fixture{
 
   static int idCount = 1;
 
-  final String name;
-  final String brand;
+  String name;
+  String brand;
 
   List<ChannelMode> profile;
   int patchAddress = 1;
@@ -14,7 +14,7 @@ class Fixture{
   }
 
   Fixture({this.name, this.profile = const <ChannelMode>[],
-    this.patchAddress, this.channelMode, this.brand = "Unkown"}){
+    this.patchAddress, this.channelMode, this.brand}){
 
   }
 

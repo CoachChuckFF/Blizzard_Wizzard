@@ -103,9 +103,11 @@ class PatchFixtureState{
   static const int dmxChannels = 3;
   static const int manufacturer = 4;
   static const int fixtureType = 5;
-  static const int channel = 6;
-  static const int verify = 7;
-  static const int patch = 8;
+  static const int firstChannel = 6;
+  static const int nextChannel = 7;
+  static const int prevChannel = 8;
+  static const int verify = 9;
+  static const int patch = 10;
 }
 
 class DeviceFixtureGridState{

@@ -93,7 +93,12 @@ class FixtureGrid extends StatelessWidget {
                       child: StoreConnector<AppState, List<Device>>(
                         converter: (store) => store.state.availableDevices,
                         builder: (context, availableDevices) {
-                          return PatchFixtureDialog();
+                          return Theme(
+                            child: PatchFixtureDialog(),
+                            data: ThemeData(
+                              primarySwatch: Colors.blue,
+                            ),
+                          );
                         },
                       ),
                     );

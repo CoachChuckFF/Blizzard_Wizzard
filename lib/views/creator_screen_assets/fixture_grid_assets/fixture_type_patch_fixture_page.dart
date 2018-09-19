@@ -12,12 +12,12 @@ import 'package:blizzard_wizzard/models/patched_device.dart';
 import 'package:blizzard_wizzard/models/patched_fixture.dart';
 import 'package:blizzard_wizzard/views/fixes/list_view_alert_buttons_dialog.dart';
 
-class ManufacturerPatchFixturePage extends StatelessWidget {
+class FixtureTypePatchFixturePage extends StatelessWidget {
   static GlobalKey<FormState> _formKey = new GlobalKey<FormState>();
   final ValueChanged<int> callback;
   final Fixture fixture;
 
-  ManufacturerPatchFixturePage({this.callback, this.fixture});
+  FixtureTypePatchFixturePage({this.callback, this.fixture});
 
   String _validate(String text){
     if(text == ""){
@@ -43,7 +43,7 @@ class ManufacturerPatchFixturePage extends StatelessWidget {
             child: Padding(
               padding: EdgeInsets.all(10.0),
               child: Text(
-                "Who is the manufacturer of this device?",
+                "What type of fixture is this?",
                 style: TextStyle(
                   fontSize: 21.0,
                   fontWeight: FontWeight.bold
@@ -58,7 +58,7 @@ class ManufacturerPatchFixturePage extends StatelessWidget {
             text: "Back",
             color: Colors.red,
             onTap: (){
-              callback(PatchFixtureState.dmxChannels);
+              callback(PatchFixtureState.manufacturer);
             }
           ),
           BlizzardDialogButton(
@@ -66,7 +66,7 @@ class ManufacturerPatchFixturePage extends StatelessWidget {
             color: Colors.green,
             onTap: (){
               if(_submit()){
-                callback(PatchFixtureState.fixtureType);
+                callback(PatchFixtureState.firstChannel);
               }
             }
           ),
@@ -78,15 +78,15 @@ class ManufacturerPatchFixturePage extends StatelessWidget {
                 child: Padding(
                   padding: EdgeInsets.fromLTRB(10.0, 20.0, 20.0, 10.0),
                   child: TextFormField(
-                    initialValue: fixture.brand ?? "Blizzard Pro",
                     style: TextStyle(
                       fontSize: 25.0,
                       fontWeight: FontWeight.bold,
                       color: Theme.of(context).primaryColor 
                     ),
+                    initialValue: fixture.name ?? "",
                     decoration: InputDecoration(
                       border: InputBorder.none,
-                      labelText: "Manufacturer Name",
+                      labelText: "Fixture Type",
                       labelStyle: TextStyle(
                         fontSize: 20.0,
                         color: Colors.grey,
@@ -97,7 +97,7 @@ class ManufacturerPatchFixturePage extends StatelessWidget {
                     maxLengthEnforced: true,
                     validator: _validate,
                     onSaved: (text){
-                      this.fixture.brand = text;
+                      this.fixture.name = text;
                     },
                   ),
                 )

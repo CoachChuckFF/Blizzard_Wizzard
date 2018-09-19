@@ -9,7 +9,9 @@ import 'package:blizzard_wizzard/models/globals.dart';
 import 'package:blizzard_wizzard/models/mac.dart';
 import 'package:blizzard_wizzard/models/patched_device.dart';
 import 'package:blizzard_wizzard/models/patched_fixture.dart';
+import 'package:blizzard_wizzard/views/creator_screen_assets/fixture_grid_assets/channel_patch_fixture_page.dart';
 import 'package:blizzard_wizzard/views/creator_screen_assets/fixture_grid_assets/dmx_channel_patch_fixture_page.dart';
+import 'package:blizzard_wizzard/views/creator_screen_assets/fixture_grid_assets/fixture_type_patch_fixture_page.dart';
 import 'package:blizzard_wizzard/views/creator_screen_assets/fixture_grid_assets/library_patch_fixture_page.dart';
 import 'package:blizzard_wizzard/views/creator_screen_assets/fixture_grid_assets/main_patch_fixture_page.dart';
 import 'package:blizzard_wizzard/views/creator_screen_assets/fixture_grid_assets/manufacturer_patch_fixture_page.dart';
@@ -26,6 +28,7 @@ class PatchFixtureDialog extends StatefulWidget {
 class PatchFixtureDialogState extends State<PatchFixtureDialog> {
   Fixture fixture;
   int state;
+  int channelIndex = 0;
 
   PatchFixtureDialogState();
 
@@ -62,6 +65,21 @@ class PatchFixtureDialogState extends State<PatchFixtureDialog> {
       break;
       case PatchFixtureState.manufacturer:
         page = ManufacturerPatchFixturePage(callback: _callback, fixture: fixture,);
+      break;
+      case PatchFixtureState.fixtureType:
+        page = FixtureTypePatchFixturePage(callback: _callback, fixture: fixture,);
+      break;
+      case PatchFixtureState.firstChannel:
+        channelIndex = 0;
+        page = ChannelPatchFixturePage(callback: _callback, fixture: fixture, index: channelIndex,);
+      break;
+      case PatchFixtureState.nextChannel:
+        channelIndex++;
+        page = ChannelPatchFixturePage(callback: _callback, fixture: fixture, index: channelIndex,);
+      break;
+      case PatchFixtureState.prevChannel:
+        channelIndex--;
+        page = ChannelPatchFixturePage(callback: _callback, fixture: fixture, index: channelIndex,);
       break;
     }
 

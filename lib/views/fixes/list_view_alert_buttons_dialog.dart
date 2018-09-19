@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-class ListViewAlertDialog extends StatelessWidget {
+class ListViewAlertButtonsDialog extends StatelessWidget {
   /// Creates an alert dialog.
   ///
   /// Typically used in conjunction with [showDialog].
@@ -9,7 +9,7 @@ class ListViewAlertDialog extends StatelessWidget {
   /// The [contentPadding] must not be null. The [titlePadding] defaults to
   /// null, which implies a default that depends on the values of the other
   /// properties. See the documentation of [titlePadding] for details.
-  const ListViewAlertDialog({
+  const ListViewAlertButtonsDialog({
     Key key,
     this.title,
     this.titlePadding,
@@ -117,11 +117,17 @@ class ListViewAlertDialog extends StatelessWidget {
     }
 
     if (actions != null) {
-      children.add(new ButtonTheme.bar(
-        child: new ButtonBar(
-          children: actions,
-        ),
-      ));
+      children.add(
+        Container(
+          height: MediaQuery.of(context).size.height * 0.08,
+          child: Row(
+            children: actions,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            mainAxisSize: MainAxisSize.max,
+          ),
+        )
+      );
     }
 
     Widget dialogChild = new Column(
@@ -141,3 +147,44 @@ class ListViewAlertDialog extends StatelessWidget {
   }
 }
 
+class BlizzardDialogButton extends StatelessWidget {
+  final String text;
+  final Color color;
+  final Function onTap;
+  final Function onDoubleTap;
+  final Function onLongPress;
+
+  BlizzardDialogButton({
+    this.text,
+    this.color,
+    this.onTap,
+    this.onDoubleTap,
+    this.onLongPress,
+  });
+
+    @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: Material(
+        color: color ?? Colors.blue,
+        child: Container(
+          child: InkWell(
+            child: Center(
+              child: Text(
+                text ?? "Add in text",
+                style: TextStyle(
+                  fontSize: 21.0,
+                  fontFamily: "Robot",
+                  color: Colors.white,
+                ),
+              ),
+            ),
+            onTap: onTap,
+            onDoubleTap: onDoubleTap,
+            onLongPress: onLongPress,
+          ),
+        )
+      ),
+    );
+  }
+}
