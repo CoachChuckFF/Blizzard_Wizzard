@@ -26,28 +26,49 @@ class PatchFixtureDialog extends StatefulWidget {
 }
 
 class PatchFixtureDialogState extends State<PatchFixtureDialog> {
+  Key channelKey;
   Fixture fixture;
   int state;
-  int channelIndex = 0;
+  int channelIndex;
 
   PatchFixtureDialogState();
 
   void _callback(int state){
-    if(state == PatchFixtureState.exit){
-      Navigator.pop(context);
-    } else {
-      setState(() {
-        this.state = state;
+    int tempState = state;
+    int tempIndex = this.channelIndex;
+    Key tempKey = this.channelKey;
 
-      });
+    switch(state){
+      case PatchFixtureState.exit:
+        Navigator.pop(context);
+        return;
+      case PatchFixtureState.nextChannel: 
+        tempIndex++;
+        tempKey = Key("CI$tempIndex");
+        tempState = PatchFixtureState.firstChannel;
+      break;
+      case PatchFixtureState.prevChannel:
+        tempIndex--;
+        tempKey = Key("CI$tempIndex");
+        tempState = PatchFixtureState.firstChannel;
+      break;
     }
+
+    setState(() {
+      this.state = tempState;
+      this.channelIndex = tempIndex;
+      this.channelKey = tempKey;
+    });
   }
+  
 
   @override
   initState() {
     super.initState();
     fixture = new Fixture();
     state = PatchFixtureState.main;
+    channelIndex = 0;
+    channelKey = Key("CI$channelIndex");
   }
 
   Widget build(BuildContext context) {
@@ -70,16 +91,7 @@ class PatchFixtureDialogState extends State<PatchFixtureDialog> {
         page = FixtureTypePatchFixturePage(callback: _callback, fixture: fixture,);
       break;
       case PatchFixtureState.firstChannel:
-        channelIndex = 0;
-        page = ChannelPatchFixturePage(callback: _callback, fixture: fixture, index: channelIndex,);
-      break;
-      case PatchFixtureState.nextChannel:
-        channelIndex++;
-        page = ChannelPatchFixturePage(callback: _callback, fixture: fixture, index: channelIndex,);
-      break;
-      case PatchFixtureState.prevChannel:
-        channelIndex--;
-        page = ChannelPatchFixturePage(callback: _callback, fixture: fixture, index: channelIndex,);
+        page = ChannelPatchFixturePage(callback: _callback, fixture: fixture, index: channelIndex, key: channelKey,);
       break;
     }
 

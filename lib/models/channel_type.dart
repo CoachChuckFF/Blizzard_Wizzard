@@ -2,20 +2,21 @@ import 'package:flutter/material.dart';
 
 class ChannelTypes{
   static const List<ChannelType> types = [
-    ChannelType("Generic", "The generic dimmer", "P", Colors.black, true, false),
+    ChannelType("Generic", "The generic dimmer", "G", Colors.blue, true, true),
     ChannelType("Dimmer", "The master dimmer", "D", Colors.black, false, false),
     ChannelType("Red", "The red ranger dimmer", "R", Colors.red, false, false),
-    ChannelType("Green", "The green ranger dimmer", "G", Colors.red, false, false),
-    ChannelType("Blue", "The blue ranger dimmer", "B", Colors.red, false, false),
-    ChannelType("Amber", "The maple flavored dimmer", "A", Colors.red, false, false),
-    ChannelType("White", "The light-colored ranger dimmer", "W", Colors.red, false, false),
-    ChannelType("UV", "The 'Don't look at my bed!' dimmer", "UV", Colors.red, false, false),
-    ChannelType("Strobe", "The flash flash dimmer", "*", Colors.red, false, true),
-    ChannelType("Pan", "The X-rated dimmer", "X", Colors.red, false, false),
-    ChannelType("Pan Fine", "The X-rated dimmer with a little more finesse", "X+", Colors.red, false, false),
+    ChannelType("Green", "The green ranger dimmer", "G", Colors.green, false, false),
+    ChannelType("Blue", "The blue ranger dimmer", "B", Colors.blue, false, false),
+    ChannelType("Amber", "The maple flavored dimmer", "A", Colors.amber, false, false),
+    ChannelType("White", "The light-colored ranger dimmer", "W", Colors.grey, false, false),
+    ChannelType("UV", "The 'Don't look at my bed!' dimmer", "UV", Colors.deepPurple, false, false),
+    ChannelType("Lime", "The chaser dimmer", "L", Colors.lime, false, false),
+    ChannelType("Strobe", "The flash flash dimmer", "*", Colors.black, false, true),
+    ChannelType("Pan", "The X-rated dimmer", "X", Colors.blue, false, false),
+    ChannelType("Pan Fine", "The X-rated dimmer with a little more finesse", "X+", Colors.blueAccent, false, false),
     ChannelType("Tilt", "The 'Y are you still here?' dimmer", "Y", Colors.red, false, false),
-    ChannelType("Tilt Fine", "The 'Y are you still here?' dimmer in a softer voice", "Y+", Colors.red, false, false),
-    ChannelType("Macro", "The 'let the fixture do all the work' dimmer", "M", Colors.red, false, true),
+    ChannelType("Tilt Fine", "The 'Y are you still here?' dimmer in a softer voice", "Y+", Colors.redAccent, false, false),
+    ChannelType("Macro", "The 'let the fixture do all the work' dimmer", "M", Colors.deepOrange, false, true),
   ];
 
   static int getIndexFromName(String name){

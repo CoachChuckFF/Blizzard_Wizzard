@@ -29,6 +29,7 @@ class FixtureGrid extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return GridView.builder(
       gridDelegate: new SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: cols),
       itemCount: BlizzardWizzardConfigs.artnetMaxUniverses,

@@ -204,7 +204,37 @@ class NotSelectedChannelType extends StatelessWidget{
   
   Widget build(BuildContext context) {
     return Center(
-      child: Text(type.abv),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: <Widget>[
+          Expanded(
+            flex: 1,
+            child: Center(
+              child: Container(
+                height: 30.0,
+                width: 30.0,
+                decoration: BoxDecoration(
+                  color: Colors.grey,
+                  shape: BoxShape.circle
+                ),
+                child: Center(
+                  child: Text(
+                    type.abv,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 15.0,
+                    )
+                  )
+                )
+              )
+            )
+          ),
+          Expanded(
+            flex: 1,
+            child: Container()
+          ),
+        ],
+      )
     );
   }
 }
@@ -217,26 +247,39 @@ class SelectedChannelType extends StatelessWidget{
   Widget build(BuildContext context) {
     return Center(
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
           Expanded(
             flex: 1,
-            child: Container(),
+            child: Center(
+              child: Container(
+                height: 60.0,
+                width: 60.0,
+                decoration: BoxDecoration(
+                  color: type.color,
+                  shape: BoxShape.circle
+                ),
+                child: Center(
+                  child: Text(
+                    type.abv,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 30.0,
+                    )
+                  )
+                )
+              )
+            )
           ),
           Expanded(
             flex: 1,
-            child: Text(type.abv),
-          ),
-          Expanded(
-            flex: 1,
-            child: Text(type.name),
-          ),
-          Expanded(
-            flex: 1,
-            child: Text(type.message),
-          ),
-          Expanded(
-            flex: 1,
-            child: Container(),
+            child: Center(
+              child: Text(
+                type.message,
+                textAlign: TextAlign.center,
+              )
+            ),
           ),
         ]
       )

@@ -64,7 +64,7 @@ class Channel{
     return false;
   }
 
-  Channel({this.name, this.number, this.segments});
+  Channel({this.name, this.number, this.segments = const<Segment>[]});
 }
 
 class Segment{

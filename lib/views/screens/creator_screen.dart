@@ -137,7 +137,7 @@ class CreatorScreenState extends State<CreatorScreen> {
                       Expanded(
                         flex: 2,
                         child: Text(
-                          (deviceFixtureState == DeviceFixtureGridState.device) ? "Patched Devices" : "Pathced Fixtures",
+                          (deviceFixtureState == DeviceFixtureGridState.device) ? "Patched Devices" : "Patched Fixtures",
                           style: TextStyle(
                             fontSize: 20.0,
                             fontFamily: fontFamily
