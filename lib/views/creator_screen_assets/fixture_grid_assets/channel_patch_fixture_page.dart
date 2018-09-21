@@ -11,6 +11,7 @@ import 'package:blizzard_wizzard/models/mac.dart';
 import 'package:blizzard_wizzard/models/patched_device.dart';
 import 'package:blizzard_wizzard/models/patched_fixture.dart';
 import 'package:blizzard_wizzard/views/creator_screen_assets/fixture_grid_assets/channel_type_picker.dart';
+import 'package:blizzard_wizzard/views/creator_screen_assets/fixture_grid_assets/segment_creator.dart';
 import 'package:blizzard_wizzard/views/fixes/list_view_alert_buttons_dialog.dart';
 
 class ChannelPatchFixturePage extends StatefulWidget {
@@ -125,99 +126,9 @@ class ChannelPatchFixturePageState extends State<ChannelPatchFixturePage> {
         ],
         content: ListView(
           controller: _viewController,
-          reverse: true,
+          reverse: false,
           physics: ClampingScrollPhysics(),
           children: <Widget>[
-            (channelType.canHaveSegments) ? 
-            ListView.builder(
-              primary: false,
-              shrinkWrap: true,
-              itemCount: widget.fixture.profile.first.channels[widget.index].segments.length + 1,
-              itemBuilder: (BuildContext context, int index) {
-                if(index == 0){
-                  return Card(
-                    child: ListTile(
-                      title: Text(
-                        "Segments",
-                        style: TextStyle(
-                          fontSize: 21.0,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      trailing: IconButton(
-                        icon: Icon(
-                          Icons.add,
-                        ),
-                        onPressed: (){
-                          setState(() {
-                            widget.fixture.profile.first.channels[widget.index].segments.add(
-                              Segment(name: "Test", start: 0, end: 1)
-                            );                           
-                          });
-                          _viewController.animateTo(
-                            0.0,
-                            curve: Curves.easeOut,
-                            duration: const Duration(milliseconds: 300),
-                          );
-                        } 
-                      ),
-                    )
-                  );
-                }
-                index--;
-                
-                Segment segment = widget.fixture.profile.first.channels[widget.index].segments[index];
-
-                return Card(
-                  child: ListTile(
-                    leading: Text(
-                      segment.name,
-                      style: TextStyle(
-                        fontSize: 21.0,
-                        color: Theme.of(context).primaryColor
-                      ),
-                    ),
-                    title: Column(
-                      children: <Widget>[
-                        Text(
-                          segment.start.toString(),
-                          textAlign: TextAlign.right,
-                        ),
-                        Text(
-                          segment.end.toString(),
-                          textAlign: TextAlign.right,
-                        )
-                      ]
-                    ),
-                    trailing: IconButton(
-                      icon: Icon(
-                        Icons.remove,
-                      ),
-                      onPressed: (){
-                        setState(() {
-                          widget.fixture.profile.first.channels[widget.index].segments.remove(segment);     
-                        });
-                        _viewController.animateTo(
-                          0.0,
-                          curve: Curves.easeOut,
-                          duration: const Duration(milliseconds: 300),
-                        );
-                      } 
-                    ),
-                  )
-                );
-              }
-            ) :
-            Container(),
-            ChannelTypePicker.integer(
-              initialValue: channelType.index,
-              onChanged: (channelType){
-                setState(() {
-                  _nameController.text = (channelType.needsName) ? "Channel ${widget.index + 1}" : channelType.name;
-                  this.channelType = channelType;   
-                });
-              },
-            ),
             Card(
               child: Center(
                 child: Padding(
@@ -248,6 +159,178 @@ class ChannelPatchFixturePageState extends State<ChannelPatchFixturePage> {
                   ),
                 )
               )
+            ),
+            ChannelTypePicker.integer(
+              initialValue: channelType.index,
+              onChanged: (channelType){
+                setState(() {
+                  _nameController.text = (channelType.needsName) ? "Channel ${widget.index + 1}" : channelType.name;
+                  this.channelType = channelType;   
+                });
+              },
+            ),
+            (channelType.canHaveSegments) ? 
+            ListView.builder(
+              primary: false,
+              shrinkWrap: true,
+              itemCount: widget.fixture.profile.first.channels[widget.index].segments.length + 1,
+              itemBuilder: (BuildContext context, int index) {
+                if(index == 0){
+                  return Card(
+                    child: ListTile(
+                      title: Text(
+                        "Segments",
+                        style: TextStyle(
+                          fontSize: 21.0,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      trailing: IconButton(
+                        icon: Icon(
+                          Icons.add,
+                        ),
+                        onPressed: (){
+                          int segmentIndex = widget.fixture.profile.first.channels[widget.index].segments.length;
+                          int segmentStart = 1;
+
+                          for(int i = 0; i < segmentIndex; i++){
+                            if(widget.fixture.profile.first.channels[widget.index].segments[i].end >= segmentStart){
+                              segmentStart = widget.fixture.profile.first.channels[widget.index].segments[i].end + 1;
+                            }
+                          }                        
+                          showDialog(
+                            context: context,
+                            child: SegmentCreator(
+                              index: segmentIndex,
+                              start: segmentStart,
+                              callback: (segment){
+                                if(segment == null){
+                                  return;
+                                }
+                                setState(() {
+                                  widget.fixture.profile.first.channels[widget.index].segments.add(
+                                    segment
+                                  );                           
+                                });
+                                ScrollPosition scrollPosition = _viewController.position;
+
+                                if (scrollPosition.viewportDimension < scrollPosition.maxScrollExtent) {
+                                    _viewController.animateTo(
+                                    scrollPosition.maxScrollExtent,
+                                    duration: new Duration(milliseconds: 200),
+                                    curve: Curves.easeOut,
+                                  );
+                                }
+                              }
+                            )
+                          );
+                        } 
+                      ),
+                    )
+                  );
+                }
+                index--;
+                
+                Segment segment = widget.fixture.profile.first.channels[widget.index].segments[index];
+
+                return Card(
+                  child: ListTile(
+                    title: Row(
+                      children: <Widget>[
+                        Expanded(
+                          flex: 5,
+                          child: Tooltip(
+                            message: segment.name,
+                            preferBelow: false,
+                            child: Text(
+                              segment.name,
+                              overflow: TextOverflow.ellipsis,
+                              style: TextStyle(
+                                fontSize: 21.0,
+                                color: Theme.of(context).primaryColor
+                              ),
+                            ),
+                          )
+                        ),
+                        Expanded(
+                          flex: 1,
+                          child: Column(
+                            children: <Widget>[
+                              Tooltip(
+                                message: "Start Value",
+                                child: Text(
+                                  segment.start.toString(),
+                                  textAlign: TextAlign.right,
+                                  maxLines: 1,
+                                ),
+                              ),
+                               Tooltip(
+                                message: "End Value",
+                                child: Text(
+                                  segment.end.toString(),
+                                  textAlign: TextAlign.right,
+                                  maxLines: 1,
+                                ),
+                              ),
+                            ]
+                          ),
+                        ),
+                      ]
+                    ),
+                    trailing: IconButton(
+                      icon: Icon(
+                        Icons.remove,
+                      ),
+                      tooltip: "Remove Segment",
+                      onPressed: (){
+                        setState(() {
+                          widget.fixture.profile.first.channels[widget.index].segments.removeAt(index);     
+                        });
+
+                        ScrollPosition scrollPosition = _viewController.position;
+
+                        if (scrollPosition.viewportDimension < scrollPosition.maxScrollExtent) {
+                            _viewController.animateTo(
+                            scrollPosition.maxScrollExtent,
+                            duration: new Duration(milliseconds: 200),
+                            curve: Curves.easeOut,
+                          );
+                        }
+                      } 
+                    ),
+                    onTap: (){
+                      showDialog(
+                        context: context,
+                        child: SegmentCreator(
+                          index: index,
+                          segment: segment,
+                          callback: (newSegment){
+                            if(newSegment == null){
+                              return;
+                            }
+                            setState(() {
+                              widget.fixture.profile.first.channels[widget.index].segments[index] = newSegment;                          
+                            });
+                            ScrollPosition scrollPosition = _viewController.position;
+
+                            if (scrollPosition.viewportDimension < scrollPosition.maxScrollExtent) {
+                                _viewController.animateTo(
+                                scrollPosition.maxScrollExtent,
+                                duration: new Duration(milliseconds: 200),
+                                curve: Curves.easeOut,
+                              );
+                            }
+                          }
+                        )
+                      );
+                    },
+                  )
+                );
+              }
+            ) :
+            Card(
+              elevation: 0.0,
+              child: ListTile()
             ),
           ]
         )

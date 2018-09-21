@@ -68,9 +68,9 @@ class Channel{
 }
 
 class Segment{
-  final String name;
-  final int start;
-  final int end;
+  String name;
+  int start;
+  int end;
   
   Segment({this.name, this.start, this.end});
 }

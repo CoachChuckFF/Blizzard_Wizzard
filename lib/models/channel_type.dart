@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class ChannelTypes{
   static const List<ChannelType> types = [
-    ChannelType("Generic", "The generic dimmer", "G", Colors.blue, true, true),
+    ChannelType("Generic", "The generic dimmer", "P", Colors.blue, true, true),
     ChannelType("Dimmer", "The master dimmer", "D", Colors.black, false, false),
     ChannelType("Red", "The red ranger dimmer", "R", Colors.red, false, false),
     ChannelType("Green", "The green ranger dimmer", "G", Colors.green, false, false),
