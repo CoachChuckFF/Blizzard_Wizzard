@@ -29,6 +29,7 @@ class SegmentCreator extends StatefulWidget {
 class SegmentCreatorState extends State<SegmentCreator> {
   static GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   Key _endKey;
+  Key _startKey;
   Segment _segment;
 
   String _validateName(String name){
@@ -46,7 +47,7 @@ class SegmentCreatorState extends State<SegmentCreator> {
 
     int start = widget.start;
     if(start >= 512){
-      start = 511;
+      start = 510;
     }
 
     if(_segment == null){
@@ -57,7 +58,8 @@ class SegmentCreatorState extends State<SegmentCreator> {
       );
     }
 
-    _endKey = Key("EK${_segment.start}");
+    _endKey = Key("EKZERO");
+    _startKey = Key("SKZERO");
   }
 
   Widget build(BuildContext context) {
@@ -143,16 +145,28 @@ class SegmentCreatorState extends State<SegmentCreator> {
                   Expanded(
                     child: Column(
                       children: <Widget>[
-                        Padding(
-                          padding: EdgeInsets.all(10.0),
-                          child: Text(
-                            "Start",
-                            style: TextStyle(
-                              fontSize: 30.0,
-                              fontWeight: FontWeight.bold,
+                        GestureDetector(
+                          child: Padding(
+                            padding: EdgeInsets.all(10.0),
+                            child: Text(
+                              "Start",
+                              style: TextStyle(
+                                fontSize: 30.0,
+                                fontWeight: FontWeight.bold,
+                              ),
+                              textAlign: TextAlign.center,
                             ),
-                            textAlign: TextAlign.center,
                           ),
+                          onTap: (){
+                            setState(() {
+                              _segment.start = widget.start;
+                              if(_segment.start >= _segment.end){
+                                _segment.end = _segment.start + 1;
+                              }       
+                              _startKey = Key("SKStart");
+                              _endKey = Key("EKStart");     
+                            });
+                          }
                         ),
                         Theme(
                           data: Theme.of(context).copyWith(
@@ -169,6 +183,7 @@ class SegmentCreatorState extends State<SegmentCreator> {
                             )
                           ),
                           child: NumberPicker.integer(
+                            key: _startKey,
                             listViewWidth: double.infinity,
                             itemExtent: 100.0,
                             initialValue: _segment.start,
@@ -177,7 +192,10 @@ class SegmentCreatorState extends State<SegmentCreator> {
                             onChanged: (start){
                             setState(() {
                               _segment.start = start;  
-                              _endKey = Key("EK${_segment.start}");
+                              if(_startKey == Key("SKStart")){
+                                _startKey = Key("SK$start");
+                              }
+                              _endKey = Key("EK$start");
                               if(_segment.start >= _segment.end){
                                 _segment.end = start + 1;
                               }           
@@ -190,16 +208,32 @@ class SegmentCreatorState extends State<SegmentCreator> {
                   Expanded(
                     child: Column(
                       children: <Widget>[
-                        Padding(
-                          padding: EdgeInsets.all(10.0),
-                          child: Text(
-                            "End",
-                            style: TextStyle(
-                              fontSize: 30.0,
-                              fontWeight: FontWeight.bold,
+                        GestureDetector(
+                          child: Padding(
+                            padding: EdgeInsets.all(10.0),
+                            child: Text(
+                              "End",
+                              style: TextStyle(
+                                fontSize: 30.0,
+                                fontWeight: FontWeight.bold,
+                              ),
+                              textAlign: TextAlign.center,
                             ),
-                            textAlign: TextAlign.center,
                           ),
+                          onTap: (){
+                            setState(() {
+                              _segment.end = 512;
+                              _startKey = Key("SKEnd");
+                              _endKey = Key("EKEnd");            
+                            });
+                          },
+                          onDoubleTap: (){
+                            setState(() {
+                              _segment.end = _segment.start + 1;
+                              _startKey = Key("SKStart1");
+                              _endKey = Key("EKStart1");           
+                            });
+                          },
                         ),
                         Theme(
                           data: Theme.of(context).copyWith(
@@ -226,7 +260,10 @@ class SegmentCreatorState extends State<SegmentCreator> {
                             maxValue: 512,
                             onChanged: (end){
                             setState(() {
-                              this._segment.end = end;            
+                              this._segment.end = end;  
+                              if(_endKey == Key("SEKEND")){
+                                _endKey = Key("EK$end");
+                              }          
                             });
                           }),
                         )

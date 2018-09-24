@@ -15,6 +15,8 @@ import 'package:blizzard_wizzard/views/creator_screen_assets/fixture_grid_assets
 import 'package:blizzard_wizzard/views/creator_screen_assets/fixture_grid_assets/library_patch_fixture_page.dart';
 import 'package:blizzard_wizzard/views/creator_screen_assets/fixture_grid_assets/main_patch_fixture_page.dart';
 import 'package:blizzard_wizzard/views/creator_screen_assets/fixture_grid_assets/manufacturer_patch_fixture_page.dart';
+import 'package:blizzard_wizzard/views/creator_screen_assets/fixture_grid_assets/patch_fixture_page.dart';
+import 'package:blizzard_wizzard/views/creator_screen_assets/fixture_grid_assets/verify_patch_fixture_page.dart';
 import 'package:blizzard_wizzard/views/fixes/list_view_alert_dialog.dart';
 
 class PatchFixtureDialog extends StatefulWidget {
@@ -92,6 +94,12 @@ class PatchFixtureDialogState extends State<PatchFixtureDialog> {
       break;
       case PatchFixtureState.firstChannel:
         page = ChannelPatchFixturePage(callback: _callback, fixture: fixture, index: channelIndex, key: channelKey,);
+      break;
+      case PatchFixtureState.verify:
+        page = VerifyPatchFixturePage(callback: _callback, fixture: fixture);
+      break;
+      case PatchFixtureState.patchFromCreate:
+        page = PatchFixturePage(callback: _callback, fixture: fixture, lastPage: PatchFixtureState.verify,);
       break;
     }
 

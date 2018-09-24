@@ -111,8 +111,8 @@ class ChannelPatchFixturePageState extends State<ChannelPatchFixturePage> {
                 widget.fixture.profile.first.channels[widget.index].name = channelType.name;
               }
 
-              if(channelType.canHaveSegments){
-                //Do something
+              if(!channelType.canHaveSegments){
+                widget.fixture.profile.first.channels[widget.index].segments = [];
               }
 
               widget.callback(

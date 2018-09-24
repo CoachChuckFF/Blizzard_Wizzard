@@ -107,7 +107,8 @@ class PatchFixtureState{
   static const int nextChannel = 7;
   static const int prevChannel = 8;
   static const int verify = 9;
-  static const int patch = 10;
+  static const int patchFromCreate = 10;
+  static const int patchFromLibrary = 11;
 }
 
 class DeviceFixtureGridState{

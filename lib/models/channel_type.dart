@@ -25,6 +25,10 @@ class ChannelTypes{
     });
     return (index == -1) ? 0 : index;
   }
+
+  static ChannelType getTypeFromName(String name){
+    return types[getIndexFromName(name)];
+  }
 }
 
 class ChannelType{
