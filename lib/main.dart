@@ -69,6 +69,7 @@ class MyAppState extends State<MyApp> with WidgetsBindingObserver{
     return StoreProvider<AppState>(
       store: widget.store,
       child: MaterialApp(
+        showPerformanceOverlay: false,
         title: widget.title,
         theme: ThemeData(
           primarySwatch: Colors.blue,

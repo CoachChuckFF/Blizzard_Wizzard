@@ -75,7 +75,7 @@ class ChannelPatchFixturePageState extends State<ChannelPatchFixturePage> {
             child: Padding(
               padding: EdgeInsets.all(10.0),
               child: Text(
-                "Configure Channel ${widget.index + 1}",
+                "Configure Channel ${widget.index + 1}/${widget.fixture.profile.first.channels.length}",
                 style: TextStyle(
                   fontSize: 21.0,
                   fontWeight: FontWeight.bold

@@ -1,6 +1,7 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:blizzard_wizzard/models/device.dart';
+import 'package:blizzard_wizzard/models/fixture.dart';
 import 'package:blizzard_wizzard/models/globals.dart';
 
 /*
@@ -14,7 +15,7 @@ class ColorPickerArea extends StatefulWidget{
     this.heightToWidthRatio: .69,
     }
   );
-  final List<Device> devices;
+  final Map<Device, List<Fixture>> devices;
   final double width;
   final double heightToWidthRatio;
 
@@ -38,8 +39,8 @@ class ColorPickerAreaState extends State<ColorPickerArea> {
 
   void _callback(){
     Color color = getCurrentColor();
-    widget.devices.forEach((device){
-      device.fixtures.forEach((fixture) {
+    widget.devices.keys.forEach((device){
+      widget.devices[device].forEach((fixture){
         int redChannel, greenChannel, blueChannel, dimmerChannel;
       
         redChannel = fixture.getCurrentChannels().getChannelOffset("Red");
@@ -59,6 +60,7 @@ class ColorPickerAreaState extends State<ColorPickerArea> {
         if(dimmerChannel != -1){
           device.dmxData.setDmxValue(dimmerChannel + fixture.patchAddress, (color.computeLuminance() * 255).toInt());
         }
+
       });
       tron.server.sendPacket(device.dmxData.udpPacket, device.address);
     });

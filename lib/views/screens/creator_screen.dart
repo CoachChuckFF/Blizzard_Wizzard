@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:blizzard_wizzard/models/app_state.dart';
 import 'package:blizzard_wizzard/models/device.dart';
+import 'package:blizzard_wizzard/models/fixture.dart';
 import 'package:blizzard_wizzard/models/globals.dart';
 import 'package:blizzard_wizzard/models/mac.dart';
 import 'package:blizzard_wizzard/models/patched_device.dart';
@@ -31,31 +32,44 @@ class CreatorScreenState extends State<CreatorScreen> {
   List<Device> _generateDeviceList(){
     List<Device> devices = List<Device>();
 
-    if(deviceFixtureState == DeviceFixtureGridState.device){
-      selectedDevices.forEach((index){
-        if(StoreProvider.of<AppState>(context).state.show.patchedDevices.containsKey(index)){
-          Mac searchMac = StoreProvider.of<AppState>(context).state.show.patchedDevices[index].mac;
-          Device addDev = StoreProvider.of<AppState>(context).state.availableDevices.firstWhere((device){
-            return device.mac == searchMac;
-          }, orElse: (){ return null; });
-          if(addDev != null){
-            devices.add(addDev);
+    print("refresh list");
+
+    selectedDevices.forEach((index){
+      if(StoreProvider.of<AppState>(context).state.show.patchedDevices.containsKey(index)){
+        Mac searchMac = StoreProvider.of<AppState>(context).state.show.patchedDevices[index].mac;
+        Device addDev = StoreProvider.of<AppState>(context).state.availableDevices.firstWhere((device){
+          return device.mac == searchMac;
+        }, orElse: (){ return null; });
+        if(addDev != null){
+          devices.add(addDev);
+        }
+      }
+    });
+
+    return devices;
+  }
+
+  Map<Device, List<Fixture>> _generateDeviceMap(){
+    Map<Device, List<Fixture>> devices = Map<Device, List<Fixture>>();
+
+    print("refresh map");
+
+    selectedFixtures.forEach((index){
+      if(StoreProvider.of<AppState>(context).state.show.patchedFixtures.containsKey(index)){
+        PatchedFixture fixture = StoreProvider.of<AppState>(context).state.show.patchedFixtures[index];
+        Device addDev = StoreProvider.of<AppState>(context).state.availableDevices.firstWhere((device){
+          return device.mac == fixture.mac;
+        }, orElse: (){ return null; });
+        if(addDev != null){
+          if(devices.containsKey(addDev)){
+            devices[addDev].add(fixture.fixture);
+          } else {
+            devices[addDev] = List<Fixture>()..add(fixture.fixture);
           }
         }
-      });
-    } else {
-      selectedFixtures.forEach((index){
-        if(StoreProvider.of<AppState>(context).state.show.patchedFixtures.containsKey(index)){
-          Mac searchMac = StoreProvider.of<AppState>(context).state.show.patchedFixtures[index].mac;
-          Device addDev = StoreProvider.of<AppState>(context).state.availableDevices.firstWhere((device){
-            return device.mac == searchMac;
-          }, orElse: (){ return null; });
-          if(addDev != null){
-            devices.add(addDev);
-          }
-        }
-      });
-    }
+      }
+    });
+
     return devices;
   }
 
@@ -63,14 +77,13 @@ class CreatorScreenState extends State<CreatorScreen> {
   void initState() {
     super.initState();
     configState = LightingConfigState.color;
-    deviceFixtureState = DeviceFixtureGridState.device;
+    deviceFixtureState = DeviceFixtureGridState.fixture;
     selectedDevices = List<int>();
     selectedFixtures = List<int>();
   }
 
   @override
   Widget build(BuildContext context) {
-    List<Device> devices = _generateDeviceList();
 
     return Column(
       children: <Widget>[
@@ -85,20 +98,18 @@ class CreatorScreenState extends State<CreatorScreen> {
                     children: <Widget>[
                       Expanded(
                         child: Tooltip(
-                          message: "Devices",
+                        message: "Fixtures",
                           child: FlatButton(
-                            color: (deviceFixtureState == DeviceFixtureGridState.device) ? Colors.black : Colors.white,
+                            color: (deviceFixtureState == DeviceFixtureGridState.fixture) ? Colors.black : Colors.white,
                             child: Icon(
                               Icons.ac_unit,
-                              color: (deviceFixtureState == DeviceFixtureGridState.device) ? Colors.white : Colors.black,
+                              color: (deviceFixtureState == DeviceFixtureGridState.fixture) ? Colors.white : Colors.black,
                             ), 
                             onPressed: (){
-                              if(deviceFixtureState != DeviceFixtureGridState.device){
+                              if(deviceFixtureState != DeviceFixtureGridState.fixture){
                                 setState(() {
-                                  if(configState == LightingConfigState.channels){
-                                    configState = LightingConfigState.dmx;
-                                  }
-                                  deviceFixtureState = DeviceFixtureGridState.device;
+                                  configState = LightingConfigState.color;
+                                  deviceFixtureState = DeviceFixtureGridState.fixture;
                                 });
                               }
                             },
@@ -107,20 +118,18 @@ class CreatorScreenState extends State<CreatorScreen> {
                       ),
                       Expanded(
                         child: Tooltip(
-                        message: "Fixtures",
+                          message: "Devices",
                           child: FlatButton(
-                            color: (deviceFixtureState == DeviceFixtureGridState.fixture) ? Colors.black : Colors.white,
+                            color: (deviceFixtureState == DeviceFixtureGridState.device) ? Colors.black : Colors.white,
                             child: Icon(
                               Icons.adjust,
-                              color: (deviceFixtureState == DeviceFixtureGridState.fixture) ? Colors.white : Colors.black,
+                              color: (deviceFixtureState == DeviceFixtureGridState.device) ? Colors.white : Colors.black,
                             ), 
                             onPressed: (){
-                              if(deviceFixtureState != DeviceFixtureGridState.fixture){
+                              if(deviceFixtureState != DeviceFixtureGridState.device){
                                 setState(() {
-                                  if(configState == LightingConfigState.dmx){
-                                    configState = LightingConfigState.channels;
-                                  }
-                                  deviceFixtureState = DeviceFixtureGridState.fixture;
+                                  configState = LightingConfigState.dmx;
+                                  deviceFixtureState = DeviceFixtureGridState.device;
                                 });
                               }
                             },
@@ -195,22 +204,32 @@ class CreatorScreenState extends State<CreatorScreen> {
         ),
         Expanded(
           flex: 1,
-          child: SceneManipulatorButtonBar(
-            state: configState,
-            fixtureState: deviceFixtureState,
-            callback: (state){
-              setState(() {
-                configState = state;                
-              });
-            },
+          child: Theme(
+            data: (deviceFixtureState == DeviceFixtureGridState.fixture) ? 
+              ThemeData(primarySwatch: DeviceFixtureGridColor.fixture):
+              ThemeData(primarySwatch: DeviceFixtureGridColor.device),
+            child: SceneManipulatorButtonBar(
+              state: configState,
+              fixtureState: deviceFixtureState,
+              callback: (state){
+                setState(() {
+                  configState = state;                
+                });
+              },
+            ),
           ),
         ),
       Expanded(
           flex: 5,
-          child: SceneManipulatorArea(
+          child: (deviceFixtureState == DeviceFixtureGridState.device) ?
+          SceneManipulatorArea(
             state: configState,
-            devices: devices,  
-          )
+            devices: _generateDeviceList(),  
+          ) : 
+          SceneManipulatorArea(
+            state: configState,
+            deviceMap: _generateDeviceMap(),  
+          ), 
         )
       ],
     );

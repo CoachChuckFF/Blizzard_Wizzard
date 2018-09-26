@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:blizzard_wizzard/models/device.dart';
+import 'package:blizzard_wizzard/models/fixture.dart';
 import 'package:blizzard_wizzard/models/globals.dart';
 
 class ColorProfile{
@@ -17,7 +18,7 @@ class ColorPresets{
     const ColorProfile(Colors.yellow, Colors.yellowAccent, "Empire Yellow"),
     const ColorProfile(Colors.green, Colors.greenAccent, "Money Green"),
     const ColorProfile(Colors.cyan, Colors.cyanAccent, "Joel Blue"),
-    const ColorProfile(Colors.blue, Colors.blueAccent, "Blizzard Blue"),
+    const ColorProfile(Colors.blue, Colors.blueAccent, "Blizzard"),
     const ColorProfile(Colors.indigo, Colors.indigoAccent, "Indi Gogo"),
     const ColorProfile(Colors.purple, Colors.purpleAccent,"People Eater Purple"),
     const ColorProfile(Colors.black, Colors.white, "'Like My Soul' Black"),
@@ -26,7 +27,7 @@ class ColorPresets{
 }
 
 class PresetGrid extends StatefulWidget {
-  List<Device> devices;
+  Map<Device, List<Fixture>> devices;
 
   PresetGrid({@required this.devices});
 
@@ -72,8 +73,8 @@ class PresetGridState extends State<PresetGrid> {
   }
 
   void _updateColor(Color color){
-    widget.devices.forEach((device){
-      device.fixtures.forEach((fixture) {
+    widget.devices.keys.forEach((device){
+      widget.devices[device].forEach((fixture){
         int redChannel, greenChannel, blueChannel, dimmerChannel;
       
         redChannel = fixture.getCurrentChannels().getChannelOffset("Red");

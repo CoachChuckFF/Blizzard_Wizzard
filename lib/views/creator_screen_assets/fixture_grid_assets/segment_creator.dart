@@ -188,7 +188,7 @@ class SegmentCreatorState extends State<SegmentCreator> {
                             itemExtent: 100.0,
                             initialValue: _segment.start,
                             minValue: 1,
-                            maxValue: 510,
+                            maxValue: 253,
                             onChanged: (start){
                             setState(() {
                               _segment.start = start;  

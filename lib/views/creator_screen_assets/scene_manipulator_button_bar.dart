@@ -15,7 +15,9 @@ class SceneManipulatorButtonBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
+
+    return (fixtureState == DeviceFixtureGridState.fixture) ?
+    Card(
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
@@ -51,23 +53,22 @@ class SceneManipulatorButtonBar extends StatelessWidget {
               },
             )
           ),
-          (fixtureState == DeviceFixtureGridState.device) ?
           Expanded(
             child: new FlatButton(
-              color: (state == LightingConfigState.dmx) ?
+              color: (state == LightingConfigState.fx) ?
                 Theme.of(context).primaryColor : Colors.white,
               child: new Text(
-                "DMX",
+                "FX",
                 style: TextStyle(
-                  color: (state == LightingConfigState.dmx) ?
+                  color: (state == LightingConfigState.fx) ?
                   Colors.white : Colors.black,
                 ),
               ),
               onPressed: (){
-                callback(LightingConfigState.dmx);
+                callback(LightingConfigState.fx);
               },
             )
-          ) :
+          ),
           Expanded(
             child: new FlatButton(
               color: (state == LightingConfigState.channels) ?
@@ -81,6 +82,45 @@ class SceneManipulatorButtonBar extends StatelessWidget {
               ),
               onPressed: (){
                 callback(LightingConfigState.channels);
+              },
+            )
+          ),
+        ],
+      ),
+    ) : 
+    Card(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: <Widget>[
+          Expanded(
+            child: new FlatButton(
+              color: (state == LightingConfigState.classic) ?
+                Theme.of(context).primaryColor : Colors.white,
+              child: new Text(
+                "Sliders",
+                style: TextStyle(
+                  color: (state == LightingConfigState.classic) ?
+                  Colors.white : Colors.black,
+                ),
+              ),
+              onPressed: (){
+                callback(LightingConfigState.classic);
+              },
+            )
+          ),
+          Expanded(
+            child: new FlatButton(
+              color: (state == LightingConfigState.dmx) ?
+                Theme.of(context).primaryColor : Colors.white,
+              child: new Text(
+                "DMX",
+                style: TextStyle(
+                  color: (state == LightingConfigState.dmx) ?
+                  Colors.white : Colors.black,
+                ),
+              ),
+              onPressed: (){
+                callback(LightingConfigState.dmx);
               },
             )
           ),

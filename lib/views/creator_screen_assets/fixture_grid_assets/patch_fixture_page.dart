@@ -16,12 +16,11 @@ class PatchFixturePage extends StatefulWidget {
  
   final ValueChanged<int> callback;
   final Fixture fixture;
+  final int slot;
   final int lastPage;
-  final int startAddress;
-  final int fixtureCount;
 
-  PatchFixturePage({this.callback, this.fixture, this.fixtureCount = 1, this.startAddress = 1,
-    this.lastPage});
+
+  PatchFixturePage({this.callback, this.fixture, this.slot, this.lastPage});
 
   @override
   createState() => PatchFixturePageState();
@@ -81,6 +80,16 @@ class PatchFixturePageState extends State<PatchFixturePage> {
           color: Colors.green,
           onTap: (){
             if(_hasDeviceLink){
+              widget.fixture.patchAddress = _startAddress;
+
+              StoreProvider.of<AppState>(context).dispatch(AddPatchFixture(
+                widget.slot,
+                PatchedFixture(
+                  mac: linkDevice.mac,
+                  name: widget.fixture.name,
+                  fixture: widget.fixture,
+                )
+              ));
               Navigator.of(context).pop();
             } else {
                 showDialog(
@@ -118,6 +127,7 @@ class PatchFixturePageState extends State<PatchFixturePage> {
                 (_hasDeviceLink) ? Icons.change_history: Icons.add
               ),
               onTap: (){
+
                 showDialog(
                   context: context,
                   child: StoreConnector<AppState, List<Device>>(
@@ -138,6 +148,7 @@ class PatchFixturePageState extends State<PatchFixturePage> {
                     },
                   ),
                 );
+            
               },
             ),
           ),
@@ -185,7 +196,7 @@ class PatchFixturePageState extends State<PatchFixturePage> {
                           itemExtent: 89.0,
                           initialValue: _startAddress,
                           minValue: 1,
-                          maxValue: 512/*512-(widget.fixture.getCurrentChannels().channels.length * _fixtureCount)*/,
+                          maxValue: 512,
                           onChanged: (start){
                           setState(() {
                             _startAddress = start;
@@ -243,7 +254,7 @@ class PatchFixturePageState extends State<PatchFixturePage> {
                           itemExtent: 89.0,
                           initialValue: _fixtureCount,
                           minValue: 1,
-                          maxValue: ((512-_startAddress)/widget.fixture.getCurrentChannels().channels.length).truncate(),
+                          maxValue: (512/widget.fixture.getCurrentChannels().channels.length).truncate(),
                           onChanged: (count){
                           setState(() {
                             _fixtureCount = count;

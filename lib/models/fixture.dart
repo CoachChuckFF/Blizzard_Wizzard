@@ -1,3 +1,5 @@
+import 'package:collection/collection.dart';
+
 class Fixture{
 
   static int idCount = 1;
@@ -65,6 +67,12 @@ class Channel{
   }
 
   Channel({this.name, this.number, this.segments = const<Segment>[]});
+
+  @override
+  bool operator == (Object other) =>
+      other is Channel &&
+        other.name == name &&
+        other.segments.length == segments.length;
 }
 
 class Segment{
@@ -73,4 +81,11 @@ class Segment{
   int end;
   
   Segment({this.name, this.start, this.end});
+
+  @override
+  bool operator == (Object other) =>
+      other is Segment &&
+        other.name == name &&
+        other.start == start &&
+        other.end == end;
 }

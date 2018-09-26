@@ -20,8 +20,9 @@ import 'package:blizzard_wizzard/views/creator_screen_assets/fixture_grid_assets
 import 'package:blizzard_wizzard/views/fixes/list_view_alert_dialog.dart';
 
 class PatchFixtureDialog extends StatefulWidget {
- 
-  PatchFixtureDialog();
+  final int slot;
+
+  PatchFixtureDialog(this.slot);
 
   @override
   createState() => PatchFixtureDialogState();
@@ -99,7 +100,7 @@ class PatchFixtureDialogState extends State<PatchFixtureDialog> {
         page = VerifyPatchFixturePage(callback: _callback, fixture: fixture);
       break;
       case PatchFixtureState.patchFromCreate:
-        page = PatchFixturePage(callback: _callback, fixture: fixture, lastPage: PatchFixtureState.verify,);
+        page = PatchFixturePage(callback: _callback, fixture: fixture, lastPage: PatchFixtureState.verify, slot: widget.slot);
       break;
     }
 
