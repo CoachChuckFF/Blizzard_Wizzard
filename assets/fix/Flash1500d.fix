@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ofl>
+    <brand short_name="AYRA" name="AYRA" url="" icon="logo_AYRA.png"></brand>
+    <fixture brand="AYRA" short_name="Flash1500d" name="Flash1500d" version="2018-06-01 01:28">
+        <hardware type="_MANUAL_" pan_angle="" tilt_angle="" pan_max_speed="" tilt_max_speed="" beam_type="" beam_zoom_narrow="" beam_zoom_wide="" spot_zoom_narrow="" spot_zoom_wide="" max_strobe="" min_strobe="" rotation_speed="" color_type="" framing_type="_NONE_" dimmer_curve="" light_source="" light_source_power="" color_temp="" lummens="" max_power_consumption="" weight="" height="" widht="" depth="" shape=""></hardware>
+        <mode name="2ch" number_of_channels="2" invert_pan="F" invert_tilt="F" multi_element="F" vmodes="F" virtual_dimmer="F" elements="" icon="mode1_icon.png">
+            <channels>
+                <channel number="1" type="_SHUTTER_" bits="8" priority="LTP" name="Speed" subelement="0"></channel>
+                <channel number="2" type="_INTENSITY_" bits="8" priority="HTP" name="Dimmer" subelement="0">
+                    <segment name="Dimmer" start="0" end="255" from="0" to="100" unit="%"></segment>
+                </channel>
+            </channels>
+        </mode>
+    </fixture>
+</ofl>

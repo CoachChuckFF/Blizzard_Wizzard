@@ -32,8 +32,6 @@ class CreatorScreenState extends State<CreatorScreen> {
   List<Device> _generateDeviceList(){
     List<Device> devices = List<Device>();
 
-    print("refresh list");
-
     selectedDevices.forEach((index){
       if(StoreProvider.of<AppState>(context).state.show.patchedDevices.containsKey(index)){
         Mac searchMac = StoreProvider.of<AppState>(context).state.show.patchedDevices[index].mac;
@@ -51,8 +49,6 @@ class CreatorScreenState extends State<CreatorScreen> {
 
   Map<Device, List<Fixture>> _generateDeviceMap(){
     Map<Device, List<Fixture>> devices = Map<Device, List<Fixture>>();
-
-    print("refresh map");
 
     selectedFixtures.forEach((index){
       if(StoreProvider.of<AppState>(context).state.show.patchedFixtures.containsKey(index)){
@@ -200,7 +196,15 @@ class CreatorScreenState extends State<CreatorScreen> {
         ),
         Expanded(
           flex: 1,
-          child: SceneButtonBar(),
+          child: SceneButtonBar(callback: (command){
+            if(command == 0){
+              StoreProvider.of<AppState>(context).state.availableDevices.forEach((device){
+                device.dmxData.blackout();
+                tron.server.sendPacket(device.dmxData.udpPacket, device.address);
+              });
+              setState(() {});
+            }
+          },),
         ),
         Expanded(
           flex: 1,

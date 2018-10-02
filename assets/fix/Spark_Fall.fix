@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ofl>
+    <brand short_name="Showven" name="Showven" url="http://en.showven.com" icon="logo_Showven.png"></brand>
+    <fixture brand="Showven" short_name="Spark_Fall" name="Sparkular Fall" version="2018-06-14 11:07">
+        <hardware type="_MANUAL_" pan_angle="" tilt_angle="" pan_max_speed="" tilt_max_speed="" beam_type="" beam_zoom_narrow="" beam_zoom_wide="" spot_zoom_narrow="" spot_zoom_wide="" max_strobe="" min_strobe="" rotation_speed="" color_type="" framing_type="_NONE_" dimmer_curve="_LINEAR_" light_source="" light_source_power="" color_temp="" lummens="" max_power_consumption="100" weight="11.5" height="210" widht="310" depth="360" shape=""></hardware>
+        <mode name="2ch" number_of_channels="2" invert_pan="F" invert_tilt="F" multi_element="F" elements="" vmodes="F" virtual_dimmer="F" icon="mode1_icon.png">
+            <channels>
+                <channel number="1" type="_INTENSITY_" bits="8" priority="HTP" name="Fountain" subelement="0">
+                  <segment name="Fountain OFF" start="0" end="15"></segment>
+          				<segment name="Low Level Fountain ON" start="16" end="135"></segment>
+                  <segment name="High Level Fountain ON" start="136" end="255"></segment>
+                </channel>
+                <channel number="2" type="_FUNCT_" bits="8" priority="LTP" name="Control" subelement="0">
+                  <segment name="Pre-heat OFF" start="0" end="10"></segment>
+          				<segment name="No Function" start="11" end="19"></segment>
+                  <segment name="Emergency Stop" start="20" end="40"></segment>
+                  <segment name="No Function" start="41" end="59"></segment>
+          				<segment name="Clear Material" start="60" end="80"></segment>
+                  <segment name="No Function" start="81" end="239"></segment>
+                  <segment name="Pre-heat ON" start="240" end="255"></segment>
+                </channel>
+            </channels>
+            <palettes>
+                <palette type="_GENERAL_">
+                    <set name="_FIND_">
+                      <value channel="_FUNCT_" bits="8" value="255" element_set=""></value>
+            					<value channel="_INTENSITY_" bits="8" value="000" element_set=""></value>
+                    </set>
+                    <set name="_DEFAULT_">
+                      <value channel="_FUNCT_" bits="8" value="000" element_set=""></value>
+            					<value channel="_INTENSITY_" bits="8" value="000" element_set=""></value>
+                    </set>
+                    <set name="_HIGHLIGHT_"></set>
+                    <set name="_LOWLIGHT_"></set>
+                </palette>
+            </palettes>
+        </mode>
+    </fixture>
+</ofl>

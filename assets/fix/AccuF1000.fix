@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ofl>
+    <brand short_name="AmericanDj" name="American DJ" url="http://www.adj.com" icon="logo_AmericanDj.png"></brand>
+    <fixture brand="AmericanDj" short_name="AccuF1000" name="Accu FOG 1000" version="2017-05-15 21:39">
+        <hardware type="_YOKE_" pan_angle="360" tilt_angle="265" pan_max_speed="0" tilt_max_speed="0" beam_type="" beam_zoom_narrow="" beam_zoom_wide="" spot_zoom_narrow="" spot_zoom_wide="" max_strobe="" min_strobe="" rotation_speed="" color_type="" framing_type="_NONE_" dimmer_curve="_LINEAR_" light_source="_LED_" light_source_power="" color_temp="" lummens="" max_power_consumption="1100" weight="13" height="442" widht="345" depth="295" shape=""></hardware>
+        <mode name="7ch" number_of_channels="7" invert_pan="F" invert_tilt="F" multi_element="F" vmodes="F" virtaul_dimmer="F" elements="" icon="mode1_icon.png">
+            <channels>
+                <channel number="1" type="_PAN_" bits="8" priority="LTP" name="Pan" subelement="0"></channel>
+                <channel number="2" type="_TILT_" bits="8" priority="LTP" name="Tilt" subelement="0"></channel>
+                <channel number="3" type="_PTSPEED_" bits="8" priority="LTP" name="PT Speed" subelement="0"></channel>
+                <channel number="4" type="_FX_" bits="8" priority="LTP" name="Pump" subelement="0">
+                    <segment name="Pump OFF" start="0" end="20"></segment>
+                    <segment name="Pump ON" start="21" end="254"></segment>
+                    <segment name="Continuous" start="255" end="255"></segment>
+                </channel>
+                <channel number="5" type="_FUNCT_" bits="8" priority="LTP" name="AutoProg" subelement="0">
+                    <segment name="Normal" start="0" end="39"></segment>
+                    <segment name="Heater ON" start="40" end="59"></segment>
+                    <segment name="Heater OFF" start="60" end="79"></segment>
+                    <segment name="Motor Reset" start="80" end="84"></segment>
+                    <segment name="Scan Reset" start="85" end="87"></segment>
+                    <segment name="No Function" start="88" end="99"></segment>
+                    <segment name="Prog 1" start="100" end="119"></segment>
+                    <segment name="Prog 2" start="120" end="139"></segment>
+                    <segment name="Prog 3" start="140" end="159"></segment>
+                    <segment name="Prog 4" start="160" end="179"></segment>
+                    <segment name="Prog 5" start="180" end="199"></segment>
+                    <segment name="Prog 6" start="200" end="219"></segment>
+                    <segment name="Prog 7" start="220" end="239"></segment>
+                    <segment name="Sound Active" start="240" end="255"></segment>
+                </channel>
+                <channel number="6" type="_FX2_" bits="8" priority="LTP" name="Pump Internal" subelement="0">
+                    <segment name="Normal" start="0" end="3"></segment>
+                    <segment name="10s" start="4" end="10"></segment>
+                    <segment name="11-255s" start="11" end="255"></segment>
+                </channel>
+                <channel number="7" type="_MACRO_" bits="8" priority="LTP" name="FOG Time" subelement="0">
+                    <segment name="0 Seconds" start="0" end="3"></segment>
+                    <segment name="1 Seconds" start="4" end="59"></segment>
+                    <segment name="5 Seconds" start="60" end="119"></segment>
+                    <segment name="10 Seconds" start="120" end="179"></segment>
+                    <segment name="15 Seconds" start="180" end="239"></segment>
+                    <segment name="20 Seconds" start="240" end="255"></segment>
+                </channel>
+            </channels>
+            <palettes>
+                <palette type="_GENERAL_">
+                    <set name="_FIND_">
+                        <value channel="_PAN_" value="255" bits="8" element_set=""></value>
+                        <value channel="_TILT_" value="255" bits="8" element_set=""></value>
+                        <value channel="_FX_" value="255" bits="8" element_set=""></value>
+                    </set>
+                    <set name="_DEFAULT_">
+                        <value channel="_PAN_" value="255" bits="8" element_set=""></value>
+                        <value channel="_TILT_" value="255" bits="8" element_set=""></value>
+                        <value channel="_FX_" value="0" bits="8" element_set=""></value>
+                    </set>
+                    <set name="_HIGHLIGHT_"></set>
+                    <set name="_LOWLIGHT_"></set>
+                </palette>
+            </palettes>
+            <macros>
+                <macro name="_RESET_">
+                    <step wait="7000">
+                        <value channel="_FUNCT_" value="82"></value>
+                    </step>
+                    <step wait="0">
+                        <value channel="_FUNCT_" value="0"></value>
+                    </step>
+                </macro>
+                <macro name="Reset Scan">
+                    <step wait="5500">
+                        <value channel="_FUNCT_" value="86"></value>
+                    </step>
+                    <step wait="0">
+                        <value channel="_FUNCT_" value="0"></value>
+                    </step>
+                </macro>
+            </macros>
+        </mode>
+        <mode name="5ch" ref="7ch" number_of_channels="5" invert_pan="F" invert_tilt="F" multi_element="F" vmodes="F" virtaul_dimmer="F" elements="" icon="mode1_icon.png">
+            <channels>
+                <channel number="4" type="_FX_" bits="8" priority="LTP" name="Pump" subelement="0">
+                    <segment name="Pump OFF" start="0" end="20"></segment>
+                    <segment name="Pump ON" start="21" end="255"></segment>
+                </channel>
+                <channel number="5" type="_FUNCT_" bits="8" priority="LTP" name="AutoProg" subelement="0">
+                    <segment name="Normal" start="0" end="39"></segment>
+                    <segment name="Heater ON" start="40" end="59"></segment>
+                    <segment name="Heater OFF" start="60" end="79"></segment>
+                    <segment name="Motor Reset" start="80" end="99"></segment>
+                    <segment name="Prog 1" start="100" end="119"></segment>
+                    <segment name="Prog 2" start="120" end="139"></segment>
+                    <segment name="Prog 3" start="140" end="159"></segment>
+                    <segment name="Prog 4" start="160" end="179"></segment>
+                    <segment name="Prog 5" start="180" end="199"></segment>
+                    <segment name="Prog 6" start="200" end="219"></segment>
+                    <segment name="Prog 7" start="220" end="239"></segment>
+                    <segment name="Sound Active" start="240" end="255"></segment>
+                </channel>
+            </channels>
+        </mode>
+    </fixture>
+</ofl>

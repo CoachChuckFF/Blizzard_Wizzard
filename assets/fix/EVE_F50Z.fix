@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ofl>
+    <brand short_name="Chauvet" name="Chauvet" url="https://www.chauvetprofessional.eu" icon="logo_Chauvet.png"></brand>
+    <fixture brand="Chauvet" short_name="EVE_F50Z" name="EVE_F50Z" version="2018-03-19 22:49">
+        <hardware type="_MANUAL_" pan_angle="" tilt_angle="" pan_max_speed="" tilt_max_speed="" beam_type="" beam_zoom_narrow="" beam_zoom_wide="" spot_zoom_narrow="" spot_zoom_wide="" max_strobe="28" min_strobe="0" rotation_speed="" color_type="" framing_type="_NONE_" dimmer_curve="_LINEAR_" light_source="_LED_" light_source_power="100" color_temp="" lummens="" max_power_consumption="60" weight="3.9" height="328" widht="212" depth="281" shape=""></hardware>
+        <mode name="3ch" number_of_channels="3" invert_pan="F" invert_tilt="F" multi_element="F" elements="" vmodes="F" virtual_dimmer="F" icon="mode1_icon.png">
+            <channels>
+                <channel number="1" type="_INTENSITY_" bits="8" priority="HTP" name="Intensity" subelement="0"></channel>
+                <channel number="2" type="_SHUTTER_" bits="8" priority="LTP" name="Strobe" subelement="0">
+					<segment name="No Funct" start="0" end="10"></segment>
+                    <segment name="Strobe" start="11" end="255"></segment>
+				</channel>
+                <channel number="3" type="_INTENSITY_CTRL_" bits="8" priority="LTP" name="Speed Mode" subelement="0">
+					<segment name="Dimmer Speed" start="0" end="51"></segment>
+                    <segment name="Dim Speed Off" start="52" end="101"></segment>
+					<segment name="Dim Fast" start="102" end="152"></segment>
+                    <segment name="Dim Medium" start="153" end="203"></segment>
+					<segment name="Dim Slow" start="204" end="255"></segment>
+				</channel>
+            </channels>
+            <palettes>
+                <palette type="_GENERAL_">
+                    <set name="_FIND_">
+                        <value channel="_INTENSITY_" value="255" bits="8" element_set=""></value>
+                        <value channel="_SHUTTER_" value="000" bits="8" element_set=""></value>
+                        <value channel="_INTENSITY_CTRL_" value="000" bits="8" element_set=""></value>
+                    </set>
+                    <set name="_DEFAULT_">
+                         <value channel="_INTENSITY_" value="000" bits="8" element_set=""></value>
+                        <value channel="_SHUTTER_" value="000" bits="8" element_set=""></value>
+                        <value channel="_INTENSITY_CTRL_" value="000" bits="8" element_set=""></value>
+                    </set>
+                    <set name="_HIGHLIGHT_">
+                         <value channel="_INTENSITY_" value="255" bits="8" element_set=""></value>
+                        <value channel="_SHUTTER_" value="000" bits="8" element_set=""></value>
+                        <value channel="_INTENSITY_CTRL_" value="000" bits="8" element_set=""></value>
+                    </set>
+                    <set name="_LOWLIGHT_">
+                         <value channel="_INTENSITY_" value="80" bits="8" element_set=""></value>
+                        <value channel="_SHUTTER_" value="000" bits="8" element_set=""></value>
+                        <value channel="_INTENSITY_CTRL_" value="000" bits="8" element_set=""></value>
+                    </set>
+                </palette>
+            </palettes>
+        </mode>
+		<mode name="1ch" number_of_channels="1" invert_pan="F" invert_tilt="F" multi_element="F" elements="" vmodes="F" virtual_dimmer="F" icon="mode1_icon.png">
+            <channels>
+                <channel number="1" type="_INTENSITY_" bits="8" priority="HTP" name="Intensity" subelement="0"></channel>
+            </channels>
+            <palettes>
+                <palette type="_GENERAL_">
+                    <set name="_FIND_">
+                        <value channel="_INTENSITY_" value="255" bits="8" element_set=""></value>
+                    </set>
+                    <set name="_DEFAULT_">
+                         <value channel="_INTENSITY_" value="000" bits="8" element_set=""></value>
+                    </set>
+                    <set name="_HIGHLIGHT_">
+                         <value channel="_INTENSITY_" value="255" bits="8" element_set=""></value>
+                    </set>
+                    <set name="_LOWLIGHT_">
+                         <value channel="_INTENSITY_" value="80" bits="8" element_set=""></value>
+                    </set>
+                </palette>
+            </palettes>
+        </mode>
+    </fixture>
+</ofl>

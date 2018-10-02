@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ofl>
+    <brand short_name="Cameo" name="Cameo Light" url="http://www.cameolight.com/es/home/" icon="logo_Cameo.png"></brand>
+    <fixture brand="Cameo" short_name="CLNS120" name="CLNS 120" version="2017-06-20 13:06">
+        <hardware type="_YOKE_" pan_angle="540" tilt_angle="230" pan_max_speed="" tilt_max_speed="" beam_type="_SPOT_" beam_zoom_narrow="13" beam_zoom_wide="13" spot_zoom_narrow="" spot_zoom_wide="" max_strobe="" min_strobe="" rotation_speed="" color_type="_WHEEL_" framing_type="_NONE_" dimmer_curve="_LINEAR_" light_source="_LED_" light_source_power="12" color_temp="10000" lummens="2100" max_power_consumption="40" weight="2.6" height="265" widht="159" depth="147" shape=""></hardware>
+        <mode name="5ch" number_of_channels="5" invert_pan="F" invert_tilt="F" multi_element="F" elements="" vmodes="F" virtual_dimmer="F" icon="mode1_icon.png">
+            <channels>
+                <channel number="1" type="_PAN_" bits="8" priority="LTP" name="Pan" subelement="0"></channel>
+                <channel number="2" type="_TILT_" bits="8" priority="LTP" name="Tilt" subelement="0"></channel>
+                <channel number="3" type="_PTSPEED_" bits="16" priority="LTP" name="PT Speed" subelement="0"></channel>
+                <channel number="4" type="_COLOR_" bits="8" priority="LTP" name="Colour" subelement="0">
+                    <segment name="Off" start="0" end="10"></segment>
+                    <segment name="Red" start="11" end="21"></segment>
+                    <segment name="Orange" start="22" end="32"></segment>
+                    <segment name="Yellow" start="33" end="43"></segment>
+                    <segment name="Green" start="44" end="54"></segment>
+                    <segment name="Blue" start="55" end="65"></segment>
+                    <segment name="Cyan" start="66" end="76"></segment>
+                    <segment name="Purple" start="77" end="87"></segment>
+                    <segment name="ColMix" start="88" end="175"></segment>
+                    <segment name="ColRot" start="176" end="255"></segment>
+                </channel>
+                <channel number="5" type="_INTENSITY_" bits="8" priority="HTP" name="Dimmer" subelement="0"></channel>
+            </channels>
+            <palettes>
+                <palette type="_GENERAL_">
+                    <set name="_FIND_">
+                        <value channel="_PAN_" bits="8" value="128" element_set=""></value>
+                        <value channel="_TILT_" bits="8" value="128" element_set=""></value>
+                        <value channel="_INTENSITY_" bits="8" value="255" element_set=""></value>
+                        <value channel="_COLOR_" bits="8" value="000" element_set=""></value>
+                        <value channel="_PTSPEED_" bits="8" value="000" element_set=""></value>
+                    </set>
+                    <set name="_DEFAULT_">
+                        <value channel="_PAN_" bits="8" value="128" element_set=""></value>
+                        <value channel="_TILT_" bits="8" value="128" element_set=""></value>
+                        <value channel="_INTENSITY_" bits="8" value="000" element_set=""></value>
+                        <value channel="_COLOR_" bits="8" value="000" element_set=""></value>
+                        <value channel="_PTSPEED_" bits="8" value="000" element_set=""></value>
+                    </set>
+                    <set name="_HIGHLIGHT_">
+                        <value channel="_PAN_" bits="8" value="" element_set=""></value>
+                        <value channel="_TILT_" bits="8" value="" element_set=""></value>
+                        <value channel="_INTENSITY_" bits="8" value="255" element_set=""></value>
+                        <value channel="_COLOR_" bits="8" value="000" element_set=""></value>
+                        <value channel="_PTSPEED_" bits="8" value="" element_set=""></value>
+                    </set>
+                    <set name="_LOWLIGHT_">
+                        <value channel="_PAN_" bits="8" value="" element_set=""></value>
+                        <value channel="_TILT_" bits="8" value="" element_set=""></value>
+                        <value channel="_INTENSITY_" bits="8" value="255" element_set=""></value>
+                        <value channel="_COLOR_" bits="8" value="60" element_set=""></value>
+                        <value channel="_PTSPEED_" bits="8" value="" element_set=""></value>
+                    </set>
+                </palette>
+            </palettes>
+        </mode>
+        <mode name="9ch" number_of_channels="9" invert_pan="F" invert_tilt="F" multi_element="F" elements="" vmodes="F" virtual_dimmer="F" icon="mode1_icon.png">
+            <channels>
+                <channel number="1" type="_PAN_" bits="8" priority="LTP" name="Pan" subelement="0"></channel>
+                <channel number="2" type="_TILT_" bits="8" priority="LTP" name="Tilt" subelement="0"></channel>
+                <channel number="3" type="_PAN_" bits="16" priority="LTP" name="Pan F" subelement="0"></channel>
+                <channel number="4" type="_TILT_" bits="16" priority="LTP" name="Tilt F" subelement="0"></channel>
+                <channel number="5" type="_PTSPEED_" bits="16" priority="LTP" name="PT Speed" subelement="0"></channel>
+                <channel number="6" type="_COLOR_" bits="8" priority="LTP" name="Colour" subelement="0">
+                    <segment name="Off" start="0" end="10"></segment>
+                    <segment name="Red" start="11" end="21"></segment>
+                    <segment name="Orange" start="22" end="32"></segment>
+                    <segment name="Yellow" start="33" end="43"></segment>
+                    <segment name="Green" start="44" end="54"></segment>
+                    <segment name="Blue" start="55" end="65"></segment>
+                    <segment name="Cyan" start="66" end="76"></segment>
+                    <segment name="Purple" start="77" end="87"></segment>
+                    <segment name="ColMix" start="88" end="175"></segment>
+                    <segment name="ColRot" start="176" end="255"></segment>
+                </channel>
+                <channel number="7" type="_GOBO_" bits="8" priority="LTP" name="Gobo" subelement="0">
+                    <segment name="Open" start="0" end="15"></segment>
+                    <segment name="GoboSelect" start="16" end="124"></segment>
+                    <segment name="Saky" start="125" end="234"></segment>
+                    <segment name="Open" start="235" end="249"></segment>
+                    <segment name="Rot" start="250" end="255"></segment>
+                </channel>
+                <channel number="8" type="_INTENSITY_" bits="8" priority="HTP" name="Dimmer" subelement="0"></channel>
+                <channel number="9" type="_SHUTTER_" bits="8" priority="LTP" name="Strobe" subelement="0">
+                    <segment name="Open" start="0" end="9"></segment>
+                    <segment name="Strobe S-F" start="10" end="255"></segment>
+                </channel>
+            </channels>
+            <palettes>
+                <palette type="_COLOR_">
+                    <set name="white" color="#ffffff">
+                        <value channel="_COLOR_" value="0"></value>
+                    </set>
+                    <set name="red" color="#ff0000">
+                        <value channel="_COLOR_" value="15"></value>
+                    </set>
+                    <set name="green" color="#00ff00">
+                        <value channel="_COLOR_" value="50"></value>
+                    </set>
+                    <set name="blue" color="#0000ff">
+                        <value channel="_COLOR_" value="60"></value>
+                    </set>
+                    <set name="yellow" color="#ffff00">
+                        <value channel="_COLOR_" value="38"></value>
+                    </set>
+                    <set name="cyan" color="#00ffff">
+                        <value channel="_COLOR_" value="70"></value>
+                    </set>
+                    <set name="purple" color="#a020f0">
+                        <value channel="_COLOR_" value="82"></value>
+                    </set>
+                    <set name="orange" color="#ffa500">
+                        <value channel="_COLOR_" value="27"></value>
+                    </set>
+                </palette>
+                <palette type="_GENERAL_">
+                    <set name="_FIND_">
+                        <value channel="_PAN_" bits="8" value="128" element_set=""></value>
+                        <value channel="_PAN_" bits="16" value="128" element_set=""></value>
+                        <value channel="_TILT_" bits="8" value="128" element_set=""></value>
+                        <value channel="_TILT_" bits="16" value="128" element_set=""></value>
+                        <value channel="_SHUTTER_" bits="8" value="000" element_set=""></value>
+                        <value channel="_INTENSITY_" bits="8" value="255" element_set=""></value>
+                        <value channel="_COLOR_" bits="8" value="000" element_set=""></value>
+                        <value channel="_GOBO_" bits="8" value="000" element_set=""></value>
+                    </set>
+                    <set name="_DEFAULT_">
+                        <value channel="_PAN_" bits="8" value="128" element_set=""></value>
+                        <value channel="_PAN_" bits="16" value="000" element_set=""></value>
+                        <value channel="_TILT_" bits="8" value="128" element_set=""></value>
+                        <value channel="_TILT_" bits="16" value="000" element_set=""></value>
+                        <value channel="_SHUTTER_" bits="8" value="000" element_set=""></value>
+                        <value channel="_INTENSITY_" bits="8" value="000" element_set=""></value>
+                        <value channel="_COLOR_" bits="8" value="000" element_set=""></value>
+                        <value channel="_GOBO_" bits="8" value="000" element_set=""></value>
+                    </set>
+                    <set name="_HIGHLIGHT_">
+                        <value channel="_PAN_" bits="8" value="" element_set=""></value>
+                        <value channel="_PAN_" bits="16" value="" element_set=""></value>
+                        <value channel="_TILT_" bits="8" value="" element_set=""></value>
+                        <value channel="_TILT_" bits="16" value="" element_set=""></value>
+                        <value channel="_SHUTTER_" bits="8" value="255" element_set=""></value>
+                        <value channel="_INTENSITY_" bits="8" value="255" element_set=""></value>
+                        <value channel="_COLOR_" bits="8" value="000" element_set=""></value>
+                        <value channel="_GOBO_" bits="8" value="000" element_set=""></value>
+                    </set>
+                    <set name="_LOWLIGHT_">
+                        <value channel="_PAN_" bits="8" value="" element_set=""></value>
+                        <value channel="_PAN_" bits="16" value="" element_set=""></value>
+                        <value channel="_TILT_" bits="8" value="" element_set=""></value>
+                        <value channel="_TILT_" bits="16" value="" element_set=""></value>
+                        <value channel="_SHUTTER_" bits="8" value="" element_set=""></value>
+                        <value channel="_INTENSITY_" bits="8" value="255" element_set=""></value>
+                        <value channel="_COLOR_" bits="8" value="85" element_set=""></value>
+                        <value channel="_GOBO_" bits="8" value="000" element_set=""></value>
+                    </set>
+                </palette>
+            </palettes>
+        </mode>
+        <mode name="11ch" ref="9ch" number_of_channels="11" invert_pan="F" invert_tilt="F" multi_element="F" elements="" vmodes="F" virtual_dimmer="F" icon="mode1_icon.png">
+            <channels>
+                <channel number="1" type="_PAN_" bits="8" priority="LTP" name="Pan" subelement="0"></channel>
+                <channel number="2" type="_TILT_" bits="8" priority="LTP" name="Tilt" subelement="0"></channel>
+                <channel number="3" type="_PAN_" bits="16" priority="LTP" name="Pan F" subelement="0"></channel>
+                <channel number="4" type="_TILT_" bits="16" priority="LTP" name="Tilt F" subelement="0"></channel>
+                <channel number="5" type="_PTSPEED_" bits="16" priority="LTP" name="PT Speed" subelement="0"></channel>
+                <channel number="6" type="_COLOR_" bits="8" priority="LTP" name="Colour" subelement="0">
+                    <segment name="Off" start="0" end="10"></segment>
+                    <segment name="Red" start="11" end="21"></segment>
+                    <segment name="Orange" start="22" end="32"></segment>
+                    <segment name="Yellow" start="33" end="43"></segment>
+                    <segment name="Green" start="44" end="54"></segment>
+                    <segment name="Blue" start="55" end="65"></segment>
+                    <segment name="Cyan" start="66" end="76"></segment>
+                    <segment name="Purple" start="77" end="87"></segment>
+                    <segment name="ColMix" start="88" end="175"></segment>
+                    <segment name="ColRot" start="176" end="255"></segment>
+                </channel>
+                <channel number="7" type="_GOBO_" bits="8" priority="LTP" name="Gobo" subelement="0">
+                    <segment name="Open" start="0" end="15"></segment>
+                    <segment name="GoboSelect" start="16" end="124"></segment>
+                    <segment name="Saky" start="125" end="234"></segment>
+                    <segment name="Open" start="235" end="249"></segment>
+                    <segment name="Rot" start="250" end="255"></segment>
+                </channel>
+                <channel number="8" type="_INTENSITY_" bits="8" priority="HTP" name="Dimmer" subelement="0"></channel>
+                <channel number="9" type="_SHUTTER_" bits="8" priority="LTP" name="Strobe" subelement="0">
+                    <segment name="Open" start="0" end="9"></segment>
+                    <segment name="Strobe S-F" start="10" end="255"></segment>
+                </channel>
+                <channel number="10" type="_MACRO_" bits="8" priority="LTP" name="Colour" subelement="0">
+                    <segment name="Ctrl 1-9" start="0" end="29"></segment>
+                    <segment name="Show 1" start="30" end="55"></segment>
+                    <segment name="Show 2" start="56" end="81"></segment>
+                    <segment name="Show 3" start="82" end="107"></segment>
+                    <segment name="Show 4" start="108" end="133"></segment>
+                    <segment name="Show 5" start="134" end="159"></segment>
+                    <segment name="Show 6" start="160" end="185"></segment>
+                    <segment name="Show 7" start="186" end="211"></segment>
+                    <segment name="Sound Mode" start="212" end="237"></segment>
+                    <segment name="Reset" start="238" end="250"></segment>
+                    <segment name="Sync" start="251" end="255"></segment>
+                </channel>
+                <channel number="11" type="_MACRO_CTRL_" bits="8" priority="HTP" name="Dimmer" subelement="0"></channel>
+            </channels>
+            <macros>
+                <macro name="_RESET_">
+                    <step wait="7000">
+                        <value channel="_MACRO_" value="245"></value>
+                    </step>
+                    <step wait="0">
+                        <value channel="_FUNCT_" value="0"></value>
+                    </step>
+                </macro>
+            </macros>
+        </mode>
+    </fixture>
+</ofl>

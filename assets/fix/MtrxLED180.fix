@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ofl>
+    <brand short_name="Mark" name="Mark Pro" url="http://markpro.es" icon="logo_Mark.png"></brand>
+    <fixture brand="Mark" short_name="MtrxLED180" name="MatrixLED180" version="2018-05-28 01:14">
+        <hardware type="_MANUAL_" pan_angle="" tilt_angle="" pan_max_speed="" tilt_max_speed="" beam_type="" beam_zoom_narrow="" beam_zoom_wide="" spot_zoom_narrow="" spot_zoom_wide="" max_strobe="" min_strobe="" rotation_speed="" color_type="" framing_type="_NONE_" dimmer_curve="" light_source="_LASER_" light_source_power="36x3" color_temp="" lummens="" max_power_consumption="130" weight="7.2" height="500" widht="500" depth="80" shape=""></hardware>
+        <mode name="5ch" number_of_channels="5" invert_pan="F" invert_tilt="F" multi_element="F" elements="" vmodes="F" virtual_dimmer="F" icon="mode1_icon.png">
+            <channels>
+                <channel number="1" type="_INTENSITY_" bits="8" priority="HTP" name="Brightness" subelement="0"></channel>
+                <channel number="2" type="_SHUTTER_" bits="8" priority="LTP" name="Function" subelement="0">
+                  <segment name="LED Turn ON" start="0" end="9"></segment>
+                  <segment name="Strobe S-F" start="10" end="119"></segment>
+                  <segment name="LED Turn ON" start="120" end="139"></segment>
+                  <segment name="Pulse Effect" start="140" end="239"></segment>
+                  <segment name="LED Turn ON" start="240" end="255"></segment>
+                </channel>
+                <channel number="3" type="_BEAMFX_" bits="8" priority="LTP" name="Chase Effect" subelement="0">
+                  <segment name="LED Turn ON" start="0" end="1"></segment>
+                  <segment name="Four Values" start="2" end="153"></segment>
+                  <segment name="Chase 1" start="154" end="157"></segment>
+                  <segment name="Chase 2" start="158" end="161"></segment>
+                  <segment name="Chase 3" start="162" end="165"></segment>
+                  <segment name="Chase 4" start="166" end="169"></segment>
+                  <segment name="Chase 5" start="170" end="173"></segment>
+                  <segment name="Chase 6" start="174" end="177"></segment>
+                  <segment name="Chase 7" start="178" end="181"></segment>
+                  <segment name="Chase 8" start="182" end="185"></segment>
+                  <segment name="Chase 9" start="186" end="189"></segment>
+                  <segment name="Chase 10" start="190" end="193"></segment>
+                  <segment name="Chase 11" start="194" end="197"></segment>
+                  <segment name="Chase 12" start="198" end="201"></segment>
+                  <segment name="Chase 13" start="202" end="205"></segment>
+                  <segment name="Chase 14" start="206" end="209"></segment>
+                  <segment name="Chase 15" start="210" end="213"></segment>
+                  <segment name="Chase 16" start="214" end="217"></segment>
+                  <segment name="Chase 17" start="218" end="221"></segment>
+                  <segment name="Chase 18" start="222" end="225"></segment>
+                  <segment name="Chase 19" start="226" end="229"></segment>
+                  <segment name="Chase 20" start="230" end="233"></segment>
+                  <segment name="Chase 21" start="234" end="237"></segment>
+                  <segment name="Chase 22" start="238" end="241"></segment>
+                  <segment name="Chase 23" start="242" end="245"></segment>
+                  <segment name="Chase 24" start="246" end="249"></segment>
+                  <segment name="Chase 25" start="250" end="255"></segment>
+                </channel>
+                <channel number="4" type="_BEAMFX_CTRL_" bits="8" priority="LTP" name="Chase Speed" subelement="0">
+                  <segment name="Slow to Fast CCW" start="0" end="125"></segment>
+                  <segment name="Stop" start="126" end="130"></segment>
+                  <segment name="Slow to Fast CW" start="131" end="255"></segment>
+                </channel>
+                <channel number="5" type="_BEAMFX2_" bits="8" priority="LTP" name="Chase Step" subelement="0"></channel>
+            </channels>
+            <palettes>
+                <palette type="_GENERAL_">
+                    <set name="_FIND_">
+                        <value channel="_INTENSITY_" value="255" bits="8" element_set=""></value>
+                        <value channel="_SHUTTER_" value="255" bits="8" element_set=""></value>
+                        <value channel="_BEAMFX_" value="000" bits="8" element_set=""></value>
+                        <value channel="_BEAMFX_CTRL_" value="000" bits="8" element_set=""></value>
+                        <value channel="_BEAMFX2_" value="000" bits="8" element_set=""></value>
+                    </set>
+                    <set name="_DEFAULT_">
+                      <value channel="_INTENSITY_" value="000" bits="8" element_set=""></value>
+                      <value channel="_SHUTTER_" value="255" bits="8" element_set=""></value>
+                      <value channel="_BEAMFX_" value="000" bits="8" element_set=""></value>
+                      <value channel="_BEAMFX_CTRL_" value="000" bits="8" element_set=""></value>
+                      <value channel="_BEAMFX2_" value="000" bits="8" element_set=""></value>
+                    </set>
+                    <set name="_HIGHLIGHT_"></set>
+                    <set name="_LOWLIGHT_"></set>
+                </palette>
+            </palettes>
+        </mode>
+    </fixture>
+</ofl>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ofl>
+    <brand short_name="Desisti" name="Desisti" url="http://www.desisti.it/" icon="logo_Desisti.png"></brand>
+    <fixture brand="Desisti" short_name="DELux4CYC" name="DE LUX 4 CYC" version="2017-09-13 14:58">
+        <hardware type="_MANUAL_" pan_angle="" tilt_angle="" pan_max_speed="" tilt_max_speed="" beam_type="" beam_zoom_narrow="" beam_zoom_wide="" spot_zoom_narrow="" spot_zoom_wide="" max_strobe="" min_strobe="" rotation_speed="" color_type="_W_" framing_type="_NONE_" dimmer_curve="_LINEAR_" light_source="_FLUORESCENT_" light_source_power="110" color_temp="" lummens="" max_power_consumption="" weight="5,5" height="323" widht="700" depth="160" shape=""></hardware>
+        <mode name="8D(1ch)" number_of_channels="1" invert_pan="F" invert_tilt="F" multi_element="F" elements="" vmodes="F" virtual_dimmer="F" icon="mode1_icon.png">
+            <channels>
+                <channel number="1" type="_INTENSITY_" bits="8" priority="HTP" name="Dimmer" subelement="0"></channel>
+            </channels>
+            <palettes>
+                <palette type="_GENERAL_">
+                    <set name="_FIND_">
+                        <value channel="_INTENSITY_" bits="8" value="255" element_set=""></value>
+                    </set>
+                    <set name="_DEFAULT_">
+                        <value channel="_INTENSITY_" bits="8" value="000" element_set=""></value>
+                    </set>
+                    <set name="_HIGHLIGHT_">
+                        <value channel="_INTENSITY_" bits="8" value="255" element_set=""></value>
+                    </set>
+                    <set name="_LOWLIGHT_">
+                        <value channel="_INTENSITY_" bits="8" value="127" element_set=""></value>
+                    </set>
+                </palette>
+            </palettes>
+        </mode>
+    </fixture>
+</ofl>

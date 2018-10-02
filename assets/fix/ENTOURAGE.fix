@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ofl>
+    <brand short_name="AmericanDj" name="American DJ" url="http://www.adj.com" icon="logo_AmericanDj.png"></brand>
+    <fixture brand="AmericanDj" short_name="ENTOURAGE" name="ENTOURAGE" version="2018-06-25 13:17">
+        <hardware type="_MANUAL_" pan_angle="0" tilt_angle="0" pan_max_speed="0" tilt_max_speed="0" beam_type="" beam_zoom_narrow="" beam_zoom_wide="" spot_zoom_narrow="" spot_zoom_wide="" max_strobe="" min_strobe="" rotation_speed="" color_type="" framing_type="_NONE_" dimmer_curve="_LINEAR_" light_source="" light_source_power="" color_temp="" lummens="" max_power_consumption="" weight="" height="" widht="" depth="" shape=""></hardware>
+        <mode name="1ch" number_of_channels="1" invert_pan="F" invert_tilt="F" multi_element="F" vmodes="F" virtaul_dimmer="F" elements="" icon="mode1_icon.png">
+            <channels>
+                <channel number="1" type="_INTENSITY_" bits="8" priority="HTP" name="Fog" subelement="0">
+                    <segment name="0% Output Volume" start="0" end="4"></segment>
+                    <segment name="Output Volume" start="5" end="255"></segment>
+                </channel>
+            </channels>
+            <palettes>
+                <palette type="_GENERAL_">
+                    <set name="_FIND_">
+                        <value channel="_INTENSITY_" value="128" bits="8" element_set=""></value>
+                    </set>
+                    <set name="_DEFAULT_">
+                        <value channel="_INTENSITY_" value="000" bits="8" element_set=""></value>
+                    </set>
+                    <set name="_HIGHLIGHT_"></set>
+                    <set name="_LOWLIGHT_"></set>
+                </palette>
+            </palettes>
+        </mode>
+        <mode name="2ch" number_of_channels="2" invert_pan="F" invert_tilt="F" multi_element="F" vmodes="F" virtaul_dimmer="F" elements="" icon="mode1_icon.png">
+            <channels>
+                <channel number="1" type="_INTENSITY_" bits="8" priority="HTP" name="Fog" subelement="0">
+                    <segment name="0% Output Volume" start="0" end="4"></segment>
+                    <segment name="Output Volume" start="5" end="255"></segment>
+                </channel>
+                <channel number="2" type="_INTENSITY2_" bits="8" priority="HTP" name="Fan Speed" subelement="0">
+                    <segment name="5% Fan Speed" start="0" end="15"></segment>
+                    <segment name="Fan Speed" start="16" end="255" from="6" to="100" unit="%"></segment>
+                </channel>
+            </channels>
+            <palettes>
+                <palette type="_GENERAL_">
+                    <set name="_FIND_">
+                        <value channel="_INTENSITY_" value="128" bits="8" element_set=""></value>
+                        <value channel="_INTENSITY2_" value="128" bits="8" element_set=""></value>
+                    </set>
+                    <set name="_DEFAULT_">
+                        <value channel="_INTENSITY_" value="000" bits="8" element_set=""></value>
+                        <value channel="_INTENSITY2_" value="000" bits="8" element_set=""></value>
+                    </set>
+                    <set name="_HIGHLIGHT_"></set>
+                    <set name="_LOWLIGHT_"></set>
+                </palette>
+            </palettes>
+        </mode>
+        <mode name="4ch" number_of_channels="4" invert_pan="F" invert_tilt="F" multi_element="F" vmodes="F" virtaul_dimmer="F" elements="" icon="mode1_icon.png">
+            <channels>
+                <channel number="1" type="_INTENSITY_" bits="8" priority="HTP" name="Fog" subelement="0">
+                    <segment name="0% Output Volume" start="0" end="4"></segment>
+                    <segment name="Output Volume" start="5" end="255"></segment>
+                </channel>
+                <channel number="2" type="_INTENSITY2_" bits="8" priority="HTP" name="Fan Speed" subelement="0">
+                    <segment name="5% Fan Speed" start="0" end="15"></segment>
+                    <segment name="Fan Speed" start="16" end="255" from="6" to="100" unit="%"></segment>
+                </channel>
+                <channel number="3" type="_SHUTTER_" bits="8" priority="LTP" name="Duration" subelement="0">
+                    <segment name="3 Seconds" start="0" end="7"></segment>
+                    <segment name="Duration" start="8" end="255" from="3" to="250" unit="sec"></segment>
+                </channel>
+                <channel number="4" type="_SHUTTER_CTRL_" bits="8" priority="LTP" name="Interval" subelement="0">
+                    <segment name="0 Seconds" start="0" end="9"></segment>
+                    <segment name="Interval" start="10" end="255" from="5" to="250" unit="sec"></segment>
+                </channel>
+            </channels>
+            <palettes>
+                <palette type="_GENERAL_">
+                    <set name="_FIND_">
+                        <value channel="_INTENSITY_" value="128" bits="8" element_set=""></value>
+                        <value channel="_INTENSITY2_" value="128" bits="8" element_set=""></value>
+                        <value channel="_SHUTTER_" value="000" bits="8" element_set=""></value>
+                        <value channel="_SHUTTER_CTRL_" value="000" bits="8" element_set=""></value>
+                    </set>
+                    <set name="_DEFAULT_">
+                        <value channel="_INTENSITY_" value="000" bits="8" element_set=""></value>
+                        <value channel="_INTENSITY2_" value="000" bits="8" element_set=""></value>
+                        <value channel="_SHUTTER_" value="000" bits="8" element_set=""></value>
+                        <value channel="_SHUTTER_CTRL_" value="000" bits="8" element_set=""></value>
+                    </set>
+                    <set name="_HIGHLIGHT_"></set>
+                    <set name="_LOWLIGHT_"></set>
+                </palette>
+            </palettes>
+        </mode>
+    </fixture>
+</ofl>

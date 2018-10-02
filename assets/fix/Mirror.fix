@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ofl>
+    <brand short_name="ChromaQ" name="Chroma-Q" url="http://www.chroma-q.com" icon="logo_ChromaQ.png"></brand>
+    <fixture brand="ChromaQ" short_name="Mirror" name="Mirror" version="2017-09-06 00:19">
+        <hardware type="" pan_angle="" tilt_angle="" pan_max_speed="" tilt_max_speed="" beam_type="" beam_zoom_narrow="" beam_zoom_wide="" spot_zoom_narrow="" spot_zoom_wide="" max_strobe="" min_strobe="" rotation_speed="" color_type="" framing_type="_NONE_" dimmer_curve="" light_source="" light_source_power="" color_temp="" lummens="" max_power_consumption="" weight="1.6" height="228" widht="260" depth="266" shape=""></hardware>
+        <mode name="M1(2ch)" number_of_channels="2" invert_pan="F" invert_tilt="F" multi_element="F" elements="" vmodes="F" virtual_dimmer="F" icon="mode1_icon.png">
+            <channels>
+                <channel number="1" type="_PAN _" bits="8" priority="LTP" name="Pan" subelement="0"></channel>
+                <channel number="2" type="_TILT_" bits="8" priority="LTP" name="Tilt" subelement="0"></channel>
+            </channels>
+            <palettes>
+                <palette type="_GENERAL_">
+                    <set name="_FIND_">
+                        <value channel="_PAN_" value="128" bits="8" element_set=""></value>
+                        <value channel="_TILT_" value="128" bits="8" element_set=""></value>
+                    </set>
+                    <set name="_DEFAULT_">
+                        <value channel="_PAN_" value="000" bits="8" element_set=""></value>
+                        <value channel="_TILT_" value="000" bits="8" element_set=""></value>
+                    </set>
+                    <set name="_HIGHLIGHT_">
+                        <value channel="_PAN_" value="" bits="8" element_set=""></value>
+                        <value channel="_TILT_" value="" bits="8" element_set=""></value>
+                    </set>
+                    <set name="_LOWLIGHT_">
+                        <value channel="_PAN_" value="" bits="8" element_set=""></value>
+                        <value channel="_TILT_" value="" bits="8" element_set=""></value>
+                    </set>
+                </palette>
+            </palettes>
+        </mode>
+        <mode name="M2(4ch)" number_of_channels="4" invert_pan="F" invert_tilt="F" multi_element="F" elements="" vmodes="F" virtual_dimmer="F" icon="mode1_icon.png">
+            <channels>
+                <channel number="1" type="_PAN _" bits="8" priority="LTP" name="Pan" subelement="0"></channel>
+                <channel number="2" type="_PAN _" bits="16" priority="LTP" name="Pan F" subelement="0"></channel>
+                <channel number="3" type="_TILT_" bits="8" priority="LTP" name="Tilt" subelement="0"></channel>
+                <channel number="4" type="_TILT_" bits="16" priority="LTP" name="Tilt F" subelement="0"></channel>
+            </channels>
+            <palettes>
+                <palette type="_GENERAL_">
+                    <set name="_FIND_">
+                        <value channel="_PAN_" value="128" bits="8" element_set=""></value>
+                        <value channel="_PAN_" value="000" bits="16" element_set=""></value>
+                        <value channel="_TILT_" value="128" bits="8" element_set=""></value>
+                        <value channel="_TILT_" value="000" bits="16" element_set=""></value>
+                    </set>
+                    <set name="_DEFAULT_">
+                        <value channel="_PAN_" value="000" bits="8" element_set=""></value>
+                        <value channel="_PAN_" value="000" bits="16" element_set=""></value>
+                        <value channel="_TILT_" value="000" bits="8" element_set=""></value>
+                        <value channel="_TILT_" value="000" bits="16" element_set=""></value>
+                    </set>
+                    <set name="_HIGHLIGHT_">
+                        <value channel="_PAN_" value="" bits="8" element_set=""></value>
+                        <value channel="_PAN_" value="" bits="16" element_set=""></value>
+                        <value channel="_TILT_" value="" bits="8" element_set=""></value>
+                        <value channel="_TILT_" value="" bits="16" element_set=""></value>
+                    </set>
+                    <set name="_LOWLIGHT_">
+                        <value channel="_PAN_" value="" bits="8" element_set=""></value>
+                        <value channel="_PAN_" value="" bits="16" element_set=""></value>
+                        <value channel="_TILT_" value="" bits="8" element_set=""></value>
+                        <value channel="_TILT_" value="" bits="16" element_set=""></value>
+                    </set>
+                </palette>
+            </palettes>
+        </mode>
+    </fixture>
+</ofl>

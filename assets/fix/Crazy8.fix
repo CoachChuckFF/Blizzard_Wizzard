@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ofl>
+    <brand short_name="AmericanDj" name="American DJ" url="http://www.adj.com" icon="logo_AmericanDj.png"></brand>
+    <fixture brand="AmericanDj" short_name="Crazy8" name="Crazy 8" version="2017-05-18 12:21">
+        <hardware type="_YOKE_" pan_angle="540" tilt_angle="220" pan_max_speed="0" tilt_max_speed="0" beam_type="_BEAM_" beam_zoom_narrow="1" beam_zoom_wide="3" spot_zoom_narrow="" spot_zoom_wide="" zoom_wide="11" zoom_narrow="4" max_strobe="20" min_strobe="1" rotation_speed="" color_type="_RGBW_" framing_type="_NONE_" dimmer_curve="_LINEAR_" light_source="_LED_" light_source_power="64" color_temp="" lummens="" max_power_consumption="90" weight="7.8" height="420" widht="415" depth="370" shape=""></hardware>
+        <mode name="1ch" number_of_channels="1" invert_pan="F" invert_tilt="F" multi_element="F" vmodes="F" virtaul_dimmer="F" elements="" icon="mode1_icon.png">
+            <channels>
+                <channel number="1" type="_FX_" bits="8" priority="LTP" name="Effects" subelement="0">
+                    <segment name="BlackOUT" start="0" end="7"></segment>
+                    <segment name="Show 1" start="8" end="69"></segment>
+                    <segment name="Show 2" start="70" end="131"></segment>
+                    <segment name="Show 3" start="132" end="193"></segment>
+                    <segment name="Show 4" start="194" end="255"></segment>
+                </channel>
+            </channels>
+        </mode>
+        <mode name="9ch" number_of_channels="9" invert_pan="F" invert_tilt="F" multi_element="T" vmodes="F" virtaul_dimmer="F" elements="" icon="mode1_icon.png">
+            <channels>
+                <channel number="1" type="_PAN_" bits="8" priority="LTP" name="Pan" subelement="0"></channel>
+                <channel number="2" type="_TILT_" bits="8" priority="LTP" name="Tilt 1" subelement="1"></channel>
+                <channel number="3" type="_TILT_" bits="8" priority="LTP" name="Tilt 2" subelement="2"></channel>
+                <channel number="4" type="_SHUTTER_" bits="8" priority="LTP" name="Shutter" subelement="0">
+                    <segment name="Open" start="0" end="7"></segment>
+                    <segment name="Strobe S-F" start="8" end="131"></segment>
+                    <segment name="Open" start="132" end="139"></segment>
+                    <segment name="Slow Open" start="140" end="181"></segment>
+                    <segment name="Open" start="182" end="189"></segment>
+                    <segment name="Fast Open" start="190" end="231"></segment>
+                    <segment name="Open" start="232" end="239"></segment>
+                    <segment name="Sound Active" start="240" end="247"></segment>
+                    <segment name="Open" start="248" end="255"></segment>
+                </channel>
+                <channel number="5" type="_INTENSITY_" bits="8" priority="HTP" name="Intensity" subelement="0"></channel>
+                <channel number="6" type="_FX_" bits="8" priority="LTP" name="Chases" subelement="0">
+                    <segment name="OFF" start="0" end="7"></segment>
+                    <segment name="Macro 1" start="8" end="22"></segment>
+                    <segment name="Macro 2" start="23" end="37"></segment>
+                    <segment name="Macro 3" start="38" end="52"></segment>
+                    <segment name="Macro 4" start="53" end="67"></segment>
+                    <segment name="Macro 5" start="68" end="82"></segment>
+                    <segment name="Macro 6" start="83" end="97"></segment>
+                    <segment name="Macro 7" start="98" end="112"></segment>
+                    <segment name="Macro 8" start="113" end="127"></segment>
+                    <segment name="Macro 9" start="128" end="142"></segment>
+                    <segment name="Macro 10" start="143" end="157"></segment>
+                    <segment name="Macro 11" start="158" end="172"></segment>
+                    <segment name="Macro 12" start="173" end="187"></segment>
+                    <segment name="Macro 13" start="188" end="202"></segment>
+                    <segment name="Macro 14" start="203" end="217"></segment>
+                    <segment name="Macro 15" start="218" end="232"></segment>
+                    <segment name="Macro 16" start="233" end="247"></segment>
+                    <segment name="FullON" start="248" end="255"></segment>
+                </channel>
+                <channel number="7" type="_FX_CTRL_" bits="8" priority="LTP" name="ChaseSpeed" subelement="0"></channel>
+                <channel number="8" type="_PTSPEED_" bits="8" priority="LTP" name="PT Speed" subelement="0"></channel>
+                <channel number="9" type="_FUNCT_" bits="8" priority="LTP" name="Control" subelement="0">
+                    <segment name="No Funct" start="0" end="69"></segment>
+                    <segment name="PT BO" start="70" end="79"></segment>
+                    <segment name="Tilt1Reset" start="80" end="89"></segment>
+                    <segment name="Tilt2Reset" start="90" end="99"></segment>
+                    <segment name="Pan Reset" start="100" end="109"></segment>
+                    <segment name="No Funct" start="110" end="199"></segment>
+                    <segment name="Reset" start="200" end="209"></segment>
+                    <segment name="No Funct" start="210" end="255"></segment>
+                </channel>
+            </channels>
+            <palettes>
+                <palette type="_GENERAL_">
+                    <set name="_FIND_">
+                        <value channel="_PAN_" bits="8" value="128" element_set="0"></value>
+                        <value channel="_TILT_" bits="8" value="128" element_set="1,2"></value>
+                        <value channel="_INTENSITY_" bits="8" value="255" element_set="0,"></value>
+                        <value channel="_SHUTTER_" bits="8" value="255" element_set="0"></value>
+                    </set>
+                    <set name="_DEFAULT_">
+                        <value channel="_PAN_" bits="8" value="128" element_set="0"></value>
+                        <value channel="_TILT_" bits="8" value="128" element_set="1,2"></value>
+                        <value channel="_INTENSITY_" bits="8" value="000" element_set="0"></value>
+                        <value channel="_SHUTTER_" bits="8" value="255" element_set="0"></value>
+                    </set>
+                    <set name="_HIGHLIGHT_">
+                        <value channel="_INTENSITY_" bits="8" value="255" element_set="0"></value>
+                        <value channel="_SHUTTER_" bits="8" value="255" element_set="0"></value>
+                    </set>
+                </palette>
+            </palettes>
+            <macros>
+                <macro name="_RESET_">
+                    <step wait="7000">
+                        <value channel="_FUNCT_" value="205"></value>
+                    </step>
+                    <step wait="0">
+                        <value channel="_FUNCT_" value="0"></value>
+                    </step>
+                </macro>
+                <macro name="_RESET_TILT1_">
+                    <step wait="7000">
+                        <value channel="_FUNCT_" value="85"></value>
+                    </step>
+                    <step wait="0">
+                        <value channel="_FUNCT_" value="0"></value>
+                    </step>
+                </macro>
+                <macro name="_RESET_TILT2_">
+                    <step wait="7000">
+                        <value channel="_FUNCT_" value="95"></value>
+                    </step>
+                    <step wait="0">
+                        <value channel="_FUNCT_" value="0"></value>
+                    </step>
+                </macro>
+            </macros>
+        </mode>
+        <mode name="12ch" ref="9ch" number_of_channels="12" invert_pan="F" invert_tilt="F" multi_element="T" vmodes="F" virtaul_dimmer="F" elements="" icon="mode1_icon.png">
+            <channels>
+                <channel number="4" type="_INTENSITY_" bits="8" priority="HTP" name="Intensity1" subelement="1"></channel>
+                <channel number="5" type="_INTENSITY_" bits="8" priority="HTP" name="Intensity2" subelement="2"></channel>
+                <channel number="6" type="_SHUTTER_" bits="8" priority="LTP" name="Shutter" subelement="0">
+                    <segment name="Open" start="0" end="7"></segment>
+                    <segment name="Strobe S-F" start="8" end="131"></segment>
+                    <segment name="Open" start="132" end="139"></segment>
+                    <segment name="Slow Open" start="140" end="181"></segment>
+                    <segment name="Open" start="182" end="189"></segment>
+                    <segment name="Fast Open" start="190" end="231"></segment>
+                    <segment name="Open" start="232" end="239"></segment>
+                    <segment name="Sound Active" start="240" end="247"></segment>
+                    <segment name="Open" start="248" end="255"></segment>
+                </channel>
+                <channel number="7" type="_INTENSITY_" bits="8" priority="HTP" name="Intensity" subelement="0"></channel>
+                <channel number="8" type="_FX_" bits="8" priority="LTP" name="Chases" subelement="0">
+                    <segment name="OFF" start="0" end="7"></segment>
+                    <segment name="Macro 1" start="8" end="22"></segment>
+                    <segment name="Macro 2" start="23" end="37"></segment>
+                    <segment name="Macro 3" start="38" end="52"></segment>
+                    <segment name="Macro 4" start="53" end="67"></segment>
+                    <segment name="Macro 5" start="68" end="82"></segment>
+                    <segment name="Macro 6" start="83" end="97"></segment>
+                    <segment name="Macro 7" start="98" end="112"></segment>
+                    <segment name="Macro 8" start="113" end="127"></segment>
+                    <segment name="Macro 9" start="128" end="142"></segment>
+                    <segment name="Macro 10" start="143" end="157"></segment>
+                    <segment name="Macro 11" start="158" end="172"></segment>
+                    <segment name="Macro 12" start="173" end="187"></segment>
+                    <segment name="Macro 13" start="188" end="202"></segment>
+                    <segment name="Macro 14" start="203" end="217"></segment>
+                    <segment name="Macro 15" start="218" end="232"></segment>
+                    <segment name="Macro 16" start="233" end="247"></segment>
+                    <segment name="FullON" start="248" end="255"></segment>
+                </channel>
+                <channel number="9" type="_FX_CTRL_" bits="8" priority="LTP" name="ChaseSpeed" subelement="0"></channel>
+                <channel number="10" type="_PTSPEED_" bits="8" priority="LTP" name="PT Speed" subelement="0"></channel>
+                <channel number="11" type="_FUNCT_" bits="8" priority="LTP" name="Control" subelement="0">
+                    <segment name="No Funct" start="0" end="69"></segment>
+                    <segment name="PT BO" start="70" end="79"></segment>
+                    <segment name="Tilt1Reset" start="80" end="89"></segment>
+                    <segment name="Tilt2Reset" start="90" end="99"></segment>
+                    <segment name="Pan Reset" start="100" end="109"></segment>
+                    <segment name="No Funct" start="110" end="199"></segment>
+                    <segment name="Reset" start="200" end="209"></segment>
+                    <segment name="No Funct" start="210" end="255"></segment>
+                </channel>
+                <channel number="12" type="_FUNCT3_" bits="8" priority="LTP" name="Dim Mode" subelement="0">
+                    <segment name="Standard" start="0" end="20"></segment>
+                    <segment name="Stage" start="21" end="40"></segment>
+                    <segment name="TV" start="41" end="60"></segment>
+                    <segment name="Architectural" start="61" end="80"></segment>
+                    <segment name="Theatre" start="81" end="100"></segment>
+                    <segment name="Deafult" start="101" end="255"></segment>
+                </channel>
+            </channels>
+            <palettes>
+                <palette type="_GENERAL_">
+                    <set name="_FIND_">
+                        <value channel="_PAN_" bits="8" value="128" element_set="0"></value>
+                        <value channel="_TILT_" bits="8" value="128" element_set="1,2"></value>
+                        <value channel="_INTENSITY_" bits="8" value="255" element_set="0,1,2"></value>
+                        <value channel="_SHUTTER_" bits="8" value="255" element_set="0"></value>
+                    </set>
+                    <set name="_DEFAULT_">
+                        <value channel="_PAN_" bits="8" value="128" element_set="0"></value>
+                        <value channel="_TILT_" bits="8" value="128" element_set="1,2"></value>
+                        <value channel="_INTENSITY_" bits="8" value="000" element_set="0,1,2"></value>
+                        <value channel="_SHUTTER_" bits="8" value="255" element_set="0"></value>
+                    </set>
+                    <set name="_HIGHLIGHT_">
+                        <value channel="_INTENSITY_" bits="8" value="255" element_set="0,1,2"></value>
+                        <value channel="_SHUTTER_" bits="8" value="255" element_set="0"></value>
+                    </set>
+                </palette>
+            </palettes>
+        </mode>
+        <mode name="15ch" ref="9ch" number_of_channels="15" invert_pan="F" invert_tilt="F" multi_element="T" vmodes="F" virtaul_dimmer="F" elements="" icon="mode1_icon.png">
+            <channels>
+                <channel number="2" type="_PAN_" bits="16" priority="LTP" name="Pan F" subelement="0"></channel>
+                <channel number="3" type="_TILT_" bits="8" priority="LTP" name="Tilt" subelement="1"></channel>
+                <channel number="4" type="_TILT_" bits="16" priority="LTP" name="Tilt 1 F" subelement="1"></channel>
+                <channel number="5" type="_TILT_" bits="8" priority="LTP" name="Tilt" subelement="2"></channel>
+                <channel number="6" type="_TILT_" bits="16" priority="LTP" name="Tilt 2 F" subelement="1"></channel>
+                <channel number="7" type="_INTENSITY_" bits="8" priority="HTP" name="Intensity1" subelement="1"></channel>
+                <channel number="8" type="_INTENSITY_" bits="8" priority="HTP" name="Intensity2" subelement="2"></channel>
+                <channel number="9" type="_SHUTTER_" bits="8" priority="LTP" name="Shutter" subelement="0">
+                    <segment name="Open" start="0" end="7"></segment>
+                    <segment name="Strobe S-F" start="8" end="131"></segment>
+                    <segment name="Open" start="132" end="139"></segment>
+                    <segment name="Slow Open" start="140" end="181"></segment>
+                    <segment name="Open" start="182" end="189"></segment>
+                    <segment name="Fast Open" start="190" end="231"></segment>
+                    <segment name="Open" start="232" end="239"></segment>
+                    <segment name="Sound Active" start="240" end="247"></segment>
+                    <segment name="Open" start="248" end="255"></segment>
+                </channel>
+                <channel number="10" type="_INTENSITY_" bits="8" priority="HTP" name="Intensity" subelement="0"></channel>
+                <channel number="11" type="_FX_" bits="8" priority="LTP" name="Chases" subelement="0">
+                    <segment name="OFF" start="0" end="7"></segment>
+                    <segment name="Macro 1" start="8" end="22"></segment>
+                    <segment name="Macro 2" start="23" end="37"></segment>
+                    <segment name="Macro 3" start="38" end="52"></segment>
+                    <segment name="Macro 4" start="53" end="67"></segment>
+                    <segment name="Macro 5" start="68" end="82"></segment>
+                    <segment name="Macro 6" start="83" end="97"></segment>
+                    <segment name="Macro 7" start="98" end="112"></segment>
+                    <segment name="Macro 8" start="113" end="127"></segment>
+                    <segment name="Macro 9" start="128" end="142"></segment>
+                    <segment name="Macro 10" start="143" end="157"></segment>
+                    <segment name="Macro 11" start="158" end="172"></segment>
+                    <segment name="Macro 12" start="173" end="187"></segment>
+                    <segment name="Macro 13" start="188" end="202"></segment>
+                    <segment name="Macro 14" start="203" end="217"></segment>
+                    <segment name="Macro 15" start="218" end="232"></segment>
+                    <segment name="Macro 16" start="233" end="247"></segment>
+                    <segment name="FullON" start="248" end="255"></segment>
+                </channel>
+                <channel number="12" type="_FX_CTRL_" bits="8" priority="LTP" name="ChaseSpeed" subelement="0"></channel>
+                <channel number="13" type="_PTSPEED_" bits="8" priority="LTP" name="PT Speed" subelement="0"></channel>
+                <channel number="14" type="_FUNCT_" bits="8" priority="LTP" name="Control" subelement="0">
+                    <segment name="No Funct" start="0" end="69"></segment>
+                    <segment name="PT BO" start="70" end="79"></segment>
+                    <segment name="Tilt1Reset" start="80" end="89"></segment>
+                    <segment name="Tilt2Reset" start="90" end="99"></segment>
+                    <segment name="Pan Reset" start="100" end="109"></segment>
+                    <segment name="No Funct" start="110" end="199"></segment>
+                    <segment name="Reset" start="200" end="209"></segment>
+                    <segment name="No Funct" start="210" end="255"></segment>
+                </channel>
+                <channel number="15" type="_FUNCT3_" bits="8" priority="LTP" name="Dim Mode" subelement="0">
+                    <segment name="Standard" start="0" end="20"></segment>
+                    <segment name="Stage" start="21" end="40"></segment>
+                    <segment name="TV" start="41" end="60"></segment>
+                    <segment name="Architectural" start="61" end="80"></segment>
+                    <segment name="Theatre" start="81" end="100"></segment>
+                    <segment name="Deafult" start="101" end="255"></segment>
+                </channel>
+            </channels>
+            <palettes>
+                <palette type="_GENERAL_">
+                    <set name="_FIND_">
+                        <value channel="_PAN_" bits="8" value="128" element_set="0"></value>
+                        <value channel="_TILT_" bits="8" value="128" element_set="1,2"></value>
+                        <value channel="_INTENSITY_" bits="8" value="255" element_set="0,1,2"></value>
+                        <value channel="_SHUTTER_" bits="8" value="255" element_set="0"></value>
+                    </set>
+                    <set name="_DEFAULT_">
+                        <value channel="_PAN_" bits="8" value="128" element_set="0"></value>
+                        <value channel="_TILT_" bits="8" value="128" element_set="1,2"></value>
+                        <value channel="_INTENSITY_" bits="8" value="000" element_set="0,1,2"></value>
+                        <value channel="_SHUTTER_" bits="8" value="255" element_set="0"></value>
+                    </set>
+                    <set name="_HIGHLIGHT_">
+                        <value channel="_INTENSITY_" bits="8" value="255" element_set="0,1,2"></value>
+                        <value channel="_SHUTTER_" bits="8" value="255" element_set="0"></value>
+                    </set>
+                </palette>
+            </palettes>
+        </mode>
+        <mode name="21ch" ref="9ch" number_of_channels="21" invert_pan="F" invert_tilt="F" multi_element="T" vmodes="F" virtaul_dimmer="F" elements="" icon="mode1_icon.png">
+            <channels>
+                <channel number="2" type="_PAN_" bits="16" priority="LTP" name="Pan F" subelement="0"></channel>
+                <channel number="3" type="_TILT_" bits="8" priority="LTP" name="Tilt" subelement="1"></channel>
+                <channel number="4" type="_TILT_" bits="16" priority="LTP" name="Tilt 1 F" subelement="1"></channel>
+                <channel number="5" type="_TILT_" bits="8" priority="LTP" name="Tilt" subelement="2"></channel>
+                <channel number="6" type="_TILT_" bits="16" priority="LTP" name="Tilt 2 F" subelement="1"></channel>
+                <channel number="7" type="_INTENSITY_" bits="8" priority="HTP" name="Intensity1" subelement="1"></channel>
+                <channel number="8" type="_INTENSITY_" bits="8" priority="HTP" name="Intensity2" subelement="2"></channel>
+                <channel number="9" type="_INTENSITY_" bits="8" priority="HTP" name="Intensity3" subelement="3"></channel>
+                <channel number="10" type="_INTENSITY_" bits="8" priority="HTP" name="Intensity4" subelement="4"></channel>
+                <channel number="11" type="_INTENSITY_" bits="8" priority="HTP" name="Intensity5" subelement="5"></channel>
+                <channel number="12" type="_INTENSITY_" bits="8" priority="HTP" name="Intensity6" subelement="6"></channel>
+                <channel number="13" type="_INTENSITY_" bits="8" priority="HTP" name="Intensity7" subelement="7"></channel>
+                <channel number="14" type="_INTENSITY_" bits="8" priority="HTP" name="Intensity8" subelement="8"></channel>
+                <channel number="15" type="_SHUTTER_" bits="8" priority="LTP" name="Shutter" subelement="0">
+                    <segment name="Open" start="0" end="7"></segment>
+                    <segment name="Strobe S-F" start="8" end="131"></segment>
+                    <segment name="Open" start="132" end="139"></segment>
+                    <segment name="Slow Open" start="140" end="181"></segment>
+                    <segment name="Open" start="182" end="189"></segment>
+                    <segment name="Fast Open" start="190" end="231"></segment>
+                    <segment name="Open" start="232" end="239"></segment>
+                    <segment name="Sound Active" start="240" end="247"></segment>
+                    <segment name="Open" start="248" end="255"></segment>
+                </channel>
+                <channel number="16" type="_INTENSITY_" bits="8" priority="HTP" name="Intensity" subelement="0"></channel>
+                <channel number="17" type="_FX_" bits="8" priority="LTP" name="Chases" subelement="0">
+                    <segment name="OFF" start="0" end="7"></segment>
+                    <segment name="Macro 1" start="8" end="22"></segment>
+                    <segment name="Macro 2" start="23" end="37"></segment>
+                    <segment name="Macro 3" start="38" end="52"></segment>
+                    <segment name="Macro 4" start="53" end="67"></segment>
+                    <segment name="Macro 5" start="68" end="82"></segment>
+                    <segment name="Macro 6" start="83" end="97"></segment>
+                    <segment name="Macro 7" start="98" end="112"></segment>
+                    <segment name="Macro 8" start="113" end="127"></segment>
+                    <segment name="Macro 9" start="128" end="142"></segment>
+                    <segment name="Macro 10" start="143" end="157"></segment>
+                    <segment name="Macro 11" start="158" end="172"></segment>
+                    <segment name="Macro 12" start="173" end="187"></segment>
+                    <segment name="Macro 13" start="188" end="202"></segment>
+                    <segment name="Macro 14" start="203" end="217"></segment>
+                    <segment name="Macro 15" start="218" end="232"></segment>
+                    <segment name="Macro 16" start="233" end="247"></segment>
+                    <segment name="FullON" start="248" end="255"></segment>
+                </channel>
+                <channel number="18" type="_FX_CTRL_" bits="8" priority="LTP" name="ChaseSpeed" subelement="0"></channel>
+                <channel number="19" type="_PTSPEED_" bits="8" priority="LTP" name="PT Speed" subelement="0"></channel>
+                <channel number="20" type="_FUNCT_" bits="8" priority="LTP" name="Control" subelement="0">
+                    <segment name="No Funct" start="0" end="69"></segment>
+                    <segment name="PT BO" start="70" end="79"></segment>
+                    <segment name="Tilt1Reset" start="80" end="89"></segment>
+                    <segment name="Tilt2Reset" start="90" end="99"></segment>
+                    <segment name="Pan Reset" start="100" end="109"></segment>
+                    <segment name="No Funct" start="110" end="199"></segment>
+                    <segment name="Reset" start="200" end="209"></segment>
+                    <segment name="No Funct" start="210" end="255"></segment>
+                </channel>
+                <channel number="21" type="_FUNCT3_" bits="8" priority="LTP" name="Dim Mode" subelement="0">
+                    <segment name="Standard" start="0" end="20"></segment>
+                    <segment name="Stage" start="21" end="40"></segment>
+                    <segment name="TV" start="41" end="60"></segment>
+                    <segment name="Architectural" start="61" end="80"></segment>
+                    <segment name="Theatre" start="81" end="100"></segment>
+                    <segment name="Deafult" start="101" end="255"></segment>
+                </channel>
+            </channels>
+            <palettes>
+                <palette type="_GENERAL_">
+                    <set name="_FIND_">
+                        <value channel="_PAN_" bits="8" value="128" element_set="0"></value>
+                        <value channel="_TILT_" bits="8" value="128" element_set="1,2"></value>
+                        <value channel="_INTENSITY_" bits="8" value="255" element_set="0,1,2,3,4,5,6,7,8"></value>
+                        <value channel="_SHUTTER_" bits="8" value="255" element_set="0"></value>
+                    </set>
+                    <set name="_DEFAULT_">
+                        <value channel="_PAN_" bits="8" value="128" element_set="0"></value>
+                        <value channel="_TILT_" bits="8" value="128" element_set="1,2"></value>
+                        <value channel="_INTENSITY_" bits="8" value="000" element_set="0,1,2,3,4,5,6,7,8"></value>
+                        <value channel="_SHUTTER_" bits="8" value="255" element_set="0"></value>
+                    </set>
+                    <set name="_HIGHLIGHT_">
+                        <value channel="_INTENSITY_" bits="8" value="255" element_set="0,1,2,3,4,5,6,7,8"></value>
+                        <value channel="_SHUTTER_" bits="8" value="255" element_set="0"></value>
+                    </set>
+                </palette>
+            </palettes>
+        </mode>
+    </fixture>
+</ofl>

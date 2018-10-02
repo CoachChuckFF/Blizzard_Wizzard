@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ofl>
+	<brand short_name="FuturLight" name="FuturLight" url="http://www.steinigke.de/en/futurelight/" icon="logo_FutureLight.png"></brand>
+	<fixture brand="FuturLight" short_name="MH860" name="MH860" version="2018-04-04 0:55">
+		<hardware type="_YOKE_" pan_angle="540" tilt_angle="270" pan_max_speed="" tilt_max_speed="" beam_type="_SPOT_" beam_zoom_narrow="" beam_zoom_wide="" spot_zoom_narrow="" spot_zoom_wide="" max_strobe="" min_strobe="" rotation_speed="" color_type="_WHEEL_" framing_type="_NONE_" dimmer_curve="_LINEAR_" light_source="_DISCHARGE_" light_source_power="575" color_temp="" lummens="" max_power_consumption="575" weight="" height="" widht="" depth="" shape=""></hardware>
+		<mode name="16ch" number_of_channels="16" invert_pan="F" invert_tilt="F" multi_element="F" vmodes="T" virtaul_dimmer="F" elements="" icon="mode1_icon.png">
+			<channels>
+				<channel number="1" type="_PAN_" bits="8" priority="LTP" name="Pan" subelement="0"></channel>
+				<channel number="2" type="_TILT_" bits="8" priority="LTP" name="Tilt" subelement="0"></channel>
+				<channel number="3" type="_PAN_" bits="16" priority="LTP" name="Pan Fine"></channel>
+				<channel number="4" type="_TILT_" bits="16" priority="LTP" name="Tilt Fine" subelement="0"></channel>
+				<channel number="5" type="_PTSPEED_" bits="8" priority="LTP" name="PT Speed" subelement="0">
+					<segment name="Max Speed Tracking" start="0" end="0"></segment>
+					<segment name="Max Speed Vector" start="1" end="1"></segment>
+					<segment name="Min Speed Vector" start="249" end="249"></segment>
+					<segment name="BO Col_Gobo" start="250" end="252"></segment>
+					<segment name="BO Pan_Tilt" start="253" end="255"></segment>
+				</channel>
+				<channel number="6" type="_FUNCT_" bits="8" priority="LTP" name="Control" subelement="0">
+					<segment name="Open Max Speed" start="0" end="0"></segment>
+					<segment name="Open Min Speed" start="127" end="127"></segment>
+					<segment name="Lamp ON" start="128" end="139"></segment>
+					<segment name="No Funct" start="140" end="229"></segment>
+					<segment name="Lamp OFF" start="230" end="239"></segment>
+					<segment name="No Funct" start="240" end="255"></segment>
+				</channel>
+				<channel number="7" type="_COLOR_" bits="8" priority="LTP" name="Color Wheel1" subelement="0">
+					<segment name="Open" start="0" end="0"></segment>
+					<segment name="Light Blue" start="13" end="13"></segment>
+					<segment name="Red" start="26" end="26"></segment>
+					<segment name="Blue" start="38" end="38"></segment>
+					<segment name="Light Green" start="51" end="51"></segment>
+					<segment name="Amber" start="64" end="64"></segment>
+					<segment name="Magenta" start="77" end="77"></segment>
+					<segment name="Cyan" start="90" end="90"></segment>
+					<segment name="Green" start="102" end="102"></segment>
+					<segment name="Orange" start="115" end="115"></segment>
+					<segment name="Rainbow CW" start="128" end="190"></segment>
+					<segment name="No Rot" start="191" end="193"></segment>
+					<segment name="Rainbow CCW" start="194" end="255"></segment>
+				</channel>
+				<channel number="8" type="_COLOR2_" bits="8" priority="LTP" name="Color Wheel2" subelement="0">
+					<segment name="Open" start="0" end="11"></segment>
+					<segment name="Deep Red" start="12" end="23"></segment>
+					<segment name="Deep Blue" start="24" end="35"></segment>
+					<segment name="Pink" start="36" end="47"></segment>
+					<segment name="Cyan" start="48" end="59"></segment>
+					<segment name="Magenta" start="60" end="71"></segment>
+					<segment name="Amber" start="72" end="83"></segment>
+					<segment name="6000K" start="84" end="95"></segment>
+					<segment name="3200K" start="96" end="107"></segment>
+					<segment name="UV Filter" start="108" end="119"></segment>
+					<segment name="Open" start="120" end="127"></segment>
+					<segment name="Macro Activate" start="128" end="255"></segment>
+				</channel>
+				<channel number="9" type="_PRISM_" bits="8" priority="LTP" name="Prism" subelement="0">
+					<segment name="Open" start="0" end="0"></segment>
+					<segment name="CW Rot" start="1" end="63"></segment>
+					<segment name="No Rot" start="64" end="64"></segment>
+					<segment name="CCW Rot" start="65" end="127"></segment>
+					<segment name="Macro 1" start="128" end="135"></segment>
+					<segment name="Macro 2" start="136" end="143"></segment>
+					<segment name="Macro 3" start="144" end="151"></segment>
+					<segment name="Macro 4" start="152" end="159"></segment>
+					<segment name="Macro 5" start="160" end="167"></segment>
+					<segment name="Macro 6" start="168" end="175"></segment>
+					<segment name="Macro 7" start="176" end="183"></segment>
+					<segment name="Macro 8" start="184" end="191"></segment>
+					<segment name="Macro 9" start="192" end="199"></segment>
+					<segment name="Macro 10" start="200" end="207"></segment>
+					<segment name="Macro 11" start="208" end="215"></segment>
+					<segment name="Macro 12" start="216" end="223"></segment>
+					<segment name="Macro 13" start="224" end="231"></segment>
+					<segment name="Macro 14" start="232" end="239"></segment>
+					<segment name="Macro 15" start="240" end="247"></segment>
+					<segment name="Macro 16" start="248" end="255"></segment>
+				</channel>
+				<channel number="10" type="_GOBO_" bits="8" priority="LTP" name="Static Gobo Wheel" subelement="0">
+					<segment name="Open" start="0" end="7"></segment>
+					<segment name="Gobo 1" start="8" end="15"></segment>
+					<segment name="Gobo 2" start="16" end="23"></segment>
+					<segment name="Gobo 3" start="24" end="31"></segment>
+					<segment name="Gobo 4" start="32" end="39"></segment>
+					<segment name="Gobo 5" start="40" end="47"></segment>
+					<segment name="Gobo 6" start="48" end="55"></segment>
+					<segment name="Gobo 7" start="56" end="63"></segment>
+					<segment name="Gobo 8" start="64" end="71"></segment>
+					<segment name="Gobo 9" start="72" end="79"></segment>
+					<segment name="Gobo 1 Shake" start="80" end="95"></segment>
+					<segment name="Gobo 2 Shake" start="96" end="111"></segment>
+					<segment name="Gobo 3 Shake" start="112" end="127"></segment>
+					<segment name="Gobo 4 Shake" start="128" end="143"></segment>
+					<segment name="Gobo 5 Shake" start="144" end="159"></segment>
+					<segment name="Gobo 6 Shake" start="160" end="175"></segment>
+					<segment name="Gobo 7 Shake" start="176" end="191"></segment>
+					<segment name="Gobo 8 Shake" start="192" end="207"></segment>
+					<segment name="Gobo 9 Shake" start="208" end="223"></segment>
+					<segment name="Gobo Rot" start="224" end="255"></segment>
+				</channel>
+				<channel number="11" type="_GOBO2_" bits="8" priority="LTP" name="Rotating Gobo Wheel" subelement="0">
+					<segment name="Open" start="0" end="31"></segment>
+					<segment name="Gobo 1" start="32" end="63"></segment>
+					<segment name="Gobo 2" start="64" end="95"></segment>
+					<segment name="Gobo 3" start="96" end="127"></segment>
+					<segment name="Gobo 4" start="128" end="159"></segment>
+					<segment name="Gobo 5" start="160" end="191"></segment>
+					<segment name="Gobo 6" start="192" end="223"></segment>
+					<segment name="Gobo Rot" start="224" end="255"></segment>
+				</channel>
+				<channel number="12" type="_GOBOROT_" bits="8" priority="LTP" name="GoboRot Index" subelement="0">
+					<segment name="Indexed" start="0" end="127"></segment>
+					<segment name="CW GoboRot" start="128" end="191"></segment>
+					<segment name="No Rot" start="192" end="192"></segment>
+					<segment name="CCW GoboRot" start="193" end="255"></segment>
+				</channel>
+				<channel number="13" type="_IRIS_" bits="8" priority="LTP" name="Iris" subelement="0">
+					<segment name="Open" start="0" end="0"></segment>
+					<segment name="Max-Min" start="1" end="179"></segment>
+					<segment name="Closed" start="180" end="191"></segment>
+					<segment name="Closing Pulse" start="192" end="223"></segment>
+					<segment name="Opening Pulse" start="224" end="255"></segment>
+				</channel>
+				<channel number="14" type="_ZOOM_" bits="8" priority="LTP" name="Zoom" subelement="0">
+					<segment name="Zoom 15" start="0" end="85"></segment>
+					<segment name="Zoom 18" start="86" end="170"></segment>
+					<segment name="zoom 22" start="171" end="255"></segment>
+				</channel>
+				<channel number="15" type="_SHUTTER_" bits="8" priority="LTP" name="Shutter" subelement="0">
+					<segment name="Closed" start="0" end="31"></segment>
+					<segment name="Open" start="32" end="63"></segment>
+					<segment name="Strobe" start="64" end="95"></segment>
+					<segment name="Open" start="96" end="127"></segment>
+					<segment name="Pulse" start="128" end="159"></segment>
+					<segment name="Open" start="160" end="191"></segment>
+					<segment name="Strobe Rnd" start="192" end="223"></segment>
+					<segment name="Open" start="224" end="255"></segment>
+				</channel>
+				<channel number="16" type="_INTENSITY_" bits="8" priority="HTP" name="Dimmer" subelement="0"></channel>
+			</channels>
+			<palettes>
+				<palette type="_COLOR_">
+					<set name="white" color="#ffffff">
+						<value channel="_COLOR_" value="0"></value>
+						<value channel="_COLOR2_" value="0"></value>
+					</set>
+					<set name="red" color="#ff0000">
+						<value channel="_COLOR_" value="26"></value>
+						<value channel="_COLOR2_" value="0"></value>
+					</set>
+					<set name="green" color="#00ff00">
+						<value channel="_COLOR_" value="102"></value>
+						<value channel="_COLOR2_" value="0"></value>
+					</set>
+					<set name="blue" color="#0000ff">
+						<value channel="_COLOR_" value="38"></value>
+						<value channel="_COLOR2_" value="0"></value>
+					</set>
+					<set name="cyan" color="#00ffff">
+						<value channel="_COLOR_" value="90"></value>
+						<value channel="_COLOR2_" value="0"></value>
+					</set>
+					<set name="magenta" color="#ff00ff">
+						<value channel="_COLOR_" value="77"></value>
+						<value channel="_COLOR2_" value="0"></value>
+					</set>
+					<set name="orange" color="#ffa500">
+						<value channel="_COLOR_" value="115"></value>
+						<value channel="_COLOR2_" value="0"></value>
+					</set>
+					<set name="light_green" color="#90ee90">
+						<value channel="_COLOR_" value="51"></value>
+						<value channel="_COLOR2_" value="0"></value>
+					</set>
+					<set name="pink" color="#ffc0cb">
+						<value channel="_COLOR_" value="0"></value>
+						<value channel="_COLOR2_" value="41"></value>
+					</set>
+				</palette>
+				<palette type="_GOBO_">
+					<set name="open" icon="generic_open.png">
+						<value channel="_GOBO_" value="0"></value>
+						<value channel="_GOBO2_" value="0"></value>
+					</set>
+					<set name="gobo1.1" icon="generic_G1-1.png">
+						<value channel="_GOBO_" value="11"></value>
+						<value channel="_GOBO2_" value="0"></value>
+					</set>
+					<set name="gobo1.2" icon="generic_G2-1.png">
+						<value channel="_GOBO_" value="19"></value>
+						<value channel="_GOBO2_" value="0"></value>
+					</set>
+					<set name="gobo1.3" icon="generic_G3-1.png">
+						<value channel="_GOBO_" value="27"></value>
+						<value channel="_GOBO2_" value="0"></value>
+					</set>
+					<set name="gobo1.4" icon="generic_G4-1.png">
+						<value channel="_GOBO_" value="35"></value>
+						<value channel="_GOBO2_" value="0"></value>
+					</set>
+					<set name="gobo1.5" icon="generic_G5-1.png">
+						<value channel="_GOBO_" value="43"></value>
+						<value channel="_GOBO2_" value="0"></value>
+					</set>
+					<set name="gobo1.6" icon="generic_G6-1.png">
+						<value channel="_GOBO_" value="51"></value>
+						<value channel="_GOBO2_" value="0"></value>
+					</set>
+					<set name="gobo1.7" icon="generic_G7-1.png">
+						<value channel="_GOBO_" value="59"></value>
+						<value channel="_GOBO2_" value="0"></value>
+					</set>
+					<set name="gobo1.8" icon="generic_G8-1.png">
+						<value channel="_GOBO_" value="67"></value>
+						<value channel="_GOBO2_" value="0"></value>
+					</set>
+					<set name="gobo1.9" icon="generic_G9-1.png">
+						<value channel="_GOBO_" value="75"></value>
+						<value channel="_GOBO2_" value="0"></value>
+					</set>
+					<set name="gobo2.1" icon="generic_G1-2.png">
+						<value channel="_GOBO_" value="0"></value>
+						<value channel="_GOBO2_" value="47"></value>
+					</set>
+					<set name="gobo2.2" icon="generic_G2-2.png">
+						<value channel="_GOBO_" value="0"></value>
+						<value channel="_GOBO2_" value="79"></value>
+					</set>
+					<set name="gobo2.3" icon="generic_G3-2.png">
+						<value channel="_GOBO_" value="0"></value>
+						<value channel="_GOBO2_" value="111"></value>
+					</set>
+					<set name="gobo2.4" icon="generic_G4-2.png">
+						<value channel="_GOBO_" value="0"></value>
+						<value channel="_GOBO2_" value="143"></value>
+					</set>
+					<set name="gobo2.5" icon="generic_G5-2.png">
+						<value channel="_GOBO_" value="0"></value>
+						<value channel="_GOBO2_" value="175"></value>
+					</set>
+					<set name="gobo2.6" icon="generic_G6-2.png">
+						<value channel="_GOBO_" value="0"></value>
+						<value channel="_GOBO2_" value="207"></value>
+					</set>
+				</palette>
+				<palette type="_GENERAL_">
+					<set name="_FIND_">
+						<value channel="_PAN_" bits="8" value="128" element_set=""></value>
+						<value channel="_PAN_" bits="16" value="000" element_set=""></value>
+						<value channel="_TILT_" bits="8" value="128" element_set=""></value>
+						<value channel="_TILT_" bits="16" value="000" element_set=""></value>
+						<value channel="_PTSPEED_" bits="8" value="000" element_set=""></value>
+						<value channel="_FUNCT_" bits="8" value="000" element_set=""></value>
+						<value channel="_COLOR_" bits="8" value="000" element_set=""></value>
+						<value channel="_SHUTTER_" bits="8" value="255" element_set=""></value>
+						<value channel="_INTENSITY_" bits="8" value="255" element_set=""></value>
+						<value channel="_COLOR2_" bits="8" value="000" element_set=""></value>
+						<value channel="_GOBO2_" bits="8" value="000" element_set=""></value>
+						<value channel="_GOBOROT_" bits="8" value="000" element_set=""></value>
+						<value channel="_GOBO_" bits="8" value="000" element_set=""></value>
+						<value channel="_PRISM_" bits="8" value="000" element_set=""></value>
+						<value channel="_IRIS_" bits="8" value="000" element_set=""></value>
+						<value channel="_ZOOM_" bits="8" value="000" element_set=""></value>
+					</set>
+					<set name="_DEFAULT_">
+						<value channel="_PAN_" bits="8" value="128" element_set=""></value>
+						<value channel="_PAN_" bits="16" value="000" element_set=""></value>
+						<value channel="_TILT_" bits="8" value="128" element_set=""></value>
+						<value channel="_TILT_" bits="16" value="000" element_set=""></value>
+						<value channel="_PTSPEED_" bits="8" value="000" element_set=""></value>
+						<value channel="_FUNCT_" bits="8" value="000" element_set=""></value>
+						<value channel="_COLOR_" bits="8" value="000" element_set=""></value>
+						<value channel="_SHUTTER_" bits="8" value="000" element_set=""></value>
+						<value channel="_INTENSITY_" bits="8" value="000" element_set=""></value>
+						<value channel="_COLOR2_" bits="8" value="000" element_set=""></value>
+						<value channel="_GOBO2_" bits="8" value="000" element_set=""></value>
+						<value channel="_GOBOROT_" bits="8" value="000" element_set=""></value>
+						<value channel="_GOBO_" bits="8" value="000" element_set=""></value>
+						<value channel="_PRISM_" bits="8" value="000" element_set=""></value>
+						<value channel="_IRIS_" bits="8" value="000" element_set=""></value>
+						<value channel="_ZOOM_" bits="8" value="000" element_set=""></value>
+					</set>
+					<set name="_HIGHLIGHT_">
+						<value channel="_PAN_" bits="8" value="" element_set=""></value>
+						<value channel="_PAN_" bits="16" value="" element_set=""></value>
+						<value channel="_TILT_" bits="8" value="" element_set=""></value>
+						<value channel="_TILT_" bits="16" value="" element_set=""></value>
+						<value channel="_PTSPEED_" bits="8" value="" element_set=""></value>
+						<value channel="_FUNCT_" bits="8" value="" element_set=""></value>
+						<value channel="_COLOR_" bits="8" value="000" element_set=""></value>
+						<value channel="_SHUTTER_" bits="8" value="255" element_set=""></value>
+						<value channel="_INTENSITY_" bits="8" value="255" element_set=""></value>
+						<value channel="_COLOR2_" bits="8" value="000" element_set=""></value>
+						<value channel="_GOBO2_" bits="8" value="000" element_set=""></value>
+						<value channel="_GOBOROT_" bits="8" value="000" element_set=""></value>
+						<value channel="_GOBO_" bits="8" value="000" element_set=""></value>
+						<value channel="_PRISM_" bits="8" value="000" element_set=""></value>
+						<value channel="_IRIS_" bits="8" value="" element_set=""></value>
+						<value channel="_ZOOM_" bits="8" value="" element_set=""></value>
+					</set>
+					<set name="_LOWLIGHT_">
+						<value channel="_PAN_" bits="8" value="" element_set=""></value>
+						<value channel="_PAN_" bits="16" value="" element_set=""></value>
+						<value channel="_TILT_" bits="8" value="" element_set=""></value>
+						<value channel="_TILT_" bits="16" value="" element_set=""></value>
+						<value channel="_PTSPEED_" bits="8" value="" element_set=""></value>
+						<value channel="_FUNCT_" bits="8" value="" element_set=""></value>
+						<value channel="_COLOR_" bits="8" value="38" element_set=""></value>
+						<value channel="_SHUTTER_" bits="8" value="255" element_set=""></value>
+						<value channel="_INTENSITY_" bits="8" value="255" element_set=""></value>
+						<value channel="_COLOR2_" bits="8" value="000" element_set=""></value>
+						<value channel="_GOBO2_" bits="8" value="000" element_set=""></value>
+						<value channel="_GOBOROT_" bits="8" value="000" element_set=""></value>
+						<value channel="_GOBO_" bits="8" value="000" element_set=""></value>
+						<value channel="_PRISM_" bits="8" value="000" element_set=""></value>
+						<value channel="_IRIS_" bits="8" value="" element_set=""></value>
+						<value channel="_ZOOM_" bits="8" value="" element_set=""></value>
+					</set>
+				</palette>
+			</palettes>
+			<macros>
+				<macro name="_LAMP_ON_">
+					<step wait="1000">
+						<value channel="_FUNCT_" value="0"></value>
+					</step>
+					<step wait="5500">
+						<value channel="_FUNCT_" value="132"></value>
+					</step>
+					<step wait="1000">
+						<value channel="_FUNCT_" value="0"></value>
+					</step>
+				</macro>
+				<macro name="_LAMP_OFF_">
+					<step wait="1000">
+						<value channel="_FUNCT_" value="0"></value>
+					</step>
+					<step wait="5500">
+						<value channel="_FUNCT_" value="235"></value>
+					</step>
+					<step wait="1000">
+						<value channel="_FUNCT_" value="0"></value>
+					</step>
+				</macro>
+			</macros>
+		</mode>
+	</fixture>
+</ofl>

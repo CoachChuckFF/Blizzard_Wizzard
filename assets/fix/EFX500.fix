@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ofl>
+	<brand short_name="Martin" name="Martin Lighting" url="http://www.martin.com" icon="logo_Martin.png"></brand>
+	<fixture brand="Martin" short_name="EFX500" name="EFX500" version="2018-05-09 13:25">
+		<hardware type="" pan_angle="" tilt_angle="" pan_max_speed="" tilt_max_speed="" beam_type="" beam_zoom_narrow="" beam_zoom_wide="" spot_zoom_narrow="" spot_zoom_wide="" zoom_wide="" zoom_narrow="" max_strobe="" min_strobe="" rotation_speed="" color_type="" framing_type="" dimmer_curve="" light_source="" light_source_power="" color_temp="" lummens="" max_power_consumption="" weight="" height="" widht="" depth="" shape=""></hardware>
+		<mode name="M1(7)" number_of_channels="7" invert_pan="F" invert_tilt="F" multi_element="F" vmodes="F" elements="" virtual_dimmer="F" icon="mode1_icon.png">
+			<channels>
+				<channel number="1" type="_SHUTTER_" bits="8" priority="LTP" name="Shutter" subelement="0">
+					<segment name="No Funct" start="0" end="4"></segment>
+					<segment name="Strobe" start="5" end="68"></segment>
+					<segment name="Remote Stand-Alone Auto" start="69" end="100"></segment>
+					<segment name="Remote Stand-Alone Music" start="101" end="132"></segment>
+					<segment name="Reserved" start="133" end="249"></segment>
+					<segment name="Reset Fixture" start="250" end="255"></segment>
+				</channel>
+				<channel number="2" type="_INTENSITY_" bits="8" priority="HTP" name="Intensity" subelement="0"></channel>
+				<channel number="3" type="_GOBO_" bits="8" priority="LTP" name="Gobo" subelement="0">
+					<segment name="Gobo 1" start="0" end="9"></segment>
+					<segment name="Gobo 2" start="10" end="19"></segment>
+					<segment name="Gobo 3" start="20" end="29"></segment>
+					<segment name="Gobo 4" start="30" end="39"></segment>
+					<segment name="Gobo 5" start="40" end="49"></segment>
+					<segment name="Gobo 6" start="50" end="59"></segment>
+					<segment name="Gobo 7" start="60" end="69"></segment>
+					<segment name="Gobo 8" start="70" end="79"></segment>
+					<segment name="Gobo 9" start="80" end="89"></segment>
+					<segment name="Gobo 10" start="90" end="99"></segment>
+					<segment name="Gobo 11" start="100" end="109"></segment>
+					<segment name="Gobo 12" start="110" end="119"></segment>
+					<segment name="Reserved" start="120" end="175"></segment>
+					<segment name="CW Rot" start="176" end="207"></segment>
+					<segment name="CCW Rot" start="208" end="239"></segment>
+					<segment name="Mudic Fast" start="240" end="244"></segment>
+					<segment name="Music Slow" start="245" end="249"></segment>
+					<segment name="Music Dynamic" start="250" end="255"></segment>
+				</channel>
+				<channel number="4" type="_GOBO_CTRL_" bits="8" priority="LTP" name="Gobo Shake" subelement="0">
+					<segment name="No Funct" start="0" end="1"></segment>
+					<segment name="Narrow" start="2" end="128"></segment>
+					<segment name="Wide" start="129" end="255"></segment>
+				</channel>
+				<channel number="5" type="_POSITION_" bits="8" priority="LTP" name="Rotation" subelement="0">
+					<segment name="Stop" start="0" end="1"></segment>
+					<segment name="CCW Rot" start="2" end="65"></segment>
+					<segment name="CW Rot" start="66" end="129"></segment>
+					<segment name="Shake" start="130" end="192"></segment>
+					<segment name="Rnd Shake" start="193" end="208"></segment>
+					<segment name="Stop" start="209" end="239"></segment>
+					<segment name="Music Fast" start="240" end="244"></segment>
+					<segment name="Music Slow" start="245" end="249"></segment>
+					<segment name="Music Dynamic" start="250" end="255"></segment>
+				</channel>
+				<channel number="6" type="_PAN_" bits="8" priority="LTP" name="Pan" subelement="0">
+					<segment name="Max Left" start="0" end="0"></segment>
+					<segment name="Neutral" start="63" end="63"></segment>
+					<segment name="Max Right" start="127" end="127"></segment>
+					<segment name="Narrow Shake" start="128" end="182"></segment>
+					<segment name="Wide Shake" start="183" end="239"></segment>
+					<segment name="Music Fast" start="240" end="244"></segment>
+					<segment name="Music Slow" start="245" end="249"></segment>
+					<segment name="Music Dynamic" start="250" end="255"></segment>
+				</channel>
+				<channel number="7" type="_TILT_" bits="8" priority="LTP" name="Tilt">
+					<segment name="No Rotation" start="0" end="1"></segment>
+					<segment name="CW Rotation" start="2" end="63"></segment>
+					<segment name="No Rotation" start="64" end="65"></segment>
+					<segment name="CCW Rotation" start="66" end="127"></segment>
+					<segment name="No Rotation" start="128" end="129"></segment>
+					<segment name="Narrow Shake" start="130" end="184"></segment>
+					<segment name="Wide Shake" start="185" end="239"></segment>
+					<segment name="Music Fast" start="240" end="244"></segment>
+					<segment name="Music Slow" start="245" end="249"></segment>
+					<segment name="Music Dynamic" start="250" end="255"></segment>
+				</channel>
+			</channels>
+			<palettes>
+				<palette type="_GOBO_">
+					<set name="open" icon="generic_open.png">
+						<value channel="_GOBO_" value="0"></value>
+					</set>
+					<set name="gobo1_1" icon="EFX_1.png">
+						<value channel="_GOBO_" value="5"></value>
+					</set>
+					<set name="gobo1_2" icon="EFX_2.png">
+						<value channel="_GOBO_" value="15"></value>
+					</set>
+					<set name="gobo1_3" icon="EFX_3.png">
+						<value channel="_GOBO_" value="25"></value>
+					</set>
+					<set name="gobo1_4" icon="EFX_4.png">
+						<value channel="_GOBO_" value="35"></value>
+					</set>
+					<set name="gobo1_5" icon="EFX_5.png">
+						<value channel="_GOBO_" value="45"></value>
+					</set>
+					<set name="gobo1_6" icon="EFX_6.png">
+						<value channel="_GOBO_" value="55"></value>
+					</set>
+					<set name="gobo1_7" icon="EFX_7.png">
+						<value channel="_GOBO_" value="65"></value>
+					</set>
+					<set name="gobo1_8" icon="EFX_8.png">
+						<value channel="_GOBO_" value="75"></value>
+					</set>
+					<set name="gobo1_9" icon="EFX_9.png">
+						<value channel="_GOBO_" value="85"></value>
+					</set>
+					<set name="gobo1_10" icon="EFX_10.png">
+						<value channel="_GOBO_" value="95"></value>
+					</set>
+					<set name="gobo1_11" icon="EFX_11.png">
+						<value channel="_GOBO_" value="105"></value>
+					</set>
+				</palette>
+				<palette type="_GENERAL_">
+					<set name="_FIND_">
+						<value channel="_SHUTTER_" bits="8" value="000" element_set=""></value>
+						<value channel="_INTENSITY_" bits="8" value="255" element_set=""></value>
+						<value channel="_GOBO_" bits="8" value="000" element_set=""></value>
+						<value channel="_GOBO_CTRL_" bits="8" value="000" element_set=""></value>
+						<value channel="_POSITION_" bits="8" value="000" element_set=""></value>
+						<value channel="_PAN_" bits="8" value="128" element_set=""></value>
+						<value channel="_TILT_" bits="8" value="128" element_set=""></value>
+					</set>
+					<set name="_DEFAULT_">
+						<value channel="_SHUTTER_" bits="8" value="000" element_set=""></value>
+						<value channel="_INTENSITY_" bits="8" value="000" element_set=""></value>
+						<value channel="_GOBO_" bits="8" value="000" element_set=""></value>
+						<value channel="_GOBO_CTRL_" bits="8" value="000" element_set=""></value>
+						<value channel="_POSITION_" bits="8" value="000" element_set=""></value>
+						<value channel="_PAN_" bits="8" value="128" element_set=""></value>
+						<value channel="_TILT_" bits="8" value="128" element_set=""></value>
+					</set>
+					<set name="_HIGHLIGHT_">
+						<value channel="_SHUTTER_" bits="8" value="000" element_set=""></value>
+						<value channel="_INTENSITY_" bits="8" value="255" element_set=""></value>
+						<value channel="_GOBO_" bits="8" value="000" element_set=""></value>
+						<value channel="_GOBO_CTRL_" bits="8" value="000" element_set=""></value>
+						<value channel="_POSITION_" bits="8" value="" element_set=""></value>
+						<value channel="_PAN_" bits="8" value="" element_set=""></value>
+						<value channel="_TILT_" bits="8" value="" element_set=""></value>
+					</set>
+					<set name="_LOWLIGHT_">
+						<value channel="_SHUTTER_" bits="8" value="000" element_set=""></value>
+						<value channel="_INTENSITY_" bits="8" value="80" element_set=""></value>
+						<value channel="_GOBO_" bits="8" value="000" element_set=""></value>
+						<value channel="_GOBO_CTRL_" bits="8" value="000" element_set=""></value>
+						<value channel="_POSITION_" bits="8" value="" element_set=""></value>
+						<value channel="_PAN_" bits="8" value="" element_set=""></value>
+						<value channel="_TILT_" bits="8" value="" element_set=""></value>
+					</set>
+				</palette>
+			</palettes>
+			<macros>
+				<macro name="_RESET_">
+					<step wait="5500">
+						<value channel="_SHUTTER_" value="252"></value>
+					</step>
+					<step wait="1000">
+						<value channel="_SHUTTER_" value="0"></value>
+					</step>
+				</macro>
+			</macros>
+		</mode>
+		<mode name="M2(9)" number_of_channels="9" invert_pan="F" invert_tilt="F" multi_element="F" vmodes="F" elements="" virtual_dimmer="F" icon="mode1_icon.png">
+			<channels>
+				<channel number="1" type="_SHUTTER_" bits="8" priority="LTP" name="Shutter" subelement="0">
+					<segment name="No Funct" start="0" end="4"></segment>
+					<segment name="Strobe" start="5" end="68"></segment>
+					<segment name="Remote Stand-Alone Auto" start="69" end="100"></segment>
+					<segment name="Remote Stand-Alone Music" start="101" end="132"></segment>
+					<segment name="Reserved" start="133" end="249"></segment>
+					<segment name="Reset Fixture" start="250" end="255"></segment>
+				</channel>
+				<channel number="2" type="_INTENSITY_" bits="8" priority="HTP" name="Intensity" subelement="0"></channel>
+				<channel number="3" type="_GOBO_" bits="8" priority="LTP" name="Gobo" subelement="0">
+					<segment name="Gobo 1" start="0" end="9"></segment>
+					<segment name="Gobo 2" start="10" end="19"></segment>
+					<segment name="Gobo 3" start="20" end="29"></segment>
+					<segment name="Gobo 4" start="30" end="39"></segment>
+					<segment name="Gobo 5" start="40" end="49"></segment>
+					<segment name="Gobo 6" start="50" end="59"></segment>
+					<segment name="Gobo 7" start="60" end="69"></segment>
+					<segment name="Gobo 8" start="70" end="79"></segment>
+					<segment name="Gobo 9" start="80" end="89"></segment>
+					<segment name="Gobo 10" start="90" end="99"></segment>
+					<segment name="Gobo 11" start="100" end="109"></segment>
+					<segment name="Gobo 12" start="110" end="119"></segment>
+					<segment name="Reserved" start="120" end="175"></segment>
+					<segment name="CW Rot" start="176" end="207"></segment>
+					<segment name="CCW Rot" start="208" end="239"></segment>
+					<segment name="Mudic Fast" start="240" end="244"></segment>
+					<segment name="Music Slow" start="245" end="249"></segment>
+					<segment name="Music Dynamic" start="250" end="255"></segment>
+				</channel>
+				<channel number="4" type="_GOBO_CTRL_" bits="8" priority="LTP" name="Gobo Shake" subelement="0">
+					<segment name="No Funct" start="0" end="1"></segment>
+					<segment name="Narrow" start="2" end="128"></segment>
+					<segment name="Wide" start="129" end="255"></segment>
+				</channel>
+				<channel number="5" type="_POSITION_" bits="8" priority="LTP" name="Rotation" subelement="0">
+					<segment name="Stop" start="0" end="1"></segment>
+					<segment name="CCW Rot" start="2" end="65"></segment>
+					<segment name="CW Rot" start="66" end="129"></segment>
+					<segment name="Shake" start="130" end="192"></segment>
+					<segment name="Rnd Shake" start="193" end="208"></segment>
+					<segment name="Stop" start="209" end="239"></segment>
+					<segment name="Music Fast" start="240" end="244"></segment>
+					<segment name="Music Slow" start="245" end="249"></segment>
+					<segment name="Music Dynamic" start="250" end="255"></segment>
+				</channel>
+				<channel number="6" type="_PAN_" bits="8" priority="LTP" name="Pan" subelement="0">
+					<segment name="Max Left" start="0" end="0"></segment>
+					<segment name="Neutral" start="63" end="63"></segment>
+					<segment name="Max Right" start="127" end="127"></segment>
+					<segment name="Narrow Shake" start="128" end="182"></segment>
+					<segment name="Wide Shake" start="183" end="239"></segment>
+					<segment name="Music Fast" start="240" end="244"></segment>
+					<segment name="Music Slow" start="245" end="249"></segment>
+					<segment name="Music Dynamic" start="250" end="255"></segment>
+				</channel>
+				<channel number="7" type="_TILT_" bits="8" priority="LTP" name="Tilt">
+					<segment name="No Rotation" start="0" end="1"></segment>
+					<segment name="CW Rotation" start="2" end="63"></segment>
+					<segment name="No Rotation" start="64" end="65"></segment>
+					<segment name="CCW Rotation" start="66" end="127"></segment>
+					<segment name="No Rotation" start="128" end="129"></segment>
+					<segment name="Narrow Shake" start="130" end="184"></segment>
+					<segment name="Wide Shake" start="185" end="239"></segment>
+					<segment name="Music Fast" start="240" end="244"></segment>
+					<segment name="Music Slow" start="245" end="249"></segment>
+					<segment name="Music Dynamic" start="250" end="255"></segment>
+				</channel>
+				<channel number="8" type="_MACRO_" bits="8" priority="LTP" name="Macros">
+					<segment name="No Macro" start="0" end="15"></segment>
+					<segment name="Macro 1" start="16" end="31"></segment>
+					<segment name="Macro 2" start="32" end="47"></segment>
+					<segment name="Macro 3" start="48" end="63"></segment>
+					<segment name="Macro 4" start="64" end="79"></segment>
+					<segment name="Macro 5" start="80" end="95"></segment>
+					<segment name="Macro 6" start="96" end="111"></segment>
+					<segment name="Macro 7" start="112" end="127"></segment>
+					<segment name="Macro 8" start="128" end="143"></segment>
+					<segment name="Macro 9" start="144" end="159"></segment>
+					<segment name="Macro 10" start="160" end="175"></segment>
+					<segment name="Macro 11" start="176" end="191"></segment>
+					<segment name="Macro 12" start="192" end="207"></segment>
+					<segment name="Reserved" start="208" end="255"></segment>
+				</channel>
+				<channel number="9" type="_MACRO_CTRL_" bits="8" priority="LTP" name="Macros Speed">
+					<segment name="Default" start="0" end="1"></segment>
+					<segment name="Fast-Slow" start="2" end="255"></segment>
+				</channel>
+			</channels>
+			<palettes>
+				<palette type="_GOBO_">
+					<set name="open" icon="generic_open.png">
+						<value channel="_GOBO_" value="0"></value>
+					</set>
+					<set name="gobo1_1" icon="EFX_1.png">
+						<value channel="_GOBO_" value="5"></value>
+					</set>
+					<set name="gobo1_2" icon="EFX_2.png">
+						<value channel="_GOBO_" value="15"></value>
+					</set>
+					<set name="gobo1_3" icon="EFX_3.png">
+						<value channel="_GOBO_" value="25"></value>
+					</set>
+					<set name="gobo1_4" icon="EFX_4.png">
+						<value channel="_GOBO_" value="35"></value>
+					</set>
+					<set name="gobo1_5" icon="EFX_5.png">
+						<value channel="_GOBO_" value="45"></value>
+					</set>
+					<set name="gobo1_6" icon="EFX_6.png">
+						<value channel="_GOBO_" value="55"></value>
+					</set>
+					<set name="gobo1_7" icon="EFX_7.png">
+						<value channel="_GOBO_" value="65"></value>
+					</set>
+					<set name="gobo1_8" icon="EFX_8.png">
+						<value channel="_GOBO_" value="75"></value>
+					</set>
+					<set name="gobo1_9" icon="EFX_9.png">
+						<value channel="_GOBO_" value="85"></value>
+					</set>
+					<set name="gobo1_10" icon="EFX_10.png">
+						<value channel="_GOBO_" value="95"></value>
+					</set>
+					<set name="gobo1_11" icon="EFX_11.png">
+						<value channel="_GOBO_" value="105"></value>
+					</set>
+				</palette>
+				<palette type="_GENERAL_">
+					<set name="_FIND_">
+						<value channel="_SHUTTER_" bits="8" value="000" element_set=""></value>
+						<value channel="_INTENSITY_" bits="8" value="255" element_set=""></value>
+						<value channel="_GOBO_" bits="8" value="000" element_set=""></value>
+						<value channel="_GOBO_CTRL_" bits="8" value="000" element_set=""></value>
+						<value channel="_POSITION_" bits="8" value="000" element_set=""></value>
+						<value channel="_PAN_" bits="8" value="128" element_set=""></value>
+						<value channel="_TILT_" bits="8" value="128" element_set=""></value>
+						<value channel="_MACRO_" bits="8" value="000" element_set=""></value>
+						<value channel="_MACRO_CTRL_" bits="8" value="000" element_set=""></value>
+					</set>
+					<set name="_DEFAULT_">
+						<value channel="_SHUTTER_" bits="8" value="000" element_set=""></value>
+						<value channel="_INTENSITY_" bits="8" value="000" element_set=""></value>
+						<value channel="_GOBO_" bits="8" value="000" element_set=""></value>
+						<value channel="_GOBO_CTRL_" bits="8" value="000" element_set=""></value>
+						<value channel="_POSITION_" bits="8" value="000" element_set=""></value>
+						<value channel="_PAN_" bits="8" value="128" element_set=""></value>
+						<value channel="_TILT_" bits="8" value="128" element_set=""></value>
+						<value channel="_MACRO_" bits="8" value="000" element_set=""></value>
+						<value channel="_MACRO_CTRL_" bits="8" value="000" element_set=""></value>
+					</set>
+					<set name="_HIGHLIGHT_">
+						<value channel="_SHUTTER_" bits="8" value="000" element_set=""></value>
+						<value channel="_INTENSITY_" bits="8" value="255" element_set=""></value>
+						<value channel="_GOBO_" bits="8" value="000" element_set=""></value>
+						<value channel="_GOBO_CTRL_" bits="8" value="000" element_set=""></value>
+						<value channel="_POSITION_" bits="8" value="" element_set=""></value>
+						<value channel="_PAN_" bits="8" value="" element_set=""></value>
+						<value channel="_TILT_" bits="8" value="" element_set=""></value>
+						<value channel="_MACRO_" bits="8" value="000" element_set=""></value>
+						<value channel="_MACRO_CTRL_" bits="8" value="000" element_set=""></value>
+					</set>
+					<set name="_LOWLIGHT_">
+						<value channel="_SHUTTER_" bits="8" value="000" element_set=""></value>
+						<value channel="_INTENSITY_" bits="8" value="80" element_set=""></value>
+						<value channel="_GOBO_" bits="8" value="000" element_set=""></value>
+						<value channel="_GOBO_CTRL_" bits="8" value="000" element_set=""></value>
+						<value channel="_POSITION_" bits="8" value="" element_set=""></value>
+						<value channel="_PAN_" bits="8" value="" element_set=""></value>
+						<value channel="_TILT_" bits="8" value="" element_set=""></value>
+						<value channel="_MACRO_" bits="8" value="000" element_set=""></value>
+						<value channel="_MACRO_CTRL_" bits="8" value="000" element_set=""></value>
+					</set>
+				</palette>
+			</palettes>
+			<macros>
+				<macro name="_RESET_">
+					<step wait="5500">
+						<value channel="_SHUTTER_" value="252"></value>
+					</step>
+					<step wait="1000">
+						<value channel="_SHUTTER_" value="0"></value>
+					</step>
+				</macro>
+			</macros>
+		</mode>
+		</fixture>
+</ofl>

@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ofl>
+    <brand short_name="ShowTec" name="ShowTec" url="http://www.highlite.nl/es/" icon="logo_ShowTec.png"></brand>
+    <fixture brand="ShowTec" short_name="TitanStrbB" name="TITAN Strobe BLAZE" version="2017-09-15 13:41">
+        <hardware type="_MANUAL_" pan_angle="" tilt_angle="" pan_max_speed="" tilt_max_speed="" beam_type="" beam_zoom_narrow="" beam_zoom_wide="" spot_zoom_narrow="" spot_zoom_wide="" max_strobe="" min_strobe="" rotation_speed="" color_type="" framing_type="_NONE_" dimmer_curve="" light_source="" light_source_power="" color_temp="" lummens="" max_power_consumption="1800" weight="5.9" height="265" widht="160" depth="495" shape=""></hardware>
+        <mode name="M1(1ch)" number_of_channels="1" invert_pan="F" invert_tilt="F" multi_element="F" elements="" vmodes="F" virtual_dimmer="F" icon="mode1_icon.png">
+            <channels>
+                <channel number="1" type="_INTENSITY_" bits="8" priority="HTP" name="Intensity" subelement="0"></channel>
+                <channel number="2" type="_INTENSITY_CTRL_" bits="8" priority="LTP" name="Speed" subelement="0">
+                    <segment name="No Func" start="0" end="4"></segment>
+                    <segment name="Strb S-F" start="5" end="127"></segment>
+                    <segment name="Rns Strb" start="128" end="255"></segment>
+                </channel>
+                <channel number="3" type="_COLOR_" bits="8" priority="LTP" name="Color" subelement="0">
+                    <segment name="No Func" start="0" end="9"></segment>
+                    <segment name="Red" start="10" end="19"></segment>
+                    <segment name="Orange" start="20" end="29"></segment>
+                    <segment name="Yellow" start="30" end="39"></segment>
+                    <segment name="Green" start="40" end="49"></segment>
+                    <segment name="Cyan" start="50" end="59"></segment>
+                    <segment name="Blue" start="60" end="69"></segment>
+                    <segment name="Pink" start="70" end="79"></segment>
+                    <segment name="Magenta" start="80" end="89"></segment>
+                    <segment name="Prog 1" start="90" end="131"></segment>
+                    <segment name="Prog 2" start="132" end="173"></segment>
+                    <segment name="Prog 3" start="174" end="215"></segment>
+                    <segment name="Prog 4" start="216" end="255"></segment>
+                </channel>
+            </channels>
+            <palettes>
+                <palette type="_GENERAL_">
+                    <set name="_FIND_">
+                        <value channel="_INTENSITY_" value="255" bits="8" element_set=""></value>
+                        <value channel="_INTENSITY_CTRL_" value="128" bits="8" element_set=""></value>
+                        <value channel="_COLOR_" value="255" bits="8" element_set=""></value>
+                    </set>
+                    <set name="_DEFAULT_">
+                        <value channel="_INTENSITY_" value="000" bits="8" element_set=""></value>
+                        <value channel="_INTENSITY_CTRL_" value="000" bits="8" element_set=""></value>
+                        <value channel="_COLOR_" value="000" bits="8" element_set=""></value>
+                    </set>
+                    <set name="_HIGHLIGHT_">
+                        <value channel="_INTENSITY_" value="" bits="8" element_set=""></value>
+                        <value channel="_INTENSITY_CTRL_" value="" bits="8" element_set=""></value>
+                        <value channel="_COLOR_" value="" bits="8" element_set=""></value>
+                    </set>
+                    <set name="_LOWLIGHT_">
+                        <value channel="_INTENSITY_" value="" bits="8" element_set=""></value>
+                        <value channel="_INTENSITY_CTRL_" value="" bits="8" element_set=""></value>
+                        <value channel="_COLOR_" value="" bits="8" element_set=""></value>
+                    </set>
+                </palette>
+            </palettes>
+        </mode>
+        <mode name="M2(5ch)" number_of_channels="1" invert_pan="F" invert_tilt="F" multi_element="F" elements="" vmodes="F" virtual_dimmer="F" icon="mode1_icon.png">
+            <channels>
+                <channel number="1" type="_INTENSITY_" bits="8" priority="HTP" name="Intensity" subelement="0"></channel>
+                <channel number="2" type="_INTENSITY_CTRL_" bits="8" priority="LTP" name="Speed" subelement="0">
+                    <segment name="No Func" start="0" end="4"></segment>
+                    <segment name="Strb S-F" start="5" end="127"></segment>
+                    <segment name="Rns Strb" start="128" end="255"></segment>
+                </channel>
+                <channel number="3" type="_SHUTTER_" bits="8" priority="LTP" name="Strobe" subelement="0">
+                    <segment name="Linear" start="0" end="129"></segment>
+                    <segment name="Blinder" start="130" end="159"></segment>
+                    <segment name="Rnd" start="160" end="189"></segment>
+                    <segment name="Lighting" start="190" end="229"></segment>
+                    <segment name="Sync" start="230" end="255"></segment>
+                </channel>
+                <channel number="4" type="_INTENSITY2_" bits="8" priority="HTP" name="LED Int" subelement="0"></channel>
+                <channel number="5" type="_COLOR_" bits="8" priority="LTP" name="Color" subelement="0">
+                    <segment name="No Func" start="0" end="9"></segment>
+                    <segment name="Red" start="10" end="19"></segment>
+                    <segment name="Orange" start="20" end="29"></segment>
+                    <segment name="Yellow" start="30" end="39"></segment>
+                    <segment name="Green" start="40" end="49"></segment>
+                    <segment name="Cyan" start="50" end="59"></segment>
+                    <segment name="Blue" start="60" end="69"></segment>
+                    <segment name="Pink" start="70" end="79"></segment>
+                    <segment name="Magenta" start="80" end="89"></segment>
+                    <segment name="Prog 1" start="90" end="131"></segment>
+                    <segment name="Prog 2" start="132" end="173"></segment>
+                    <segment name="Prog 3" start="174" end="215"></segment>
+                    <segment name="Prog 4" start="216" end="255"></segment>
+                </channel>
+            </channels>
+            <palettes>
+                <palette type="_GENERAL_">
+                    <set name="_FIND_">
+                        <value channel="_INTENSITY_" value="255" bits="8" element_set=""></value>
+                        <value channel="_INTENSITY_CTRL_" value="128" bits="8" element_set=""></value>
+                        <value channel="_INTENSITY2_" value="255" bits="8" element_set=""></value>
+                        <value channel="_SHUTTER_" value="000" bits="8" element_set=""></value>
+                        <value channel="_COLOR_" value="255" bits="8" element_set=""></value>
+                    </set>
+                    <set name="_DEFAULT_">
+                        <value channel="_INTENSITY_" value="000" bits="8" element_set=""></value>
+                        <value channel="_INTENSITY_CTRL_" value="000" bits="8" element_set=""></value>
+                        <value channel="_INTENSITY2_" value="000" bits="8" element_set=""></value>
+                        <value channel="_SHUTTER_" value="000" bits="8" element_set=""></value>
+                        <value channel="_COLOR_" value="000" bits="8" element_set=""></value>
+                    </set>
+                    <set name="_HIGHLIGHT_">
+                        <value channel="_INTENSITY_" value="" bits="8" element_set=""></value>
+                        <value channel="_INTENSITY_CTRL_" value="" bits="8" element_set=""></value>
+                        <value channel="_INTENSITY2_" value="" bits="8" element_set=""></value>
+                        <value channel="_SHUTTER_" value="" bits="8" element_set=""></value>
+                        <value channel="_COLOR_" value="" bits="8" element_set=""></value>
+                    </set>
+                    <set name="_LOWLIGHT_">
+                        <value channel="_INTENSITY_" value="" bits="8" element_set=""></value>
+                        <value channel="_INTENSITY_CTRL_" value="" bits="8" element_set=""></value>
+                        <value channel="_INTENSITY2_" value="" bits="8" element_set=""></value>
+                        <value channel="_SHUTTER_" value="" bits="8" element_set=""></value>
+                        <value channel="_COLOR_" value="" bits="" element_set=""></value>
+                    </set>
+                </palette>
+            </palettes>
+        </mode>
+    </fixture>
+</ofl>

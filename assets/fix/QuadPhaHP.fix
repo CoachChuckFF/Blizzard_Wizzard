@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ofl>
+    <brand short_name="AmericanDj" name="American DJ" url="http://www.adj.com" icon="logo_AmericanDj.png"></brand>
+    <fixture brand="AmericanDj" short_name="QuadPhaHP" name="QuadPhase HP" version="2018-08-22 16:46">
+        <hardware type="" pan_angle="" tilt_angle="" pan_max_speed="" tilt_max_speed="" beam_type="" beam_zoom_narrow="65" beam_zoom_wide="65" spot_zoom_narrow="" spot_zoom_wide="" max_strobe="" min_strobe="" rotation_speed="" color_type="_RGBW_" framing_type="_NONE_" dimmer_curve="_LINEAR_" light_source="_LED_" light_source_power="1x32" color_temp="" lummens="" max_power_consumption="64" weight="4" height="279" widht="198" depth="312" shape=""></hardware>
+        <mode name="4ch" number_of_channels="4" invert_pan="F" invert_tilt="F" multi_element="F" vmodes="F" virtaul_dimmer="F" elements="" icon="mode1_icon.png">
+            <channels>
+              <channel number="1" type="_COLOR_" bits="8" priority="LTP" name="Color Selection" subelement="0">
+                  <segment name="Color 1" start="0" end="16"></segment>
+                  <segment name="Color 2" start="17" end="33"></segment>
+                  <segment name="Color 3" start="34" end="50"></segment>
+                  <segment name="Color 4" start="51" end="67"></segment>
+                  <segment name="Color 5" start="68" end="84"></segment>
+                  <segment name="Color 6" start="85" end="101"></segment>
+                  <segment name="Color 7" start="102" end="118"></segment>
+                  <segment name="Color 8" start="119" end="135"></segment>
+                  <segment name="Color 9" start="136" end="152"></segment>
+                  <segment name="Color 10" start="153" end="169"></segment>
+                  <segment name="Color 11" start="170" end="186"></segment>
+                  <segment name="Color 12" start="187" end="203"></segment>
+                  <segment name="Color 13" start="204" end="220"></segment>
+                  <segment name="Color 14" start="221" end="237"></segment>
+                  <segment name="Color 15" start="238" end="255"></segment>
+              </channel>
+              <channel number="2" type="_POSITION_" bits="8" priority="LTP" name="Rotation" subelement="0">
+                  <segment name="No Rotation" start="0" end="9"></segment>
+                  <segment name="CW Rot F-S" start="10" end="120"></segment>
+                  <segment name="No Rotation" start="121" end="134"></segment>
+                  <segment name="CCW Rot S-F" start="135" end="245"></segment>
+                  <segment name="No Rotation" start="246" end="249"></segment>
+                  <segment name="Sound Active" start="250" end="255"></segment>
+              </channel>
+              <channel number="3" type="_SHUTTER2_" bits="8" priority="LTP" name="Strobe" subelement="0">
+                <segment name="No Strobe" start="0" end="0"></segment>
+                <segment name="Strobe Slow-Fast" start="1" end="255"></segment>
+              </channel>
+              <channel number="4" type="_SHUTTER_" bits="8" priority="LTP" name="Strobe Open" subelement="0">
+                <segment name="Closed" start="0" end="15"></segment>
+                <segment name="Open" start="16" end="255"></segment>
+              </channel>
+            </channels>
+            <palettes>
+                <palette type="_GENERAL_">
+                    <set name="_FIND_">
+                        <value channel="_COLOR_" value="000" bits="8" element_set=""></value>
+                        <value channel="_POSITION_" value="000" bits="8" element_set=""></value>
+                        <value channel="_SHUTTER2_" value="000" bits="8" element_set=""></value>
+                        <value channel="_SHUTTER_" value="255" bits="8" element_set=""></value>
+                    </set>
+                    <set name="_DEFAULT_">
+                      <value channel="_COLOR_" value="000" bits="8" element_set=""></value>
+                      <value channel="_POSITION_" value="000" bits="8" element_set=""></value>
+                      <value channel="_SHUTTER2_" value="000" bits="8" element_set=""></value>
+                      <value channel="_SHUTTER_" value="000" bits="8" element_set=""></value>
+                    </set>
+                    <set name="_HIGHLIGHT_"></set>
+                    <set name="_LOWLIGHT_"></set>
+                </palette>
+            </palettes>
+        </mode>
+    </fixture>
+</ofl>

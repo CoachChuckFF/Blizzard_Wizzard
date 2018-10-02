@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ofl>
+    <brand short_name="StudioDue" name="StudioDue" url="http://www.studiodue.com" icon="logo_StudioDue.png"></brand>
+    <fixture brand="StudioDue" short_name="CS_2" name="CS_2" version="2018-08-09 20:59">
+        <hardware type="" pan_angle="" tilt_angle="" pan_max_speed="" tilt_max_speed="" beam_type="" beam_zoom_narrow="" beam_zoom_wide="" spot_zoom_narrow="" spot_zoom_wide="" max_strobe="" min_strobe="" rotation_speed="" color_type="" framing_type="" dimmer_curve="" light_source="" light_source_power="" color_temp="" lummens="" max_power_consumption="" weight="" height="" widht="" depth="" shape=""></hardware>
+        <mode name="9ch" number_of_channels="9" invert_pan="F" invert_tilt="F" multi_element="F" vmodes="F" virtaul_dimmer="F" elements="" icon="mode1_icon.png">
+            <channels>
+				     <channel number="1" type="_INTENSITY_" bits="8" priority="HTP" name="Dimmer Lamp 1" subelement="0">
+					      <segment name="Dimmer" start="0" end="255" from="0" to="100" unit="%"></segment>
+             </channel>
+             <channel number="2" type="_INTENSITY2_" bits="8" priority="HTP" name="Dimmer Lamp 2" subelement="0">
+ 					      <segment name="Dimmer" start="0" end="255" from="0" to="100" unit="%"></segment>
+             </channel>
+             <channel number="3" type="_POSX_" bits="8" priority="LTP" name="Pan 1" subelement="0"></channel>
+             <channel number="4" type="_POSX2_" bits="8" priority="LTP" name="Pan 2" subelement="0"></channel>
+             <channel number="5" type="_PAN_" bits="8" priority="LTP" name="Global Pan" subelement="0"></channel>
+             <channel number="6" type="_TILT_" bits="8" priority="LTP" name="Tilt" subelement="0"></channel>
+             <channel number="7" type="_PAN_CTRL_" bits="8" priority="LTP" name="Pan Mode" subelement="0">
+               <segment name="Normal Mode" start="0" end="63"></segment>
+               <segment name="Mode 1" start="64" end="127"></segment>
+               <segment name="Mode 2" start="128" end="255"></segment>
+             </channel>
+             <channel number="8" type="_POSITION_" bits="8" priority="LTP" name="Motor Speed" subelement="0">
+               <segment name="Max Speed" start="0" end="31"></segment>
+               <segment name="Min Speed" start="224" end="255"></segment>
+             </channel>
+             <channel number="9" type="_FUNCT_" bits="8" priority="LTP" name="Reset" subelement="0">
+               <segment name="No Function" start="0" end="127"></segment>
+               <segment name="Reset" start="128" end="191"></segment>
+               <segment name="No Function" start="192" end="255"></segment>
+             </channel>
+            </channels>
+            <palettes>
+                <palette type="_GENERAL_">
+                    <set name="_FIND_">
+						            <value channel="_INTENSITY_" bits="8" value="255" element_set=""></value>
+                        <value channel="_INTENSITY2_" bits="8" value="255" element_set=""></value>
+                        <value channel="_POSX2_" bits="8" value="128" element_set=""></value>
+                        <value channel="_POSX_" bits="8" value="128" element_set=""></value>
+                        <value channel="_PAN_" bits="8" value="128" element_set=""></value>
+                        <value channel="_TILT_" bits="8" value="128" element_set=""></value>
+                        <value channel="_PAN_CTRL_" bits="16" value="000" element_set=""></value>
+                        <value channel="_POSITION_" bits="8" value="000" element_set=""></value>
+                        <value channel="_FUNCT_" bits="16" value="000" element_set=""></value>
+                    </set>
+                    <set name="_DEFAULT_">
+                      <value channel="_INTENSITY_" bits="8" value="000" element_set=""></value>
+                      <value channel="_INTENSITY2_" bits="8" value="000" element_set=""></value>
+                      <value channel="_POSX2_" bits="8" value="128" element_set=""></value>
+                      <value channel="_POSX_" bits="8" value="128" element_set=""></value>
+                      <value channel="_PAN_" bits="8" value="128" element_set=""></value>
+                      <value channel="_TILT_" bits="8" value="128" element_set=""></value>
+                      <value channel="_PAN_CTRL_" bits="16" value="000" element_set=""></value>
+                      <value channel="_POSITION_" bits="8" value="000" element_set=""></value>
+                      <value channel="_FUNCT_" bits="16" value="000" element_set=""></value>
+                    </set>
+                    <set name="_HIGHLIGHT_">
+                      <value channel="_INTENSITY_" bits="8" value="255" element_set=""></value>
+                      <value channel="_INTENSITY2_" bits="8" value="255" element_set=""></value>
+                      <value channel="_POSX2_" bits="8" value="" element_set=""></value>
+                      <value channel="_POSX_" bits="8" value="" element_set=""></value>
+                      <value channel="_PAN_" bits="8" value="" element_set=""></value>
+                      <value channel="_TILT_" bits="8" value="" element_set=""></value>
+                      <value channel="_PAN_CTRL_" bits="16" value="" element_set=""></value>
+                      <value channel="_POSITION_" bits="8" value="" element_set=""></value>
+                      <value channel="_FUNCT_" bits="16" value="000" element_set=""></value>
+                    </set>
+                    <set name="_LOWLIGHT_">
+                      <value channel="_INTENSITY_" bits="8" value="80" element_set=""></value>
+                      <value channel="_INTENSITY2_" bits="8" value="80" element_set=""></value>
+                      <value channel="_POSX2_" bits="8" value="" element_set=""></value>
+                      <value channel="_POSX_" bits="8" value="" element_set=""></value>
+                      <value channel="_PAN_" bits="8" value="" element_set=""></value>
+                      <value channel="_TILT_" bits="8" value="" element_set=""></value>
+                      <value channel="_PAN_CTRL_" bits="16" value="" element_set=""></value>
+                      <value channel="_POSITION_" bits="8" value="" element_set=""></value>
+                      <value channel="_FUNCT_" bits="16" value="000" element_set=""></value>
+                    </set>
+                </palette>
+            </palettes>
+            <macros>
+                <macro name="_RESET_">
+                    <step wait="5000">
+                        <value channel="_FUNCT_" value="175"></value>
+                    </step>
+                    <step wait="1000">
+                        <value channel="_FUNCT_" value="0"></value>
+                    </step>
+                </macro>
+            </macros>
+        </mode>
+        <mode name="11ch" number_of_channels="11" invert_pan="F" invert_tilt="F" multi_element="F" vmodes="F" virtaul_dimmer="F" elements="" icon="mode1_icon.png">
+            <channels>
+				     <channel number="1" type="_INTENSITY_" bits="8" priority="HTP" name="Dimmer Lamp 1" subelement="0">
+					      <segment name="Dimmer" start="0" end="255" from="0" to="100" unit="%"></segment>
+             </channel>
+             <channel number="2" type="_INTENSITY2_" bits="8" priority="HTP" name="Dimmer Lamp 2" subelement="0">
+ 					      <segment name="Dimmer" start="0" end="255" from="0" to="100" unit="%"></segment>
+             </channel>
+             <channel number="3" type="_POSX_" bits="8" priority="LTP" name="Pan 1" subelement="0"></channel>
+             <channel number="4" type="_POSX2_" bits="8" priority="LTP" name="Pan 2" subelement="0"></channel>
+             <channel number="5" type="_PAN_" bits="8" priority="LTP" name="Global Pan" subelement="0"></channel>
+             <channel number="6" type="_PAN_" bits="16" priority="LTP" name="Global Pan Fine" subelement="0"></channel>
+             <channel number="7" type="_TILT_" bits="8" priority="LTP" name="Tilt" subelement="0"></channel>
+             <channel number="8" type="_TILT_" bits="16" priority="LTP" name="Tilt Fine" subelement="0"></channel>
+             <channel number="9" type="_PAN_CTRL_" bits="8" priority="LTP" name="Pan Mode" subelement="0">
+               <segment name="Normal Mode" start="0" end="63"></segment>
+               <segment name="Mode 1" start="64" end="127"></segment>
+               <segment name="Mode 2" start="128" end="255"></segment>
+             </channel>
+             <channel number="10" type="_POSITION_" bits="8" priority="LTP" name="Motor Speed" subelement="0">
+               <segment name="Max Speed" start="0" end="31"></segment>
+               <segment name="Min Speed" start="224" end="255"></segment>
+             </channel>
+             <channel number="11" type="_FUNCT_" bits="8" priority="LTP" name="Reset" subelement="0">
+               <segment name="No Function" start="0" end="127"></segment>
+               <segment name="Reset" start="128" end="191"></segment>
+               <segment name="No Function" start="192" end="255"></segment>
+             </channel>
+            </channels>
+            <palettes>
+                <palette type="_GENERAL_">
+                    <set name="_FIND_">
+						            <value channel="_INTENSITY_" bits="8" value="255" element_set=""></value>
+                        <value channel="_INTENSITY2_" bits="8" value="255" element_set=""></value>
+                        <value channel="_POSX2_" bits="8" value="128" element_set=""></value>
+                        <value channel="_POSX_" bits="8" value="128" element_set=""></value>
+                        <value channel="_PAN_" bits="8" value="128" element_set=""></value>
+                        <value channel="_TILT_" bits="8" value="128" element_set=""></value>
+                        <value channel="_PAN_" bits="16" value="128" element_set=""></value>
+                        <value channel="_TILT_" bits="16" value="128" element_set=""></value>
+                        <value channel="_PAN_CTRL_" bits="16" value="000" element_set=""></value>
+                        <value channel="_POSITION_" bits="8" value="000" element_set=""></value>
+                        <value channel="_FUNCT_" bits="16" value="000" element_set=""></value>
+                    </set>
+                    <set name="_DEFAULT_">
+                      <value channel="_INTENSITY_" bits="8" value="000" element_set=""></value>
+                      <value channel="_INTENSITY2_" bits="8" value="000" element_set=""></value>
+                      <value channel="_POSX2_" bits="8" value="128" element_set=""></value>
+                      <value channel="_POSX_" bits="8" value="128" element_set=""></value>
+                      <value channel="_PAN_" bits="8" value="128" element_set=""></value>
+                      <value channel="_TILT_" bits="8" value="128" element_set=""></value>
+                      <value channel="_PAN_" bits="16" value="128" element_set=""></value>
+                      <value channel="_TILT_" bits="16" value="128" element_set=""></value>
+                      <value channel="_PAN_CTRL_" bits="16" value="000" element_set=""></value>
+                      <value channel="_POSITION_" bits="8" value="000" element_set=""></value>
+                      <value channel="_FUNCT_" bits="16" value="000" element_set=""></value>
+                    </set>
+                    <set name="_HIGHLIGHT_">
+                      <value channel="_INTENSITY_" bits="8" value="255" element_set=""></value>
+                      <value channel="_INTENSITY2_" bits="8" value="255" element_set=""></value>
+                      <value channel="_POSX2_" bits="8" value="" element_set=""></value>
+                      <value channel="_POSX_" bits="8" value="" element_set=""></value>
+                      <value channel="_PAN_" bits="8" value="" element_set=""></value>
+                      <value channel="_TILT_" bits="8" value="" element_set=""></value>
+                      <value channel="_PAN_" bits="16" value="" element_set=""></value>
+                      <value channel="_TILT_" bits="16" value="" element_set=""></value>
+                      <value channel="_PAN_CTRL_" bits="16" value="" element_set=""></value>
+                      <value channel="_POSITION_" bits="8" value="" element_set=""></value>
+                      <value channel="_FUNCT_" bits="16" value="000" element_set=""></value>
+                    </set>
+                    <set name="_LOWLIGHT_">
+                      <value channel="_INTENSITY_" bits="8" value="80" element_set=""></value>
+                      <value channel="_INTENSITY2_" bits="8" value="80" element_set=""></value>
+                      <value channel="_POSX2_" bits="8" value="" element_set=""></value>
+                      <value channel="_POSX_" bits="8" value="" element_set=""></value>
+                      <value channel="_PAN_" bits="8" value="" element_set=""></value>
+                      <value channel="_TILT_" bits="8" value="" element_set=""></value>
+                      <value channel="_PAN_" bits="16" value="" element_set=""></value>
+                      <value channel="_TILT_" bits="16" value="" element_set=""></value>
+                      <value channel="_PAN_CTRL_" bits="16" value="" element_set=""></value>
+                      <value channel="_POSITION_" bits="8" value="" element_set=""></value>
+                      <value channel="_FUNCT_" bits="16" value="000" element_set=""></value>
+                    </set>
+                </palette>
+            </palettes>
+            <macros>
+                <macro name="_RESET_">
+                    <step wait="5000">
+                        <value channel="_FUNCT_" value="175"></value>
+                    </step>
+                    <step wait="1000">
+                        <value channel="_FUNCT_" value="0"></value>
+                    </step>
+                </macro>
+            </macros>
+        </mode>
+        <mode name="14ch" number_of_channels="14" invert_pan="F" invert_tilt="F" multi_element="F" vmodes="F" virtaul_dimmer="F" elements="" icon="mode1_icon.png">
+            <channels>
+				     <channel number="1" type="_INTENSITY_" bits="8" priority="HTP" name="Dimmer Lamp 1" subelement="0">
+					      <segment name="Dimmer" start="0" end="255" from="0" to="100" unit="%"></segment>
+             </channel>
+             <channel number="2" type="_INTENSITY2_" bits="8" priority="HTP" name="Dimmer Lamp 2" subelement="0">
+ 					      <segment name="Dimmer" start="0" end="255" from="0" to="100" unit="%"></segment>
+             </channel>
+             <channel number="3" type="_POSITION_" bits="8" priority="LTP" name="Motor Speed" subelement="0">
+               <segment name="Max Speed" start="0" end="31"></segment>
+               <segment name="Min Speed" start="224" end="255"></segment>
+             </channel>
+             <channel number="4" type="_FUNCT_" bits="8" priority="LTP" name="Reset" subelement="0">
+               <segment name="No Function" start="0" end="127"></segment>
+               <segment name="Reset" start="128" end="191"></segment>
+               <segment name="No Function" start="192" end="255"></segment>
+             </channel>
+             <channel number="5" type="_PAN_" bits="8" priority="LTP" name="Global Pan" subelement="0"></channel>
+             <channel number="6" type="_PAN_" bits="16" priority="LTP" name="Global Pan Fine" subelement="0"></channel>
+             <channel number="7" type="_TILT_" bits="8" priority="LTP" name="Tilt" subelement="0"></channel>
+             <channel number="8" type="_TILT_" bits="16" priority="LTP" name="Tilt Fine" subelement="0"></channel>
+             <channel number="9" type="_POSX_" bits="8" priority="LTP" name="Pan 1" subelement="0"></channel>
+             <channel number="10" type="_POSX_" bits="16" priority="LTP" name="Pan 1 Fine" subelement="0"></channel>
+             <channel number="11" type="_POSX2_" bits="8" priority="LTP" name="Pan 2" subelement="0"></channel>
+             <channel number="12" type="_POSX2_" bits="16" priority="LTP" name="Pan 2 Fine" subelement="0"></channel>
+             <channel number="13" type="_PAN_CTRL_" bits="8" priority="LTP" name="Pan Mode" subelement="0">
+               <segment name="Normal Mode" start="0" end="63"></segment>
+               <segment name="Mode 1" start="64" end="127"></segment>
+               <segment name="Mode 2" start="128" end="255"></segment>
+             </channel>
+             <channel number="14" type="_FUNCT2_" bits="8" priority="LTP" name="Aux" subelement="0"></channel>
+            </channels>
+            <palettes>
+                <palette type="_GENERAL_">
+                    <set name="_FIND_">
+						            <value channel="_INTENSITY_" bits="8" value="255" element_set=""></value>
+                        <value channel="_INTENSITY2_" bits="8" value="255" element_set=""></value>
+                        <value channel="_POSX2_" bits="8" value="128" element_set=""></value>
+                        <value channel="_POSX_" bits="8" value="128" element_set=""></value>
+                        <value channel="_PAN_" bits="8" value="128" element_set=""></value>
+                        <value channel="_TILT_" bits="8" value="128" element_set=""></value>
+                        <value channel="_PAN_" bits="16" value="128" element_set=""></value>
+                        <value channel="_TILT_" bits="16" value="128" element_set=""></value>
+                        <value channel="_PAN_CTRL_" bits="16" value="000" element_set=""></value>
+                        <value channel="_POSITION_" bits="8" value="000" element_set=""></value>
+                        <value channel="_FUNCT_" bits="16" value="000" element_set=""></value>
+                        <value channel="_POSX2_" bits="16" value="128" element_set=""></value>
+                        <value channel="_POSX_" bits="16" value="128" element_set=""></value>
+                        <value channel="_FUNCT2_" bits="8" value="000" element_set=""></value>
+                    </set>
+                    <set name="_DEFAULT_">
+                      <value channel="_INTENSITY_" bits="8" value="000" element_set=""></value>
+                      <value channel="_INTENSITY2_" bits="8" value="000" element_set=""></value>
+                      <value channel="_POSX2_" bits="8" value="128" element_set=""></value>
+                      <value channel="_POSX_" bits="8" value="128" element_set=""></value>
+                      <value channel="_PAN_" bits="8" value="128" element_set=""></value>
+                      <value channel="_TILT_" bits="8" value="128" element_set=""></value>
+                      <value channel="_PAN_" bits="16" value="128" element_set=""></value>
+                      <value channel="_TILT_" bits="16" value="128" element_set=""></value>
+                      <value channel="_PAN_CTRL_" bits="16" value="000" element_set=""></value>
+                      <value channel="_POSITION_" bits="8" value="000" element_set=""></value>
+                      <value channel="_FUNCT_" bits="16" value="000" element_set=""></value>
+                      <value channel="_POSX2_" bits="16" value="128" element_set=""></value>
+                      <value channel="_POSX_" bits="16" value="128" element_set=""></value>
+                      <value channel="_FUNCT2_" bits="8" value="000" element_set=""></value>
+                    </set>
+                    <set name="_HIGHLIGHT_">
+                      <value channel="_INTENSITY_" bits="8" value="255" element_set=""></value>
+                      <value channel="_INTENSITY2_" bits="8" value="255" element_set=""></value>
+                      <value channel="_POSX2_" bits="8" value="" element_set=""></value>
+                      <value channel="_POSX_" bits="8" value="" element_set=""></value>
+                      <value channel="_PAN_" bits="8" value="" element_set=""></value>
+                      <value channel="_TILT_" bits="8" value="" element_set=""></value>
+                      <value channel="_PAN_" bits="16" value="" element_set=""></value>
+                      <value channel="_TILT_" bits="16" value="" element_set=""></value>
+                      <value channel="_PAN_CTRL_" bits="16" value="" element_set=""></value>
+                      <value channel="_POSITION_" bits="8" value="" element_set=""></value>
+                      <value channel="_FUNCT_" bits="16" value="000" element_set=""></value>
+                      <value channel="_POSX2_" bits="16" value="" element_set=""></value>
+                      <value channel="_POSX_" bits="16" value="" element_set=""></value>
+                      <value channel="_FUNCT2_" bits="8" value="000" element_set=""></value>
+                    </set>
+                    <set name="_LOWLIGHT_">
+                      <value channel="_INTENSITY_" bits="8" value="80" element_set=""></value>
+                      <value channel="_INTENSITY2_" bits="8" value="80" element_set=""></value>
+                      <value channel="_POSX2_" bits="8" value="" element_set=""></value>
+                      <value channel="_POSX_" bits="8" value="" element_set=""></value>
+                      <value channel="_PAN_" bits="8" value="" element_set=""></value>
+                      <value channel="_TILT_" bits="8" value="" element_set=""></value>
+                      <value channel="_PAN_" bits="16" value="" element_set=""></value>
+                      <value channel="_TILT_" bits="16" value="" element_set=""></value>
+                      <value channel="_PAN_CTRL_" bits="16" value="" element_set=""></value>
+                      <value channel="_POSITION_" bits="8" value="" element_set=""></value>
+                      <value channel="_FUNCT_" bits="16" value="000" element_set=""></value>
+                      <value channel="_POSX2_" bits="16" value="" element_set=""></value>
+                      <value channel="_POSX_" bits="16" value="" element_set=""></value>
+                      <value channel="_FUNCT2_" bits="8" value="000" element_set=""></value>
+                    </set>
+                </palette>
+            </palettes>
+            <macros>
+                <macro name="_RESET_">
+                    <step wait="5000">
+                        <value channel="_FUNCT_" value="175"></value>
+                    </step>
+                    <step wait="1000">
+                        <value channel="_FUNCT_" value="0"></value>
+                    </step>
+                </macro>
+            </macros>
+        </mode>
+    </fixture>
+</ofl>

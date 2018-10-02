@@ -1,0 +1,448 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ofl>
+	<brand short_name="Robe" name="Robe Lighting" url="https://www.robe.cz" icon="logo_Robe.png"></brand>
+	<fixture brand="Robe" short_name="MiniMe" name="MiniMe" version="2018-03-12 00:24">
+		<hardware type="_YOKE_" pan_angle="450" tilt_angle="270" pan_max_speed="" tilt_max_speed="" beam_type="" beam_zoom_narrow="" beam_zoom_wide="" spot_zoom_narrow="" spot_zoom_wide="" max_strobe="" min_strobe="" rotation_speed="1" color_type="_RGB_" framing_type="_NONE_" dimmer_curve="" light_source="_LED_" light_source_power="140" color_temp="" lummens="2500" max_power_consumption="90" weight="5.2" height="345" widht="249" depth="191" shape=""></hardware>
+		<mode name="24ch" number_of_channels="24" invert_pan="F" invert_tilt="F" multi_element="F" elements="" vmodes="F" virtual_dimmer="F" icon="mode1_icon.png">
+			<channels>
+				<channel number="1" type="_PAN_" bits="8" priority="LTP" name="Pan" subelement="0"></channel>
+				<channel number="2" type="_PAN_" bits="16" priority="LTP" name="Pan Fine" subelement="0"></channel>
+				<channel number="3" type="_TILT_" bits="8" priority="LTP" name="Tilt" subelement="0"></channel>
+				<channel number="4" type="_TILT_" bits="16" priority="LTP" name="Tilt Fine" subelement="0"></channel>
+				<channel number="5" type="_PTSPEED_" bits="8" priority="LTP" name="Pan/Tilt Speed" time="" subelement="0">
+					<segment name="Standard Mode" start="0" end="0"></segment>
+					<segment name="Prism Inserted" start="1" end="1"></segment>
+					<segment name="P/T Speed Mode" start="2" end="255" from="0.2" to="25.5"></segment>
+				</channel>
+				<channel number="6" type="_FUNCT_" bits="8" priority="LTP" name="Power/Special Functions" subelement="0">
+					<segment name="Reserved" start="0" end="49"></segment>
+					<segment name="PT Speed" start="50" end="59"></segment>
+					<segment name="PT Time" start="60" end="69"></segment>
+					<segment name="PT BO ON" start="70" end="79"></segment>
+					<segment name="PT BO OFF" start="80" end="89"></segment>
+					<segment name="Celing ON" start="90" end="94"></segment>
+					<segment name="Ceiling OFF" start="95" end="99"></segment>
+					<segment name="Rear ON" start="100" end="104"></segment>
+					<segment name="Rear OFF" start="105" end="109"></segment>
+					<segment name="Reserved" start="110" end="129"></segment>
+					<segment name="Keep Aspect On" start="130" end="134"></segment>
+					<segment name="Keep Aspect Off" start="135" end="139"></segment>
+					<segment name="PT Reset" start="140" end="149"></segment>
+					<segment name="Reserved" start="150" end="179"></segment>
+					<segment name="Focus Reset" start="180" end="189"></segment>
+					<segment name="Graphic Reset" start="190" end="199"></segment>
+					<segment name="Reset ALL" start="200" end="209"></segment>
+					<segment name="Int HDMI" start="210" end="219"></segment>
+					<segment name="Ext HDMI" start="220" end="229"></segment>
+					<segment name="AutoKey Save" start="230" end="234"></segment>
+					<segment name="Reserved" start="235" end="239"></segment>
+					<segment name="NAS Synch" start="240" end="244"></segment>
+					<segment name="Reserved" start="245" end="255"></segment>
+				</channel>
+				<channel number="7" type="_ZOOM_" bits="8" priority="LTP" name="Zoom Digital" subelement="0">
+					<segment name="Zoom Min-Max" start="0" end="127"></segment>
+					<segment name="Real Size" start="128" end="128"></segment>
+					<segment name="Real-Max" start="129" end="255"></segment>
+				</channel>
+				<channel number="8" type="_FOCUS_" bits="8" priority="LTP" name="Focus" subelement="0"></channel>
+				<channel number="9" type="_BEAMFX_" bits="8" priority="LTP" name="Key Vertical" subelement="0"></channel>
+				<channel number="10" type="_BEAMFX2_" bits="8" priority="LTP" name="Key Horizontal" subelement="0"></channel>
+				<channel number="11" type="_CYAN_" bits="8" priority="LTP" name="Cyan" time="" subelement="0"></channel>
+				<channel number="12" type="_MAGENTA_" bits="8" priority="LTP" name="Magenta" time="" subelement="0"></channel>
+				<channel number="13" type="_YELLOW_" bits="8" priority="LTP" name="Yellow" time="" subelement="0"></channel>
+				<channel number="14" type="_COLOR_" bits="8" priority="LTP" name="Virtual Col Wheel" subelement="0">
+					<segment name="White" start="0" end="15"></segment>
+					<segment name="Blue" start="16" end="16"></segment>
+					<segment name="Blue-Cyan" start="17" end="55"></segment>
+					<segment name="Cyan" start="56" end="56"></segment>
+					<segment name="Cyan-Green" start="57" end="95"></segment>
+					<segment name="Green" start="96" end="96"></segment>
+					<segment name="Green-Yellow" start="97" end="134"></segment>
+					<segment name="Yellow" start="135" end="135"></segment>
+					<segment name="Yellow-Red" start="136" end="174"></segment>
+					<segment name="Red" start="175" end="175"></segment>
+					<segment name="Red-Magenta" start="176" end="214"></segment>
+					<segment name="Magenta" start="215" end="215"></segment>
+					<segment name="Magenta-Blue" start="216" end="246"></segment>
+					<segment name="Blue" start="247" end="247"></segment>
+					<segment name="Reserved" start="248" end="255"></segment>
+				</channel>
+				<channel number="15" type="_COLOR2_" bits="8" priority="LTP" name="Col Fx Wheel" subelement="0">
+					<segment name="No Funct" start="0" end="0"></segment>
+					<segment name="Hz Shade W-B" start="1" end="1"></segment>
+					<segment name="Hz Shade B-W" start="2" end="2"></segment>
+					<segment name="V Shade B-W" start="3" end="3"></segment>
+					<segment name="V Shade W-B" start="4" end="4"></segment>
+					<segment name="Diagonal Shade W-B" start="5" end="5"></segment>
+					<segment name="Diagonal Shade B-W" start="6" end="6"></segment>
+					<segment name="Hz Shade W-R" start="7" end="7"></segment>
+					<segment name="Hz Shade R-W" start="8" end="8"></segment>
+					<segment name="V Shade R-W" start="9" end="9"></segment>
+					<segment name="V Shade W-R" start="10" end="10"></segment>
+					<segment name="Diagonal Shade W-R" start="11" end="11"></segment>
+					<segment name="Diagonal Shade R-W" start="12" end="12"></segment>
+					<segment name="Hz Shade W-G" start="13" end="13"></segment>
+					<segment name="Hz Shade G-W" start="14" end="14"></segment>
+					<segment name="V Shade G-W" start="15" end="15"></segment>
+					<segment name="V Shade W-G" start="16" end="16"></segment>
+					<segment name="Diagonal Shade W-G" start="17" end="17"></segment>
+					<segment name="Diagonal Shade G-W" start="18" end="18"></segment>
+					<segment name="Hz Shade W-B" start="19" end="19"></segment>
+					<segment name="Hz Shade B-W" start="20" end="20"></segment>
+					<segment name="V Shade B-W" start="21" end="21"></segment>
+					<segment name="V Shade W-B" start="22" end="22"></segment>
+					<segment name="Diagonal Shade W-B" start="23" end="23"></segment>
+					<segment name="Diagonal Shade B-W" start="24" end="24"></segment>
+					<segment name="Hz Shade W-Cyan" start="25" end="25"></segment>
+					<segment name="Hz Shade Cyan-W" start="26" end="26"></segment>
+					<segment name="V Shade Cyan-W" start="27" end="27"></segment>
+					<segment name="V Shade W-Cyan" start="28" end="28"></segment>
+					<segment name="Diagonal Shade W-Cyan" start="29" end="29"></segment>
+					<segment name="Diagonal Shade Cyan-W" start="30" end="30"></segment>
+					<segment name="Hz Shade W-Mag" start="31" end="31"></segment>
+					<segment name="Hz Shade Mag-W" start="32" end="32"></segment>
+					<segment name="V Shade Mag-W" start="33" end="33"></segment>
+					<segment name="V Shade W-Mag" start="34" end="34"></segment>
+					<segment name="Diagonal Shade W-Mag" start="35" end="35"></segment>
+					<segment name="Diagonal Shade Mag-W" start="36" end="36"></segment>
+					<segment name="Hz Shade W-Y" start="37" end="37"></segment>
+					<segment name="Hz Shade Y-W" start="38" end="38"></segment>
+					<segment name="V Shade Y-W" start="39" end="39"></segment>
+					<segment name="V Shade W-Y" start="40" end="40"></segment>
+					<segment name="Diagonal Shade W-Y" start="41" end="41"></segment>
+					<segment name="Diagonal Shade Y-W" start="42" end="42"></segment>
+					<segment name="RGBW Shades" start="43" end="43"></segment>
+					<segment name="CMYW Shades" start="44" end="44"></segment>
+					<segment name="RGBY Shades" start="45" end="45"></segment>
+					<segment name="RMBG Shades" start="46" end="46"></segment>
+					<segment name="Reserved" start="47" end="49"></segment>
+					<segment name="Col B-W S" start="50" end="50"></segment>
+					<segment name="Col B-W F" start="51" end="51"></segment>
+					<segment name="Col R-W S" start="52" end="52"></segment>
+					<segment name="Col W-R F" start="53" end="53"></segment>
+					<segment name="Col G-W S" start="54" end="54"></segment>
+					<segment name="Col G-W F" start="55" end="55"></segment>
+					<segment name="Col B-W S" start="56" end="56"></segment>
+					<segment name="Col B-W F" start="57" end="57"></segment>
+					<segment name="Col Y-W S" start="58" end="58"></segment>
+					<segment name="Col Y-W F" start="59" end="59"></segment>
+					<segment name="Col M-W S" start="60" end="60"></segment>
+					<segment name="Col M-W F" start="61" end="61"></segment>
+					<segment name="Col Cyan-W S" start="62" end="62"></segment>
+					<segment name="Col Cyan-W F" start="63" end="63"></segment>
+					<segment name="Col S RGBY" start="64" end="64"></segment>
+					<segment name="Col F RGBY" start="65" end="65"></segment>
+					<segment name="Reserved" start="66" end="69"></segment>
+					<segment name="Hz Shade W-B S" start="70" end="70"></segment>
+					<segment name="Hz Shade W-B F" start="71" end="71"></segment>
+					<segment name="V Shade W-B S" start="72" end="72"></segment>
+					<segment name="V Shade W-B F" start="73" end="73"></segment>
+					<segment name="Diagonal Shade B-W S" start="74" end="74"></segment>
+					<segment name="Diagonal Shade B-W F" start="75" end="75"></segment>
+					<segment name="Shade B-W S CW" start="76" end="76"></segment>
+					<segment name="Shade B-W F CW" start="77" end="77"></segment>
+					<segment name="Shade B-W S CCW" start="78" end="78"></segment>
+					<segment name="Shade B-W F CCW" start="79" end="79"></segment>
+					<segment name="Hz Shade W-R S" start="80" end="80"></segment>
+					<segment name="Hz Shade W-R F" start="81" end="81"></segment>
+					<segment name="V Shade W-R S" start="82" end="82"></segment>
+					<segment name="V Shade W-R F" start="83" end="83"></segment>
+					<segment name="Diagonal R-W S" start="84" end="84"></segment>
+					<segment name="Diagonal R-W F" start="85" end="85"></segment>
+					<segment name="Shade R-W S CW" start="86" end="86"></segment>
+					<segment name="Shade R-W F CW" start="87" end="87"></segment>
+					<segment name="Shade R-W S CCW" start="88" end="88"></segment>
+					<segment name="Shade R-W S CCW" start="89" end="89"></segment>
+					<segment name="Hz Shade W-G S" start="90" end="90"></segment>
+					<segment name="Hz Shade W-G F" start="91" end="91"></segment>
+					<segment name="V Shade W-G S" start="92" end="92"></segment>
+					<segment name="V Shade W-G F" start="93" end="93"></segment>
+					<segment name="Diagonal Shade W-G S" start="94" end="94"></segment>
+					<segment name="Diagonal Shade W-G F" start="95" end="95"></segment>
+					<segment name="Shade W-G S CW" start="96" end="96"></segment>
+					<segment name="Shade W-G F CW" start="97" end="97"></segment>
+					<segment name="Shade W-G S CCW" start="98" end="98"></segment>
+					<segment name="Shade W-G F CCW" start="99" end="99"></segment>
+					<segment name="Hz Shade W-B S" start="100" end="100"></segment>
+					<segment name="Hz Shade W-B F" start="101" end="101"></segment>
+					<segment name="V Shade W-B S" start="102" end="102"></segment>
+					<segment name="V Shade W-B F" start="103" end="103"></segment>
+					<segment name="Diagonal Shade W-B S" start="104" end="104"></segment>
+					<segment name="Diagonal Shade W-B F" start="105" end="105"></segment>
+					<segment name="Shade W-B S CW" start="106" end="106"></segment>
+					<segment name="Shade W-B F CW" start="107" end="107"></segment>
+					<segment name="Shade W-B S CCW" start="108" end="108"></segment>
+					<segment name="Shade W-B F CCW" start="109" end="109"></segment>
+					<segment name="Hz Shade W-Cyan S" start="110" end="110"></segment>
+					<segment name="Hz Shade W-Cyan F" start="111" end="111"></segment>
+					<segment name="V Shade W-Cyan S" start="112" end="112"></segment>
+					<segment name="V Shade W-Cyan F" start="113" end="113"></segment>
+					<segment name="Diagonal Shade Cyan-W S" start="114" end="114"></segment>
+					<segment name="Diagonal Shade Cyan-W F" start="115" end="115"></segment>
+					<segment name="Shade Cyan-W S CW" start="116" end="116"></segment>
+					<segment name="Shade Cyan-W F CW" start="117" end="117"></segment>
+					<segment name="Shade Cyan-W S CCW" start="118" end="118"></segment>
+					<segment name="Shade Cyan-W F CCW" start="119" end="119"></segment>
+					<segment name="Hz Shade W-Mag S" start="120" end="120"></segment>
+					<segment name="Hz Shade W-Mag F" start="121" end="121"></segment>
+					<segment name="V Shade W-Mag S" start="122" end="122"></segment>
+					<segment name="V Shade W-Mag F" start="123" end="123"></segment>
+					<segment name="Diagonal Shade Mag-W S" start="124" end="124"></segment>
+					<segment name="Diagonal Shade Mag-W F" start="125" end="125"></segment>
+					<segment name="Shade Mag-W S CW" start="126" end="126"></segment>
+					<segment name="Shade Mag-W F CW" start="127" end="127"></segment>
+					<segment name="Shade Mag-W S CCW" start="128" end="128"></segment>
+					<segment name="Shade Mag-W F CCW" start="129" end="129"></segment>
+					<segment name="Hz Shade W-Y S" start="130" end="130"></segment>
+					<segment name="Hz Shade W-Y F" start="131" end="131"></segment>
+					<segment name="V Shade W-Y S" start="132" end="132"></segment>
+					<segment name="V Shade W-Y F" start="133" end="133"></segment>
+					<segment name="Diagonal Shade Y-W S" start="134" end="134"></segment>
+					<segment name="Diagonal Shade Y-W F" start="135" end="135"></segment>
+					<segment name="Shade Y-W S CW" start="136" end="136"></segment>
+					<segment name="Shade Y-W F CW" start="137" end="137"></segment>
+					<segment name="Shade Y-W S CCW" start="138" end="138"></segment>
+					<segment name="Shade Y-W F CCW" start="139" end="139"></segment>
+					<segment name="RGBW shade S CW" start="140" end="140"></segment>
+					<segment name="RGBW shade F CW" start="141" end="141"></segment>
+					<segment name="RGBW shade S CCW" start="142" end="142"></segment>
+					<segment name="RGBW shade F CCW" start="143" end="143"></segment>
+					<segment name="Rnd  Col-Black Slow" start="144" end="144"></segment>
+					<segment name="Rnd Col-Black Fast" start="145" end="145"></segment>
+					<segment name="Rnd Col-White Slow" start="146" end="146"></segment>
+					<segment name="Rnd Col-White Fast" start="147" end="147"></segment>
+					<segment name="Rnd Slow" start="148" end="148"></segment>
+					<segment name="Rnd Fast" start="149" end="149"></segment>
+					<segment name="Hz B-Rnd Col S" start="150" end="150"></segment>
+					<segment name="Hz B-Rnd Col F" start="151" end="151"></segment>
+					<segment name="V B-Rnd Col S" start="152" end="152"></segment>
+					<segment name="V B-Rnd Col F" start="153" end="153"></segment>
+					<segment name="Diagonal B-Rnd Col S" start="154" end="154"></segment>
+					<segment name="Diagonal B-Rnd Col F" start="155" end="155"></segment>
+					<segment name="B Shade-Rnd Col S CW" start="156" end="156"></segment>
+					<segment name="B Shade-Rnd Col F CW" start="157" end="157"></segment>
+					<segment name="B Shade-Rnd Col S CCW" start="158" end="158"></segment>
+					<segment name="B Shade-Rnd Col F CCW" start="159" end="159"></segment>
+					<segment name="2 Cornes S CW" start="160" end="160"></segment>
+					<segment name="2 Cornes F CW" start="161" end="161"></segment>
+					<segment name="2 Cornes S CCW" start="162" end="162"></segment>
+					<segment name="2 Cornes F CCW" start="163" end="163"></segment>
+					<segment name="4 Cornes S CW" start="164" end="164"></segment>
+					<segment name="4 Cornes F CW" start="165" end="165"></segment>
+					<segment name="4 Cornes S CCW" start="166" end="166"></segment>
+					<segment name="5 Cornes F CCW" start="167" end="167"></segment>
+					<segment name="Hz ColTrans S Rnd" start="168" end="168"></segment>
+					<segment name="Hz ColTrans F Rnd" start="169" end="169"></segment>
+					<segment name="V ColTrans S Rnd" start="170" end="170"></segment>
+					<segment name="V ColTrans F Rnd" start="171" end="171"></segment>
+					<segment name="Diagonal ColTrans S Rnd" start="172" end="172"></segment>
+					<segment name="Diagonal ColTrans F Rnd" start="173" end="173"></segment>
+					<segment name="H/V/Diag Col Trans S" start="174" end="174"></segment>
+					<segment name="H/V/Diag Col Trans F" start="175" end="175"></segment>
+					<segment name="Reserved" start="176" end="255"></segment>
+				</channel>
+				<channel number="16" type="_GOBO_CTRL_" bits="8" priority="LTP" name="Dig Gobo Select" subelement="0">
+					<segment name="Default Wheel" start="0" end="31"></segment>
+					<segment name="Internal Custom" start="32" end="63"></segment>
+					<segment name="External Custom" start="64" end="95"></segment>
+					<segment name="Local NAS" start="96" end="127"></segment>
+					<segment name="Remote NAS" start="128" end="143"></segment>
+					<segment name="Reserved" start="144" end="255"></segment>
+				</channel>
+				<channel number="17" type="_GOBO_" bits="8" priority="LTP" name="Dig Gobo Wheel" subelement="0"></channel>
+				<channel number="18" type="_GOBO2_" bits="8" priority="LTP" name="Video Speed Ctrl" subelement="0">
+					<segment name="Original" start="0" end="0"></segment>
+					<segment name="Pause" start="1" end="1"></segment>
+					<segment name="Min-Original" start="2" end="127"></segment>
+					<segment name="Original-Max" start="128" end="255"></segment>
+				</channel>
+				<channel number="19" type="_GOBOROT_" bits="8" priority="LTP" name="Gobo Index/Rot" subelement="0">
+					<segment name="Index" start="0" end="127"></segment>
+					<segment name="CW GoboRot F-S" start="128" end="191"></segment>
+					<segment name="No Rot" start="192" end="193"></segment>
+					<segment name="CCW GoboRot S-F" start="194" end="255"></segment>
+				</channel>
+				<channel number="20" type="_GOBOROT_" bits="16" priority="LTP" name="Gobo Index/Rot F" subelement="0"></channel>
+				<channel number="21" type="_GOBO3_" bits="8" priority="LTP" name="Effect Wheel" subelement="0">
+					<segment name="Open" start="0" end="0"></segment>
+					<segment name="Rnd Transition" start="1" end="1"></segment>
+					<segment name="Transition Blend" start="2" end="2"></segment>
+					<segment name="Trans L-R" start="3" end="3"></segment>
+					<segment name="Trans R-L" start="4" end="4"></segment>
+					<segment name="Stripe L-R" start="5" end="5"></segment>
+					<segment name="Stripe R-L" start="6" end="6"></segment>
+					<segment name="3 Stripe L-R" start="7" end="7"></segment>
+					<segment name="3 Stripe R-L" start="8" end="8"></segment>
+					<segment name="6 Stripe L-R" start="9" end="9"></segment>
+					<segment name="6 Stripe R-L" start="10" end="10"></segment>
+					<segment name="Trans Up" start="11" end="11"></segment>
+					<segment name="Trans Down" start="12" end="12"></segment>
+					<segment name="Stripe Up" start="13" end="13"></segment>
+					<segment name="Stripe Down" start="14" end="14"></segment>
+					<segment name="3 Stripe Up" start="15" end="15"></segment>
+					<segment name="3 Stripe Down" start="16" end="16"></segment>
+					<segment name="6 Stripe Up" start="17" end="17"></segment>
+					<segment name="6 Stripe Down" start="18" end="18"></segment>
+					<segment name="Trans 2 L-R" start="19" end="19"></segment>
+					<segment name="Trans 2 R-L" start="20" end="20"></segment>
+					<segment name="Trans 2 Up" start="21" end="21"></segment>
+					<segment name="Trans 2 Down" start="22" end="22"></segment>
+					<segment name="Iris Out-In" start="23" end="23"></segment>
+					<segment name="Iris In-Out" start="24" end="24"></segment>
+					<segment name="Iris Out-In Diff" start="25" end="25"></segment>
+					<segment name="Iris In-Out Diff" start="26" end="26"></segment>
+					<segment name="Iris 3 Out-In" start="27" end="27"></segment>
+					<segment name="Iris 3 In-Out" start="28" end="28"></segment>
+					<segment name="Mov L-R" start="29" end="29"></segment>
+					<segment name="Mov R-L" start="30" end="30"></segment>
+					<segment name="Mov Up" start="31" end="31"></segment>
+					<segment name="Mov Down" start="32" end="32"></segment>
+					<segment name="Drop Trans" start="33" end="33"></segment>
+					<segment name="Simple Trans" start="34" end="34"></segment>
+					<segment name="Pixel Trans" start="35" end="35"></segment>
+					<segment name="Trans Blending" start="36" end="36"></segment>
+					<segment name="Trans W Out" start="37" end="37"></segment>
+					<segment name="Crossing Trans" start="38" end="38"></segment>
+					<segment name="PiP Trans" start="39" end="39"></segment>
+					<segment name="Direct Trans" start="40" end="40"></segment>
+					<segment name="Trans V Rot" start="41" end="41"></segment>
+					<segment name="Trans H Rot" start="42" end="42"></segment>
+					<segment name="Trans Diag Rot" start="43" end="43"></segment>
+					<segment name="Trans Diag Rot Inv" start="44" end="44"></segment>
+					<segment name="Zoom Out" start="45" end="45"></segment>
+					<segment name="Zoom In" start="46" end="46"></segment>
+					<segment name="Zoom Hz" start="47" end="47"></segment>
+					<segment name="Zoom V" start="48" end="48"></segment>
+					<segment name="Reserved" start="49" end="79"></segment>
+					<segment name="Kaleido 1" start="80" end="80"></segment>
+					<segment name="Kaleido 2" start="81" end="81"></segment>
+					<segment name="Kaleido 3" start="82" end="82"></segment>
+					<segment name="Kaleido 4" start="83" end="83"></segment>
+					<segment name="Kaleido 5" start="84" end="84"></segment>
+					<segment name="Sun Kaleido Coarse" start="85" end="85"></segment>
+					<segment name="Sun Kaleido Soft" start="86" end="86"></segment>
+					<segment name="Sun Kaleido Slow" start="87" end="87"></segment>
+					<segment name="Sun Kaleido Fast" start="88" end="88"></segment>
+					<segment name="Sun Kaleido Fastest" start="89" end="89"></segment>
+					<segment name="Reserved" start="90" end="99"></segment>
+					<segment name="Circle Iris" start="100" end="100"></segment>
+					<segment name="Circle Iris Diff" start="101" end="101"></segment>
+					<segment name="V Ellipse" start="102" end="102"></segment>
+					<segment name="Hz Ellipse" start="103" end="103"></segment>
+					<segment name="Reserved" start="104" end="104"></segment>
+					<segment name="Pos/Neg BW" start="105" end="105"></segment>
+					<segment name="W/Neg BW" start="106" end="106"></segment>
+					<segment name="Pos/Neg Col" start="107" end="107"></segment>
+					<segment name="Pixeling" start="108" end="108"></segment>
+					<segment name="Reserved" start="109" end="179"></segment>
+					<segment name="Circular Iris" start="180" end="180"></segment>
+					<segment name="Elip Iris V" start="181" end="181"></segment>
+					<segment name="Elip Iris Hz" start="182" end="182"></segment>
+					<segment name="Black Mask" start="183" end="183"></segment>
+					<segment name="Inv Black Mask" start="184" end="184"></segment>
+					<segment name="White Mask" start="185" end="185"></segment>
+					<segment name="Inv White Mask" start="186" end="186"></segment>
+					<segment name="Gobo/Video X mov" start="187" end="187"></segment>
+					<segment name="Gobo/Video Y mov" start="188" end="188"></segment>
+					<segment name="Reserved" start="189" end="189"></segment>
+					<segment name="Xfade Effect" start="190" end="190"></segment>
+					<segment name="Add Effect" start="191" end="191"></segment>
+					<segment name="Substract Effect" start="192" end="192"></segment>
+					<segment name="Mult Effect" start="193" end="193"></segment>
+					<segment name="Min Effect" start="194" end="194"></segment>
+					<segment name="Mac Effect" start="195" end="195"></segment>
+					<segment name="Reserved" start="196" end="255"></segment>
+				</channel>
+				<channel number="22" type="_GOBO3_CTRL_" bits="8" priority="LTP" name="Effect Speed" subelement="0"></channel>
+				<channel number="23" type="_SHUTTER_" bits="8" priority="LTP" name="Shutter" subelement="0">
+					<segment name="Closed" start="0" end="31"></segment>
+					<segment name="Open" start="32" end="63"></segment>
+					<segment name="Strobe S-F" start="64" end="95"></segment>
+					<segment name="Open" start="96" end="127"></segment>
+					<segment name="Open Pulse" start="128" end="143"></segment>
+					<segment name="Close Pulse" start="144" end="159"></segment>
+					<segment name="Open" start="160" end="191"></segment>
+					<segment name="Rand Strb" start="192" end="223"></segment>
+					<segment name="Open" start="224" end="255"></segment>
+				</channel>
+				<channel number="24" type="_INTENSITY_" bits="8" priority="HTP" name="Intensity" subelement="0"></channel>
+			</channels>
+			<palettes>
+				<palette type="_GENERAL_">
+					<set name="_FIND_">
+						<value channel="_PAN_" bits="8" value="128" element_set=""></value>
+						<value channel="_PAN_" bits="16" value="000" element_set=""></value>
+						<value channel="_TILT_" bits="8" value="128" element_set=""></value>
+						<value channel="_TILT_" bits="16" value="000" element_set=""></value>
+						<value channel="_PTSPEED_" bits="8" value="000" element_set=""></value>
+						<value channel="_FUNCT_" bits="8" value="000" element_set=""></value>
+						<value channel="_ZOOM_" bits="8" value="000" element_set=""></value>
+						<value channel="_FOCUS_" bits="8" value="000" element_set=""></value>
+						<value channel="_BEAMFX_" bits="8" value="000" element_set=""></value>
+						<value channel="_BEAMFX2_" bits="8" value="000" element_set=""></value>
+						<value channel="_CYAN_" bits="8" value="000" element_set=""></value>
+						<value channel="_MAGENTA_" bits="8" value="000" element_set=""></value>
+						<value channel="_YELLOW_" bits="8" value="000" element_set=""></value>
+						<value channel="_COLOR_" bits="8" value="000" element_set=""></value>
+						<value channel="_COLOR2_" bits="8" value="000" element_set=""></value>
+						<value channel="_GOBO_CTRL_" bits="8" value="000" element_set=""></value>
+						<value channel="_GOBO_" bits="8" value="000" element_set=""></value>
+						<value channel="_GOBO2_" bits="8" value="000" element_set=""></value>
+						<value channel="_GOBOROT_" bits="8" value="000" element_set=""></value>
+						<value channel="_GOBOROT_" bits="16" value="000" element_set=""></value>
+						<value channel="_GOBO3_" bits="8" value="000" element_set=""></value>
+						<value channel="_GOBO3_CTRL_" bits="8" value="000" element_set=""></value>
+						<value channel="_SHUTTER_" bits="8" value="255" element_set=""></value>
+						<value channel="_INTENSITY_" bits="8" value="255" element_set=""></value>
+					</set>
+					<set name="_DEFAULT_">
+						<value channel="_PAN_" bits="8" value="128" element_set=""></value>
+						<value channel="_PAN_" bits="16" value="000" element_set=""></value>
+						<value channel="_TILT_" bits="8" value="128" element_set=""></value>
+						<value channel="_TILT_" bits="16" value="000" element_set=""></value>
+						<value channel="_PTSPEED_" bits="8" value="000" element_set=""></value>
+						<value channel="_FUNCT_" bits="8" value="000" element_set=""></value>
+						<value channel="_ZOOM_" bits="8" value="000" element_set=""></value>
+						<value channel="_FOCUS_" bits="8" value="000" element_set=""></value>
+						<value channel="_BEAMFX_" bits="8" value="000" element_set=""></value>
+						<value channel="_BEAMFX2_" bits="8" value="000" element_set=""></value>
+						<value channel="_CYAN_" bits="8" value="000" element_set=""></value>
+						<value channel="_MAGENTA_" bits="8" value="000" element_set=""></value>
+						<value channel="_YELLOW_" bits="8" value="000" element_set=""></value>
+						<value channel="_COLOR_" bits="8" value="000" element_set=""></value>
+						<value channel="_COLOR2_" bits="8" value="000" element_set=""></value>
+						<value channel="_GOBO_CTRL_" bits="8" value="000" element_set=""></value>
+						<value channel="_GOBO_" bits="8" value="000" element_set=""></value>
+						<value channel="_GOBO2_" bits="8" value="000" element_set=""></value>
+						<value channel="_GOBOROT_" bits="8" value="000" element_set=""></value>
+						<value channel="_GOBOROT_" bits="16" value="000" element_set=""></value>
+						<value channel="_GOBO3_" bits="8" value="000" element_set=""></value>
+						<value channel="_GOBO3_CTRL_" bits="8" value="000" element_set=""></value>
+						<value channel="_SHUTTER_" bits="8" value="000" element_set=""></value>
+						<value channel="_INTENSITY_" bits="8" value="000" element_set=""></value>
+					</set>
+					<set name="_HIGHLIGHT_"></set>
+					<set name="_LOWLIGHT_"></set>
+				</palette>
+			</palettes>
+			<macros>
+				<macro name="_GRAPHIC_RESET_">
+					<step wait="5000">
+						<value channel="_FUNCT_" value="195"></value>
+					</step>
+					<step wait="1000">
+						<value channel="_FUNCT_" value="000"></value>
+					</step>
+				</macro>
+				<macro name="_ALL_RESET_">
+					<step wait="5000">
+						<value channel="_FUNCT_" value="205"></value>
+					</step>
+					<step wait="1000">
+						<value channel="_FUNCT_" value="000"></value>
+					</step>
+				</macro>
+			</macros>
+		</mode>
+	</fixture>
+</ofl>

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
 class SceneButtonBar extends StatefulWidget {
+  final ValueChanged<int> callback;
+
+  SceneButtonBar({this.callback});
 
   @override
   createState() => SceneButtonBarState();
@@ -32,7 +35,7 @@ class SceneButtonBarState extends State<SceneButtonBar> {
             child: new IconButton(
               icon: new Icon(Icons.clear),
               tooltip: 'Blackout',
-              onPressed: () { print("Blackout"); },
+              onPressed: () { widget.callback(0);},
             ),
           )
         ],

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ofl>
+    <brand short_name="Acme" name="Acme" url="http://www.acme.com.cn/Index.aspx?lang=en" icon="logo_Acme.png"></brand>
+    <fixture brand="Acme" short_name="StagPar100" name="Stage Par 100 IP" version="2017-09-07 10:40">
+        <hardware type="_MANUAL_" pan_angle="" tilt_angle="" pan_max_speed="" tilt_max_speed="" beam_type="" beam_zoom_narrow="9" beam_zoom_wide="30" spot_zoom_narrow="" spot_zoom_wide="" max_strobe="" min_strobe="" rotation_speed="" color_type="" framing_type="_NONE_" dimmer_curve="_LINEAR_" light_source="_LED_" light_source_power="98" color_temp="" lummens="" max_power_consumption="105" weight="4.5" height="224" widht="248" depth="418" shape=""></hardware>
+        <mode name="M1(1ch)" number_of_channels="1" invert_pan="F" invert_tilt="F" multi_element="F" elements="" vmodes="F" virtual_dimmer="F" icon="mode1_icon.png">
+            <channels>
+                <channel number="1" type="_INTENSITY_" bits="8" priority="HTP" name="Intensity" subelement="0"></channel>
+            </channels>
+            <palettes>
+                <palette type="_GENERAL_">
+                    <set name="_FIND_">
+                        <value channel="_INTENSITY_" value="255" bits="8" element_set=""></value>
+                    </set>
+                    <set name="_DEFAULT_">
+                        <value channel="_INTENSITY_" value="000" bits="8" element_set=""></value>
+                    </set>
+                    <set name="_HIGHLIGHT_">
+                        <value channel="_INTENSITY_" value="255" bits="8" element_set=""></value>
+                    </set>
+                    <set name="_LOWLIGHT_">
+                        <value channel="_INTENSITY_" value="128" bits="8" element_set=""></value>
+                    </set>
+                </palette>
+            </palettes>
+        </mode>
+        <mode name="M2(2ch)" number_of_channels="2" invert_pan="F" invert_tilt="F" multi_element="F" elements="" vmodes="F" virtual_dimmer="F" icon="mode1_icon.png">
+            <channels>
+                <channel number="1" type="_INTENSITY_" bits="8" priority="HTP" name="Intensity" subelement="0"></channel>
+                <channel number="2" type="_SHUTTER_" bits="8" priority="LTP" name="Shutter" subelement="0">
+                    <segment name="Open" start="0" end="5"></segment>
+                    <segment name="Strb S-F" start="6" end="123"></segment>
+                    <segment name="Open" start="124" end="127"></segment>
+                    <segment name="Rnd 1" start="128" end="168"></segment>
+                    <segment name="Rnd 2" start="169" end="208"></segment>
+                    <segment name="Rnd 3" start="209" end="249"></segment>
+                    <segment name="Open" start="250" end="255"></segment>
+                </channel>
+            </channels>
+            <palettes>
+                <palette type="_GENERAL_">
+                    <set name="_FIND_">
+                        <value channel="_INTENSITY_" value="255" bits="8" element_set=""></value>
+                        <value channel="_SHUTTER_" value="255" bits="8" element_set=""></value>
+                    </set>
+                    <set name="_DEFAULT_">
+                        <value channel="_INTENSITY_" value="000" bits="8" element_set=""></value>
+                        <value channel="_SHUTTER_" value="255" bits="8" element_set=""></value>
+                    </set>
+                    <set name="_HIGHLIGHT_">
+                        <value channel="_INTENSITY_" value="255" bits="8" element_set=""></value>
+                        <value channel="_SHUTTER_" value="255" bits="8" element_set=""></value>
+                    </set>
+                    <set name="_LOWLIGHT_">
+                        <value channel="_INTENSITY_" value="128" bits="8" element_set=""></value>
+                        <value channel="_SHUTTER_" value="255" bits="8" element_set=""></value>
+                    </set>
+                </palette>
+            </palettes>
+        </mode>
+    </fixture>
+</ofl>

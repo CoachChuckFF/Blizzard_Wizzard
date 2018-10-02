@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ofl>
+    <brand short_name="ChromaQ" name="Chroma-Q" url="http://www.chroma-q.com" icon="logo_ChromaQ.png"></brand>
+    <fixture brand="ChromaQ" short_name="SForceD72" name="Studio Force D72" version="2017-09-05 15:54">
+        <hardware type="_MANUAL_" pan_angle="" tilt_angle="" pan_max_speed="" tilt_max_speed="" beam_type="" beam_zoom_narrow="23" beam_zoom_wide="23" spot_zoom_narrow="" spot_zoom_wide="" max_strobe="" min_strobe="" rotation_speed="" color_type="" framing_type="_NONE_" dimmer_curve="_LINEAR_" light_source="_LED_" light_source_power="" color_temp="" lummens="28000" max_power_consumption="700" weight="22" height="177" widht="1750" depth="182" shape=""></hardware>
+        <mode name="M5(1ch)" number_of_channels="1" invert_pan="F" invert_tilt="F" multi_element="F" elements="" vmodes="F" virtual_dimmer="F" icon="mode1_icon.png">
+            <channels>
+                <channel number="1" type="_INTENSITY_" bits="8" priority="HTP" name="Intensity" subelement="0"></channel>
+            </channels>
+            <palettes>
+                <palette type="_GENERAL_">
+                    <set name="_FIND_">
+                        <value channel="_INTENSITY_" value="255" bits="8" element_set=""></value>
+                    </set>
+                    <set name="_DEFAULT_">
+                        <value channel="_INTENSITY_" value="000" bits="8" element_set=""></value>
+                    </set>
+                    <set name="_HIGHLIGHT_">
+                        <value channel="_INTENSITY_" value="255" bits="8" element_set=""></value>
+                    </set>
+                    <set name="_LOWLIGHT_">
+                        <value channel="_INTENSITY_" value="128" bits="8" element_set=""></value>
+                    </set>
+                </palette>
+            </palettes>
+        </mode>
+        <mode name="M4(2ch)" number_of_channels="2" invert_pan="F" invert_tilt="F" multi_element="F" elements="" vmodes="F" virtual_dimmer="F" icon="mode1_icon.png">
+            <channels>
+                <channel number="1" type="_COLOR_" bits="8" priority="LTP" name="Col Temp" subelement="0"></channel>
+                <channel number="2" type="_INTENSITY_" bits="8" priority="HTP" name="Intensity" subelement="0"></channel>
+            </channels>
+            <palettes>
+                <palette type="_GENERAL_">
+                    <set name="_FIND_">
+                        <value channel="_COLOR_" value="255" bits="8" element_set=""></value>
+                        <value channel="_INTENSITY_" value="255" bits="8" element_set=""></value>
+                    </set>
+                    <set name="_DEFAULT_">
+                        <value channel="_COLOR_" value="000" bits="8" element_set=""></value>
+                        <value channel="_INTENSITY_" value="000" bits="8" element_set=""></value>
+                    </set>
+                    <set name="_HIGHLIGHT_">
+                        <value channel="_COLOR_" value="255" bits="8" element_set=""></value>
+                        <value channel="_INTENSITY_" value="255" bits="8" element_set=""></value>
+                    </set>
+                    <set name="_LOWLIGHT_">
+                        <value channel="_COLOR_" value="255" bits="8" element_set=""></value>
+                        <value channel="_INTENSITY_" value="128" bits="8" element_set=""></value>
+                    </set>
+                </palette>
+            </palettes>
+        </mode>
+        <mode name="M3(2ch)" number_of_channels="2" invert_pan="F" invert_tilt="F" multi_element="F" elements="" vmodes="F" virtual_dimmer="F" icon="mode1_icon.png">
+            <channels>
+                <channel number="1" type="_INTENSITY_CTRL_" bits="8" priority="HTP" name="WarmWhite" subelement="0"></channel>
+                <channel number="2" type="_INTENSITY_" bits="8" priority="HTP" name="ColdWhite" subelement="0"></channel>
+            </channels>
+            <palettes>
+                <palette type="_GENERAL_">
+                    <set name="_FIND_">
+                        <value channel="_INTENSITY_CTRL_" value="255" bits="8" element_set=""></value>
+                        <value channel="_INTENSITY_" value="255" bits="8" element_set=""></value>
+                    </set>
+                    <set name="_DEFAULT_">
+                        <value channel="_INTENSITY_CTRL_" value="000" bits="8" element_set=""></value>
+                        <value channel="_INTENSITY_" value="000" bits="8" element_set=""></value>
+                    </set>
+                    <set name="_HIGHLIGHT_">
+                        <value channel="_INTENSITY_CTRL_" value="255" bits="8" element_set=""></value>
+                        <value channel="_INTENSITY_" value="255" bits="8" element_set=""></value>
+                    </set>
+                    <set name="_LOWLIGHT_">
+                        <value channel="_INTENSITY_CTRL_" value="255" bits="8" element_set=""></value>
+                        <value channel="_INTENSITY_" value="128" bits="8" element_set=""></value>
+                    </set>
+                </palette>
+            </palettes>
+        </mode>
+        <mode name="M2(3ch)" number_of_channels="3" invert_pan="F" invert_tilt="F" multi_element="F" elements="" vmodes="F" virtual_dimmer="F" icon="mode1_icon.png">
+            <channels>
+                <channel number="1" type="_FX_" bits="8" priority="LTP" name="FX" subelement="0"></channel>
+                <channel number="2" type="_COLOR_" bits="8" priority="LTP" name="Col Temp" subelement="0"></channel>
+                <channel number="3" type="_INTENSITY_" bits="8" priority="HTP" name="ColdWhite" subelement="0"></channel>
+            </channels>
+            <palettes>
+                <palette type="_GENERAL_">
+                    <set name="_FIND_">
+                        <value channel="_FX_" value="000" bits="8" element_set=""></value>
+                        <value channel="_COLOR_" value="255" bits="8" element_set=""></value>
+                        <value channel="_INTENSITY_" value="255" bits="8" element_set=""></value>
+                    </set>
+                    <set name="_DEFAULT_">
+                        <value channel="_FX_" value="000" bits="8" element_set=""></value>
+                        <value channel="_COLOR_" value="255" bits="8" element_set=""></value>
+                        <value channel="_INTENSITY_" value="000" bits="8" element_set=""></value>
+                    </set>
+                    <set name="_HIGHLIGHT_">
+                        <value channel="_FX_" value="000" bits="8" element_set=""></value>
+                        <value channel="_COLOR_" value="255" bits="8" element_set=""></value>
+                        <value channel="_INTENSITY_" value="255" bits="8" element_set=""></value>
+                    </set>
+                    <set name="_LOWLIGHT_">
+                        <value channel="_FX_" value="000" bits="8" element_set=""></value>
+                        <value channel="_COLOR_" value="255" bits="8" element_set=""></value>
+                        <value channel="_INTENSITY_" value="128" bits="8" element_set=""></value>
+                    </set>
+                </palette>
+            </palettes>
+        </mode>
+    </fixture>
+</ofl>

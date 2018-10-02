@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ofl>
+	<brand short_name="Blizzard" name="Blizzard Lighting" url="http://www.blizzardlighting.com" icon="logo_Blizzard.png"></brand>
+	<fixture brand="Blizzard" short_name="Mezmer4FX" name="Mezmerizor4FX" version="2018-05-21 12:51">
+		<hardware type="_MANUAL_" pan_angle="" tilt_angle="" pan_max_speed="" tilt_max_speed="" beam_type="" beam_zoom_narrow="" beam_zoom_wide="" spot_zoom_narrow="" spot_zoom_wide="" max_strobe="" min_strobe="" rotation_speed="" color_type="" framing_type="_NONE_" dimmer_curve="" light_source="_LASER_" light_source_power="" color_temp="" lummens="" max_power_consumption="" weight="" height="" widht="" depth="" shape=""></hardware>
+		<mode name="15ch" number_of_channels="15" invert_pan="F" invert_tilt="F" multi_element="F" elements="" vmodes="F" virtual_dimmer="F" icon="mode1_icon.png">
+			<channels>
+				<channel number="1" type="_FUNCT_" bits="8" priority="LTP" name="Mode" subelement="0">
+					<segment name="Laser Off" start="0" end="63"></segment>
+					<segment name="Sound 3D Animations" start="64" end="74"></segment>
+					<segment name="Sound 3D Shapes" start="75" end="96"></segment>
+					<segment name="Sound 3D Galaxy" start="97" end="107"></segment>
+					<segment name="Sound Star Field" start="108" end="118"></segment>
+					<segment name="Sound 4in1 Fx" start="119" end="127"></segment>
+					<segment name="Auntomated 3D Animations" start="128" end="138"></segment>
+					<segment name="Auntomated 3D Shapes" start="139" end="160"></segment>
+					<segment name="Auntomated 3D Galaxy" start="161" end="171"></segment>
+					<segment name="Auntomated Star Field" start="172" end="182"></segment>
+					<segment name="Auntomated 4in1 Fx" start="183" end="191"></segment>
+					<segment name="DMX Manual Mode" start="192" end="255"></segment>
+				</channel>
+				<channel number="2" type="_GOBO_" bits="8" priority="LTP" name="Pattern Mode" subelement="0">
+					<segment name="Single 3D Shapes" start="0" end="127"></segment>
+					<segment name="Galaxy 3D Shapes" start="128" end="191"></segment>
+					<segment name="Star Field FX" start="192" end="255"></segment>
+				</channel>
+				<channel number="3" type="_GOBO_CTRL_" bits="8" priority="LTP" name="Pattern 1 Selection" subelement="0"></channel>
+				<channel number="4" type="_COLOR_" bits="8" priority="LTP" name="Pattern 1 Color" subelement="0">
+					<segment name="Laser Off" start="0" end="1"></segment>
+					<segment name="R--G--B--RG--RB--GB--RGB" start="2" end="69"></segment>
+					<segment name="R--G--B (8 Points)" start="70" end="79"></segment>
+					<segment name="RG--RB--GB--RGB (8 Points)" start="80" end="89"></segment>
+					<segment name="R--G--B--RG--RB--GB--RGB (8 Points)" start="90" end="99"></segment>
+					<segment name="R--G--B--RG--RB--GB--RGB (Flowing)" start="100" end="109"></segment>
+					<segment name="R--G--B (Inflection Point)" start="110" end="119"></segment>
+					<segment name="RG--RB--GB--RGB (Inflection Point)" start="120" end="129"></segment>
+					<segment name="R--G--B--RG--RB--GB--RGB (Inflection Point)" start="130" end="139"></segment>
+					<segment name="R--G--B (Auto)" start="140" end="179"></segment>
+					<segment name="RG--RB--GB--RGB (Auto)" start="180" end="219"></segment>
+					<segment name="R--G--B--RG--RB--GB--RGB (Auto)" start="220" end="255"></segment>
+				</channel>
+				<channel number="5" type="_GOBO2_" bits="8" priority="LTP" name="Pattern 2 Selection" subelement="0"></channel>
+				<channel number="6" type="_COLOR2_" bits="8" priority="LTP" name="Pattern 2 Color" subelement="0">
+					<segment name="Laser Off" start="0" end="1"></segment>
+					<segment name="R--G--B--RG--RB--GB--RGB" start="2" end="69"></segment>
+					<segment name="R--G--B (8 Points)" start="70" end="79"></segment>
+					<segment name="RG--RB--GB--RGB (8 Points)" start="80" end="89"></segment>
+					<segment name="R--G--B--RG--RB--GB--RGB (8 Points)" start="90" end="99"></segment>
+					<segment name="R--G--B--RG--RB--GB--RGB (Flowing)" start="100" end="109"></segment>
+					<segment name="R--G--B (Inflection Point)" start="110" end="119"></segment>
+					<segment name="RG--RB--GB--RGB (Inflection Point)" start="120" end="129"></segment>
+					<segment name="R--G--B--RG--RB--GB--RGB (Inflection Point)" start="130" end="139"></segment>
+					<segment name="R--G--B (Auto)" start="140" end="179"></segment>
+					<segment name="RG--RB--GB--RGB (Auto)" start="180" end="219"></segment>
+					<segment name="R--G--B--RG--RB--GB--RGB (Auto)" start="220" end="255"></segment>
+				</channel>
+				<channel number="7" type="_GOBO3_" bits="8" priority="LTP" name="Dual Pattern Mode" subelement="0">
+					<segment name="Single Pattern Mode (Channels 5,6 no Func)" start="0" end="27"></segment>
+					<segment name="X Phase" start="28" end="55"></segment>
+					<segment name="Y Phase" start="56" end="83"></segment>
+					<segment name="X/Y Phase Together" start="84" end="111"></segment>
+					<segment name="Zoom Phase" start="112" end="139"></segment>
+					<segment name="Pattern 1 (No Sine), Pattern 2 (Sine Wave)" start="140" end="167"></segment>
+					<segment name="Pattern 1 (No Zoom), Pattern 2 (Zoom)" start="168" end="195"></segment>
+					<segment name="Pattern 1 (No Rotation), Pattern 2 (Rotation)" start="196" end="223"></segment>
+					<segment name="Rotation Phase" start="224" end="251"></segment>
+					<segment name="Pattern 1+2" start="252" end="255"></segment>
+				</channel>
+				<channel number="8" type="_PAN_" bits="8" priority="LTP" name="Moving X" subelement="0">
+					<segment name="Manual Left/Right Movement" start="0" end="127"></segment>
+					<segment name="Auto Left Movement" start="128" end="160"></segment>
+					<segment name="Auto Right Movement" start="161" end="192"></segment>
+					<segment name="Auto Left/Right Movement" start="193" end="224"></segment>
+					<segment name="Jumping" start="225" end="239"></segment>
+					<segment name="Rhombus Movement" start="240" end="247"></segment>
+					<segment name="Upper Corner Movement" start="248" end="255"></segment>
+				</channel>
+				<channel number="9" type="_TILT_" bits="8" priority="LTP" name="Moving Y" subelement="0">
+					<segment name="Manual Up/Down Movement" start="0" end="127"></segment>
+					<segment name="Auto Down Movement" start="128" end="160"></segment>
+					<segment name="Auto Up Movement" start="161" end="192"></segment>
+					<segment name="Auto Up/Down Movement" start="193" end="224"></segment>
+					<segment name="Circular Movement" start="225" end="231"></segment>
+					<segment name="Auto X Fluctuation" start="232" end="239"></segment>
+					<segment name="Auto Square Fluctuation" start="240" end="247"></segment>
+					<segment name="Lower Corner Movement" start="248" end="255"></segment>
+				</channel>
+				<channel number="10" type="_PAN_CTRL_" bits="8" priority="LTP" name="X Axis Rotation" subelement="0">
+					<segment name="Manual Position" start="0" end="150"></segment>
+					<segment name="Auto Position Spin" start="151" end="255"></segment>
+				</channel>
+				<channel number="11" type="_TILT_CTRL_" bits="8" priority="LTP" name="Y Axis Rotation" subelement="0">
+					<segment name="Manual Position" start="0" end="150"></segment>
+					<segment name="Auto Position Spin" start="151" end="255"></segment>
+				</channel>
+				<channel number="12" type="_POSITION_" bits="8" priority="LTP" name="Rotation" subelement="0">
+					<segment name="Manual Rotation" start="0" end="127"></segment>
+					<segment name="Auto CW Rotation" start="128" end="159"></segment>
+					<segment name="Auto CCW Rotation" start="160" end="291"></segment>
+					<segment name="Auto CW/CCW Rotation" start="292" end="223"></segment>
+					<segment name="Ellipse Tracking Rotation" start="224" end="255"></segment>
+				</channel>
+				<channel number="13" type="_ZOOM_" bits="8" priority="LTP" name="Pattern Zoom" subelement="0">
+					<segment name="No Function" start="0" end="127"></segment>
+					<segment name="Manual Zoom" start="128" end="159"></segment>
+					<segment name="Auto Zoom +" start="160" end="291"></segment>
+					<segment name="Auto Zoom -" start="292" end="223"></segment>
+					<segment name="Auto Zoom +/-" start="224" end="255"></segment>
+				</channel>
+				<channel number="14" type="_FX_" bits="8" priority="LTP" name="Sine Wave Fluctuation" subelement="0">
+					<segment name="X Fluctuation" start="0" end="128"></segment>
+					<segment name="Y Fluctuation" start="129" end="255"></segment>
+				</channel>
+				<channel number="15" type="_FX2_" bits="8" priority="LTP" name="Drawing" subelement="0">
+					<segment name="Manual Draw" start="0" end="64"></segment>
+					<segment name="Auto Draw Slow-Fast" start="65" end="255"></segment>
+				</channel>
+			</channels>
+			<palettes>
+				<palette type="_GENERAL_">
+					<set name="_FIND_">
+						<value channel="_FUNCT_" value="000" bits="8" element_set=""></value>
+						<value channel="_GOBO_" value="000" bits="8" element_set=""></value>
+						<value channel="_GOBO_CTRL_" value="000" bits="8" element_set=""></value>
+						<value channel="_COLOR_" value="000" bits="8" element_set=""></value>
+						<value channel="_GOBO2_" value="000" bits="8" element_set=""></value>
+						<value channel="_COLOR2_" value="000" bits="8" element_set=""></value>
+						<value channel="_GOBO3_" value="000" bits="8" element_set=""></value>
+						<value channel="_PAN_" value="128" bits="8" element_set=""></value>
+						<value channel="_TILT_" value="128" bits="8" element_set=""></value>
+						<value channel="_PAN_CTRL_" value="000" bits="8" element_set=""></value>
+						<value channel="_TILT_CTRL_" value="000" bits="8" element_set=""></value>
+						<value channel="_POSITION_" value="255" bits="8" element_set=""></value>
+						<value channel="_ZOOM_" value="000" bits="8" element_set=""></value>
+						<value channel="_FX_" value="000" bits="8" element_set=""></value>
+						<value channel="_FX2_" value="000" bits="8" element_set=""></value>
+					</set>
+					<set name="_DEFAULT_">
+						<value channel="_FUNCT_" value="000" bits="8" element_set=""></value>
+						<value channel="_GOBO_" value="000" bits="8" element_set=""></value>
+						<value channel="_GOBO_CTRL_" value="000" bits="8" element_set=""></value>
+						<value channel="_COLOR_" value="000" bits="8" element_set=""></value>
+						<value channel="_GOBO2_" value="000" bits="8" element_set=""></value>
+						<value channel="_COLOR2_" value="000" bits="8" element_set=""></value>
+						<value channel="_GOBO3_" value="000" bits="8" element_set=""></value>
+						<value channel="_PAN_" value="128" bits="8" element_set=""></value>
+						<value channel="_TILT_" value="128" bits="8" element_set=""></value>
+						<value channel="_PAN_CTRL_" value="000" bits="8" element_set=""></value>
+						<value channel="_TILT_CTRL_" value="000" bits="8" element_set=""></value>
+						<value channel="_POSITION_" value="255" bits="8" element_set=""></value>
+						<value channel="_ZOOM_" value="000" bits="8" element_set=""></value>
+						<value channel="_FX_" value="000" bits="8" element_set=""></value>
+						<value channel="_FX2_" value="000" bits="8" element_set=""></value>
+					</set>
+					<set name="_HIGHLIGHT_"></set>
+					<set name="_LOWLIGHT_"></set>
+				</palette>
+			</palettes>
+		</mode>
+	</fixture>
+</ofl>

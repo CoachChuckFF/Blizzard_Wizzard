@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ofl>
+	<brand short_name="AmericanDj" name="American DJ" url="http://www.adj.com" icon="logo_AmericanDj.png"></brand>
+	<fixture brand="AmericanDj" short_name="SweepBQuad" name="Sweeper Beam Quad LED" version="2017-03-11 18:33">
+		<hardware type="_MANUAL_" pan_angle="0" tilt_angle="0" pan_max_speed="0" tilt_max_speed="0" beam_type="" beam_zoom_narrow="" beam_zoom_wide="" spot_zoom_narrow="" spot_zoom_wide="" max_strobe="" min_strobe="" rotation_speed="" color_type="" framing_type="_NONE_" dimmer_curve="_LINEAR_" light_source="_LED_" light_source_power="" color_temp="" lummens="" max_power_consumption="" weight="" height="" widht="" depth="" shape=""></hardware>
+		<mode name="1ch" number_of_channels="1" invert_pan="F" invert_tilt="F" multi_element="F" vmodes="F" virtaul_dimmer="F" elements="" icon="mode1_icon.png">
+			<channels>
+				<channel number="1" type="_COLMIX_" bits="8" priority="LTP" name="Shows" subelement="0">
+					<segment name="LED OFF" start="0" end="7"></segment>
+					<segment name="Show 1" start="8" end="22"></segment>
+					<segment name="Show 2" start="23" end="37"></segment>
+					<segment name="Show 3" start="38" end="52"></segment>
+					<segment name="Show 4" start="53" end="67"></segment>
+					<segment name="Show 5" start="68" end="82"></segment>
+					<segment name="Show 6" start="83" end="97"></segment>
+					<segment name="Show 7" start="98" end="112"></segment>
+					<segment name="Show 8" start="113" end="127"></segment>
+					<segment name="Show 9" start="128" end="142"></segment>
+					<segment name="Show 10" start="143" end="157"></segment>
+					<segment name="Show 11" start="158" end="172"></segment>
+					<segment name="Show 12" start="173" end="187"></segment>
+					<segment name="Show 13" start="188" end="202"></segment>
+					<segment name="Show 14" start="203" end="217"></segment>
+					<segment name="Show 15" start="218" end="232"></segment>
+					<segment name="Show 16" start="233" end="247"></segment>
+					<segment name="Rnd Show" start="248" end="255"></segment>
+				</channel>
+			</channels>
+			<palettes>
+				<palette type="_GENERAL_">
+					<set name="_FIND_">
+						<value channel="_COLMIX_" value="14" bits="8" element_set=""></value>
+					</set>
+					<set name="_DEFAULT_">
+						<value channel="_COLMIX_" value="000" bits="8" element_set=""></value>
+					</set>
+					<set name="_HIGHLIGHT_"></set>
+					<set name="_LOWLIGHT_"></set>
+				</palette>
+			</palettes>
+		</mode>
+		<mode name="6ch" number_of_channels="6" invert_pan="F" invert_tilt="F" multi_element="F" vmodes="F" virtaul_dimmer="F" elements="" icon="mode1_icon.png">
+			<channels>
+				<channel number="1" type="_TILT_" bits="8" priority="LTP" name="Tilt" subelement="0"></channel>
+				<channel number="2" type="_POSITION_" bits="8" priority="LTP" name="Tilt Macro" subelement="0">
+					<segment name="LED OFF" start="0" end="7"></segment>
+					<segment name="60º-120º" start="8" end="43"></segment>
+					<segment name="45º-135º" start="44" end="79"></segment>
+					<segment name="30º-150º" start="80" end="115"></segment>
+					<segment name="0º-180º" start="116" end="151"></segment>
+					<segment name="-30-210" start="152" end="187"></segment>
+					<segment name="0º-90º" start="188" end="223"></segment>
+					<segment name="90º-180º" start="224" end="255"></segment>
+				</channel>
+				<channel number="3" type="_POSITION_CTRL_" bits="8" priority="LTP" name="Tilt Macro Speed" subelement="0">
+					<segment name="No Funct" start="0" end="7"></segment>
+					<segment name="Slow-Fastº" start="8" end="255"></segment>
+				</channel>
+				<channel number="4" type="_COLMIX_" bits="8" priority="LTP" name="Chases" subelement="0">
+					<segment name="LED OFF" start="0" end="7"></segment>
+					<segment name="Show 1" start="8" end="22"></segment>
+					<segment name="Show 2" start="23" end="37"></segment>
+					<segment name="Show 3" start="38" end="52"></segment>
+					<segment name="Show 4" start="53" end="67"></segment>
+					<segment name="Show 5" start="68" end="82"></segment>
+					<segment name="Show 6" start="83" end="97"></segment>
+					<segment name="Show 7" start="98" end="112"></segment>
+					<segment name="Show 8" start="113" end="127"></segment>
+					<segment name="Show 9" start="128" end="142"></segment>
+					<segment name="Show 10" start="143" end="157"></segment>
+					<segment name="Show 11" start="158" end="172"></segment>
+					<segment name="Show 12" start="173" end="187"></segment>
+					<segment name="Show 13" start="188" end="202"></segment>
+					<segment name="Show 14" start="203" end="217"></segment>
+					<segment name="Show 15" start="218" end="232"></segment>
+					<segment name="Show 16" start="233" end="247"></segment>
+					<segment name="Full ON" start="248" end="255"></segment>
+				</channel>
+				<channel number="5" type="_COLMIX_CTRL_" bits="8" priority="LTP" name="Chase Speed" subelement="0"></channel>
+				<channel number="6" type="_INTENSITY_" bits="8" priority="HTP" name="Dimmer" subelement="0"></channel>
+			</channels>
+			<palettes>
+				<palette type="_GENERAL_">
+					<set name="_FIND_">
+						<value channel="_TILT_" value="128" bits="8" element_set=""></value>
+						<value channel="_POSITION_" value="000" bits="8" element_set=""></value>
+						<value channel="_POSITION_CTRL_" value="000" bits="8" element_set=""></value>
+						<value channel="_COLMIX_" value="255" bits="8" element_set=""></value>
+						<value channel="_COLMIX_CTRL_" value="000" bits="8" element_set=""></value>
+						<value channel="_INTENSITY_" value="255" bits="8" element_set=""></value>
+					</set>
+					<set name="_DEFAULT_">
+						<value channel="_TILT_" value="000" bits="8" element_set=""></value>
+						<value channel="_POSITION_" value="000" bits="8" element_set=""></value>
+						<value channel="_POSITION_CTRL_" value="000" bits="8" element_set=""></value>
+						<value channel="_COLMIX_" value="000" bits="8" element_set=""></value>
+						<value channel="_COLMIX_CTRL_" value="000" bits="8" element_set=""></value>
+						<value channel="_INTENSITY_" value="000" bits="8" element_set=""></value>
+					</set>
+					<set name="_HIGHLIGHT_"></set>
+					<set name="_LOWLIGHT_"></set>
+				</palette>
+			</palettes>
+		</mode>
+	</fixture>
+</ofl>

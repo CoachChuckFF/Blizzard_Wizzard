@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ofl>
+    <brand short_name="InvoLight" name="InvoLight" url="" icon="logo_InvoLight.png"></brand>
+    <fixture brand="InvoLight" short_name="MH315Tcob" name="LED MH315T COB" version="2018-07-17 18:34">
+        <hardware type="_YOKE_" pan_angle="" tilt_angle="" pan_max_speed="" tilt_max_speed="" beam_type="_WASH_" beam_zoom_narrow="" beam_zoom_wide="" spot_zoom_narrow="" spot_zoom_wide="" zoom_wide="" zoom_narrow="" max_strobe="" min_strobe="" rotation_speed="" color_type="_RGB_" framing_type="_NONE_" dimmer_curve="_LINEAR_" light_source="_LED_" light_source_power="3x15" color_temp="" lummens="" max_power_consumption="65" weight="3.5" height="280" widht="220" depth="270" shape=""></hardware>
+        <mode name="11ch" number_of_channels="11" invert_pan="F" invert_tilt="F" multi_element="F" vmodes="F" virtaul_dimmer="F" elements="" icon="mode1_icon.png">
+            <channels>
+                <channel number="1" type="_PAN_" bits="8" priority="LTP" name="Pan" subelement="0"></channel>
+                <channel number="2" type="_TILT_" bits="8" priority="LTP" name="Tilt" subelement="0"></channel>
+				        <channel number="3" type="_PTSPEED_" bits="8" priority="LTP" name="PT Speed" subelement="0"></channel>
+                <channel number="4" type="_RED_" bits="8" priority="LTP" name="Red">
+                  <segment name="Red" start="0" end="255" from="0" to="100" unit="%"></segment>
+                </channel>
+                <channel number="5" type="_GREEN_" bits="8" priority="LTP" name="Green">
+                  <segment name="Green" start="0" end="255" from="0" to="100" unit="%"></segment>
+                </channel>
+                <channel number="6" type="_BLUE_" bits="8" priority="LTP" name="Blue">
+                  <segment name="Blue" start="0" end="255" from="0" to="100" unit="%"></segment>
+                </channel>
+                <channel number="7" type="_COLOR_" bits="8" priority="LTP" name="Color Change" subelement="0">
+                    <segment name="Neutral" start="0" end="15"></segment>
+                    <segment name="Red" start="16" end="31"></segment>
+                    <segment name="Green" start="32" end="47"></segment>
+                    <segment name="Blue" start="48" end="63"></segment>
+                    <segment name="Green / Blue" start="64" end="79"></segment>
+                    <segment name="Red / Green" start="80" end="95"></segment>
+                    <segment name="Red / Blue" start="96" end="111"></segment>
+                    <segment name="Red/Green/Blue" start="112" end="255"></segment>
+                </channel>
+                <channel number="8" type="_SHUTTER_" bits="8" priority="LTP" name="Shutter" subelement="0">
+                    <segment name="LED OFF" start="0" end="10"></segment>
+                    <segment name="Neutral" start="11" end="20"></segment>
+                    <segment name="Reset" start="21" end="30"></segment>
+                    <segment name="Strobe S-F" start="31" end="200"></segment>
+                    <segment name="Random Strobe" start="201" end="250"></segment>
+                    <segment name="Neutral" start="251" end="255"></segment>
+                </channel>
+                <channel number="9" type="_INTENSITY_" bits="8" priority="HTP" name="Dimmer" subelement="0">
+                  <segment name="Dimmer" start="0" end="255" from="0" to="100" unit="%"></segment>
+                </channel>
+                <channel number="10" type="_PAN_" bits="16" priority="LTP" name="Pan Fine" subelement="0"></channel>
+                <channel number="11" type="_TILT_" bits="16" priority="LTP" name="Tilt Fine" subelement="0"></channel>
+            </channels>
+            <palettes>
+              <palette type="_COLOR_">
+                  <set name="white" color="#ffffff">
+                      <value channel="_RED_" value="255"></value>
+                      <value channel="_GREEN_" value="255"></value>
+                      <value channel="_BLUE_" value="255"></value>
+                  </set>
+                  <set name="red" color="#ff0000">
+                      <value channel="_RED_" value="255"></value>
+                      <value channel="_GREEN_" value="0"></value>
+                      <value channel="_BLUE_" value="0"></value>
+                  </set>
+                  <set name="green" color="#00ff00">
+                      <value channel="_RED_" value="0"></value>
+                      <value channel="_GREEN_" value="255"></value>
+                      <value channel="_BLUE_" value="0"></value>
+                  </set>
+                  <set name="blue" color="#0000ff">
+                      <value channel="_RED_" value="0"></value>
+                      <value channel="_GREEN_" value="0"></value>
+                      <value channel="_BLUE_" value="255"></value>
+                  </set>
+                  <set name="cyan" color="#00ffff">
+                      <value channel="_RED_" value="0"></value>
+                      <value channel="_GREEN_" value="255"></value>
+                      <value channel="_BLUE_" value="255"></value>
+                  </set>
+                  <set name="magenta" color="#ff00ff">
+                      <value channel="_RED_" value="255"></value>
+                      <value channel="_GREEN_" value="0"></value>
+                      <value channel="_BLUE_" value="255"></value>
+                  </set>
+                  <set name="yellow" color="#ffff00">
+                      <value channel="_RED_" value="255"></value>
+                      <value channel="_GREEN_" value="255"></value>
+                      <value channel="_BLUE_" value="0"></value>
+                      <value channel="_WHITE_" value="000"></value>
+                  </set>
+                  <set name="orange" color="#ffa500">
+                      <value channel="_RED_" value="255"></value>
+                      <value channel="_GREEN_" value="165"></value>
+                      <value channel="_BLUE_" value="0"></value>
+                  </set>
+                  <set name="pink" color="#ffc0cb">
+                      <value channel="_RED_" value="255"></value>
+                      <value channel="_GREEN_" value="192"></value>
+                      <value channel="_BLUE_" value="203"></value>
+                  </set>
+              </palette>
+            <palette type="_GENERAL_">
+                <set name="_FIND_">
+                    <value channel="_PAN_" bits="8" value="128" element_set=""></value>
+                    <value channel="_TILT_" bits="8" value="128" element_set=""></value>
+					          <value channel="_PAN_" bits="16" value="000" element_set=""></value>
+                    <value channel="_TILT_" bits="16" value="000" element_set=""></value>
+					          <value channel="_PTSPEED_" bits="8" value="000" element_set=""></value>
+                    <value channel="_RED_" bits="8" value="255" element_set=""></value>
+          					<value channel="_GREEN_" bits="8" value="255" element_set=""></value>
+          					<value channel="_BLUE_" bits="8" value="255" element_set=""></value>
+                    <value channel="_INTENSITY_" bits="8" value="255" element_set=""></value>
+          					<value channel="_SHUTTER_" bits="8" value="255" element_set=""></value>
+                    <value channel="_COLOR_" bits="8" value="000" element_set=""></value>
+					      </set>
+                <set name="_DEFAULT_">
+                  <value channel="_PAN_" bits="8" value="128" element_set=""></value>
+                  <value channel="_TILT_" bits="8" value="128" element_set=""></value>
+                  <value channel="_PAN_" bits="16" value="000" element_set=""></value>
+                  <value channel="_TILT_" bits="16" value="000" element_set=""></value>
+                  <value channel="_PTSPEED_" bits="8" value="000" element_set=""></value>
+                  <value channel="_RED_" bits="8" value="255" element_set=""></value>
+                  <value channel="_GREEN_" bits="8" value="255" element_set=""></value>
+                  <value channel="_BLUE_" bits="8" value="255" element_set=""></value>
+                  <value channel="_INTENSITY_" bits="8" value="000" element_set=""></value>
+                  <value channel="_SHUTTER_" bits="8" value="255" element_set=""></value>
+                  <value channel="_COLOR_" bits="8" value="000" element_set=""></value>
+                </set>
+                <set name="_HIGHLIGHT_">
+                  <value channel="_PAN_" bits="8" value="" element_set=""></value>
+                  <value channel="_TILT_" bits="8" value="" element_set=""></value>
+                  <value channel="_PAN_" bits="16" value="" element_set=""></value>
+                  <value channel="_TILT_" bits="16" value="" element_set=""></value>
+                  <value channel="_PTSPEED_" bits="8" value="" element_set=""></value>
+                  <value channel="_RED_" bits="8" value="255" element_set=""></value>
+                  <value channel="_GREEN_" bits="8" value="255" element_set=""></value>
+                  <value channel="_BLUE_" bits="8" value="255" element_set=""></value>
+                  <value channel="_INTENSITY_" bits="8" value="255" element_set=""></value>
+                  <value channel="_SHUTTER_" bits="8" value="255" element_set=""></value>
+                  <value channel="_COLOR_" bits="8" value="000" element_set=""></value>
+                </set>
+                <set name="_LOWLIGHT_">
+                  <value channel="_PAN_" bits="8" value="" element_set=""></value>
+                  <value channel="_TILT_" bits="8" value="" element_set=""></value>
+                  <value channel="_PAN_" bits="16" value="" element_set=""></value>
+                  <value channel="_TILT_" bits="16" value="" element_set=""></value>
+                  <value channel="_PTSPEED_" bits="8" value="" element_set=""></value>
+                  <value channel="_RED_" bits="8" value="000" element_set=""></value>
+                  <value channel="_GREEN_" bits="8" value="000" element_set=""></value>
+                  <value channel="_BLUE_" bits="8" value="255" element_set=""></value>
+                  <value channel="_INTENSITY_" bits="8" value="255" element_set=""></value>
+                  <value channel="_SHUTTER_" bits="8" value="255" element_set=""></value>
+                  <value channel="_COLOR_" bits="8" value="000" element_set=""></value>
+                </set>
+            </palette>
+		       </palettes>
+            <macros>
+                <macro name="_RESET_">
+                    <step wait="4000">
+                        <value channel="_SHUTTER_" value="25"></value>
+                    </step>
+                    <step wait="1000">
+                        <value channel="_SHUTTER_" value="0"></value>
+                    </step>
+                </macro>
+            </macros>
+        </mode>
+    </fixture>
+</ofl>

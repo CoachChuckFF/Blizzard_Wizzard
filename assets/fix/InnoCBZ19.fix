@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ofl>
+    <brand short_name="AmericanDj" name="American DJ" url="http://www.adj.com" icon="logo_AmericanDj.png"></brand>
+    <fixture brand="AmericanDj" short_name="InnoCBZ19" name="Inno Color Beam Z19" version="2017-05-17 9:57">
+        <hardware type="_YOKE_" pan_angle="540" tilt_angle="200" pan_max_speed="0" tilt_max_speed="0" beam_type="_WASH_" beam_zoom_narrow="" beam_zoom_wide="" spot_zoom_narrow="" spot_zoom_wide="" zoom_wide="" zoom_narrow="" max_strobe="" min_strobe="" rotation_speed="" color_type="_RGBW_" framing_type="_NONE_" dimmer_curve="_LINEAR_" light_source="_LED_" light_source_power="190" color_temp="" lummens="" max_power_consumption="254" weight="9.2" height="360" widht="320" depth="224" shape=""></hardware>
+        <mode name="14ch" number_of_channels="14" invert_pan="F" invert_tilt="F" multi_element="F" vmodes="F" virtaul_dimmer="F" elements="" icon="mode1_icon.png">
+            <channels>
+                <channel number="1" type="_PAN_" bits="8" priority="LTP" name="Pan" subelement="0"></channel>
+                <channel number="2" type="_PAN_" bits="16" priority="LTP" name="Pan F" subelement="0"></channel>
+                <channel number="3" type="_TILT_" bits="8" priority="LTP" name="Tilt" subelement="0"></channel>
+                <channel number="4" type="_TILT_" bits="16" priority="LTP" name="Tilt F" subelement="0"></channel>
+                <channel number="5" type="_RED_" bits="8" priority="LTP" name="Red" subelement="0"></channel>
+                <channel number="6" type="_GREEN_" bits="8" priority="LTP" name="Green" subelement="0"></channel>
+                <channel number="7" type="_BLUE_" bits="8" priority="LTP" name="Blue" subelement="0"></channel>
+                <channel number="8" type="_WHITE_" bits="8" priority="LTP" name="White" subelement="0"></channel>
+                <channel number="9" type="_COLOR_" bits="8" priority="LTP" name="Macros" subelement="0">
+                    <segment name="OFF" start="0" end="0"></segment>
+                    <segment name="Macro 1" start="1" end="4"></segment>
+                    <segment name="Macro 2" start="5" end="8"></segment>
+                    <segment name="Macro 3" start="9" end="12"></segment>
+                    <segment name="Macro 4" start="13" end="16"></segment>
+                    <segment name="Macro 5" start="17" end="20"></segment>
+                    <segment name="Macro 6" start="21" end="24"></segment>
+                    <segment name="Macro 7" start="25" end="28"></segment>
+                    <segment name="Macro 8" start="29" end="32"></segment>
+                    <segment name="Macro 9" start="33" end="36"></segment>
+                    <segment name="Macro 10" start="37" end="40"></segment>
+                    <segment name="Macro 11" start="41" end="44"></segment>
+                    <segment name="Macro 12" start="45" end="48"></segment>
+                    <segment name="Macro 13" start="49" end="52"></segment>
+                    <segment name="Macro 14" start="53" end="56"></segment>
+                    <segment name="Macro 15" start="57" end="60"></segment>
+                    <segment name="Macro 16" start="61" end="64"></segment>
+                    <segment name="Macro 17" start="65" end="68"></segment>
+                    <segment name="Macro 18" start="69" end="72"></segment>
+                    <segment name="Macro 19" start="73" end="76"></segment>
+                    <segment name="Macro 20" start="77" end="80"></segment>
+                    <segment name="Macro 21" start="81" end="84"></segment>
+                    <segment name="Macro 22" start="85" end="88"></segment>
+                    <segment name="Macro 23" start="89" end="92"></segment>
+                    <segment name="Macro 24" start="93" end="96"></segment>
+                    <segment name="Macro 25" start="97" end="100"></segment>
+                    <segment name="Macro 26" start="101" end="104"></segment>
+                    <segment name="Macro 27" start="105" end="108"></segment>
+                    <segment name="Macro 28" start="109" end="112"></segment>
+                    <segment name="Macro 29" start="113" end="116"></segment>
+                    <segment name="Macro 30" start="117" end="120"></segment>
+                    <segment name="Macro 31" start="121" end="124"></segment>
+                    <segment name="Macro 32" start="125" end="128"></segment>
+                    <segment name="Macro 33" start="129" end="132"></segment>
+                    <segment name="Macro 34" start="133" end="136"></segment>
+                    <segment name="Macro 35" start="137" end="140"></segment>
+                    <segment name="Macro 36" start="141" end="144"></segment>
+                    <segment name="Macro 37" start="145" end="148"></segment>
+                    <segment name="Macro 38" start="149" end="152"></segment>
+                    <segment name="Macro 39" start="153" end="156"></segment>
+                    <segment name="Macro 40" start="157" end="160"></segment>
+                    <segment name="Macro 41" start="161" end="164"></segment>
+                    <segment name="Macro 42" start="165" end="168"></segment>
+                    <segment name="Macro 43" start="169" end="172"></segment>
+                    <segment name="Macro 44" start="173" end="176"></segment>
+                    <segment name="Macro 45" start="177" end="180"></segment>
+                    <segment name="Macro 46" start="181" end="184"></segment>
+                    <segment name="Macro 47" start="185" end="188"></segment>
+                    <segment name="Macro 48" start="189" end="192"></segment>
+                    <segment name="Macro 49" start="193" end="196"></segment>
+                    <segment name="Macro 50" start="197" end="200"></segment>
+                    <segment name="Macro 51" start="201" end="204"></segment>
+                    <segment name="Macro 52" start="205" end="208"></segment>
+                    <segment name="Macro 53" start="209" end="212"></segment>
+                    <segment name="Macro 54" start="213" end="216"></segment>
+                    <segment name="Macro 55" start="217" end="220"></segment>
+                    <segment name="Macro 56" start="221" end="224"></segment>
+                    <segment name="Macro 57" start="225" end="228"></segment>
+                    <segment name="Macro 58" start="229" end="232"></segment>
+                    <segment name="Macro 59" start="233" end="236"></segment>
+                    <segment name="Macro 60" start="237" end="240"></segment>
+                    <segment name="Macro 61" start="241" end="244"></segment>
+                    <segment name="Macro 62" start="245" end="248"></segment>
+                    <segment name="Macro 63" start="249" end="252"></segment>
+                    <segment name="Macro 64" start="253" end="255"></segment>
+                </channel>
+                <channel number="10" type="_SHUTTER_" bits="8" priority="LTP" name="Shutter" subelement="0">
+                    <segment name="Closed" start="0" end="19"></segment>
+                    <segment name="Open" start="20" end="24"></segment>
+                    <segment name="Strobe F-S" start="25" end="64"></segment>
+                    <segment name="Open" start="65" end="69"></segment>
+                    <segment name="Colse S-F" start="70" end="84"></segment>
+                    <segment name="Open" start="85" end="89"></segment>
+                    <segment name="Open F-S" start="90" end="104"></segment>
+                    <segment name="Open" start="105" end="109"></segment>
+                    <segment name="Rnd Strobe" start="110" end="124"></segment>
+                    <segment name="Open" start="125" end="129"></segment>
+                    <segment name="Rnd Open" start="130" end="144"></segment>
+                    <segment name="Open" start="145" end="149"></segment>
+                    <segment name="Rnd Close" start="150" end="164"></segment>
+                    <segment name="Open" start="165" end="169"></segment>
+                    <segment name="Burst" start="170" end="184"></segment>
+                    <segment name="Open" start="185" end="189"></segment>
+                    <segment name="Rnd Burst" start="190" end="204"></segment>
+                    <segment name="Open" start="205" end="209"></segment>
+                    <segment name="Pulsing" start="210" end="224"></segment>
+                    <segment name="Open" start="225" end="229"></segment>
+                    <segment name="Burst" start="230" end="244"></segment>
+                    <segment name="Open" start="245" end="255"></segment>
+                </channel>
+                <channel number="11" type="_INTENSITY_" bits="8" priority="HTP" name="Intensity" subelement="0"></channel>
+                <channel number="12" type="_ZOOM_" bits="8" priority="LTP" name="Zoom" subelement="0"></channel>
+                <channel number="13" type="_PTSPEED_" bits="8" priority="LTP" name="PT Speed" subelement="0"></channel>
+                <channel number="14" type="_FUNCT_" bits="8" priority="LTP" name="Control" subelement="0">
+                    <segment name="No Funct" start="0" end="9"></segment>
+                    <segment name="Reset" start="10" end="14"></segment>
+                    <segment name="No Funct" start="15" end="255"></segment>
+                </channel>
+            </channels>
+            <palettes>
+                <palette type="_COLOR_">
+                    <set name="white" color="#ffffff">
+                        <value channel="_RED_" value="255"></value>
+                        <value channel="_GREEN_" value="255"></value>
+                        <value channel="_BLUE_" value="255"></value>
+                        <value channel="_WHITE_" value="255"></value>
+                    </set>
+                    <set name="red" color="#ff0000">
+                        <value channel="_RED_" value="255"></value>
+                        <value channel="_GREEN_" value="000"></value>
+                        <value channel="_BLUE_" value="000"></value>
+                        <value channel="_WHITE_" value="000"></value>
+                    </set>
+                    <set name="green" color="#00ff00">
+                        <value channel="_RED_" value="000"></value>
+                        <value channel="_GREEN_" value="255"></value>
+                        <value channel="_BLUE_" value="000"></value>
+                        <value channel="_WHITE_" value="000"></value>
+                    </set>
+                    <set name="blue" color="#0000ff">
+                        <value channel="_RED_" value="000"></value>
+                        <value channel="_GREEN_" value="000"></value>
+                        <value channel="_BLUE_" value="255"></value>
+                        <value channel="_WHITE_" value="000"></value>
+                    </set>
+                    <set name="amber" color="#ffbf00">
+                        <value channel="_RED_" value="255"></value>
+                        <value channel="_GREEN_" value="191"></value>
+                        <value channel="_BLUE_" value="000"></value>
+                        <value channel="_WHITE_" value="000"></value>
+                    </set>
+                    <set name="magenta" color="#ff00ff">
+                        <value channel="_RED_" value="255"></value>
+                        <value channel="_GREEN_" value="000"></value>
+                        <value channel="_BLUE_" value="250"></value>
+                        <value channel="_WHITE_" value="000"></value>
+                    </set>
+                    <set name="yellow" color="#ffff00">
+                        <value channel="_RED_" value="255"></value>
+                        <value channel="_GREEN_" value="255"></value>
+                        <value channel="_BLUE_" value="000"></value>
+                        <value channel="_WHITE_" value="000"></value>
+                    </set>
+                    <set name="orange" color="#ffa500">
+                        <value channel="_RED_" value="255"></value>
+                        <value channel="_GREEN_" value="165"></value>
+                        <value channel="_BLUE_" value="000"></value>
+                        <value channel="_WHITE_" value="000"></value>
+                    </set>
+                    <set name="pink" color="#ffc0cb">
+                        <value channel="_RED_" value="255"></value>
+                        <value channel="_GREEN_" value="192"></value>
+                        <value channel="_BLUE_" value="203"></value>
+                        <value channel="_WHITE_" value="000"></value>
+                    </set>
+                </palette>
+                <palette type="_GENERAL_">
+                    <set name="_FIND_">
+                        <value channel="_PAN_" bits="8" value="128" element_set=""></value>
+                        <value channel="_TILT_" bits="8" value="128" element_set=""></value>
+                        <value channel="_INTENSITY_" bits="8" value="255" element_set=""></value>
+                        <value channel="_SHUTTER_" bits="8" value="255" element_set=""></value>
+                        <value channel="_RED_" bits="8" value="255"></value>
+                        <value channel="_GREEN_" bits="8" value="255"></value>
+                        <value channel="_BLUE_" bits="8" value="255"></value>
+                        <value channel="_WHITE_" bits="8" value="255"></value>
+                    </set>
+                    <set name="_DEFAULT_">
+                        <value channel="_PAN_" bits="8" value="128" element_set=""></value>
+                        <value channel="_TILT_" bits="8" value="128" element_set=""></value>
+                        <value channel="_INTENSITY_" bits="8" value="000" element_set=""></value>
+                        <value channel="_SHUTTER_" bits="8" value="255" element_set=""></value>
+                        <value channel="_RED_" bits="8" value="255"></value>
+                        <value channel="_GREEN_" bits="8" value="255"></value>
+                        <value channel="_BLUE_" bits="8" value="255"></value>
+                        <value channel="_WHITE_" bits="8" value="255"></value>
+                    </set>
+                    <set name="_HIGHLIGHT_">
+                        <value channel="_INTENSITY_" bits="8" value="255" element_set=""></value>
+                        <value channel="_SHUTTER_" bits="8" value="255" element_set=""></value>
+                        <value channel="_RED_" bits="8" value="255"></value>
+                        <value channel="_GREEN_" bits="8" value="255"></value>
+                        <value channel="_BLUE_" bits="8" value="255"></value>
+                        <value channel="_WHITE_" bits="8" value="255"></value>
+                    </set>
+                    <set name="_LOWLIGHT_">
+                        <value channel="_BLUE_" bits="8" value="255"></value>
+                    </set>
+                </palette>
+            </palettes>
+            <macros>
+                <macro name="_RESET_">
+                    <step wait="7000">
+                        <value channel="_FUNCT_" value="12"></value>
+                    </step>
+                    <step wait="0">
+                        <value channel="_FUNCT_" value="0"></value>
+                    </step>
+                </macro>
+            </macros>
+        </mode>
+    </fixture>
+</ofl>

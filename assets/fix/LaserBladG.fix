@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ofl>
+	<brand short_name="Blizzard" name="Blizzard Lighting" url="http://www.blizzardlighting.com" icon="logo_Blizzard.png"></brand>
+	<fixture brand="Blizzard" short_name="LaserBladG" name="LaserBlade G" version="2018-04-16 02:24">
+		<hardware type="_YOKE_" pan_angle="540" tilt_angle="270" pan_max_speed="" tilt_max_speed="" beam_type="" beam_zoom_narrow="" beam_zoom_wide="" spot_zoom_narrow="" spot_zoom_wide="" max_strobe="" min_strobe="" rotation_speed="" color_type="" framing_type="_NONE_" dimmer_curve="" light_source="_LASER_" light_source_power="50mW" color_temp="" lummens="" max_power_consumption="" weight="" height="" widht="" depth="" shape=""></hardware>
+		<mode name="19ch" number_of_channels="19" invert_pan="F" invert_tilt="F" multi_element="F" vmodes="T" virtaul_dimmer="F" elements="" icon="mode1_icon.png">
+			<channels>
+				<channel number="1" type="_FUNCT_" bits="8" priority="LTP" name="Run Mode" subelement="0">
+					<segment name="Laser Off" start="0" end="63"></segment>
+					<segment name="Sound Active" start="64" end="127"></segment>
+					<segment name="Auto Mode" start="128" end="191"></segment>
+					<segment name="DMX Mode" start="192" end="255"></segment>
+				</channel>
+				<channel number="2" type="_PAN_" bits="8" priority="LTP" name="Pan" subelement="0"></channel>
+				<channel number="3" type="_TILT_" bits="8" priority="LTP" name="Tilt" subelement="0"></channel>
+				<channel number="4" type="_TILT_CTRL_" bits="8" priority="LTP" name="Vertical Speed" subelement="0"></channel>
+				<channel number="5" type="_BEAMFX_" bits="8" priority="LTP" name="Group 1 Pattern" subelement="0">
+					<segment name="Laser Off" start="0" end="1"></segment>
+					<segment name="133 Geometric" start="2" end="220"></segment>
+					<segment name="Screen Theme" start="221" end="227"></segment>
+					<segment name="Wedding Fly" start="228" end="229"></segment>
+					<segment name="Halloween 1" start="230" end="231"></segment>
+					<segment name="Halloween 2" start="232" end="233"></segment>
+					<segment name="Congratulations" start="234" end="235"></segment>
+					<segment name="Christmas" start="236" end="237"></segment>
+					<segment name="Happy Birthday" start="238" end="239"></segment>
+					<segment name="Lightning" start="240" end="241"></segment>
+					<segment name="Pole Dance" start="242" end="243"></segment>
+					<segment name="Dancing" start="244" end="245"></segment>
+					<segment name="Musical Notes" start="246" end="247"></segment>
+					<segment name="Fish Big Splash" start="248" end="249"></segment>
+					<segment name="Trees" start="250" end="251"></segment>
+					<segment name="Drum Beating" start="252" end="255"></segment>
+				</channel>
+				<channel number="6" type="_BEAMFX_CTRL_" bits="8" priority="LTP" name="Group 1 Control" subelement="0">
+					<segment name="Laser OFF" start="0" end="15"></segment>
+					<segment name="Laser ON" start="16" end="255"></segment>
+				</channel>
+				<channel number="7" type="_BEAMFX2_" bits="8" priority="LTP" name="Group 2 Pattern" subelement="0">
+					<segment name="Laser OFF" start="0" end="28"></segment>
+					<segment name="76 Patterns" start="29" end="255"></segment>
+				</channel>
+				<channel number="8" type="_BEAMFX2_CTRL_" bits="8" priority="LTP" name="Group 2 Control" subelement="0">
+					<segment name="Laser OFF" start="0" end="15"></segment>
+					<segment name="Laser ON" start="16" end="255"></segment>
+				</channel>
+				<channel number="9" type="_BEAMFX3_" bits="8" priority="LTP" name="Dual Group Animations" subelement="0">
+					<segment name="Single Animation" start="0" end="20"></segment>
+					<segment name="X Mirror Symetry" start="21" end="41"></segment>
+					<segment name="Y Mirror Symetry" start="42" end="62"></segment>
+					<segment name="X/Y Mirror Symetry" start="63" end="83"></segment>
+					<segment name="Zoom In/Out" start="84" end="104"></segment>
+					<segment name="G2 Left/Right" start="105" end="125"></segment>
+					<segment name="G2 Zoom In/Out" start="126" end="146"></segment>
+					<segment name="G2 Rotate" start="147" end="167"></segment>
+					<segment name="Rotation Mirror Symetry" start="168" end="188"></segment>
+					<segment name="G1 No Y Moving" start="189" end="209"></segment>
+					<segment name="G1 No X/Y Moving" start="210" end="230"></segment>
+					<segment name="G1 no Y Dim" start="231" end="251"></segment>
+					<segment name="G1 no X Moving" start="252" end="255"></segment>
+				</channel>
+				<channel number="10" type="_POSITION_" bits="8" priority="LTP" name="Moving X" subelement="0">
+					<segment name="Manual Left/Right" start="0" end="127"></segment>
+					<segment name="Auto to Left" start="128" end="160"></segment>
+					<segment name="Auto to Right" start="161" end="192"></segment>
+					<segment name="Auto Left/Right" start="193" end="224"></segment>
+					<segment name="Jumping" start="225" end="239"></segment>
+					<segment name="Rhombus Shape" start="240" end="247"></segment>
+					<segment name="Top Left/Right Moving" start="248" end="255"></segment>
+				</channel>
+				<channel number="11" type="_POSITION2_" bits="8" priority="LTP" name="Moving Y" subelement="0">
+					<segment name="Manual Up/Down" start="0" end="127"></segment>
+					<segment name="Auto to Down" start="128" end="160"></segment>
+					<segment name="Auto to Up" start="161" end="192"></segment>
+					<segment name="Auto Up/Down" start="193" end="224"></segment>
+					<segment name="Circle Shape" start="225" end="231"></segment>
+					<segment name="Sine Shape" start="232" end="239"></segment>
+					<segment name="Square Shape" start="240" end="247"></segment>
+					<segment name="Bottom Corner" start="248" end="255"></segment>
+				</channel>
+				<channel number="12" type="_POSITION3_" bits="8" priority="LTP" name="X-Axis Rotation" subelement="0">
+					<segment name="Manual Position" start="0" end="127"></segment>
+					<segment name="Auto Position" start="128" end="255"></segment>
+				</channel>
+				<channel number="13" type="_POSITION4_" bits="8" priority="LTP" name="Y-Axis Rotation" subelement="0">
+					<segment name="Manual Position" start="0" end="127"></segment>
+					<segment name="Auto Position" start="128" end="255"></segment>
+				</channel>
+				<channel number="14" type="_POSITION3_CTRL_" bits="8" priority="LTP" name="Rotation" subelement="0">
+					<segment name="Manual Rotation" start="0" end="127"></segment>
+					<segment name="Auto CW Rot" start="128" end="159"></segment>
+					<segment name="Auto CCW Rot" start="160" end="191"></segment>
+					<segment name="Auto Pendulum Effect" start="192" end="223"></segment>
+					<segment name="Ellipse Shape Rotation" start="224" end="255"></segment>
+				</channel>
+				<channel number="15" type="_ZOOM_" bits="8" priority="LTP" name="Zoom" subelement="0">
+					<segment name="No Funct" start="0" end="127"></segment>
+					<segment name="Manual Zoom" start="128" end="159"></segment>
+					<segment name="Auto Zoom +" start="160" end="191"></segment>
+					<segment name="Auto Zoom -" start="192" end="223"></segment>
+					<segment name="Auto Zoom +/-" start="224" end="255"></segment>
+				</channel>
+				<channel number="16" type="_BEAMFX4_" bits="8" priority="LTP" name="Sine Wave" subelement="0">
+					<segment name="No Funct" start="0" end="63"></segment>
+					<segment name="X Fluctuation" start="64" end="127"></segment>
+					<segment name="Y Fluctuation" start="128" end="191"></segment>
+					<segment name="X/Y Fluctuation" start="192" end="255"></segment>
+				</channel>
+				<channel number="17" type="_BEAMFX4_CTRL_" bits="8" priority="LTP" name="Sine Wave Speed"></channel>
+				<channel number="18" type="_FX_" bits="8" priority="LTP" name="Drawing" subelement="0">
+					<segment name="Manual Draw" start="0" end="63"></segment>
+					<segment name="AutoDraw" start="64" end="255"></segment>
+				</channel>
+				<channel number="19" type="_EMPTY_" bits="8" priority="LTP" name="Empty"></channel>
+			</channels>
+			<palettes>
+				<palette type="_GENERAL_">
+					<set name="_FIND_">
+						<value channel="_FUNCT_" bits="8" value="" element_set=""></value>
+						<value channel="_PAN_" bits="8" value="128" element_set=""></value>
+						<value channel="_TILT_" bits="8" value="128" element_set=""></value>
+						<value channel="_TILT_CTRL_" bits="8" value="000" element_set=""></value>
+						<value channel="_BEAMFX_" bits="8" value="000" element_set=""></value>
+						<value channel="_BEAMFX_CTRL_" bits="8" value="000" element_set=""></value>
+						<value channel="_BEAMFX2_" bits="8" value="000" element_set=""></value>
+						<value channel="_BEAMFX2_CTRL_" bits="8" value="000" element_set=""></value>
+						<value channel="_BEAMFX3_" bits="8" value="000" element_set=""></value>
+						<value channel="_POSITION_" bits="8" value="000" element_set=""></value>
+						<value channel="_POSITION2_" bits="8" value="000" element_set=""></value>
+						<value channel="_POSITION3_" bits="8" value="000" element_set=""></value>
+						<value channel="_POSITION4_" bits="8" value="000" element_set=""></value>
+						<value channel="_POSITION3_CTRL_" bits="8" value="000" element_set=""></value>
+						<value channel="_ZOOM_" bits="8" value="000" element_set=""></value>
+						<value channel="_BEAMFX4_" bits="8" value="000" element_set=""></value>
+						<value channel="_BEAMFX4_CTRL_" bits="8" value="000" element_set=""></value>
+						<value channel="_FX_" bits="8" value="000" element_set=""></value>
+						<value channel="_EMPTY_" bits="8" value="000" element_set=""></value>
+					</set>
+					<set name="_DEFAULT_">
+						<value channel="_FUNCT_" bits="8" value="" element_set=""></value>
+						<value channel="_PAN_" bits="8" value="128" element_set=""></value>
+						<value channel="_TILT_" bits="8" value="128" element_set=""></value>
+						<value channel="_TILT_CTRL_" bits="8" value="000" element_set=""></value>
+						<value channel="_BEAMFX_" bits="8" value="000" element_set=""></value>
+						<value channel="_BEAMFX_CTRL_" bits="8" value="000" element_set=""></value>
+						<value channel="_BEAMFX2_" bits="8" value="000" element_set=""></value>
+						<value channel="_BEAMFX2_CTRL_" bits="8" value="000" element_set=""></value>
+						<value channel="_BEAMFX3_" bits="8" value="000" element_set=""></value>
+						<value channel="_POSITION_" bits="8" value="000" element_set=""></value>
+						<value channel="_POSITION2_" bits="8" value="000" element_set=""></value>
+						<value channel="_POSITION3_" bits="8" value="000" element_set=""></value>
+						<value channel="_POSITION4_" bits="8" value="000" element_set=""></value>
+						<value channel="_POSITION3_CTRL_" bits="8" value="000" element_set=""></value>
+						<value channel="_ZOOM_" bits="8" value="000" element_set=""></value>
+						<value channel="_BEAMFX4_" bits="8" value="000" element_set=""></value>
+						<value channel="_BEAMFX4_CTRL_" bits="8" value="000" element_set=""></value>
+						<value channel="_FX_" bits="8" value="000" element_set=""></value>
+						<value channel="_EMPTY_" bits="8" value="000" element_set=""></value>
+					</set>
+					<set name="_HIGHLIGHT_"></set>
+					<set name="_LOWLIGHT_"></set>
+				</palette>
+			</palettes>
+			<macros>
+				<macro name="_OFF_">
+					<step wait="1000">
+						<value channel="_FUNCT_" value="32"></value>
+					</step>
+				</macro>
+				<macro name="_AUTO_">
+					<step wait="1000">
+						<value channel="_FUNCT_" value="160"></value>
+					</step>
+				</macro>
+				<macro name="_DMX_">
+					<step wait="1000">
+						<value channel="_FUNCT_" value="215"></value>
+					</step>
+				</macro>
+				<macro name="_SOUND_">
+					<step wait="1000">
+						<value channel="_FUNCT_" value="80"></value>
+					</step>
+				</macro>
+			</macros>
+		</mode>
+	</fixture>
+</ofl>

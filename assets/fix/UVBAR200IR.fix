@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ofl>
+	<brand short_name="Cameo" name="Cameo Light" url="http://www.cameolight.com/es/home/" icon="logo_Cameo.png"></brand>
+	<fixture brand="Cameo" short_name="UVBAR200IR" name="CL UV BAR 200IR" version="2017-06-10 14:00">
+		<hardware type="_MANUAL_" pan_angle="" tilt_angle="" pan_max_speed="" tilt_max_speed="" beam_type="_WASH_" beam_zoom_narrow="" beam_zoom_wide="" spot_zoom_narrow="" spot_zoom_wide="" max_strobe="" min_strobe="" rotation_speed="" color_type="" framing_type="_NONE_" dimmer_curve="_LINEAR_" light_source="_LED_" light_source_power="36" color_temp="" lummens="" max_power_consumption="38" weight="2.5" height="66" widht="1022" depth="67" shape=""></hardware>
+		<mode name="1ch" number_of_channels="1" invert_pan="F" invert_tilt="F" multi_element="F" elements="" vmodes="F" virtual_dimmer="F" icon="mode1_icon.png">
+			<channels>
+				<channel number="1" type="_INTENSITY_" bits="8" priority="HTP" name="Dimmer" subelement="0"></channel>
+			</channels>
+			<palettes>
+				<palette type="_GENERAL_">
+					<set name="_FIND_">
+						<value channel="_INTENSITY_" bits="8" value="255" element_set=""></value>
+					</set>
+					<set name="_DEFAULT_">
+						<value channel="_INTENSITY_" bits="8" value="000" element_set=""></value>
+					</set>
+					<set name="_HIGHLIGHT_">
+						<value channel="_INTENSITY_" bits="8" value="255" element_set=""></value>
+					</set>
+					<set name="_LOWLIGHT_">
+						<value channel="_INTENSITY_" bits="8" value="80" element_set=""></value>
+					</set>
+				</palette>
+			</palettes>
+		</mode>
+		<mode name="2ch" number_of_channels="2" invert_pan="F" invert_tilt="F" multi_element="F" elements="" vmodes="F" virtual_dimmer="F" icon="mode1_icon.png">
+			<channels>
+				<channel number="1" type="_INTENSITY_" bits="8" priority="HTP" name="Dimmer" subelement="0"></channel>
+				<channel number="2" type="_SHUTTER_" bits="8" priority="LTP" name="Strobe" subelement="0"></channel>
+			</channels>
+			<palettes>
+				<palette type="_GENERAL_">
+					<set name="_FIND_">
+						<value channel="_SHUTTER_" bits="8" value="000" element_set=""></value>
+						<value channel="_INTENSITY_" bits="8" value="255" element_set=""></value>
+					</set>
+					<set name="_DEFAULT_">
+						<value channel="_SHUTTER_" bits="8" value="000" element_set=""></value>
+						<value channel="_INTENSITY_" bits="8" value="000" element_set=""></value>
+					</set>
+					<set name="_HIGHLIGHT_">
+						<value channel="_SHUTTER_" bits="8" value="000" element_set=""></value>
+						<value channel="_INTENSITY_" bits="8" value="255" element_set=""></value>
+					</set>
+					<set name="_LOWLIGHT_">
+						<value channel="_SHUTTER_" bits="8" value="" element_set=""></value>
+						<value channel="_INTENSITY_" bits="8" value="80" element_set=""></value>
+					</set>
+				</palette>
+			</palettes>
+		</mode>
+	</fixture>
+</ofl>

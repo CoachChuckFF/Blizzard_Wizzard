@@ -53,7 +53,7 @@ class SceneManipulatorButtonBar extends StatelessWidget {
               },
             )
           ),
-          Expanded(
+          /*Expanded(
             child: new FlatButton(
               color: (state == LightingConfigState.fx) ?
                 Theme.of(context).primaryColor : Colors.white,
@@ -68,7 +68,7 @@ class SceneManipulatorButtonBar extends StatelessWidget {
                 callback(LightingConfigState.fx);
               },
             )
-          ),
+          ),*/
           Expanded(
             child: new FlatButton(
               color: (state == LightingConfigState.channels) ?
@@ -92,7 +92,7 @@ class SceneManipulatorButtonBar extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
-          Expanded(
+          /*Expanded(
             child: new FlatButton(
               color: (state == LightingConfigState.classic) ?
                 Theme.of(context).primaryColor : Colors.white,
@@ -107,7 +107,7 @@ class SceneManipulatorButtonBar extends StatelessWidget {
                 callback(LightingConfigState.classic);
               },
             )
-          ),
+          ),*/
           Expanded(
             child: new FlatButton(
               color: (state == LightingConfigState.dmx) ?

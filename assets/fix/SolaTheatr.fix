@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ofl>
+    <brand short_name="HighEnd" name="High End Systems Inc" url="https://www.highend.com" icon="logo_HighEnd.png"></brand>
+    <fixture brand="HighEnd" short_name="SolaTheatr" name="SolaTheatre" version="2018-05-28 09:33">
+        <hardware type="_YOKE_" pan_angle="540" tilt_angle="265" pan_max_speed="3.03" tilt_max_speed="2.28" beam_type="_SPOT_" beam_zoom_narrow="" beam_zoom_wide="" spot_zoom_narrow="" spot_zoom_wide="" zoom_narrow="8" zoom_wide="45" max_strobe="" min_strobe="" rotation_speed="" color_type="_CMY_" framing_type="_4BLADES_DUAL_POS_" dimmer_curve="_LINEAR_" light_source="_LED_" light_source_power="400" color_temp="6500" lummens="20000" max_power_consumption="1540" weight="39.5" height="1016" widht="686" depth="584" shape=""></hardware>
+        <mode name="47ch" number_of_channels="47" invert_pan="F" invert_tilt="F" multi_element="F" elements="" vmodes="T" virtual_dimmer="F" icon="mode1_icon.png">
+            <channels>
+                <channel number="1" type="_PAN_" bits="8" priority="LTP" name="Pan" subelement="0"></channel>
+                <channel number="2" type="_PAN_" bits="16" priority="LTP" name="Pan Fine" subelement="0"></channel>
+                <channel number="3" type="_TILT_" bits="8" priority="LTP" name="Tilt" subelement="0"></channel>
+                <channel number="4" type="_TILT_" bits="16" priority="LTP" name="Tilt Fine" subelement="0"></channel>
+                <channel number="5" type="_COLMIX_" bits="8" priority="LTP" name="ColMix" subelement="0">
+                    <segment name="Pure Mix" start="0" end="31" vmode="PureMix"></segment>
+                    <segment name="Cycle" start="32" end="47" vmode="Cycle"></segment>
+                    <segment name="Random" start="48" end="63" vmode="Random"></segment>
+                    <segment name="Reserved" start="64" end="255" vmode="Reserved"></segment>
+                </channel>
+                <channel number="6" type="_CYAN_" bits="8" priority="LTP" name="Cyan" subelement="0"></channel>
+                <channel number="7" type="_MAGENTA_" bits="8" priority="LTP" name="Magenta" subelement="0"></channel>
+                <channel number="8" type="_YELLOW_" bits="8" priority="LTP" name="Yellow" subelement="0"></channel>
+                <channel number="9" type="_CTO_" bits="8" priority="LTP" name="CTO" subelement="0"></channel>
+                <channel number="10" type="_COLOR_CTRL_" bits="8" priority="LTP" name="Col Funct" subelement="0">
+                    <segment name="Indexed" start="0" end="15" vmode="COLOR_Indexed"></segment>
+                    <segment name="Forward" start="16" end="31" vmode="COLOR_Forward"></segment>
+                    <segment name="Reverse" start="32" end="47" vmode="COLOR_Reverse"></segment>
+                    <segment name="Continuous" start="48" end="63" vmode="COLOR_Continuous"></segment>
+                    <segment name="FastScan" start="64" end="79" vmode="COLOR_FastScan"></segment>
+                    <segment name="Random" start="80" end="95" vmode="COLOR_Random"></segment>
+                    <segment name="Reserved" start="96" end="255" vmode="COLOR_Reserved"></segment>
+                </channel>
+                <channel number="11" type="_COLOR_" bits="8" priority="LTP" name="Static Col"></channel>
+                <channel number="12" type="_GOBO_CTRL_" bits="8" priority="LTP" name="Gobo1 Funct" subelement="0">
+                    <segment name="Indexed" start="0" end="15" vmode="GOBO1_Indexed"></segment>
+                    <segment name="Forward" start="16" end="31" vmode="GOBO1_Forward"></segment>
+                    <segment name="Reverse" start="32" end="47" vmode="GOBO1_Reverse"></segment>
+                    <segment name="Scan" start="48" end="63" vmode="GOBO1_Scan"></segment>
+                    <segment name="Random" start="64" end="79" vmode="GOBO1_Random"></segment>
+                    <segment name="TBD" start="80" end="255" vmode="GOBO1_TBD"></segment>
+                </channel>
+                <channel number="13" type="_GOBO_" bits="8" priority="LTP" name="Static Gobo Wheel"></channel>
+                <channel number="14" type="_GOBOROT_CTRL_" bits="8" priority="LTP" name="G1Rot Func">
+                    <segment name="Indexed" start="0" end="15" vmode="GOBOROT_Indexed"></segment>
+                    <segment name="Forward" start="16" end="31" vmode="GOBOROT_Forward"></segment>
+                    <segment name="Reverse" start="32" end="47" vmode="GOBOROT_Reverse"></segment>
+                    <segment name="FWStrob" start="48" end="63" vmode="GOBOROT_FWStrob"></segment>
+                    <segment name="RevStrob" start="64" end="79" vmode="GOBOROT_RevStrob"></segment>
+                    <segment name="Reserved" start="80" end="255" vmode="GOBOROT_Reserved"></segment>
+                </channel>
+                <channel number="15" type="_GOBO2_" bits="8" priority="LTP" name="Rot Gobo Wheel"></channel>
+                <channel number="16" type="_GOBOROT2_CTRL_" bits="8" priority="LTP" name="G2Rot Func">
+                    <segment name="Indexed" start="0" end="15" vmode="GOBOROT_Indexed"></segment>
+                    <segment name="Forward" start="16" end="31" vmode="GOBOROT_Forward"></segment>
+                    <segment name="Reverse" start="32" end="47" vmode="GOBOROT_Reverse"></segment>
+                    <segment name="FWStrob" start="48" end="63" vmode="GOBOROT_FWStrob"></segment>
+                    <segment name="RevStrob" start="64" end="79" vmode="GOBOROT_RevStrob"></segment>
+                    <segment name="Reserved" start="80" end="255" vmode="GOBOROT_Reserved"></segment>
+                </channel>
+                <channel number="17" type="_GOBOROT2_" bits="8" priority="LTP" name="Gobo2 Rot" subelement="0"></channel>
+                <channel number="18" type="_GOBOROT2_" bits="16" priority="LTP" name="Gobo2 RotF"></channel>
+                <channel number="19" type="_FRAMING_" bits="8" priority="LTP" name="Frame1 P1" subelement="0">
+                    <segment name="Full Out" start="0" end="0"></segment>
+                    <segment name="Move" start="1" end="254"></segment>
+                    <segment name="Full In" start="255" end="255"></segment>
+                </channel>
+                <channel number="20" type="_FRAMING_CTRL_" bits="8" priority="LTP" name="Frame1 P2" subelement="0">
+                    <segment name="Full Out" start="0" end="0"></segment>
+                    <segment name="Move" start="1" end="254"></segment>
+                    <segment name="Full In" start="255" end="255"></segment>
+                </channel>
+                <channel number="21" type="_FRAMING2_" bits="8" priority="LTP" name="Frame2 P1" subelement="0">
+                    <segment name="Full Out" start="0" end="0"></segment>
+                    <segment name="Move" start="1" end="254"></segment>
+                    <segment name="Full In" start="255" end="255"></segment>
+                </channel>
+                <channel number="22" type="_FRAMING2_CTRL_" bits="8" priority="LTP" name="Frame2 P2" subelement="0">
+                    <segment name="Full Out" start="0" end="0"></segment>
+                    <segment name="Move" start="1" end="254"></segment>
+                    <segment name="Full In" start="255" end="255"></segment>
+                </channel>
+                <channel number="23" type="_FRAMING3_" bits="8" priority="LTP" name="Frame3 P1" subelement="0">
+                    <segment name="Full Out" start="0" end="0"></segment>
+                    <segment name="Move" start="1" end="254"></segment>
+                    <segment name="Full In" start="255" end="255"></segment>
+                </channel>
+                <channel number="24" type="_FRAMING3_CTRL_" bits="8" priority="LTP" name="Frame3 P2" subelement="0">
+                    <segment name="Full Out" start="0" end="0"></segment>
+                    <segment name="Move" start="1" end="254"></segment>
+                    <segment name="Full In" start="255" end="255"></segment>
+                </channel>
+                <channel number="25" type="_FRAMING4_" bits="8" priority="LTP" name="Frame4 P1" subelement="0">
+                    <segment name="Full Out" start="0" end="0"></segment>
+                    <segment name="Move" start="1" end="254"></segment>
+                    <segment name="Full In" start="255" end="255"></segment>
+                </channel>
+                <channel number="26" type="_FRAMING4_CTRL_" bits="8" priority="LTP" name="Frame4 P2" subelement="0">
+                    <segment name="Full Out" start="0" end="0"></segment>
+                    <segment name="Move" start="1" end="254"></segment>
+                    <segment name="Full In" start="255" end="255"></segment>
+                </channel>
+                <channel number="27" type="_FRAMROT_" bits="8" priority="LTP" name="FrameRot" subelement="0">
+                    <segment name="Negative" start="0" end="127"></segment>
+                    <segment name="0" start="128" end="128"></segment>
+                    <segment name="Posotive" start="129" end="255"></segment>
+                </channel>
+                <channel number="28" type="_FRAMROT_" bits="16" priority="LTP" name="FrameRot F" subelement="0">
+                    <segment name="Negative" start="0" end="127"></segment>
+                    <segment name="0" start="128" end="128"></segment>
+                    <segment name="Posotive" start="129" end="255"></segment>
+                </channel>
+                <channel number="29" type="_FX_" bits="8" priority="LTP" name="Animation" subelement="0">
+                    <segment name="Disengaged" start="0" end="3"></segment>
+                    <segment name="Static" start="4" end="6"></segment>
+                    <segment name="Motion" start="7" end="8"></segment>
+                    <segment name="Slow-Fast" start="9" end="255"></segment>
+                </channel>
+                <channel number="30" type="_PRISM_CTRL_" bits="8" priority="LTP" name="Prism Func">
+                    <segment name="Disengaged" start="0" end="15" vmode="PRISM_Disengaged"></segment>
+                    <segment name="Continuous" start="16" end="31" vmode="PRISM_Continuous"></segment>
+                    <segment name="Forward" start="32" end="47" vmode="PRISM_Forward"></segment>
+                    <segment name="Reverse" start="48" end="63" vmode="PRISM_Reverse"></segment>
+                    <segment name="Reserved" start="80" end="255" vmode="PRISM_Reserved"></segment>
+                </channel>
+                <channel number="31" type="_PRISMROT_" bits="8" priority="LTP" name="Prism Rot" subelement="0"></channel>
+                <channel number="32" type="_PRISMROT_" bits="16" priority="LTP" name="Prism RotF"></channel>
+                <channel number="33" type="_FROST_" bits="8" priority="LTP" name="Frost 1" subelement="0">
+                    <segment name="Open" start="0" end="0"></segment>
+                    <segment name="Variable" start="1" end="127"></segment>
+                    <segment name="Soft" start="128" end="135"></segment>
+                    <segment name="Periodic" start="136" end="151"></segment>
+                    <segment name="Random" start="152" end="167"></segment>
+                    <segment name="Open" start="168" end="255"></segment>
+                </channel>
+                <channel number="34" type="_FOCUS_" bits="8" priority="LTP" name="Focus" subelement="0"></channel>
+                <channel number="35" type="_FOCUS_" bits="16" priority="LTP" name="Focus Fine" subelement="0"></channel>
+                <channel number="36" type="_ZOOM_" bits="8" priority="LTP" name="Zoom" subelement="0"></channel>
+                <channel number="37" type="_ZOOM_" bits="16" priority="LTP" name="Zoom Fine" subelement="0"></channel>
+                <channel number="38" type="_IRIS_" bits="8" priority="LTP" name="Iris" subelement="0"></channel>
+                <channel number="39" type="_SHUTTER_CTRL_" bits="8" priority="LTP" name="ShuttrFunc" subelement="0">
+                    <segment name="Normal" start="0" end="31"></segment>
+                    <segment name="Random" start="32" end="63"></segment>
+                    <segment name="Synchronous" start="64" end="95"></segment>
+                    <segment name="Normal" start="96" end="255"></segment>
+                </channel>
+                <channel number="40" type="_SHUTTER_" bits="8" priority="LTP" name="Shutter" subelement="0">
+                    <segment name="Close" start="0" end="23"></segment>
+                    <segment name="StrobeRate" start="24" end="229"></segment>
+                    <segment name="Open" start="230" end="255"></segment>
+                </channel>
+                <channel number="41" type="_INTENSITY_" bits="8" priority="HTP" name="Dimmer" subelement="0"></channel>
+                <channel number="42" type="_INTENSITY_" bits="16" priority="HTP" name="Dimmer F" subelement="0"></channel>
+                <channel number="43" type="_INTENSITY2_" bits="8" priority="LTP" name="Dimmer Macro" subelement="0"></channel>
+                <channel number="44" type="_INTENSITY2_CTRL_" bits="8" priority="LTP" name="Dimmer Macro Speed" subelement="0"></channel>
+                <channel number="45" type="_INTENSITY3_" bits="8" priority="LTP" name="Dimmer Macro xFade" subelement="0"></channel>
+                <channel number="46" type="_FUNCT2_" bits="8" priority="LTP" name="PT Speed" subelement="0"></channel>
+                <channel number="47" type="_FUNCT_" bits="8" priority="LTP" name="Control" subelement="0">
+                    <segment name="Safe" start="0" end="9"></segment>
+                    <segment name="TBD" start="10" end="19"></segment>
+                    <segment name="DisplayOff" start="20" end="28"></segment>
+                    <segment name="DisplayOn" start="29" end="35"></segment>
+                    <segment name="TBD" start="36" end="48"></segment>
+                    <segment name="Home All" start="49" end="68"></segment>
+                    <segment name="Shutdown" start="69" end="75"></segment>
+                    <segment name="StudioFan" start="76" end="82"></segment>
+                    <segment name="ContinFan" start="83" end="89"></segment>
+                    <segment name="StandFan" start="90" end="96"></segment>
+                    <segment name="TBD" start="97" end="130"></segment>
+                    <segment name="Audio Sync" start="131" end="160"></segment>
+                    <segment name="Prog1" start="161" end="171"></segment>
+                    <segment name="Prog2" start="172" end="182"></segment>
+                    <segment name="Prog3" start="183" end="193"></segment>
+                    <segment name="Prog4" start="194" end="204"></segment>
+                    <segment name="Prog5" start="204" end="215"></segment>
+                    <segment name="Prog6" start="216" end="226"></segment>
+                    <segment name="Prog7" start="227" end="237"></segment>
+                    <segment name="TBD" start="238" end="255"></segment>
+                </channel>
+            </channels>
+            <palettes>
+                <palette type="_COLOR_">
+                    <set name="white" color="#ffffff">
+                        <value channel="_CYAN_" value="000"></value>
+                        <value channel="_MAGENTA_" value="000"></value>
+                        <value channel="_YELLOW_" value="000"></value>
+                    </set>
+                    <set name="red" color="#ff0000">
+                        <value channel="_CYAN_" value="000"></value>
+                        <value channel="_MAGENTA_" value="255"></value>
+                        <value channel="_YELLOW_" value="255"></value>
+                    </set>
+                    <set name="cyan" color="#00ffff">
+                        <value channel="_CYAN_" value="255"></value>
+                        <value channel="_MAGENTA_" value="000"></value>
+                        <value channel="_YELLOW_" value="000"></value>
+                    </set>
+                    <set name="green" color="#00ff00">
+                        <value channel="_CYAN_" value="255"></value>
+                        <value channel="_MAGENTA_" value="000"></value>
+                        <value channel="_YELLOW_" value="255"></value>
+                    </set>
+                    <set name="blue" color="#0000ff">
+                        <value channel="_CYAN_" value="255"></value>
+                        <value channel="_MAGENTA_" value="255"></value>
+                        <value channel="_YELLOW_" value="000"></value>
+                    </set>
+                    <set name="pink" color="#ffc0cb">
+                        <value channel="_CYAN_" value="000"></value>
+                        <value channel="_MAGENTA_" value="63"></value>
+                        <value channel="_YELLOW_" value="52"></value>
+                    </set>
+                    <set name="amber" color="#ffbf00">
+                        <value channel="_CYAN_" value="000"></value>
+                        <value channel="_MAGENTA_" value="64"></value>
+                        <value channel="_YELLOW_" value="255"></value>
+                    </set>
+                    <set name="magenta" color="#ff00ff">
+                        <value channel="_CYAN_" value="000"></value>
+                        <value channel="_MAGENTA_" value="255"></value>
+                        <value channel="_YELLOW_" value="000"></value>
+                    </set>
+                    <set name="yellow" color="#ffff00">
+                        <value channel="_CYAN_" value="000"></value>
+                        <value channel="_MAGENTA_" value="000"></value>
+                        <value channel="_YELLOW_" value="255"></value>
+                    </set>
+                    <set name="uv" color="#00008b">
+                        <value channel="_CYAN_" value="255"></value>
+                        <value channel="_MAGENTA_" value="255"></value>
+                        <value channel="_YELLOW_" value="116"></value>
+                    </set>
+                </palette>
+                <palette type="_GENERAL_">
+                    <set name="_FIND_">
+                        <value channel="_PAN_" bits="8" value="128" element_set=""></value>
+                        <value channel="_PAN_" bits="16" value="000" element_set=""></value>
+                        <value channel="_TILT_" bits="8" value="128" element_set=""></value>
+                        <value channel="_TILT_" bits="16" value="000" element_set=""></value>
+                        <value channel="_COLMIX_" bits="8" value="000"></value>
+                        <value channel="_CYAN_" bits="8" value="255"></value>
+                        <value channel="_MAGENTA_" bits="8" value="255"></value>
+                        <value channel="_YELLOW_" bits="8" value="255"></value>
+                        <value channel="_CTO_" bits="8" value="255"></value>
+                        <value channel="_COLOR_CTRL_" bits="8" value="000"></value>
+                        <value channel="_COLOR_" bits="8" value="000"></value>
+                        <value channel="_GOBO_CTRL_" bits="8" value="000"></value>
+                        <value channel="_GOBO_" bits="8" value="000"></value>
+                        <value channel="_GOBOROT_CTRL_" bits="8" value="000"></value>
+                        <value channel="_GOBOROT_" bits="8" value="000"></value>
+                        <value channel="_GOBOROT_" bits="16" value="000"></value>
+                        <value channel="_GOBO2_CTRL_" bits="8" value="000"></value>
+                        <value channel="_GOBO2_" bits="8" value="000"></value>
+                        <value channel="_GOBOROT2_" bits="8" value="000"></value>
+                        <value channel="_GOBOROT2_" bits="16" value="000"></value>
+                        <value channel="_FRAMING_" bits="8" value="000"></value>
+                        <value channel="_FRAMING_CTRL_" bits="8" value="000"></value>
+                        <value channel="_FRAMING2_" bits="8" value="000"></value>
+                        <value channel="_FRAMING2_CTRL_" bits="8" value="000"></value>
+                        <value channel="_FRAMING3_" bits="8" value="000"></value>
+                        <value channel="_FRAMING3_CTRL_" bits="8" value="000"></value>
+                        <value channel="_FRAMING4_" bits="8" value="000"></value>
+                        <value channel="_FRAMING4_CTRL_" bits="8" value="000"></value>
+                        <value channel="_FRAMROT_" bits="8" value="000"></value>
+                        <value channel="_FRAMROT_" bits="16" value="000"></value>
+                        <value channel="_FX_" bits="8" value="000"></value>
+                        <value channel="_PRISM_CTRL_" bits="8" value="000"></value>
+                        <value channel="_PRISMROT_" bits="8" value="000"></value>
+                        <value channel="_PRISMROT_" bits="16" value="000"></value>
+                        <value channel="_FROST_" bits="8" value="000"></value>
+                        <value channel="_FOCUS_" bits="8" value="128"></value>
+                        <value channel="_FOCUS_" bits="16" value="000"></value>
+                        <value channel="_ZOOM_" bits="8" value="000"></value>
+                        <value channel="_ZOOM_" bits="16" value="000"></value>
+                        <value channel="_IRIS_" bits="8" value="255"></value>
+                        <value channel="_SHUTTER_CTRL_" bits="8" value="000" element_set=""></value>
+                        <value channel="_SHUTTER_" bits="8" value="255" element_set=""></value>
+                        <value channel="_INTENSITY_" bits="8" value="255" element_set=""></value>
+                        <value channel="_INTENSITY_" bits="16" value="255" element_set=""></value>
+                        <value channel="_INTENSITY2_" bits="8" value="000" element_set=""></value>
+                        <value channel="_INTENSITY2_CTRL_" bits="8" value="000" element_set=""></value>
+                        <value channel="_INTENSITY3_" bits="8" value="000" element_set=""></value>
+                        <value channel="_FUNCT2_" bits="8" value="000"></value>
+                        <value channel="_FUNCT_" bits="8" value="000"></value>
+                    </set>
+                    <set name="_DEFAULT_">
+                      <value channel="_PAN_" bits="8" value="128" element_set=""></value>
+                      <value channel="_PAN_" bits="16" value="000" element_set=""></value>
+                      <value channel="_TILT_" bits="8" value="128" element_set=""></value>
+                      <value channel="_TILT_" bits="16" value="000" element_set=""></value>
+                      <value channel="_COLMIX_" bits="8" value="000"></value>
+                      <value channel="_CYAN_" bits="8" value="255"></value>
+                      <value channel="_MAGENTA_" bits="8" value="255"></value>
+                      <value channel="_YELLOW_" bits="8" value="255"></value>
+                      <value channel="_CTO_" bits="8" value="255"></value>
+                      <value channel="_COLOR_CTRL_" bits="8" value="000"></value>
+                      <value channel="_COLOR_" bits="8" value="000"></value>
+                      <value channel="_GOBO_CTRL_" bits="8" value="000"></value>
+                      <value channel="_GOBO_" bits="8" value="000"></value>
+                      <value channel="_GOBOROT_CTRL_" bits="8" value="000"></value>
+                      <value channel="_GOBOROT_" bits="8" value="000"></value>
+                      <value channel="_GOBOROT_" bits="16" value="000"></value>
+                      <value channel="_GOBO2_CTRL_" bits="8" value="000"></value>
+                      <value channel="_GOBO2_" bits="8" value="000"></value>
+                      <value channel="_GOBOROT2_" bits="8" value="000"></value>
+                      <value channel="_GOBOROT2_" bits="16" value="000"></value>
+                      <value channel="_FRAMING_" bits="8" value="000"></value>
+                      <value channel="_FRAMING_CTRL_" bits="8" value="000"></value>
+                      <value channel="_FRAMING2_" bits="8" value="000"></value>
+                      <value channel="_FRAMING2_CTRL_" bits="8" value="000"></value>
+                      <value channel="_FRAMING3_" bits="8" value="000"></value>
+                      <value channel="_FRAMING3_CTRL_" bits="8" value="000"></value>
+                      <value channel="_FRAMING4_" bits="8" value="000"></value>
+                      <value channel="_FRAMING4_CTRL_" bits="8" value="000"></value>
+                      <value channel="_FRAMROT_" bits="8" value="000"></value>
+                      <value channel="_FRAMROT_" bits="16" value="000"></value>
+                      <value channel="_FX_" bits="8" value="000"></value>
+                      <value channel="_PRISM_CTRL_" bits="8" value="000"></value>
+                      <value channel="_PRISMROT_" bits="8" value="000"></value>
+                      <value channel="_PRISMROT_" bits="16" value="000"></value>
+                      <value channel="_FROST_" bits="8" value="000"></value>
+                      <value channel="_FOCUS_" bits="8" value="128"></value>
+                      <value channel="_FOCUS_" bits="16" value="000"></value>
+                      <value channel="_ZOOM_" bits="8" value="000"></value>
+                      <value channel="_ZOOM_" bits="16" value="000"></value>
+                      <value channel="_IRIS_" bits="8" value="255"></value>
+                      <value channel="_SHUTTER_CTRL_" bits="8" value="000" element_set=""></value>
+                      <value channel="_SHUTTER_" bits="8" value="255" element_set=""></value>
+                      <value channel="_INTENSITY_" bits="8" value="000" element_set=""></value>
+                      <value channel="_INTENSITY_" bits="16" value="000" element_set=""></value>
+                      <value channel="_INTENSITY2_" bits="8" value="000" element_set=""></value>
+                      <value channel="_INTENSITY2_CTRL_" bits="8" value="000" element_set=""></value>
+                      <value channel="_INTENSITY3_" bits="8" value="000" element_set=""></value>
+                      <value channel="_FUNCT2_" bits="8" value="000"></value>
+                      <value channel="_FUNCT_" bits="8" value="000"></value>
+                    </set>
+                    <set name="_HIGHLIGHT_"></set>
+                    <set name="_LOWLIGHT_"></set>
+                </palette>
+            </palettes>
+            <macros>
+                <macro name="_RESET_">
+                    <step wait="7000">
+                        <value channel="_FUNCT_" value="55"></value>
+                    </step>
+                    <step wait="0">
+                        <value channel="_FUNCT_" value="0"></value>
+                    </step>
+                </macro>
+                <macro name="_SHUTDOWN_">
+                    <step wait="7000">
+                        <value channel="_FUNCT_" value="70"></value>
+                    </step>
+                    <step wait="0">
+                        <value channel="_FUNCT_" value="0"></value>
+                    </step>
+                </macro>
+            </macros>
+        </mode>
+    </fixture>
+</ofl>

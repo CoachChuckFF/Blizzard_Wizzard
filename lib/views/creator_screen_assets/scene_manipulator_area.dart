@@ -46,7 +46,7 @@ class SceneManipulatorArea extends StatelessWidget {
       case LightingConfigState.dmx:
         return DMXControlArea(devices: this.devices);
       case LightingConfigState.keypad:
-        return KeypadArea();
+        return KeypadArea(devices: this.devices);
       case LightingConfigState.channels:
         return ChannelControlArea(devices: this.deviceMap);
       case LightingConfigState.settings:

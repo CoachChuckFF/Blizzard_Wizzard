@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ofl>
+    <brand short_name="ADB" name="ADB Lighting" url="http://www.adblighting.com" icon="logo_ADB.png"></brand>
+    <fixture brand="ADB" short_name="ALS150" name="ALS 150" version="2017-05-15 19:47">
+        <hardware type="_MANUAL_" pan_angle="" tilt_angle="0" pan_max_speed="0" tilt_max_speed="0" beam_type="_PROFILE_" beam_zoom_narrow="0" beam_zoom_wide="0" spot_zoom_narrow="18" spot_zoom_wide="38" zoom_narrow="30" zoom_wide="47" max_strobe="" min_strobe="" rotation_speed="1" color_type="_WHEEL_" framing_type="_NONE_" dimmer_curve="_LINEAR_" light_source="_LED_" light_source_power="180" color_temp="3000-6500K" lummens="8000" max_power_consumption="195" weight="6,5" height="405" widht="270" depth="225" shape=""></hardware>
+        <mode name="1ch" number_of_channels="1" invert_pan="F" invert_tilt="F" multi_element="F" vmodes="F" virtaul_dimmer="F" elements="" icon="mode1_icon.png">
+            <channels>
+                <channel number="1" type="_INTENSITY_" bits="8" priority="HTP" name="Dimmer" subelement="0"></channel>
+            </channels>
+            <palettes>
+                <palette type="_GENERAL_">
+                    <set name="_FIND_">
+                        <value channel="_INTENSITY_" value="255" bits="8" element_set=""></value>
+                    </set>
+                    <set name="_DEFAULT_">
+                        <value channel="_INTENSITY_" value="0" bits="8" element_set=""></value>
+                    </set>
+                    <set name="_HIGHLIGHT_">
+                        <value channel="_INTENSITY_" value="255" bits="8" element_set=""></value>
+                    </set>
+                </palette>
+            </palettes>
+        </mode>
+        <mode name="2ch" ref="1ch" number_of_channels="2" invert_pan="F" invert_tilt="F" multi_element="F" vmodes="F" virtaul_dimmer="F" elements="" icon="mode1_icon.png">
+            <channels>
+                <channel number="2" type="_SHUTTER_" bits="8" priority="LTP" name="Strobe" subelement="0">
+                    <segment name="Open" start="0" end="9"></segment>
+                    <segment name="S-F" start="10" end="57"></segment>
+                    <segment name="Open" start="58" end="59"></segment>
+                    <segment name="Pulse S-F" start="60" end="108"></segment>
+                    <segment name="Open" start="109" end="110"></segment>
+                    <segment name="Close Pulse" start="111" end="159"></segment>
+                    <segment name="Open" start="160" end="161"></segment>
+                    <segment name="Random" start="162" end="255"></segment>
+                </channel>
+            </channels>
+            <palettes>
+                <palette type="_GENERAL_">
+                    <set name="_FIND_">
+                        <value channel="_INTENSITY_" value="255" bits="8" element_set=""></value>
+                        <value channel="_SHUTTER_" value="5" bits="8" element_set=""></value>
+                    </set>
+                    <set name="_DEFAULT_">
+                        <value channel="_INTENSITY_" value="0" bits="8" element_set=""></value>
+                        <value channel="_SHUTTER_" value="5" bits="8" element_set=""></value>
+                    </set>
+                    <set name="_HIGHLIGHT_">
+                        <value channel="_INTENSITY_" value="255" bits="8" element_set=""></value>
+                    </set>
+                </palette>
+            </palettes>
+        </mode>
+        <mode name="3ch" ref="1ch" number_of_channels="3" invert_pan="F" invert_tilt="F" multi_element="F" vmodes="F" virtaul_dimmer="F" elements="" icon="mode1_icon.png">
+            <channels>
+                <channel number="2" type="_INTENSITY_" bits="16" priority="HTP" name="Dimmer" subelement="0"></channel>
+                <channel number="3" type="_SHUTTER_" bits="8" priority="LTP" name="Strobe" subelement="0">
+                    <segment name="Open" start="0" end="9"></segment>
+                    <segment name="S-F" start="10" end="57"></segment>
+                    <segment name="Open" start="58" end="59"></segment>
+                    <segment name="Pulse S-F" start="60" end="108"></segment>
+                    <segment name="Open" start="109" end="110"></segment>
+                    <segment name="Close Pulse" start="111" end="159"></segment>
+                    <segment name="Open" start="160" end="161"></segment>
+                    <segment name="Random" start="162" end="255"></segment>
+                </channel>
+            </channels>
+            <palettes>
+                <palette type="_GENERAL_">
+                    <set name="_FIND_">
+                        <value channel="_INTENSITY_" value="255" bits="8" element_set=""></value>
+                        <value channel="_INTENSITY_" value="255" bits="16" element_set=""></value>
+                        <value channel="_SHUTTER_" value="5" bits="8" element_set=""></value>
+                    </set>
+                    <set name="_DEFAULT_">
+                        <value channel="_INTENSITY_" value="000" bits="8" element_set=""></value>
+                        <value channel="_INTENSITY_" value="000" bits="16" element_set=""></value>
+                        <value channel="_SHUTTER_" value="5" bits="8" element_set=""></value>
+                    </set>
+                    <set name="_HIGHLIGHT_">
+                        <value channel="_INTENSITY_" value="255" bits="8" element_set=""></value>
+                        <value channel="_INTENSITY_" value="255" bits="16" element_set=""></value>
+                        <value channel="_SHUTTER_" value="5" bits="8" element_set=""></value>
+                    </set>
+                </palette>
+            </palettes>
+        </mode>
+        <mode name="4ch" ref="1ch" number_of_channels="4" invert_pan="F" invert_tilt="F" multi_element="F" vmodes="F" virtaul_dimmer="F" elements="" icon="mode1_icon.png">
+            <channels>
+                <channel number="2" type="_INTENSITY_" bits="16" priority="HTP" name="Dimmer" subelement="0"></channel>
+                <channel number="3" type="_SHUTTER_" bits="8" priority="LTP" name="Strobe" subelement="0">
+                    <segment name="Open" start="0" end="9"></segment>
+                    <segment name="S-F" start="10" end="57"></segment>
+                    <segment name="Open" start="58" end="59"></segment>
+                    <segment name="Pulse S-F" start="60" end="108"></segment>
+                    <segment name="Open" start="109" end="110"></segment>
+                    <segment name="Close Pulse" start="111" end="159"></segment>
+                    <segment name="Open" start="160" end="161"></segment>
+                    <segment name="Random" start="162" end="255"></segment>
+                </channel>
+                <channel number="4" type="_FUNCT_" bits="8" priority="LTP" name="Fan" subelement="0"></channel>
+            </channels>
+            <palettes>
+                <palette type="_GENERAL_">
+                    <set name="_FIND_">
+                        <value channel="_INTENSITY_" value="255" bits="8" element_set=""></value>
+                        <value channel="_INTENSITY_" value="255" bits="16" element_set=""></value>
+                        <value channel="_SHUTTER_" value="5" bits="8" element_set=""></value>
+                        <value channel="_FUNCT_" value="000" bits="8" element_set=""></value>
+                    </set>
+                    <set name="_DEFAULT_">
+                        <value channel="_INTENSITY_" value="000" bits="8" element_set=""></value>
+                        <value channel="_INTENSITY_" value="000" bits="16" element_set=""></value>
+                        <value channel="_SHUTTER_" value="5" bits="8" element_set=""></value>
+                        <value channel="_FUNCT_" value="000" bits="8" element_set=""></value>
+                    </set>
+                    <set name="_HIGHLIGHT_">
+                        <value channel="_INTENSITY_" value="255" bits="8" element_set=""></value>
+                        <value channel="_INTENSITY_" value="255" bits="16" element_set=""></value>
+                        <value channel="_SHUTTER_" value="5" bits="8" element_set=""></value>
+                        <value channel="_FUNCT_" value="" bits="8" element_set=""></value>
+                    </set>
+                </palette>
+            </palettes>
+        </mode>
+        <mode name="5ch" ref="1ch" number_of_channels="5" invert_pan="F" invert_tilt="F" multi_element="F" vmodes="F" virtaul_dimmer="F" elements="" icon="mode1_icon.png">
+            <channels>
+                <channel number="2" type="_INTENSITY_" bits="16" priority="HTP" name="Dimmer" subelement="0"></channel>
+                <channel number="3" type="_SHUTTER_" bits="8" priority="LTP" name="Strobe" subelement="0">
+                    <segment name="Open" start="0" end="9"></segment>
+                    <segment name="S-F" start="10" end="57"></segment>
+                    <segment name="Open" start="58" end="59"></segment>
+                    <segment name="Pulse S-F" start="60" end="108"></segment>
+                    <segment name="Open" start="109" end="110"></segment>
+                    <segment name="Close Pulse" start="111" end="159"></segment>
+                    <segment name="Open" start="160" end="161"></segment>
+                    <segment name="Random" start="162" end="255"></segment>
+                </channel>
+                <channel number="4" type="_FUNCT_" bits="8" priority="LTP" name="Fan" subelement="0"></channel>
+                <channel number="5" type="_FUNCT2_" bits="8" priority="LTP" name="Control" subelement="0">
+                    <segment name="Open" start="0" end="9"></segment>
+                    <segment name="RDM ON" start="10" end="45"></segment>
+                    <segment name="RDM OFF" start="46" end="80"></segment>
+                    <segment name="Stand Dim" start="81" end="115"></segment>
+                    <segment name="Soft Dim" start="116" end="150"></segment>
+                    <segment name="Quad Curve" start="151" end="185"></segment>
+                    <segment name="Linear Curve" start="186" end="220"></segment>
+                    <segment name="Theatre Curve" start="221" end="255"></segment>
+                </channel>
+            </channels>
+            <palettes>
+                <palette type="_GENERAL_">
+                    <set name="_FIND_">
+                        <value channel="_INTENSITY_" value="255" bits="8" element_set=""></value>
+                        <value channel="_INTENSITY_" value="255" bits="16" element_set=""></value>
+                        <value channel="_SHUTTER_" value="5" bits="8" element_set=""></value>
+                        <value channel="_FUNCT_" value="000" bits="8" element_set=""></value>
+                        <value channel="_FUNCT2_" value="000" bits="8" element_set=""></value>
+                    </set>
+                    <set name="_DEFAULT_">
+                        <value channel="_INTENSITY_" value="000" bits="8" element_set=""></value>
+                        <value channel="_INTENSITY_" value="000" bits="16" element_set=""></value>
+                        <value channel="_SHUTTER_" value="5" bits="8" element_set=""></value>
+                        <value channel="_FUNCT_" value="000" bits="8" element_set=""></value>
+                        <value channel="_FUNCT2_" value="000" bits="8" element_set=""></value>
+                    </set>
+                    <set name="_HIGHLIGHT_">
+                        <value channel="_INTENSITY_" value="255" bits="8" element_set=""></value>
+                        <value channel="_INTENSITY_" value="255" bits="16" element_set=""></value>
+                        <value channel="_SHUTTER_" value="5" bits="8" element_set=""></value>
+                        <value channel="_FUNCT_" value="000" bits="8" element_set=""></value>
+                        <value channel="_FUNCT2_" value="000" bits="8" element_set=""></value>
+                    </set>
+                </palette>
+            </palettes>
+        </mode>
+    </fixture>
+</ofl>

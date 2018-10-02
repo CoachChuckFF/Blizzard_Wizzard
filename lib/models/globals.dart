@@ -85,6 +85,7 @@ class LightingConfigState{
   static const int channels = 6;
   static const int fx = 7;
   static const int classic = 8;
+  
 }
 
 class PageState{
@@ -137,4 +138,12 @@ class DeviceConfigureCategoryColor{
 class DeviceFixtureGridColor{
   static const Color device = Colors.lightBlue;
   static const Color fixture = Colors.purple;
+}
+
+class KeypadSecrets{
+  static const String konami = "228846468 @ ";
+  static const String dreams = "3111 -> 1 -> 1 -> 1331";
+  static const String escape = "111 -> 333 -> 111";
+  static const String don = "69";
+  static const String homage = " @ 762";
 }

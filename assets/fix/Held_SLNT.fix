@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ofl>
+    <brand short_name="Litecraft" name="Litecraft" url="" icon="logo_Litecraft.png"></brand>
+    <fixture brand="Litecraft" short_name="Held_SLNT" name="Held SLNT WW Profine" version="2018-01-29 22:15">
+        <hardware type="_MANUAL_" pan_angle="" tilt_angle="" pan_max_speed="" tilt_max_speed="" beam_type="" beam_zoom_narrow="" beam_zoom_wide="" spot_zoom_narrow="" spot_zoom_wide="" max_strobe="" min_strobe="" rotation_speed="" color_type="_WW_" framing_type="_NONE_" dimmer_curve="_LINEAR_" light_source="_LED_" light_source_power="130" color_temp="" lummens="3000" max_power_consumption="" weight="9.2" height="" widht="" depth="" shape=""></hardware>
+        <mode name="M3(5)" number_of_channels="5" invert_pan="F" invert_tilt="F" multi_element="F" elements="" vmodes="F" virtual_dimmer="F" icon="mode1_icon.png">
+            <channels>
+                <channel number="1" type="_INTENSITY_" bits="8" priority="HTP" name="Intensity" subelement="0"></channel>
+                <channel number="2" type="_SHUTTER_" bits="8" priority="LTP" name="Strobe" subelement="0">
+                    <segment name="No Function" start="0" end="10"></segment>
+                    <segment name="Flash S-F" start="11" end="255"></segment>
+                </channel>
+                <channel number="3" type="_MACRO_" bits="8" priority="LTP" name="Programs" subelement="0">
+                    <segment name="No Function" start="0" end="10"></segment>
+                    <segment name="Auto 1" start="11" end="70"></segment>
+                    <segment name="Auto 2" start="71" end="130"></segment>
+                    <segment name="Auto 3" start="131" end="190"></segment>
+                    <segment name="Auto 4" start="191" end="255"></segment>
+                </channel>
+                <channel number="4" type="_MACRO_CTRL_" bits="8" priority="LTP" name="Speed" subelement="0"></channel>
+                <channel number="5" type="_INTENSITY_CTRL_" bits="8" priority="LTP" name="Dimmer Mode" subelement="0">
+                    <segment name="Display Mode" start="0" end="51"></segment>
+                    <segment name="Linear" start="52" end="101"></segment>
+                    <segment name="s-curve 1 fast" start="102" end="152"></segment>
+                    <segment name="s-curve 2 med" start="153" end="203"></segment>
+                    <segment name="s-curve 3 slow" start="204" end="255"></segment>
+                </channel>
+            </channels>
+            <palettes>
+                <palette type="_GENERAL_">
+                    <set name="_FIND_">
+                        <value channel="_INTENSITY_" value="255" bits="8" element_set=""></value>
+                        <value channel="_SHUTTER_" value="000" bits="8" element_set=""></value>
+                        <value channel="_MACRO_" value="000" bits="8" element_set=""></value>
+                        <value channel="_MACRO_CTRL_" value="000" bits="8" element_set=""></value>
+                        <value channel="_INTENSITY_CTRL_" value="000" bits="8" element_set=""></value>
+                    </set>
+                    <set name="_DEFAULT_">
+                        <value channel="_INTENSITY_" value="000" bits="8" element_set=""></value>
+                        <value channel="_SHUTTER_" value="000" bits="8" element_set=""></value>
+                        <value channel="_MACRO_" value="000" bits="8" element_set=""></value>
+                        <value channel="_MACRO_CTRL_" value="000" bits="8" element_set=""></value>
+                        <value channel="_INTENSITY_CTRL_" value="000" bits="8" element_set=""></value>
+                    </set>
+                    <set name="_HIGHLIGHT_">
+                        <value channel="_INTENSITY_" value="255" bits="8" element_set=""></value>
+                        <value channel="_SHUTTER_" value="000" bits="8" element_set=""></value>
+                        <value channel="_MACRO_" value="000" bits="8" element_set=""></value>
+                        <value channel="_MACRO_CTRL_" value="000" bits="8" element_set=""></value>
+                        <value channel="_INTENSITY_CTRL_" value="" bits="8" element_set=""></value>
+                    </set>
+                    <set name="_LOWLIGHT_">
+                        <value channel="_INTENSITY_" value="128" bits="8" element_set=""></value>
+                        <value channel="_SHUTTER_" value="000" bits="8" element_set=""></value>
+                        <value channel="_MACRO_" value="000" bits="8" element_set=""></value>
+                        <value channel="_MACRO_CTRL_" value="000" bits="8" element_set=""></value>
+                        <value channel="_INTENSITY_CTRL_" value="" bits="8" element_set=""></value>
+                    </set>
+                </palette>
+            </palettes>
+        </mode>
+        <mode name="M2(2)" number_of_channels="2" invert_pan="F" invert_tilt="F" multi_element="F" elements="" vmodes="F" virtual_dimmer="F" icon="mode1_icon.png">
+            <channels>
+                <channel number="1" type="_INTENSITY_" bits="8" priority="HTP" name="Intensity" subelement="0"></channel>
+                <channel number="2" type="_SHUTTER_" bits="8" priority="LTP" name="Strobe" subelement="0">
+                    <segment name="No Function" start="0" end="10"></segment>
+                    <segment name="Flash S-F" start="11" end="255"></segment>
+                </channel>
+            </channels>
+            <palettes>
+                <palette type="_GENERAL_">
+                    <set name="_FIND_">
+                        <value channel="_INTENSITY_" value="255" bits="8" element_set=""></value>
+                        <value channel="_SHUTTER_" value="000" bits="8" element_set=""></value>
+                    </set>
+                    <set name="_DEFAULT_">
+                        <value channel="_INTENSITY_" value="000" bits="8" element_set=""></value>
+                        <value channel="_SHUTTER_" value="000" bits="8" element_set=""></value>
+                    </set>
+                    <set name="_HIGHLIGHT_">
+                        <value channel="_INTENSITY_" value="255" bits="8" element_set=""></value>
+                        <value channel="_SHUTTER_" value="000" bits="8" element_set=""></value>
+                    </set>
+                    <set name="_LOWLIGHT_">
+                        <value channel="_INTENSITY_" value="128" bits="8" element_set=""></value>
+                        <value channel="_SHUTTER_" value="000" bits="8" element_set=""></value>
+                    </set>
+                </palette>
+            </palettes>
+        </mode>
+        <mode name="M1(1)" number_of_channels="1" invert_pan="F" invert_tilt="F" multi_element="F" elements="" vmodes="F" virtual_dimmer="F" icon="mode1_icon.png">
+            <channels>
+                <channel number="1" type="_INTENSITY_" bits="8" priority="HTP" name="Intensity" subelement="0"></channel>
+            </channels>
+            <palettes>
+                <palette type="_GENERAL_">
+                    <set name="_FIND_">
+                        <value channel="_INTENSITY_" value="255" bits="8" element_set=""></value>
+                    </set>
+                    <set name="_DEFAULT_">
+                        <value channel="_INTENSITY_" value="000" bits="8" element_set=""></value>
+                    </set>
+                    <set name="_HIGHLIGHT_">
+                        <value channel="_INTENSITY_" value="255" bits="8" element_set=""></value>
+                    </set>
+                    <set name="_LOWLIGHT_">
+                        <value channel="_INTENSITY_" value="128" bits="8" element_set=""></value>
+                    </set>
+                </palette>
+            </palettes>
+        </mode>
+    </fixture>
+</ofl>

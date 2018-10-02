@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ofl>
+	<brand short_name="ClayPaky" name="ClayPaky" url="http://www.claypaky.it/en/home/" icon="logo_ClayPaky.png"></brand>
+	<fixture brand="ClayPaky" short_name="GlowUP_W" name="GlowUP_W" version="2018-04-04 20:47">
+		<hardware type="_YOKE_" pan_angle="540" tilt_angle="252" pan_max_speed="" tilt_max_speed="" beam_type="" beam_zoom_narrow="0" beam_zoom_wide="" spot_zoom_narrow="15" spot_zoom_wide="30" max_strobe="" min_strobe="" rotation_speed="1" color_type="_W_" framing_type="_NONE_" dimmer_curve="_LINEAR_" light_source="_LED_" light_source_power="40" color_temp="" lummens="1200" max_power_consumption="50" weight="7.5" height="365" widht="226" depth="226" shape=""></hardware>
+		<mode name="2ch" number_of_channels="2" invert_pan="F" invert_tilt="F" multi_element="F" vmodes="F" virtaul_dimmer="F" elements="" icon="mode1_icon.png">
+			<channels>
+				<channel number="1" type="_INTENSITY_" bits="8" priority="HTP" name="Dimmer" subelement="0"></channel>
+				<channel number="2" type="_SHUTTER_" bits="8" priority="LTP" name="Strobe" subelement="0">
+					<segment name="Open" start="0" end="3"></segment>
+					<segment name="Strobe S-F" start="4" end="69"></segment>
+					<segment name="Open" start="70" end="74"></segment>
+					<segment name="Pulse S-F" start="75" end="140"></segment>
+					<segment name="Close Pulse F-S" start="141" end="206"></segment>
+					<segment name="Open" start="207" end="211"></segment>
+					<segment name="Rnd Strobe Slow" start="212" end="224"></segment>
+					<segment name="Rnd Strobe Medium" start="225" end="237"></segment>
+					<segment name="Rnd Strobe Fast" start="238" end="250"></segment>
+					<segment name="Open" start="251" end="255"></segment>
+				</channel>
+			</channels>
+			<palettes>
+				<palette type="_GENERAL_">
+					<set name="_FIND_">
+						<value channel="_INTENSITY_" bits="8" value="255" element_set=""></value>
+						<value channel="_SHUTTER_" bits="8" value="255" element_set=""></value>
+					</set>
+					<set name="_DEFAULT_">
+						<value channel="_INTENSITY_" bits="8" value="000" element_set=""></value>
+						<value channel="_SHUTTER_" bits="8" value="000" element_set=""></value>
+					</set>
+					<set name="_HIGHLIGHT_">
+						<value channel="_INTENSITY_" bits="8" value="255" element_set=""></value>
+						<value channel="_SHUTTER_" bits="8" value="255" element_set=""></value>
+					</set>
+					<set name="_LOWLIGHT_">
+						<value channel="_INTENSITY_" bits="8" value="80" element_set=""></value>
+						<value channel="_SHUTTER_" bits="8" value="255" element_set=""></value>
+					</set>
+				</palette>
+			</palettes>
+		</mode>
+	</fixture>
+</ofl>

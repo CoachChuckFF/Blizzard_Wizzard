@@ -1,0 +1,392 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ofl>
+	<brand short_name="SGM" name="SGM" url="http://sgmlight.com" icon="logo_SGM.png" version="2018-03-08 17:32"></brand>
+	<fixture brand="SGM" short_name="G4_WASH" name="G4 Wash" version="2017-04-18 16:26">
+		<hardware type="_YOKE_" pan_angle="540" tilt_angle="220" pan_max_speed="" tilt_max_speed="" beam_type="_WASH_" beam_zoom_narrow="" beam_zoom_wide="" wash_zoom_narrow="9" wash_zoom_wide="76" max_strobe="50" min_strobe="1" rotation_speed="" color_type="_RGBAW_" framing_type="" dimmer_curve="_LINEAR_" light_source="_LED_" light_source_power="150" color_temp="2000-10000" lummens="6300" CRI=">90" max_power_consumption="220" weight="10" height="465" widht="255" depth="157" shape=""></hardware>
+		<mode name="Stnd(18)" number_of_channels="18" invert_pan="F" invert_tilt="F" multi_element="F" elements="" vmodes="F" virtual_dimmer="F" icon="mode1_icon.png">
+			<channels>
+				<channel number="1" type="_SHUTTER_" bits="8" priority="LTP" name="Shutter" subelement="0">
+					<segment name="Closed" start="0" end="7"></segment>
+					<segment name="Open" start="8" end="17"></segment>
+					<segment name="Strobe S-F" start="18" end="88"></segment>
+					<segment name="Pulse Open S-F" start="89" end="108"></segment>
+					<segment name="Pulse Close S-F" start="109" end="128"></segment>
+					<segment name="Strobe Rnd" start="129" end="178"></segment>
+					<segment name="Random x 1 F-S" start="179" end="198"></segment>
+					<segment name="Random x 2 F-S" start="199" end="208"></segment>
+					<segment name="Random x 3 F-S" start="209" end="218"></segment>
+					<segment name="White Noise F-S" start="219" end="228"></segment>
+					<segment name="Open" start="229" end="255"></segment>
+				</channel>
+				<channel number="2" type="_INTENSITY_" bits="8" priority="HTP" name="Intensity" subelement="0"></channel>
+				<channel number="3" type="_INTENSITY_" bits="16" priority="HTP" name="Intensity Fine" subelement="0"></channel>
+				<channel number="4" type="_COLOR_" bits="8" priority="HTP" name="Macro" subelement="0">
+					<segment name="Disabled" start="0" end="4"></segment>
+					<segment name="Congo" start="5" end="9"></segment>
+					<segment name="Red" start="10" end="14"></segment>
+					<segment name="Green" start="15" end="19"></segment>
+					<segment name="Blue" start="20" end="24"></segment>
+					<segment name="Orange" start="25" end="29"></segment>
+					<segment name="Light Green" start="30" end="34"></segment>
+					<segment name="Pink" start="35" end="39"></segment>
+					<segment name="Light Blue" start="40" end="44"></segment>
+					<segment name="Purple" start="45" end="49"></segment>
+					<segment name="Neon Green" start="50" end="54"></segment>
+					<segment name="Magenta" start="55" end="59"></segment>
+					<segment name="Cyan" start="60" end="64"></segment>
+					<segment name="Yellow" start="65" end="69"></segment>
+					<segment name="CTC" start="70" end="74"></segment>
+					<segment name="Color Scroll CCW F-S" start="75" end="79"></segment>
+					<segment name="Color Scroll CW S-F" start="80" end="84"></segment>
+					<segment name="Random Color" start="85" end="89"></segment>
+					<segment name="LEE 004 - Med Bast Amber" start="90" end="90"></segment>
+					<segment name="LEE 010 - Med Yellow" start="91" end="91"></segment>
+					<segment name="LEE 013 - Straw Tint" start="92" end="92"></segment>
+					<segment name="LEE 017 - Surprise Peach" start="93" end="93"></segment>
+					<segment name="LEE 019 - Fire" start="94" end="94"></segment>
+					<segment name="LEE 020 - Med Amber" start="95" end="95"></segment>
+					<segment name="LEE 021 - Gold Amber" start="96" end="96"></segment>
+					<segment name="LEE 022 - Dark Amber" start="97" end="97"></segment>
+					<segment name="LEE 025 - Sunset red" start="98" end="98"></segment>
+					<segment name="LEE 026 - Bright Red" start="99" end="99"></segment>
+					<segment name="LEE 035 - Light Pink" start="100" end="100"></segment>
+					<segment name="LEE 036 - Med Pink" start="101" end="101"></segment>
+					<segment name="LEE 049 - Medium Purple" start="102" end="102"></segment>
+					<segment name="LEE 052 - Lt Lavender" start="103" end="103"></segment>
+					<segment name="LEE 058 - Lavender" start="104" end="104"></segment>
+					<segment name="LEE 068 - Sky Blue" start="105" end="105"></segment>
+					<segment name="LEE 071 - Tokyo Blue" start="106" end="106"></segment>
+					<segment name="LEE 079 - Just Blue" start="107" end="107"></segment>
+					<segment name="LEE 088 - Lime Green" start="108" end="108"></segment>
+					<segment name="LEE 089 - Moss Green" start="109" end="109"></segment>
+					<segment name="LEE 090 - Dk Yellow/Green" start="110" end="110"></segment>
+					<segment name="LEE 100 - Spring Yellow" start="111" end="111"></segment>
+					<segment name="LEE 102 - Lt Amber" start="112" end="112"></segment>
+					<segment name="LEE 103 - Straw" start="113" end="113"></segment>
+					<segment name="LEE 104 - Deep Amber" start="114" end="114"></segment>
+					<segment name="LEE 105 - Orange" start="115" end="115"></segment>
+					<segment name="LEE 106 - PrimaryRed" start="116" end="116"></segment>
+					<segment name="LEE 107 - Lt. Rose" start="117" end="117"></segment>
+					<segment name="LEE 108 - English Rose" start="118" end="118"></segment>
+					<segment name="LEE 109 - Lt. Salmon" start="119" end="119"></segment>
+					<segment name="LEE 110 - Middle Rose" start="120" end="120"></segment>
+					<segment name="LEE 111 - Dark Pink" start="121" end="121"></segment>
+					<segment name="LEE 113 - Magenta" start="122" end="122"></segment>
+					<segment name="LEE 115 - Peacock Blue" start="123" end="123"></segment>
+					<segment name="LEE 116 - Med Blue-Green" start="124" end="124"></segment>
+					<segment name="LEE 117 - Steel Blue" start="125" end="125"></segment>
+					<segment name="LEE 118 - Light Blue" start="126" end="126"></segment>
+					<segment name="LEE 119 - Dark Blue" start="127" end="127"></segment>
+					<segment name="LEE 120 - Deep Blue" start="128" end="128"></segment>
+					<segment name="LEE 121 - Lee Green" start="129" end="129"></segment>
+					<segment name="LEE 122 - Fern Green" start="130" end="130"></segment>
+					<segment name="LEE 124 - Dark Green" start="131" end="131"></segment>
+					<segment name="LEE 126 - Mauve" start="132" end="132"></segment>
+					<segment name="LEE 128 - Bright Pink" start="133" end="133"></segment>
+					<segment name="LEE 131 - Marine Blue" start="134" end="134"></segment>
+					<segment name="LEE 132 - Med Blue" start="135" end="135"></segment>
+					<segment name="LEE 134 - Golden Amber" start="136" end="136"></segment>
+					<segment name="LEE 135 - Deep Golden Amber" start="137" end="137"></segment>
+					<segment name="LEE 136 - Pale Lavender" start="138" end="138"></segment>
+					<segment name="LEE 137 - Spec Lavender" start="139" end="139"></segment>
+					<segment name="LEE 138 - Pale Green" start="140" end="140"></segment>
+					<segment name="LEE 139 - Primary Green" start="141" end="141"></segment>
+					<segment name="LEE 140 - Summer Blue" start="142" end="142"></segment>
+					<segment name="LEE 141 - Bright Blue" start="143" end="143"></segment>
+					<segment name="LEE 143 - Pale Navy Blue" start="144" end="144"></segment>
+					<segment name="LEE 147 - Apricot" start="145" end="145"></segment>
+					<segment name="LEE 148 - Bright Rose" start="146" end="146"></segment>
+					<segment name="LEE 152 - Pale Gold" start="147" end="147"></segment>
+					<segment name="LEE 154 - Pale Rose" start="148" end="148"></segment>
+					<segment name="LEE 157 - Pink" start="149" end="149"></segment>
+					<segment name="LEE 158 - Deep Orange" start="150" end="150"></segment>
+					<segment name="LEE 161 - Slate Blue" start="151" end="151"></segment>
+					<segment name="LEE 162 - Bastard Amber" start="152" end="152"></segment>
+					<segment name="LEE 164 - Flame Red" start="153" end="153"></segment>
+					<segment name="LEE 165 - Daylight Blue" start="154" end="154"></segment>
+					<segment name="LEE 169 - Lilac Tint" start="155" end="155"></segment>
+					<segment name="LEE 170 - Deep Lavender" start="156" end="156"></segment>
+					<segment name="LEE 172 - Lagoon Blue" start="157" end="157"></segment>
+					<segment name="LEE 174 - Dk Steel Blue" start="158" end="158"></segment>
+					<segment name="LEE 179 - Chroma Orange" start="159" end="159"></segment>
+					<segment name="LEE 180 - Dark Lavender" start="160" end="160"></segment>
+					<segment name="LEE 181 - Congo Blue" start="161" end="161"></segment>
+					<segment name="LEE 182 - Light Red" start="162" end="162"></segment>
+					<segment name="LEE 194 - Surprise Pink" start="163" end="163"></segment>
+					<segment name="LEE 197 - Alice Blue" start="164" end="164"></segment>
+					<segment name="LEE 200 - Double CT Blue" start="165" end="165"></segment>
+					<segment name="LEE 201 - Full CT Blue" start="166" end="166"></segment>
+					<segment name="LEE 202 - 1/2 CT Blue" start="167" end="167"></segment>
+					<segment name="LEE 203 - 1/4 CT Blue" start="168" end="168"></segment>
+					<segment name="LEE 204 - Full CT Orange" start="169" end="169"></segment>
+					<segment name="LEE 206 - 1/4 CT Orange" start="170" end="170"></segment>
+					<segment name="LEE 219 - Fluorescent Green" start="171" end="171"></segment>
+					<segment name="LEE 247 - Lee Minus Green" start="172" end="172"></segment>
+					<segment name="LEE 248 - 1/2 Minus Green" start="173" end="173"></segment>
+					<segment name="LEE 281 - 3/4 CT Blue" start="174" end="174"></segment>
+					<segment name="LEE 285 - 3/4 CT Orange" start="175" end="175"></segment>
+					<segment name="LEE 328 - Follies Pink" start="176" end="176"></segment>
+					<segment name="LEE 332 - Special Rose Pink" start="177" end="177"></segment>
+					<segment name="LEE 345 - Fuchsia Pink" start="178" end="178"></segment>
+					<segment name="LEE 352 - Glacier Pink" start="179" end="179"></segment>
+					<segment name="LEE 353 - Lighter Blue" start="180" end="180"></segment>
+					<segment name="Reserved" start="181" end="244"></segment>
+					<segment name="Amber Raw" start="245" end="249"></segment>
+					<segment name="Mint Raw" start="250" end="255"></segment>
+				</channel>
+				<channel number="5" type="_RED_" bits="8" priority="LTP" name="Red" subelement="0"></channel>
+				<channel number="6" type="_RED_" bits="16" priority="LTP" name="Red Fine" subelement="0"></channel>
+				<channel number="7" type="_GREEN_" bits="8" priority="LTP" name="Green" subelement="0"></channel>
+				<channel number="8" type="_GREEN_" bits="16" priority="LTP" name="Green Fine" subelement="0"></channel>
+				<channel number="9" type="_BLUE_" bits="8" priority="LTP" name="Blue" subelement="0"></channel>
+				<channel number="10" type="_BLUE_" bits="16" priority="LTP" name="Blue Fine" subelement="0"></channel>
+				<channel number="11" type="_CTC_" bits="8" priority="LTP" name="CTC" subelement="0">
+					<segment name="5600K" start="0" end="0"></segment>
+					<segment name="CTC OFF" start="1" end="4"></segment>
+					<segment name="2000K" start="5" end="5"></segment>
+					<segment name="2200K" start="15" end="15"></segment>
+					<segment name="2700K" start="40" end="40"></segment>
+					<segment name="3000K" start="54" end="54"></segment>
+					<segment name="3200K" start="65" end="65"></segment>
+					<segment name="4000K" start="105" end="105"></segment>
+					<segment name="4200K" start="115" end="115"></segment>
+					<segment name="5500K" start="177" end="177"></segment>
+					<segment name="6300K" start="216" end="216"></segment>
+					<segment name="8000K" start="238" end="238"></segment>
+					<segment name="10000K" start="255" end="255"></segment>
+				</channel>
+				<channel number="12" type="_PAN_" bits="8" priority="LTP" name="Pan" subelement="0"></channel>
+				<channel number="13" type="_PAN_" bits="16" priority="LTP" name="Pan Fine" subelement="0"></channel>
+				<channel number="14" type="_TILT_" bits="8" priority="LTP" name="Tilt" subelement="0"></channel>
+				<channel number="15" type="_TILT_" bits="16" priority="LTP" name="Tilt Fine" subelement="0"></channel>
+				<channel number="16" type="_PAN_CTRL_" bits="8" priority="LTP" name="Pan Mode" subelement="0">
+					<segment name="540º" start="0" end="7"></segment>
+					<segment name="360º" start="8" end="15"></segment>
+					<segment name="360º Shortets Path" start="16" end="23"></segment>
+					<segment name="Continuous Rot" start="24" end="31"></segment>
+					<segment name="Reserved" start="32" end="143"></segment>
+					<segment name="Pos Preset 1" start="144" end="151"></segment>
+					<segment name="Pos Preset 2" start="152" end="159"></segment>
+					<segment name="Pos Preset 3" start="160" end="167"></segment>
+					<segment name="Pos Preset 4" start="168" end="175"></segment>
+					<segment name="Pos Preset 5" start="176" end="183"></segment>
+					<segment name="Pos Preset 6" start="184" end="191"></segment>
+					<segment name="Pos Preset 7" start="192" end="199"></segment>
+					<segment name="Pos Preset 8" start="200" end="207"></segment>
+					<segment name="Pos Preset 9" start="208" end="215"></segment>
+					<segment name="Sequential presets Fade" start="216" end="223"></segment>
+					<segment name="Sequential presets Snap" start="224" end="231"></segment>
+					<segment name="Random presets Fade" start="232" end="239"></segment>
+					<segment name="Random presets Snap" start="240" end="249"></segment>
+					<segment name="540º" start="248" end="255"></segment>
+				</channel>
+				<channel number="17" type="_ZOOM_" bits="8" priority="LTP" name="Zoom" subelement="0"></channel>
+				<channel number="18" type="_FUNCT_" bits="8" priority="LTP" name="Control" subelement="0">
+					<segment name="No Function" start="0" end="4"></segment>
+					<segment name="Reset ALL" start="5" end="9"></segment>
+					<segment name="Reset PAN" start="10" end="14"></segment>
+					<segment name="Reset TILT" start="15" end="19"></segment>
+					<segment name="Head Reset" start="20" end="24"></segment>
+					<segment name="Reset ZOOM" start="25" end="29"></segment>
+					<segment name="Reserved" start="30" end="34"></segment>
+					<segment name="DisplayON" start="35" end="39"></segment>
+					<segment name="DisplayOFF" start="40" end="44"></segment>
+					<segment name="PowerOFF" start="45" end="49"></segment>
+					<segment name="Beam Narrow" start="50" end="54"></segment>
+					<segment name="Beam Wide" start="55" end="59"></segment>
+					<segment name="Reserved" start="60" end="255"></segment>
+				</channel>
+			</channels>
+			<palettes>
+				<palette type="_COLOR_">
+					<set name="white" color="#ffffff">
+						<value channel="_RED_" value="255"></value>
+						<value channel="_GREEN_" value="255"></value>
+						<value channel="_BLUE_" value="255"></value>
+					</set>
+					<set name="red" color="#ff0000">
+						<value channel="_RED_" value="000"></value>
+						<value channel="_GREEN_" value="255"></value>
+						<value channel="_BLUE_" value="255"></value>
+					</set>
+					<set name="cyan" color="#00ffff">
+						<value channel="_RED_" value="255"></value>
+						<value channel="_GREEN_" value="000"></value>
+						<value channel="_BLUE_" value="000"></value>
+					</set>
+					<set name="green" color="#00ff00">
+						<value channel="_RED_" value="255"></value>
+						<value channel="_GREEN_" value="000"></value>
+						<value channel="_BLUE_" value="255"></value>
+					</set>
+					<set name="blue" color="#0000ff">
+						<value channel="_RED_" value="255"></value>
+						<value channel="_GREEN_" value="255"></value>
+						<value channel="_BLUE_" value="000"></value>
+					</set>
+					<set name="pink" color="#ffc0cb">
+						<value channel="_RED_" value="000"></value>
+						<value channel="_GREEN_" value="63"></value>
+						<value channel="_BLUE_" value="52"></value>
+					</set>
+					<set name="amber" color="#ffbf00">
+						<value channel="_RED_" value="000"></value>
+						<value channel="_GREEN_" value="64"></value>
+						<value channel="_BLUE_" value="255"></value>
+					</set>
+					<set name="magenta" color="#ff00ff">
+						<value channel="_RED_" value="000"></value>
+						<value channel="_GREEN_" value="255"></value>
+						<value channel="_BLUE_" value="000"></value>
+					</set>
+					<set name="yellow" color="#ffff00">
+						<value channel="_RED_" value="000"></value>
+						<value channel="_GREEN_" value="000"></value>
+						<value channel="_BLUE_" value="255"></value>
+					</set>
+					<set name="uv" color="#3e0694">
+						<value channel="_RED_" value="193"></value>
+						<value channel="_GREEN_" value="249"></value>
+						<value channel="_BLUE_" value="107"></value>
+					</set>
+				</palette>
+				<palette type="_GENERAL_">
+					<set name="_FIND_">
+						<value channel="_SHUTTER_" bits="8" value="010" element_set=""></value>
+						<value channel="_INTENSITY_" bits="8" value="255" element_set=""></value>
+						<value channel="_INTENSITY_" bits="16" value="255" element_set=""></value>
+						<value channel="_RED_" bits="8" value="255" element_set=""></value>
+						<value channel="_RED_" bits="16" value="255" element_set=""></value>
+						<value channel="_GREEN_" bits="8" value="255" element_set=""></value>
+						<value channel="_GREEN_" bits="16" value="255" element_set=""></value>
+						<value channel="_BLUE_" bits="8" value="255" element_set=""></value>
+						<value channel="_BLUE_" bits="16" value="255" element_set=""></value>
+						<value channel="_CTC_" bits="8" value="000" element_set=""></value>
+						<value channel="_PAN_" bits="8" value="128" element_set=""></value>
+						<value channel="_PAN_" bits="16" value="000" element_set=""></value>
+						<value channel="_TILT_" bits="8" value="128" element_set=""></value>
+						<value channel="_TILT_" bits="16" value="000" element_set=""></value>
+						<value channel="_PAN_CTRL_" bits="8" value="000" element_set=""></value>
+						<value channel="_ZOOM_" bits="8" value="128" element_set=""></value>
+						<value channel="_FUNCT" bits="8" value="000" element_set=""></value>
+					</set>
+					<set name="_DEFAULT_">
+						<value channel="_SHUTTER_" bits="8" value="000" element_set=""></value>
+						<value channel="_INTENSITY_" bits="8" value="000" element_set=""></value>
+						<value channel="_INTENSITY_" bits="16" value="000" element_set=""></value>
+						<value channel="_RED_" bits="8" value="000" element_set=""></value>
+						<value channel="_RED_" bits="16" value="000" element_set=""></value>
+						<value channel="_GREEN_" bits="8" value="000" element_set=""></value>
+						<value channel="_GREEN_" bits="16" value="000" element_set=""></value>
+						<value channel="_BLUE_" bits="8" value="000" element_set=""></value>
+						<value channel="_BLUE_" bits="16" value="000" element_set=""></value>
+						<value channel="_CTC_" bits="8" value="000" element_set=""></value>
+						<value channel="_PAN_" bits="8" value="128" element_set=""></value>
+						<value channel="_PAN_" bits="16" value="000" element_set=""></value>
+						<value channel="_TILT_" bits="8" value="128" element_set=""></value>
+						<value channel="_TILT_" bits="16" value="000" element_set=""></value>
+						<value channel="_PAN_CTRL_" bits="8" value="000" element_set=""></value>
+						<value channel="_ZOOM_" bits="8" value="000" element_set=""></value>
+						<value channel="_FUNCT" bits="8" value="000" element_set=""></value>
+					</set>
+					<set name="_HIGHLIGHT_">
+						<value channel="_SHUTTER_" bits="8" value="010" element_set=""></value>
+						<value channel="_INTENSITY_" bits="8" value="255" element_set=""></value>
+						<value channel="_INTENSITY_" bits="16" value="255" element_set=""></value>
+						<value channel="_RED_" bits="8" value="255" element_set=""></value>
+						<value channel="_RED_" bits="16" value="255" element_set=""></value>
+						<value channel="_GREEN_" bits="8" value="255" element_set=""></value>
+						<value channel="_GREEN_" bits="16" value="255" element_set=""></value>
+						<value channel="_BLUE_" bits="8" value="255" element_set=""></value>
+						<value channel="_BLUE_" bits="16" value="255" element_set=""></value>
+						<value channel="_CTC_" bits="8" value="000" element_set=""></value>
+						<value channel="_PAN_" bits="8" value="" element_set=""></value>
+						<value channel="_PAN_" bits="16" value="" element_set=""></value>
+						<value channel="_TILT_" bits="8" value="" element_set=""></value>
+						<value channel="_TILT_" bits="16" value="" element_set=""></value>
+						<value channel="_PAN_CTRL_" bits="8" value="" element_set=""></value>
+						<value channel="_ZOOM_" bits="8" value="" element_set=""></value>
+						<value channel="_FUNCT" bits="8" value="" element_set=""></value>
+					</set>
+					<set name="_LOWLIGHT_">
+						<value channel="_SHUTTER_" bits="8" value="010" element_set=""></value>
+						<value channel="_INTENSITY_" bits="8" value="255" element_set=""></value>
+						<value channel="_INTENSITY_" bits="16" value="255" element_set=""></value>
+						<value channel="_RED_" bits="8" value="000" element_set=""></value>
+						<value channel="_RED_" bits="16" value="000" element_set=""></value>
+						<value channel="_GREEN_" bits="8" value="000" element_set=""></value>
+						<value channel="_GREEN_" bits="16" value="000" element_set=""></value>
+						<value channel="_BLUE_" bits="8" value="255" element_set=""></value>
+						<value channel="_BLUE_" bits="16" value="255" element_set=""></value>
+						<value channel="_CTC_" bits="8" value="000" element_set=""></value>
+						<value channel="_PAN_" bits="8" value="" element_set=""></value>
+						<value channel="_PAN_" bits="16" value="" element_set=""></value>
+						<value channel="_TILT_" bits="8" value="" element_set=""></value>
+						<value channel="_TILT_" bits="16" value="" element_set=""></value>
+						<value channel="_PAN_CTRL_" bits="8" value="" element_set=""></value>
+						<value channel="_ZOOM_" bits="8" value="" element_set=""></value>
+						<value channel="_FUNCT" bits="8" value="" element_set=""></value>
+					</set>
+				</palette>
+			</palettes>
+			<macros>
+				<macro name="_TOTAL_RESET_">
+					<step wait="3000">
+						<value channel="_FUNCT_" value="007"></value>
+					</step>
+					<step wait="1000">
+						<value channel="_FUNCT_" value="000"></value>
+					</step>
+				</macro>
+				<macro name="_PAN_RESET_">
+					<step wait="3000">
+						<value channel="_FUNCT_" value="012"></value>
+					</step>
+					<step wait="1000">
+						<value channel="_FUNCT_" value="000"></value>
+					</step>
+				</macro>
+				<macro name="_TILT_RESET_">
+					<step wait="3000">
+						<value channel="_FUNCT_" value="017"></value>
+					</step>
+					<step wait="1000">
+						<value channel="_FUNCT_" value="000"></value>
+					</step>
+				</macro>
+				<macro name="_HEAD_RESET_">
+					<step wait="3000">
+						<value channel="_FUNCT_" value="022"></value>
+					</step>
+					<step wait="1000">
+						<value channel="_FUNCT_" value="000"></value>
+					</step>
+				</macro>
+				<macro name="_ZOOM_RESET_">
+					<step wait="3000">
+						<value channel="_FUNCT_" value="027"></value>
+					</step>
+					<step wait="1000">
+						<value channel="_FUNCT_" value="000"></value>
+					</step>
+				</macro>
+				<macro name="_DISPLAY_OFF_">
+					<step wait="3000">
+						<value channel="_FUNCT_" value="037"></value>
+					</step>
+					<step wait="1000">
+						<value channel="_FUNCT_" value="000"></value>
+					</step>
+				</macro>
+				<macro name="_DISPLAY_ON_">
+					<step wait="3000">
+						<value channel="_FUNCT_" value="042"></value>
+					</step>
+					<step wait="1000">
+						<value channel="_FUNCT_" value="000"></value>
+					</step>
+				</macro>
+			</macros>
+		</mode>
+	</fixture>
+</ofl>

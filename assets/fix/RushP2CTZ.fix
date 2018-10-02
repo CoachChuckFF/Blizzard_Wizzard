@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ofl>
+    <brand short_name="Martin" name="Martin Lighting" url="http://www.martin.com" icon="logo_Martin.png"></brand>
+    <fixture brand="Martin" short_name="RushP2CTZ" name="Rush PAR 2 CT Zoom" version="2017-12-23 18:01">
+        <hardware type="_MANUAL_" pan_angle="" tilt_angle="" pan_max_speed="" tilt_max_speed="" beam_type="_PAR_" beam_zoom_narrow="" beam_zoom_wide="" spot_zoom_narrow="" spot_zoom_wide="" zoom_narrow="10" zoom_wide="60" max_strobe="" min_strobe="" rotation_speed="" color_type="" framing_type="_NONE_" dimmer_curve="_LINEAR_" light_source="_LED_" light_source_power="151" color_temp="2700-7800" lummens="" max_power_consumption="120" weight="5.5" height="416" widht="290" depth="187" shape=""></hardware>
+        <mode name="Mode1" number_of_channels="7" invert_pan="F" invert_tilt="F" multi_element="F" virtual_dimmer="F" vmodes="F" elements="" icon="mode1_icon.png">
+            <channels>
+                <channel number="1" type="_INTENSITY_" bits="8" priority="HTP" name="Dimmer" subelement="0"></channel>
+                <channel number="2" type="_INTENSITY_" bits="16" priority="HTP" name="Dimmer Fine" subelement="0"></channel>
+                <channel number="3" type="_SHUTTER_" bits="8" priority="LTP" name="Shutter/Strobe" subelement="0">
+                    <segment name="Off" start="0" end="7"></segment>
+                    <segment name="Open" start="8" end="15"></segment>
+                    <segment name="Strobe S-F" start="16" end="131"></segment>
+                    <segment name="Open" start="132" end="139"></segment>
+                    <segment name="Close F-S" start="140" end="181"></segment>
+                    <segment name="Open" start="182" end="189"></segment>
+                    <segment name="Close S-F" start="190" end="231"></segment>
+                    <segment name="Open" start="232" end="239"></segment>
+                    <segment name="Rnd Strobe" start="240" end="247"></segment>
+                    <segment name="Open" start="248" end="255"></segment>
+                </channel>
+                <channel number="4" type="_WHITE_" bits="8" priority="LTP" name="Warm White" subelement="0"></channel>
+                <channel number="5" type="_WHITE_CTRL_" bits="8" priority="LTP" name="Cool White" subelement="0"></channel>
+                <channel number="6" type="_FUNCT_" bits="8" priority="LTP" name="TempAdjust" subelement="0">
+                    <segment name="Disable" start="0" end="26"></segment>
+                    <segment name="2700-7800k" start="27" end="72"></segment>
+                    <segment name="7800K" start="73" end="255"></segment>
+                </channel>
+                <channel number="7" type="_ZOOM_" bits="8" priority="LTP" name="Zoom" subelement="0"></channel>
+            </channels>
+            <palettes>
+                <palette type="_GENERAL_">
+                    <set name="_FIND_">
+                        <value channel="_INTENSITY_" bits="8" value="255" element_set=""></value>
+                        <value channel="_INTENSITY_" bits="16" value="000" element_set=""></value>
+                        <value channel="_SHUTTER_" bits="8" value="255" element_set=""></value>
+                        <value channel="_WHITE_" bits="8" value="255" element_set=""></value>
+                        <value channel="_WHITE_CTRL_" bits="8" value="255" element_set=""></value>
+                        <value channel="_FUNCT_" bits="8" value="" element_set=""></value>
+                        <value channel="_ZOOM_" bits="8" value="000" element_set=""></value>
+                    </set>
+                    <set name="_DEFAULT_">
+                        <value channel="_INTENSITY_" bits="8" value="000" element_set=""></value>
+                        <value channel="_INTENSITY_" bits="16" value="000" element_set=""></value>
+                        <value channel="_SHUTTER_" bits="8" value="000" element_set=""></value>
+                        <value channel="_WHITE_" bits="8" value="000" element_set=""></value>
+                        <value channel="_WHITE_CTRL_" bits="8" value="000" element_set=""></value>
+                        <value channel="_FUNCT_" bits="8" value="" element_set=""></value>
+                        <value channel="_ZOOM_" bits="8" value="000" element_set=""></value>
+                    </set>
+                    <set name="_HIGHLIGHT_">
+                        <value channel="_INTENSITY_" bits="8" value="255" element_set=""></value>
+                        <value channel="_INTENSITY_" bits="16" value="000" element_set=""></value>
+                        <value channel="_SHUTTER_" bits="8" value="255" element_set=""></value>
+                        <value channel="_WHITE_" bits="8" value="255" element_set=""></value>
+                        <value channel="_WHITE_CTRL_" bits="8" value="255" element_set=""></value>
+                        <value channel="_FUNCT_" bits="8" value="" element_set=""></value>
+                        <value channel="_ZOOM_" bits="8" value="" element_set=""></value>
+                    </set>
+                    <set name="_LOWLIGHT_">
+                        <value channel="_INTENSITY_" bits="8" value="255" element_set=""></value>
+                        <value channel="_INTENSITY_" bits="16" value="000" element_set=""></value>
+                        <value channel="_SHUTTER_" bits="8" value="255" element_set=""></value>
+                        <value channel="_WHITE_" bits="8" value="80" element_set=""></value>
+                        <value channel="_WHITE_CTRL_" bits="8" value="" element_set=""></value>
+                        <value channel="_FUNCT_" bits="8" value="" element_set=""></value>
+                        <value channel="_ZOOM_" bits="8" value="" element_set=""></value>
+                    </set>
+                </palette>
+            </palettes>
+        </mode>
+    </fixture>
+</ofl>

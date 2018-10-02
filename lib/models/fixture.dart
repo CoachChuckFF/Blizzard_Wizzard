@@ -8,17 +8,15 @@ class Fixture{
   String brand;
 
   List<ChannelMode> profile;
-  int patchAddress = 1;
-  int channelMode = 0;
+  int patchAddress;
+  int channelMode;
 
   ChannelMode getCurrentChannels(){
     return this.profile[this.channelMode];
   }
 
   Fixture({this.name, this.profile = const <ChannelMode>[],
-    this.patchAddress, this.channelMode, this.brand}){
-
-  }
+    this.patchAddress = 1, this.channelMode = 0, this.brand});
 
   bool compare(Fixture other){
     return (name == other.name);

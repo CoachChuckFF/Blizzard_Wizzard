@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ofl>
+    <brand short_name="ShowTec" name="ShowTec" url="http://www.highlite.nl/es/" icon="logo_ShowTec.png"></brand>
+    <fixture brand="ShowTec" short_name="Perf3000" name="Performer 3000 LED" version="2017-09-15 12:45">
+        <hardware type="_MANUAL_" pan_angle="" tilt_angle="" pan_max_speed="" tilt_max_speed="" beam_type="" beam_zoom_narrow="15" beam_zoom_wide="60" spot_zoom_narrow="" spot_zoom_wide="" max_strobe="20" min_strobe="0" rotation_speed="" color_type="_W_" framing_type="_NONE_" dimmer_curve="_LINEAR_" light_source="_LED_" light_source_power="" color_temp="" lummens="" max_power_consumption="320" weight="8" height="445" widht="335" depth="425" shape=""></hardware>
+        <mode name="M1(1ch)" number_of_channels="1" invert_pan="F" invert_tilt="F" multi_element="F" elements="" vmodes="F" virtual_dimmer="F" icon="mode1_icon.png">
+            <channels>
+                <channel number="1" type="_INTENSITY_" bits="8" priority="HTP" name="Intensity" subelement="0"></channel>
+            </channels>
+            <palettes>
+                <palette type="_GENERAL_">
+                    <set name="_FIND_">
+                        <value channel="_INTENSITY_" value="255" bits="8" element_set=""></value>
+                    </set>
+                    <set name="_DEFAULT_">
+                        <value channel="_INTENSITY_" value="000" bits="8" element_set=""></value>
+                    </set>
+                    <set name="_HIGHLIGHT_">
+                        <value channel="_INTENSITY_" value="255" bits="8" element_set=""></value>
+                    </set>
+                    <set name="_LOWLIGHT_">
+                        <value channel="_INTENSITY_" value="128" bits="8" element_set=""></value>
+                    </set>
+                </palette>
+            </palettes>
+        </mode>
+        <mode name="M2(2ch)" number_of_channels="2" invert_pan="F" invert_tilt="F" multi_element="F" elements="" vmodes="F" virtual_dimmer="F" icon="mode1_icon.png">
+            <channels>
+                <channel number="1" type="_INTENSITY_" bits="8" priority="HTP" name="Intensity" subelement="0"></channel>
+                <channel number="2" type="_INTENSITY_" bits="16" priority="HTP" name="Int F" subelement="0"></channel>
+            </channels>
+            <palettes>
+                <palette type="_GENERAL_">
+                    <set name="_FIND_">
+                        <value channel="_INTENSITY_" value="255" bits="8" element_set=""></value>
+                        <value channel="_INTENSITY_" value="000" bits="16" element_set=""></value>
+                    </set>
+                    <set name="_DEFAULT_">
+                        <value channel="_INTENSITY_" value="000" bits="8" element_set=""></value>
+                        <value channel="_INTENSITY_" value="000" bits="16" element_set=""></value>
+                    </set>
+                    <set name="_HIGHLIGHT_">
+                        <value channel="_INTENSITY_" value="255" bits="8" element_set=""></value>
+                        <value channel="_INTENSITY_" value="000" bits="16" element_set=""></value>
+                    </set>
+                    <set name="_LOWLIGHT_">
+                        <value channel="_INTENSITY_" value="128" bits="8" element_set=""></value>
+                        <value channel="_INTENSITY_" value="000" bits="16" element_set=""></value>
+                    </set>
+                </palette>
+            </palettes>
+        </mode>
+        <mode name="M3(5ch)" number_of_channels="5" invert_pan="F" invert_tilt="F" multi_element="F" elements="" vmodes="F" virtual_dimmer="F" icon="mode1_icon.png">
+            <channels>
+                <channel number="1" type="_INTENSITY_" bits="8" priority="HTP" name="Intensity" subelement="0"></channel>
+                <channel number="2" type="_INTENSITY_" bits="16" priority="HTP" name="Int F" subelement="0"></channel>
+                <channel number="3" type="_SHUTTER_" bits="8" priority="LTP" name="Strobe" subelement="0">
+                    <segment name="Strb Off" start="0" end="9"></segment>
+                    <segment name="Strb S-F" start="10" end="99"></segment>
+                    <segment name="Strb Off" start="100" end="109"></segment>
+                    <segment name="Pulse" start="110" end="179"></segment>
+                    <segment name="Strb Off" start="180" end="189"></segment>
+                    <segment name="Rnd Strb" start="190" end="255"></segment>
+                </channel>
+                <channel number="4" type="_ZOOM_" bits="8" priority="LTP" name="Zoom" subelement="0"></channel>
+                <channel number="5" type="_FUNCT_" bits="8" priority="LTP" name="Reset" subelement="0">
+                    <segment name="No Funct" start="0" end="200"></segment>
+                    <segment name="Zoom Reset" start="201" end="220"></segment>
+                    <segment name="No Funct" start="221" end="255"></segment>
+                </channel>
+            </channels>
+            <palettes>
+                <palette type="_GENERAL_">
+                    <set name="_FIND_">
+                        <value channel="_INTENSITY_" value="255" bits="8" element_set=""></value>
+                        <value channel="_INTENSITY_" value="000" bits="16" element_set=""></value>
+                        <value channel="_SHUTTER_" value="000" bits="16" element_set=""></value>
+                        <value channel="_ZOOM_" value="000" bits="8" element_set=""></value>
+                        <value channel="_FUNCT_" value="000" bits="8" element_set=""></value>
+                    </set>
+                    <set name="_DEFAULT_">
+                        <value channel="_INTENSITY_" value="000" bits="8" element_set=""></value>
+                        <value channel="_INTENSITY_" value="000" bits="16" element_set=""></value>
+                        <value channel="_SHUTTER_" value="000" bits="16" element_set=""></value>
+                        <value channel="_ZOOM_" value="000" bits="8" element_set=""></value>
+                        <value channel="_FUNCT_" value="000" bits="8" element_set=""></value>
+                    </set>
+                    <set name="_HIGHLIGHT_">
+                        <value channel="_INTENSITY_" value="255" bits="8" element_set=""></value>
+                        <value channel="_INTENSITY_" value="000" bits="16" element_set=""></value>
+                        <value channel="_SHUTTER_" value="000" bits="16" element_set=""></value>
+                        <value channel="_ZOOM_" value="000" bits="8" element_set=""></value>
+                        <value channel="_FUNCT_" value="000" bits="8" element_set=""></value>
+                    </set>
+                    <set name="_LOWLIGHT_">
+                        <value channel="_INTENSITY_" value="128" bits="8" element_set=""></value>
+                        <value channel="_INTENSITY_" value="000" bits="16" element_set=""></value>
+                        <value channel="_SHUTTER_" value="000" bits="16" element_set=""></value>
+                        <value channel="_ZOOM_" value="000" bits="8" element_set=""></value>
+                        <value channel="_FUNCT_" value="000" bits="8" element_set=""></value>
+                    </set>
+                </palette>
+            </palettes>
+            <macros>
+                <macro name="_ZOOM_RESET_">
+                    <step wait="5000">
+                        <value channel="_FUNCT_" value="135"></value>
+                    </step>
+                    <step wait="1000">
+                        <value channel="_FUNCT_" value="000"></value>
+                    </step>
+                </macro>
+            </macros>
+        </mode>
+    </fixture>
+</ofl>

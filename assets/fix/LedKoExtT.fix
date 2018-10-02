@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ofl>
+    <brand short_name="Coemar" name="Coemar" url="http://www.coemar.com/bin/index.php" icon="logo_Coemar.png"></brand>
+    <fixture brand="Coemar" short_name="LedKoExtT" name="Reflection LEDko EXT T" version="2017-07-06 15:25">
+        <hardware type="_MANUAL_" pan_angle="" tilt_angle="" pan_max_speed="" tilt_max_speed="" beam_type="" beam_zoom_narrow="" beam_zoom_wide="" spot_zoom_narrow="26" spot_zoom_wide="40" max_strobe="" min_strobe="" rotation_speed="1" color_type="" framing_type="_NONE_" dimmer_curve="_LINEAR_" light_source="_LED_" light_source_power="150" color_temp="3200" lummens="" max_power_consumption="160" weight="6" height="180" widht="212" depth="603" shape=""></hardware>
+        <mode name="Mode1(5)" number_of_channels="5" invert_pan="F" invert_tilt="F" multi_element="F" vmodes="F" virtaul_dimmer="F" elements="" icon="mode1_icon.png">
+            <channels>
+                <channel number="1" type="_INTENSITY_" bits="8" priority="HTP" name="Dimmer" subelement="0"></channel>
+                <channel number="2" type="_WHITE_" bits="8" priority="LTP" name="White Tone" subelement="0">
+                    <segment name="White" start="0" end="9"></segment>
+                    <segment name="7000K" start="10" end="21"></segment>
+                    <segment name="6500K" start="22" end="33"></segment>
+                    <segment name="6000K" start="34" end="45"></segment>
+                    <segment name="5500K" start="46" end="57"></segment>
+                    <segment name="5000K" start="58" end="69"></segment>
+                    <segment name="4500K" start="70" end="81"></segment>
+                    <segment name="4000K" start="82" end="93"></segment>
+                    <segment name="3500K" start="94" end="105"></segment>
+                    <segment name="3200K" start="106" end="117"></segment>
+                    <segment name="3000K" start="118" end="128"></segment>
+                    <segment name="Proportional" start="129" end="255"></segment>
+                </channel>
+                <channel number="3" type="_INTENSITY_" bits="16" priority="HTP" name="Dimmer F" subelement="0"></channel>
+                <channel number="4" type="_SHUTTER_" bits="8" priority="LTP" name="Strobe" subelement="0">
+                    <segment name="No Effect" start="0" end="9"></segment>
+                    <segment name="Strobe S-F" start="10" end="57"></segment>
+                    <segment name="No Strobe" start="58" end="59"></segment>
+                    <segment name="Pulse S-F" start="60" end="108"></segment>
+                    <segment name="No Strobe" start="109" end="110"></segment>
+                    <segment name="Pulse F-S" start="111" end="159"></segment>
+                    <segment name="No Strobe" start="160" end="161"></segment>
+                    <segment name="RndFastStr" start="162" end="207"></segment>
+                    <segment name="No Strobe" start="208" end="209"></segment>
+                    <segment name="Rnd Strobe" start="210" end="255"></segment>
+                </channel>
+               <channel number="5" type="_MACRO_" bits="8" priority="LTP" name="Special" subelement="0">
+                    <segment name="No Fx" start="0" end="9"></segment>
+                    <segment name="600Hz" start="10" end="84"></segment>
+                    <segment name="Fan Low" start="85" end="96"></segment>
+                    <segment name="Fan Auto" start="97" end="108"></segment>
+                    <segment name="Fan S-F" start="109" end="120"></segment>
+                    <segment name="Fan Max" start="121" end="133"></segment>
+                    <segment name="DIS OFF" start="134" end="185"></segment>
+                    <segment name="DIS ON" start="186" end="199"></segment>
+                    <segment name="1000Hz" start="200" end="205"></segment>
+                    <segment name="3000Hz" start="206" end="211"></segment>
+                    <segment name="6000Hz" start="212" end="217"></segment>
+                    <segment name="8000Hz" start="218" end="223"></segment>
+                    <segment name="10000Hz" start="224" end="229"></segment>
+                    <segment name="12000Hz" start="230" end="235"></segment>
+                    <segment name="14000Hz" start="236" end="241"></segment>
+                    <segment name="16000Hz" start="242" end="247"></segment>
+                    <segment name="19000Hz" start="248" end="255"></segment>
+                </channel>
+            </channels>
+            <palettes>
+                <palette type="_GENERAL_">
+                    <set name="_FIND_">
+                        <value channel="_INTENSITY_" bits="8" value="255" element_set=""></value>
+                        <value channel="_WHITE_" bits="8" value="000" element_set=""></value>
+                        <value channel="_INTENSITY_" bits="16" value="255" element_set=""></value>
+                        <value channel="_SHUTTER_" bits="8" value="000" element_set=""></value>
+                        <value channel="_MACRO_" bits="8" value="000" element_set=""></value>
+                    </set>
+                    <set name="_DEFAULT_">
+                        <value channel="_INTENSITY_" bits="8" value="000" element_set=""></value>
+                        <value channel="_WHITE_" bits="8" value="000" element_set=""></value>
+                        <value channel="_INTENSITY_" bits="16" value="000" element_set=""></value>
+                        <value channel="_SHUTTER_" bits="8" value="000" element_set=""></value>
+                        <value channel="_MACRO_" bits="8" value="000" element_set=""></value>
+                    </set>
+                    <set name="_HIGHLIGHT_">
+                        <value channel="_INTENSITY_" bits="8" value="255" element_set=""></value>
+                        <value channel="_WHITE_" bits="8" value="000" element_set="1"></value>
+                        <value channel="_INTENSITY_" bits="16" value="255" element_set="3"></value>
+                        <value channel="_SHUTTER_" bits="8" value="000" element_set=""></value>
+                        <value channel="_MACRO_" bits="8" value="000" element_set=""></value>
+                    </set>
+                    <set name="_LOWLIGHT_">
+                        <value channel="_INTENSITY_" bits="8" value="128" element_set=""></value>
+                        <value channel="_WHITE_" bits="8" value="000" element_set="1"></value>
+                        <value channel="_INTENSITY_" bits="16" value="255" element_set="2"></value>
+                        <value channel="_SHUTTER_" bits="8" value="000" element_set=""></value>
+                        <value channel="_MACRO_" bits="8" value="000" element_set=""></value>
+                    </set>
+                </palette>
+            </palettes>
+        </mode>
+    </fixture>
+</ofl>

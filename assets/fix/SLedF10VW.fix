@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ofl>
+    <brand short_name="Desisti" name="Desisti" url="http://www.desisti.it/" icon="logo_Desisti.png"></brand>
+    <fixture brand="Desisti" short_name="SLedF10VW" name="Super Led F10 VW" version="2017-09-13 14:16">
+        <hardware type="_MANUAL_" pan_angle="" tilt_angle="" pan_max_speed="" tilt_max_speed="" beam_type="" beam_zoom_narrow="" beam_zoom_wide="" spot_zoom_narrow="" spot_zoom_wide="" max_strobe="" min_strobe="" rotation_speed="" color_type="_W_" framing_type="_NONE_" dimmer_curve="_LINEAR_" light_source="_LED_" light_source_power="200" color_temp="" lummens="" max_power_consumption="230" weight="13.5" height="570" widht="410" depth="362" shape=""></hardware>
+        <mode name="8D(1ch)" number_of_channels="1" invert_pan="F" invert_tilt="F" multi_element="F" elements="" vmodes="F" virtual_dimmer="F" icon="mode1_icon.png">
+            <channels>
+                <channel number="1" type="_INTENSITY_" bits="8" priority="HTP" name="Dimmer" subelement="0"></channel>
+            </channels>
+            <palettes>
+                <palette type="_GENERAL_">
+                    <set name="_FIND_">
+                        <value channel="_INTENSITY_" bits="8" value="255" element_set=""></value>
+                    </set>
+                    <set name="_DEFAULT_">
+                        <value channel="_INTENSITY_" bits="8" value="000" element_set=""></value>
+                    </set>
+                    <set name="_HIGHLIGHT_">
+                        <value channel="_INTENSITY_" bits="8" value="255" element_set=""></value>
+                    </set>
+                    <set name="_LOWLIGHT_">
+                        <value channel="_INTENSITY_" bits="8" value="127" element_set=""></value>
+                    </set>
+                </palette>
+            </palettes>
+        </mode>
+        <mode name="16D(2ch)" number_of_channels="2" invert_pan="F" invert_tilt="F" multi_element="F" elements="" vmodes="F" virtual_dimmer="F" icon="mode1_icon.png">
+            <channels>
+                <channel number="1" type="_INTENSITY_" bits="8" priority="HTP" name="Dimmer" subelement="0"></channel>
+                <channel number="2" type="_INTENSITY_" bits="16" priority="HTP" name="Dimmer F" subelement="0"></channel>
+            </channels>
+            <palettes>
+                <palette type="_GENERAL_">
+                    <set name="_FIND_">
+                        <value channel="_INTENSITY_" bits="8" value="255" element_set=""></value>
+                        <value channel="_INTENSITY_" bits="16" value="000" element_set=""></value>
+                    </set>
+                    <set name="_DEFAULT_">
+                        <value channel="_INTENSITY_" bits="8" value="000" element_set=""></value>
+                        <value channel="_INTENSITY_" bits="16" value="000" element_set=""></value>
+                    </set>
+                    <set name="_HIGHLIGHT_">
+                        <value channel="_INTENSITY_" bits="8" value="255" element_set=""></value>
+                        <value channel="_INTENSITY_" bits="16" value="000" element_set=""></value>
+                    </set>
+                    <set name="_LOWLIGHT_">
+                        <value channel="_INTENSITY_" bits="8" value="128" element_set=""></value>
+                        <value channel="_INTENSITY_" bits="16" value="000" element_set=""></value>
+                    </set>
+                </palette>
+            </palettes>
+        </mode>
+        <mode name="CCT(3ch)" number_of_channels="3" invert_pan="F" invert_tilt="F" multi_element="F" elements="" vmodes="F" virtual_dimmer="F" icon="mode1_icon.png">
+            <channels>
+                <channel number="1" type="_INTENSITY_" bits="8" priority="HTP" name="Dimmer" subelement="0"></channel>
+                <channel number="2" type="_INTENSITY_" bits="16" priority="HTP" name="Dimmer F" subelement="0"></channel>
+                <channel number="3" type="_COLOR_" bits="8" priority="LTP" name="CCT" subelement="0"></channel>
+                <channel number="4" type="_COLOR_CTRL_" bits="8" priority="LTP" name="CCT Mode" subelement="0">
+                    <segment name="Linear" start="0" end="127" vmode="Linear"></segment>
+                    <segment name="Step" start="128" end="255" vmode="Step"></segment>
+                </channel>
+            </channels>
+            <palettes>
+                <palette type="_GENERAL_">
+                    <set name="_FIND_">
+                        <value channel="_INTENSITY_" bits="8" value="255" element_set=""></value>
+                        <value channel="_INTENSITY_" bits="16" value="000" element_set=""></value>
+                        <value channel="_SHUTTER_" bits="8" value="000" element_set=""></value>
+                    </set>
+                    <set name="_DEFAULT_">
+                        <value channel="_INTENSITY_" bits="8" value="000" element_set=""></value>
+                        <value channel="_INTENSITY_" bits="16" value="000" element_set=""></value>
+                        <value channel="_SHUTTER_" bits="8" value="000" element_set=""></value>
+                    </set>
+                    <set name="_HIGHLIGHT_">
+                        <value channel="_INTENSITY_" bits="8" value="255" element_set=""></value>
+                        <value channel="_INTENSITY_" bits="16" value="000" element_set=""></value>
+                        <value channel="_SHUTTER_" bits="8" value="000" element_set=""></value>
+                    </set>
+                    <set name="_LOWLIGHT_">
+                        <value channel="_INTENSITY_" bits="8" value="128" element_set=""></value>
+                        <value channel="_INTENSITY_" bits="16" value="000" element_set=""></value>
+                        <value channel="_SHUTTER_" bits="8" value="000" element_set=""></value>
+                    </set>
+                </palette>
+            </palettes>
+            <vmodes>
+                <vmode id="Linear" description="Mode RGB">
+                    <channel number="2" type="_COLOR_" bits="8" priority="LTP" name="Red" subelement="0"></channel>
+                </vmode>
+                <vmode id="Step" description="Mode RBG">
+                    <channel number="2" type="_COLOR_" bits="8" priority="LTP" name="Red" subelement="0">
+                        <segment name="2750K" start="0" end="25"></segment>
+                        <segment name="2880K" start="28" end="51"></segment>
+                        <segment name="3000K" start="53" end="76"></segment>
+                        <segment name="3200K" start="79" end="102"></segment>
+                        <segment name="3500K" start="104" end="127"></segment>
+                        <segment name="4000K" start="130" end="153"></segment>
+                        <segment name="4500K" start="155" end="178"></segment>
+                        <segment name="5000K" start="181" end="204"></segment>
+                        <segment name="5600K" start="206" end="229"></segment>
+                        <segment name="6000K" start="232" end="252"></segment>
+                        <segment name="6900K" start="255" end="255"></segment>
+                    </channel>
+                </vmode>
+            </vmodes>
+        </mode>
+    </fixture>
+</ofl>

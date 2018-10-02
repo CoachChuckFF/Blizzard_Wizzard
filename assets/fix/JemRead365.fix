@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ofl>
+    <brand short_name="Martin" name="Martin Lighting" url="http://www.martin.com" icon="logo_Martin.png"></brand>
+    <fixture brand="Martin" short_name="JemRead365" name="Jem Ready 365" version="2018-03-11 01:04">
+        <hardware type="_EFFECT_" pan_angle="" tilt_angle="" pan_max_speed="" tilt_max_speed="" beam_type="" beam_zoom_narrow="" beam_zoom_wide="" spot_zoom_narrow="" spot_zoom_wide="" max_strobe="" min_strobe="" rotation_speed="" color_type="" framing_type="_NONE_" dimmer_curve="" light_source="" light_source_power="" color_temp="" lummens="" max_power_consumption="" weight="" height="268" widht="318" depth="766" shape=""></hardware>
+        <mode name="3ch" number_of_channels="3" invert_pan="F" invert_tilt="F" multi_element="F" vmodes="F" virtual_dimmer="F" elements="" icon="mode1_icon.png">
+            <channels>
+                <channel number="1" type="_INTENSITY_" bits="8" priority="HTP" name="Haze Level" subelement="0"></channel>
+				<channel number="2" type="_INTENSITY2_" bits="8" priority="LTP" name="Fan Level" subelement="0"></channel>
+				<channel number="3" type="_FUNCT_" bits="8" priority="LTP" name="Special Funct" subelement="0">
+                    <segment name="Idle" start="0" end="50"></segment>
+                    <segment name="Prime" start="51" end="100"></segment>
+                    <segment name="Auto Fan" start="101" end="150"></segment>
+					<segment name="Heater Off" start="151" end="200"></segment>
+                    <segment name="Heater On" start="201" end="255"></segment>
+                </channel>
+            </channels>
+			<macros>
+                <macro name="_PRIME_">
+                    <step wait="6000">
+                        <value channel="_FUNCT_" value="75"></value>
+                    </step>
+                    <step wait="1000">
+                        <value channel="_FUNCT_" value="0"></value>
+                    </step>
+                </macro>
+                <macro name="_HEATER_OFF_">
+                    <step wait="6000">
+                        <value channel="_FUNCT_" value="175"></value>
+                    </step>
+                    <step wait="1000">
+                        <value channel="_FUNCT_" value="0"></value>
+                    </step>
+                </macro>
+            </macros>
+        </mode>
+    </fixture>
+</ofl>

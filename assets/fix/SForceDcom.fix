@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ofl>
+    <brand short_name="ChromaQ" name="Chroma-Q" url="http://www.chroma-q.com" icon="logo_ChromaQ.png"></brand>
+    <fixture brand="ChromaQ" short_name="SForceDcom" name="Studio Force D Compact PSU15" version="2017-09-05 21:21">
+        <hardware type="_MANUAL_" pan_angle="" tilt_angle="" pan_max_speed="" tilt_max_speed="" beam_type="" beam_zoom_narrow="14" beam_zoom_wide="14" spot_zoom_narrow="" spot_zoom_wide="" max_strobe="" min_strobe="" rotation_speed="" color_type="" framing_type="_NONE_" dimmer_curve="_LINEAR_" light_source="_LED_" light_source_power="" color_temp="6200" lummens="2800" max_power_consumption="60" weight="4" height="196" widht="212" depth="152" shape=""></hardware>
+        <mode name="DayL(1ch)" number_of_channels="1" invert_pan="F" invert_tilt="F" multi_element="F" elements="" vmodes="F" virtual_dimmer="F" icon="mode1_icon.png">
+            <channels>
+                <channel number="1" type="_COLOR_" bits="8" priority="LTP" name="ColdWhite" subelement="0"></channel>
+            </channels>
+            <palettes>
+                <palette type="_GENERAL_">
+                    <set name="_FIND_">
+                        <value channel="_COLOR_" value="255" bits="8" element_set=""></value>
+                    </set>
+                    <set name="_DEFAULT_">
+                        <value channel="_COLOR_" value="000" bits="8" element_set=""></value>
+                    </set>
+                    <set name="_HIGHLIGHT_">
+                        <value channel="_COLOR_" value="255" bits="8" element_set=""></value>
+                    </set>
+                    <set name="_LOWLIGHT_">
+                        <value channel="_COLOR_" value="128" bits="8" element_set=""></value>
+                    </set>
+                </palette>
+            </palettes>
+        </mode>
+        <mode name="DayL(2ch)" number_of_channels="2" invert_pan="F" invert_tilt="F" multi_element="F" elements="" vmodes="F" virtual_dimmer="F" icon="mode1_icon.png">
+            <channels>
+                <channel number="1" type="_INTENSITY_" bits="8" priority="HTP" name="Intensity" subelement="0">
+                    <segment name="Static" start="0" end="0"></segment>
+                    <segment name="Fade1" start="1" end="63"></segment>
+                    <segment name="Fade2" start="64" end="127"></segment>
+                    <segment name="Snap1" start="128" end="191"></segment>
+                    <segment name="Snap2" start="192" end="255"></segment>
+                </channel>
+                <channel number="2" type="_COLOR_" bits="8" priority="LTP" name="Cold White" subelement="0"></channel>
+            </channels>
+            <palettes>
+                <palette type="_GENERAL_">
+                    <set name="_FIND_">
+                        <value channel="_INTENSITY_" value="255" bits="8" element_set=""></value>
+                        <value channel="_COLOR_" value="255" bits="8" element_set=""></value>
+                    </set>
+                    <set name="_DEFAULT_">
+                        <value channel="_INTENSITY_" value="000" bits="8" element_set=""></value>
+                        <value channel="_COLOR_" value="000" bits="8" element_set=""></value>
+                    </set>
+                    <set name="_HIGHLIGHT_">
+                        <value channel="_INTENSITY_" value="255" bits="8" element_set=""></value>
+                        <value channel="_COLOR_" value="255" bits="8" element_set=""></value>
+                    </set>
+                    <set name="_LOWLIGHT_">
+                        <value channel="_INTENSITY_" value="128" bits="8" element_set=""></value>
+                        <value channel="_COLOR_" value="255" bits="8" element_set=""></value>
+                    </set>
+                </palette>
+            </palettes>
+        </mode>
+        <mode name="DayL(15ch)" number_of_channels="15" invert_pan="F" invert_tilt="F" multi_element="T" elements="15" vmodes="F" virtual_dimmer="F" icon="mode1_icon.png">
+            <channels>
+                <channel number="1" type="_COLOR_" bits="8" priority="LTP" name="Cold W1" subelement="1"></channel>
+                <channel number="2" type="_COLOR_" bits="8" priority="LTP" name="Cold W2" subelement="2"></channel>
+                <channel number="3" type="_COLOR_" bits="8" priority="LTP" name="Cold W3" subelement="3"></channel>
+                <channel number="4" type="_COLOR_" bits="8" priority="LTP" name="Cold W4" subelement="4"></channel>
+                <channel number="5" type="_COLOR_" bits="8" priority="LTP" name="Cold W5" subelement="5"></channel>
+                <channel number="6" type="_COLOR_" bits="8" priority="LTP" name="Cold W6" subelement="6"></channel>
+                <channel number="7" type="_COLOR_" bits="8" priority="LTP" name="Cold W7" subelement="7"></channel>
+                <channel number="8" type="_COLOR_" bits="8" priority="LTP" name="Cold W8" subelement="8"></channel>
+                <channel number="9" type="_COLOR_" bits="8" priority="LTP" name="Cold W9" subelement="9"></channel>
+                <channel number="10" type="_COLOR_" bits="8" priority="LTP" name="Cold W10" subelement="10"></channel>
+                <channel number="11" type="_COLOR_" bits="8" priority="LTP" name="Cold W11" subelement="11"></channel>
+                <channel number="12" type="_COLOR_" bits="8" priority="LTP" name="Cold W12" subelement="12"></channel>
+                <channel number="13" type="_COLOR_" bits="8" priority="LTP" name="Cold W13" subelement="13"></channel>
+                <channel number="14" type="_COLOR_" bits="8" priority="LTP" name="Cold W14" subelement="14"></channel>
+                <channel number="15" type="_COLOR_" bits="8" priority="LTP" name="Cold W15" subelement="15"></channel>
+            </channels>
+            <palettes>
+                <palette type="_GENERAL_">
+                    <set name="_FIND_">
+                        <value channel="_COLOR_" value="255" bits="8" element_set="1"></value>
+                        <value channel="_COLOR_" value="255" bits="8" element_set="2"></value>
+                        <value channel="_COLOR_" value="255" bits="8" element_set="3"></value>
+                        <value channel="_COLOR_" value="255" bits="8" element_set="4"></value>
+                        <value channel="_COLOR_" value="255" bits="8" element_set="5"></value>
+                        <value channel="_COLOR_" value="255" bits="8" element_set="6"></value>
+                        <value channel="_COLOR_" value="255" bits="8" element_set="7"></value>
+                        <value channel="_COLOR_" value="255" bits="8" element_set="8"></value>
+                        <value channel="_COLOR_" value="255" bits="8" element_set="9"></value>
+                        <value channel="_COLOR_" value="255" bits="8" element_set="10"></value>
+                        <value channel="_COLOR_" value="255" bits="8" element_set="11"></value>
+                        <value channel="_COLOR_" value="255" bits="8" element_set="12"></value>
+                        <value channel="_COLOR_" value="255" bits="8" element_set="13"></value>
+                        <value channel="_COLOR_" value="255" bits="8" element_set="14"></value>
+                        <value channel="_COLOR_" value="255" bits="8" element_set="15"></value>
+                    </set>
+                    <set name="_DEFAULT_">
+                        <value channel="_COLOR_" value="000" bits="8" element_set="1"></value>
+                        <value channel="_COLOR_" value="000" bits="8" element_set="2"></value>
+                        <value channel="_COLOR_" value="000" bits="8" element_set="3"></value>
+                        <value channel="_COLOR_" value="000" bits="8" element_set="4"></value>
+                        <value channel="_COLOR_" value="000" bits="8" element_set="5"></value>
+                        <value channel="_COLOR_" value="000" bits="8" element_set="6"></value>
+                        <value channel="_COLOR_" value="000" bits="8" element_set="7"></value>
+                        <value channel="_COLOR_" value="000" bits="8" element_set="8"></value>
+                        <value channel="_COLOR_" value="000" bits="8" element_set="9"></value>
+                        <value channel="_COLOR_" value="000" bits="8" element_set="10"></value>
+                        <value channel="_COLOR_" value="000" bits="8" element_set="11"></value>
+                        <value channel="_COLOR_" value="000" bits="8" element_set="12"></value>
+                        <value channel="_COLOR_" value="000" bits="8" element_set="13"></value>
+                        <value channel="_COLOR_" value="000" bits="8" element_set="14"></value>
+                        <value channel="_COLOR_" value="000" bits="8" element_set="15"></value>
+                    </set>
+                    <set name="_HIGHLIGHT_">
+                        <value channel="_COLOR_" value="255" bits="8" element_set="1"></value>
+                        <value channel="_COLOR_" value="255" bits="8" element_set="2"></value>
+                        <value channel="_COLOR_" value="255" bits="8" element_set="3"></value>
+                        <value channel="_COLOR_" value="255" bits="8" element_set="4"></value>
+                        <value channel="_COLOR_" value="255" bits="8" element_set="5"></value>
+                        <value channel="_COLOR_" value="255" bits="8" element_set="6"></value>
+                        <value channel="_COLOR_" value="255" bits="8" element_set="7"></value>
+                        <value channel="_COLOR_" value="255" bits="8" element_set="8"></value>
+                        <value channel="_COLOR_" value="255" bits="8" element_set="9"></value>
+                        <value channel="_COLOR_" value="255" bits="8" element_set="10"></value>
+                        <value channel="_COLOR_" value="255" bits="8" element_set="11"></value>
+                        <value channel="_COLOR_" value="255" bits="8" element_set="12"></value>
+                        <value channel="_COLOR_" value="255" bits="8" element_set="13"></value>
+                        <value channel="_COLOR_" value="255" bits="8" element_set="14"></value>
+                        <value channel="_COLOR_" value="255" bits="8" element_set="15"></value>
+                    </set>
+                    <set name="_LOWLIGHT_">
+                        <value channel="_COLOR_" value="128" bits="8" element_set="1"></value>
+                        <value channel="_COLOR_" value="128" bits="8" element_set="2"></value>
+                        <value channel="_COLOR_" value="128" bits="8" element_set="3"></value>
+                        <value channel="_COLOR_" value="128" bits="8" element_set="4"></value>
+                        <value channel="_COLOR_" value="128" bits="8" element_set="5"></value>
+                        <value channel="_COLOR_" value="128" bits="8" element_set="6"></value>
+                        <value channel="_COLOR_" value="128" bits="8" element_set="7"></value>
+                        <value channel="_COLOR_" value="128" bits="8" element_set="8"></value>
+                        <value channel="_COLOR_" value="128" bits="8" element_set="9"></value>
+                        <value channel="_COLOR_" value="128" bits="8" element_set="10"></value>
+                        <value channel="_COLOR_" value="128" bits="8" element_set="11"></value>
+                        <value channel="_COLOR_" value="128" bits="8" element_set="12"></value>
+                        <value channel="_COLOR_" value="128" bits="8" element_set="13"></value>
+                        <value channel="_COLOR_" value="128" bits="8" element_set="14"></value>
+                        <value channel="_COLOR_" value="128" bits="8" element_set="15"></value>
+                    </set>
+                </palette>
+            </palettes>
+        </mode>
+        <mode name="VaryM4(2ch)" number_of_channels="2" invert_pan="F" invert_tilt="F" multi_element="F" elements="" vmodes="F" virtual_dimmer="F" icon="mode1_icon.png">
+            <channels>
+                <channel number="1" type="_COLOR_" bits="8" priority="LTP" name="Cold White" subelement="0"></channel>
+                <channel number="2" type="_INTENSITY_" bits="8" priority="HTP" name="Intensity" subelement="0"></channel>
+            </channels>
+            <palettes>
+                <palette type="_GENERAL_">
+                    <set name="_FIND_">
+                        <value channel="_INTENSITY_" value="255" bits="8" element_set=""></value>
+                        <value channel="_COLOR_" value="255" bits="8" element_set=""></value>
+                    </set>
+                    <set name="_DEFAULT_">
+                        <value channel="_INTENSITY_" value="000" bits="8" element_set=""></value>
+                        <value channel="_COLOR_" value="000" bits="8" element_set=""></value>
+                    </set>
+                    <set name="_HIGHLIGHT_">
+                        <value channel="_INTENSITY_" value="255" bits="8" element_set=""></value>
+                        <value channel="_COLOR_" value="255" bits="8" element_set=""></value>
+                    </set>
+                    <set name="_LOWLIGHT_">
+                        <value channel="_INTENSITY_" value="128" bits="8" element_set=""></value>
+                        <value channel="_COLOR_" value="255" bits="8" element_set=""></value>
+                    </set>
+                </palette>
+            </palettes>
+        </mode>
+        <mode name="VaryM3(2ch)" number_of_channels="2" invert_pan="F" invert_tilt="F" multi_element="F" elements="" vmodes="F" virtual_dimmer="F" icon="mode1_icon.png">
+            <channels>
+                <channel number="1" type="_COLOR_" bits="8" priority="LTP" name="Warm W" subelement="0"></channel>
+                <channel number="2" type="_COLOR2_" bits="8" priority="LTP" name="Cold W" subelement="0"></channel>
+            </channels>
+            <palettes>
+                <palette type="_GENERAL_">
+                    <set name="_FIND_">
+                        <value channel="_COLOR_" value="255" bits="8" element_set=""></value>
+                        <value channel="_COLOR2_" value="255" bits="8" element_set=""></value>
+                    </set>
+                    <set name="_DEFAULT_">
+                        <value channel="_COLOR_" value="000" bits="8" element_set=""></value>
+                        <value channel="_COLOR2_" value="000" bits="8" element_set=""></value>
+                    </set>
+                    <set name="_HIGHLIGHT_">
+                        <value channel="_COLOR_" value="255" bits="8" element_set=""></value>
+                        <value channel="_COLOR2_" value="255" bits="8" element_set=""></value>
+                    </set>
+                    <set name="_LOWLIGHT_">
+                        <value channel="_COLOR_" value="128" bits="8" element_set=""></value>
+                        <value channel="_COLOR2_" value="255" bits="8" element_set=""></value>
+                    </set>
+                </palette>
+            </palettes>
+        </mode>
+    </fixture>
+</ofl>

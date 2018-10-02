@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ofl>
+    <brand short_name="Abstract" name="Abstract" url="http://www.abstract.co.uk" icon="logo_Abstract.png"></brand>
+    <fixture brand="Abstract" short_name="Twister4" name="Twister 4" version="2017-05-15 20:20">
+        <hardware type="_MIRROR_" pan_angle="160" tilt_angle="100" pan_max_speed="0" tilt_max_speed="0" beam_type="" beam_zoom_narrow="" beam_zoom_wide="" spot_zoom_narrow="" spot_zoom_wide="" zoom_narrow="" zoom_wide="" max_strobe="" min_strobe="" rotation_speed="" color_type="_WHEEL_" framing_type="_NONE_" dimmer_curve="_LINEAR_" light_source="" light_source_power="" color_temp="" lummens="" max_power_consumption="300" weight="" height="" widht="" depth="" shape=""></hardware>
+        <mode name="2ch" number_of_channels="2" invert_pan="F" invert_tilt="F" multi_element="F" vmodes="F" virtaul_dimmer="F" elements="" icon="mode1_icon.png">
+            <channels>
+                <channel number="1" type="_PAN_" bits="8" priority="LTP" name="Dimmer" subelement="0">
+                    <segment name="Stop" start="0" end="0"></segment>
+                    <segment name="CW Fast" start="12" end="12"></segment>
+                    <segment name="CW Slow" start="112" end="112"></segment>
+                    <segment name="Stop" start="128" end="128"></segment>
+                    <segment name="CCW Slow" start="141" end="141"></segment>
+                    <segment name="CCW Fast" start="244" end="244"></segment>
+                    <segment name="Open" start="255" end="255"></segment>
+                </channel>
+                <channel number="2" type="_COLOR_" bits="8" priority="HTP" name="Gobo/Col" subelement="0">
+                    <segment name="BlackOut" start="0" end="0"></segment>
+                    <segment name="White/Open" start="10" end="10"></segment>
+                    <segment name="Red" start="26" end="26"></segment>
+                    <segment name="Blue" start="43" end="43"></segment>
+                    <segment name="Green" start="59" end="59"></segment>
+                    <segment name="Yellow" start="75" end="75"></segment>
+                    <segment name="Cyan" start="91" end="91"></segment>
+                    <segment name="Orange" start="108" end="108"></segment>
+                    <segment name="PinkStars" start="124" end="124"></segment>
+                    <segment name="MultiCOL" start="140" end="140"></segment>
+                    <segment name="Orange/Bubbles" start="156" end="156"></segment>
+                    <segment name="Cyan/Tunnel" start="173" end="173"></segment>
+                    <segment name="Yellow/Triangle" start="189" end="189"></segment>
+                    <segment name="Blue/Slash" start="221" end="221"></segment>
+                    <segment name="Red/Dot" start="238" end="238"></segment>
+                    <segment name="Res Strobe" start="254" end="254"></segment>
+                </channel>
+            </channels>
+            <palettes>
+                <palette type="_GENERAL_">
+                    <set name="_FIND_">
+                        <value channel="_PAN_" value="255" bits="8" element_set=""></value>
+                        <value channel="_COLOR_" value="10" bits="8" element_set=""></value>
+                    </set>
+                    <set name="_DEFAULT_">
+                        <value channel="_INTENSITY_" value="0" bits="8" element_set=""></value>
+                        <value channel="_COLOR_" value="0" bits="8" element_set=""></value>
+                    </set>
+                </palette>
+            </palettes>
+        </mode>
+    </fixture>
+</ofl>

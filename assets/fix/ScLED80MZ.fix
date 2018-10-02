@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ofl>
+    <brand short_name="DTS" name="DTS Lighting" url="https://dts-lighting.it" icon="logo_DTS.png"></brand>
+    <fixture brand="DTS" short_name="ScLED80MZ" name="SCENA LED80 MZ" version="2017-08-18 11:45">
+        <hardware type="_MANUAL_" pan_angle="" tilt_angle="" pan_max_speed="" tilt_max_speed="" beam_type="" beam_zoom_narrow="" beam_zoom_wide="77" spot_zoom_narrow="14" spot_zoom_wide="" max_strobe="" min_strobe="" rotation_speed="1" color_type="" framing_type="_NONE_" dimmer_curve="_LINEAR_" light_source="_LED_" light_source_power="80" color_temp="3000" lummens="9200" max_power_consumption="100" weight="4.7" height="279" widht="194" depth="330" shape=""></hardware>
+        <mode name="M1(2ch)" number_of_channels="2" invert_pan="F" invert_tilt="F" multi_element="F" elements="" vmodes="T" virtual_dimmer="F" icon="mode1_icon.png">
+            <channels>
+                <channel number="1" type="_INTENSITY_" bits="8" priority="HTP" name="Intensity" subelement="0"></channel>
+                <channel number="2" type="_ZOOM_" bits="8" priority="LTP" name="Zoom" subelement="0"></channel>
+            </channels>
+            <palettes>
+                <palette type="_GENERAL_">
+                    <set name="_FIND_">
+                        <value channel="_INTENSITY_" bits="8" value="255" element_set=""></value>
+                        <value channel="_ZOOM_" bits="8" value="128" element_set=""></value>
+                    </set>
+                    <set name="_DEFAULT_">
+                        <value channel="_INTENSITY_" bits="8" value="000" element_set=""></value>
+                        <value channel="_ZOOM_" bits="8" value="000" element_set=""></value>
+                    </set>
+                    <set name="_HIGHLIGHT_">
+                        <value channel="_INTENSITY_" bits="8" value="255" element_set=""></value>
+                        <value channel="_ZOOM_" bits="8" value="" element_set=""></value>
+                    </set>
+                    <set name="_LOWLIGHT_">
+                        <value channel="_INTENSITY_" bits="8" value="128" element_set=""></value>
+                        <value channel="_ZOOM_" bits="8" value="" element_set=""></value>
+                    </set>
+                </palette>
+            </palettes>
+        </mode>
+        <mode name="M2(6ch)" number_of_channels="6" invert_pan="F" invert_tilt="F" multi_element="F" elements="" vmodes="T" virtual_dimmer="F" icon="mode1_icon.png">
+            <channels>
+                <channel number="1" type="_SHUTTER_" bits="8" priority="LTP" name="Shutter" subelement="0">
+                    <segment name="BlackOut" start="0" end="9"></segment>
+                    <segment name="Open" start="10" end="19"></segment>
+                    <segment name="BlackOut" start="20" end="29"></segment>
+                    <segment name="Strobe" start="30" end="119"></segment>
+                    <segment name="PulseUp" start="120" end="149"></segment>
+                    <segment name="PulseDown" start="150" end="179"></segment>
+                    <segment name="RndStrb" start="180" end="229"></segment>
+                    <segment name="Flash" start="230" end="235"></segment>
+                    <segment name="Open" start="236" end="255"></segment>
+                </channel>
+                <channel number="2" type="_INTENSITY_" bits="8" priority="HTP" name="Dim" subelement="0"></channel>
+                <channel number="3" type="_INTENSITY_" bits="16" priority="HTP" name="Dim F" subelement="0"></channel>
+                <channel number="4" type="_FUNCT_" bits="8" priority="LTP" name="Function" subelement="0">
+                    <segment name="No Funct" start="0" end="14"></segment>
+                    <segment name="SmoothOFF" start="15" end="24"></segment>
+                    <segment name="Smooth 1" start="25" end="26"></segment>
+                    <segment name="Smooth 2" start="27" end="28"></segment>
+                    <segment name="Smooth 3" start="29" end="30"></segment>
+                    <segment name="Smooth 4" start="31" end="32"></segment>
+                    <segment name="Smooth 5" start="33" end="34"></segment>
+                    <segment name="Smooth 6" start="35" end="36"></segment>
+                    <segment name="Smooth 7" start="37" end="38"></segment>
+                    <segment name="Smooth 8" start="39" end="40"></segment>
+                    <segment name="Smooth 9" start="41" end="42"></segment>
+                    <segment name="Smooth10 " start="43" end="44"></segment>
+                    <segment name="Smooth11" start="45" end="46"></segment>
+                    <segment name="Smooth12" start="47" end="48"></segment>
+                    <segment name="Smooth13" start="49" end="50"></segment>
+                    <segment name="Smooth14" start="51" end="52"></segment>
+                    <segment name="Smooth15" start="53" end="54"></segment>
+                    <segment name="Smooth16" start="55" end="56"></segment>
+                    <segment name="Smooth17" start="57" end="58"></segment>
+                    <segment name="Smooth18" start="59" end="60"></segment>
+                    <segment name="Smooth19" start="61" end="62"></segment>
+                    <segment name="Smooth20" start="63" end="64"></segment>
+                    <segment name="G Quad" start="65" end="74"></segment>
+                    <segment name="G Linear" start="75" end="84"></segment>
+                    <segment name="Freq610" start="85" end="104"></segment>
+                    <segment name="Freq800" start="105" end="105"></segment>
+                    <segment name="Freq1000" start="106" end="106"></segment>
+                    <segment name="Freq1500" start="107" end="107"></segment>
+                    <segment name="Freq2000" start="108" end="108"></segment>
+                    <segment name="Freq2500" start="109" end="109"></segment>
+                    <segment name="Freq3000" start="110" end="110"></segment>
+                    <segment name="Freq3500" start="111" end="111"></segment>
+                    <segment name="Freq4000" start="112" end="112"></segment>
+                    <segment name="Freq4500" start="113" end="113"></segment>
+                    <segment name="Freq5000" start="114" end="114"></segment>
+                    <segment name="Freq5500" start="115" end="115"></segment>
+                    <segment name="Freq6000" start="116" end="116"></segment>
+                    <segment name="Freq6500" start="117" end="117"></segment>
+                    <segment name="Freq7000" start="118" end="118"></segment>
+                    <segment name="Freq7500" start="119" end="119"></segment>
+                    <segment name="Freq8000" start="120" end="120"></segment>
+                    <segment name="Freq8500" start="121" end="121"></segment>
+                    <segment name="Freq9000" start="122" end="122"></segment>
+                    <segment name="Freq9500" start="123" end="123"></segment>
+                    <segment name="Freq10000" start="124" end="124"></segment>
+                    <segment name="Freq11000" start="125" end="125"></segment>
+                    <segment name="Freq12000" start="126" end="126"></segment>
+                    <segment name="Freq13000" start="127" end="127"></segment>
+                    <segment name="Freq14000" start="128" end="128"></segment>
+                    <segment name="Freq15000" start="129" end="129"></segment>
+                    <segment name="Freq16000" start="130" end="130"></segment>
+                    <segment name="Freq17000" start="131" end="131"></segment>
+                    <segment name="Freq18000" start="132" end="132"></segment>
+                    <segment name="Freq19000" start="133" end="133"></segment>
+                    <segment name="Freq20000" start="134" end="134"></segment>
+                    <segment name="BoostON" start="135" end="144"></segment>
+                    <segment name="BoostOFF" start="145" end="154"></segment>
+                    <segment name="DisOFF" start="155" end="164"></segment>
+                    <segment name="DisON" start="165" end="174"></segment>
+                    <segment name="NoDMX1" start="175" end="176"></segment>
+                    <segment name="NoDMX2" start="177" end="178"></segment>
+                    <segment name="NoDMX3" start="179" end="180"></segment>
+                    <segment name="NoDMX4" start="181" end="182"></segment>
+                    <segment name="NoDMX5" start="183" end="184"></segment>
+                    <segment name="Reserved" start="185" end="194"></segment>
+                    <segment name="Reserved" start="195" end="204"></segment>
+                    <segment name="Reserved" start="205" end="214"></segment>
+                    <segment name="Reserved" start="215" end="224"></segment>
+                    <segment name="Reserved" start="225" end="234"></segment>
+                    <segment name="FAN stnd" start="235" end="239"></segment>
+                    <segment name="FAN Silent" start="240" end="244"></segment>
+                    <segment name="Zoom Stnd" start="245" end="248"></segment>
+                    <segment name="ZoomSilent" start="249" end="252"></segment>
+                    <segment name="Defaults" start="253" end="255"></segment>
+                </channel>
+                <channel number="5" type="_ZOOM_" bits="8" priority="LTP" name="Zoom" subelement="0"></channel>
+                <channel number="6" type="_FUNCT3_" bits="8" priority="LTP" name="Reset" subelement="0">
+                    <segment name="No Funct" start="0" end="15"></segment>
+                    <segment name="ZoomReset" start="16" end="255"></segment>
+                </channel>
+            </channels>
+            <palettes>
+                <palette type="_GENERAL_">
+                    <set name="_FIND_">
+                        <value channel="_SHUTTER_" bits="8" value="255" element_set=""></value>
+                        <value channel="_INTENSITY_" bits="8" value="255" element_set=""></value>
+                        <value channel="_INTENSITY_" bits="16" value="000" element_set=""></value>
+                        <value channel="_FUNCT_" bits="8" value="000" element_set=""></value>
+                        <value channel="_ZOOM_" bits="8" value="128" element_set=""></value>
+                        <value channel="_FUNCT3_" bits="8" value="000" element_set=""></value>
+                    </set>
+                    <set name="_DEFAULT_">
+                        <value channel="_SHUTTER_" bits="8" value="000" element_set=""></value>
+                        <value channel="_INTENSITY_" bits="8" value="000" element_set=""></value>
+                        <value channel="_INTENSITY_" bits="16" value="000" element_set=""></value>
+                        <value channel="_FUNCT_" bits="8" value="000" element_set=""></value>
+                        <value channel="_ZOOM_" bits="8" value="000" element_set=""></value>
+                        <value channel="_FUNCT3_" bits="8" value="000" element_set=""></value>
+                    </set>
+                    <set name="_HIGHLIGHT_">
+                        <value channel="_SHUTTER_" bits="8" value="255" element_set=""></value>
+                        <value channel="_INTENSITY_" bits="8" value="255" element_set=""></value>
+                        <value channel="_INTENSITY_" bits="16" value="255" element_set=""></value>
+                        <value channel="_FUNCT_" bits="8" value="000" element_set=""></value>
+                        <value channel="_ZOOM_" bits="8" value="" element_set=""></value>
+                        <value channel="_FUNCT3_" bits="8" value="000" element_set=""></value>
+                    </set>
+                    <set name="_LOWLIGHT_">
+                        <value channel="_SHUTTER_" bits="8" value="255" element_set=""></value>
+                        <value channel="_INTENSITY_" bits="8" value="128" element_set=""></value>
+                        <value channel="_INTENSITY_" bits="16" value="255" element_set=""></value>
+                        <value channel="_FUNCT_" bits="8" value="000" element_set=""></value>
+                        <value channel="_ZOOM_" bits="8" value="" element_set=""></value>
+                        <value channel="_FUNCT3_" bits="8" value="000" element_set=""></value>
+                    </set>
+                </palette>
+            </palettes>
+            <macros>
+                <macro name="_ZOOM_RESET_">
+                    <step wait="4000">
+                        <value channel="_FUNCT3_" value="128"></value>
+                    </step>
+                    <step wait="1000">
+                        <value channel="_FUNCT3_" value="0"></value>
+                    </step>
+                </macro>
+            </macros>
+        </mode>
+    </fixture>
+</ofl>
