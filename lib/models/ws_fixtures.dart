@@ -16,7 +16,7 @@ class WSFixtures{
       return fix.name == name;
     }, orElse: (){return null;});
     
-    return (type == null) ? null : type.filename;
+    return (type == null) ? null : preamble + type.filename;
   }
 
   static const List<WSFixtureType> fixtures = <WSFixtureType>[

@@ -15,6 +15,7 @@ import 'package:blizzard_wizzard/views/creator_screen_assets/fixture_grid_assets
 import 'package:blizzard_wizzard/views/creator_screen_assets/fixture_grid_assets/library_patch_fixture_page.dart';
 import 'package:blizzard_wizzard/views/creator_screen_assets/fixture_grid_assets/main_patch_fixture_page.dart';
 import 'package:blizzard_wizzard/views/creator_screen_assets/fixture_grid_assets/manufacturer_patch_fixture_page.dart';
+import 'package:blizzard_wizzard/views/creator_screen_assets/fixture_grid_assets/mode_patch_fixture_page.dart';
 import 'package:blizzard_wizzard/views/creator_screen_assets/fixture_grid_assets/patch_fixture_page.dart';
 import 'package:blizzard_wizzard/views/creator_screen_assets/fixture_grid_assets/verify_patch_fixture_page.dart';
 import 'package:blizzard_wizzard/views/fixes/list_view_alert_dialog.dart';
@@ -35,6 +36,10 @@ class PatchFixtureDialogState extends State<PatchFixtureDialog> {
   int channelIndex;
 
   PatchFixtureDialogState();
+
+  void _changeFixtureCallback(Fixture fix){
+    this.fixture = fix;
+  }
 
   void _callback(int state){
     int tempState = state;
@@ -82,7 +87,7 @@ class PatchFixtureDialogState extends State<PatchFixtureDialog> {
         page = MainPatchFixturePage(callback: _callback);
       break;
       case PatchFixtureState.library:
-        page = LibraryPatchFixturePage(callback: _callback);
+        page = LibraryPatchFixturePage(callback: _callback, fixture: fixture, changeFixture: _changeFixtureCallback,);
       break;
       case PatchFixtureState.dmxChannels:
         page = DMXChannelPatchFixturePage(callback: _callback, fixture: fixture,);
@@ -101,6 +106,12 @@ class PatchFixtureDialogState extends State<PatchFixtureDialog> {
       break;
       case PatchFixtureState.patchFromCreate:
         page = PatchFixturePage(callback: _callback, fixture: fixture, lastPage: PatchFixtureState.verify, slot: widget.slot);
+      break;
+      case PatchFixtureState.patchFromLibrary:
+        page = PatchFixturePage(callback: _callback, fixture: fixture, lastPage: (fixture.profile.length == 1) ? PatchFixtureState.library : PatchFixtureState.mode, slot: widget.slot);
+      break;
+      case PatchFixtureState.mode:
+        page = ModePatchFixturePage(callback: _callback, fixture: fixture);
       break;
     }
 

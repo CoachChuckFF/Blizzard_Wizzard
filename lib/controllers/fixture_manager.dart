@@ -48,7 +48,7 @@ class FixtureManager{
 
       fixture.profile.add(cm);
     });
-
+    /*
     print(fixture.name);
     print(fixture.brand);
     print(fixture.profile.length);
@@ -65,7 +65,7 @@ class FixtureManager{
           print("*** " + segment.end.toString());
         });
       });
-    });
+    });*/
 
     return fixture;
   }

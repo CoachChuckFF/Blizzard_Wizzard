@@ -14,26 +14,12 @@ import 'package:blizzard_wizzard/controllers/fixture_manager.dart';
 import 'package:blizzard_wizzard/controllers/reducers.dart';
 
 import 'test_structs.dart';
-import 'dart:math';
 
 void main(){
   final store = Store<AppState>(
     appReducer,
     initialState: AppState.init(),
   );
-
-  Random random = new Random(TimeOfDay.now().hashCode);
-
-  FixtureManager.getFixture(WSFixtures.preamble + WSFixtures.fixtures[random.nextInt(WSFixtures.fixtures.length)].filename).then((fixture){
-    store.dispatch(AddPatchFixture(
-      0,
-      PatchedFixture(
-        mac: Mac([0xC4, 0xBB, 0x5C, 0xA4, 0xAE, 0x30]),
-        name: fixture.name,
-        fixture: fixture
-      )
-    ));
-  });
 
   runApp(MyApp(
     title: 'Artnet Tester',

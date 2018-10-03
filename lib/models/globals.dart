@@ -110,6 +110,13 @@ class PatchFixtureState{
   static const int verify = 9;
   static const int patchFromCreate = 10;
   static const int patchFromLibrary = 11;
+  static const int mode = 12;
+}
+
+class PatchFixtureLibraryState{
+  static const int brand = 1;
+  static const int fixture = 2;
+  static const int loading = 3;
 }
 
 class DeviceFixtureGridState{
@@ -146,4 +153,7 @@ class KeypadSecrets{
   static const String escape = "111 -> 333 -> 111";
   static const String don = "69";
   static const String homage = " @ 762";
+  static const String smokey = "420";
+  static const String guy = "1015512";
+  static const int tickle = 21;
 }
