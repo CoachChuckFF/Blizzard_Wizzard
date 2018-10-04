@@ -46,6 +46,7 @@ class MyAppState extends State<MyApp> with WidgetsBindingObserver{
     super.initState();
     WidgetsBinding.instance.addObserver(this);
     tron = ArtnetController(widget.store);
+    sid = FixtureManager();
     initTestStructs(widget.store);
   }
 

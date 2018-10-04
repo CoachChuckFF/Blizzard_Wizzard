@@ -12,6 +12,7 @@ import 'package:blizzard_wizzard/models/mac.dart';
 import 'package:blizzard_wizzard/models/patched_device.dart';
 import 'package:blizzard_wizzard/models/patched_fixture.dart';
 import 'package:blizzard_wizzard/views/fixes/list_view_alert_buttons_dialog.dart';
+import 'package:blizzard_wizzard/controllers/fixture_manager.dart';
 
 class VerifyPatchFixturePage extends StatefulWidget {
   final ValueChanged<int> callback;
@@ -64,7 +65,7 @@ class VerifyPatchFixturePageState extends State<VerifyPatchFixturePage> {
           text: "Save",
           color: Colors.green,
           onTap: (){
-            //TODO save logic
+            sid.saveUserFixture(widget.fixture);
             widget.callback(PatchFixtureState.patchFromCreate);
           }
         ),

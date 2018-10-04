@@ -2,8 +2,9 @@ class WSFixtureType{
   final String brand;
   final String name;
   final String filename;
+  final bool isWS;
 
-  const WSFixtureType(this.brand, this.name, this.filename);
+  const WSFixtureType(this.brand, this.name, this.filename, {this.isWS = true});
 }
 
 class WSFixtures{

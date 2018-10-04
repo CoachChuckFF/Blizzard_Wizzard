@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:blizzard_wizzard/controllers/artnet_controller.dart';
+import 'package:blizzard_wizzard/controllers/fixture_manager.dart';
 
 //Global Varables
 ArtnetController tron;
+FixtureManager sid;
 
 /*Configurations*/
 class BlizzardWizzardConfigs{

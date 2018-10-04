@@ -27,25 +27,27 @@ class LibraryPatchFixturePage extends StatefulWidget {
 
 class LibraryPatchFixturePageState extends State<LibraryPatchFixturePage>  {
   int state;
+  bool isLoading;
   String brand;
-  String fixture;
+  WSFixtureType fixture;
   List<String> fixtureList;
+  List<WSFixtureType> wsFixtureList;
 
   initState(){
     super.initState();
     state = PatchFixtureLibraryState.brand;
+    isLoading = true;
     brand = "";
-    fixture = "";
     _buildList();
   }
 
   _setFixture(bool longPress){
 
     setState(() {
-      state = PatchFixtureLibraryState.loading;     
+      isLoading = true;    
     });
-    FixtureManager.getFixture(
-      WSFixtures.getFP(fixture)
+    sid.getFixture(
+      fixture
     ).then((fix){
       widget.changeFixture(fix);
       widget.callback((!longPress) ? 
@@ -58,24 +60,53 @@ class LibraryPatchFixturePageState extends State<LibraryPatchFixturePage>  {
 
   _buildList(){
     fixtureList = List<String>();
+    setState(() {
+      isLoading = true;  
+    });
     switch(state){
       case PatchFixtureLibraryState.brand:
-        WSFixtures.fixtures.forEach((fix){
+        sid.getAllFixtures().then((fixList){
+          fixList.forEach((fix){
           if(!fixtureList.contains(fix.brand)){
-            fixtureList.add(fix.brand);
-          }
-        }); 
+              fixtureList.add(fix.brand);
+            }
+          });
+          setState(() {
+            fixtureList.sort((a, b){
+              return a.toUpperCase().compareTo(b.toUpperCase());
+            });
+            isLoading = false;    
+          });
+        });
       break;
       case PatchFixtureLibraryState.fixture:
-        WSFixtures.fixtures.where((fix){
-          return fix.brand == brand;
-        }).forEach((fix){
-          fixtureList.add(fix.name);
+        wsFixtureList = List<WSFixtureType>();
+        sid.getAllFixtures().then((fixList){
+          fixList.where((fix){
+            return fix.brand == brand;
+          }).forEach((fix){
+            fixtureList.add(fix.name);
+            wsFixtureList.add(fix);
+          });
+          setState(() {
+            if(fixtureList.length != 0){
+              fixtureList.sort((a, b){
+                return a.toUpperCase().compareTo(b.toUpperCase());
+              });
+              wsFixtureList.sort((a, b){
+                return a.name.toUpperCase().compareTo(b.name.toUpperCase());
+              });
+
+              isLoading = false;
+
+            } else {
+              state = PatchFixtureLibraryState.brand;
+              _buildList();
+            }  
+          });
         });
       break;
     }
-
-    fixtureList.sort();
   }
 
   Widget build(BuildContext context) {
@@ -104,7 +135,7 @@ class LibraryPatchFixturePageState extends State<LibraryPatchFixturePage>  {
           }
         ),
       ],
-      content: (state != PatchFixtureLibraryState.loading) ?
+      content: (!isLoading) ?
       Column(
         children: <Widget>[
           (state == PatchFixtureLibraryState.fixture) ?
@@ -141,23 +172,79 @@ class LibraryPatchFixturePageState extends State<LibraryPatchFixturePage>  {
                         fontSize: 21.0,
                       )
                     ),
+                    trailing: (state == PatchFixtureLibraryState.fixture) ?
+                      (!wsFixtureList[index].isWS) ?
+                        Icon(
+                          Icons.ac_unit
+                        ) : 
+                        null : 
+                      null,
                     onTap: (){
                       if(state == PatchFixtureLibraryState.brand){
                         setState(() {
+                          print("here");
                           state = PatchFixtureLibraryState.fixture;
                           brand = fixtureList[index];
                           _buildList();
                         });
                       } else {
-                        fixture = fixtureList[index];
+                        fixture = wsFixtureList[index];
                         _setFixture(false);
                       }
                     },
-                    onLongPress: (state == PatchFixtureLibraryState.brand) ?
+                    onLongPress: (state == PatchFixtureLibraryState.fixture) ?
                       (){
-                        if(state == PatchFixtureLibraryState.fixture){
-                          fixture = fixtureList[index];
+                        WSFixtureType fix = wsFixtureList[index];
+                        if(fix.isWS){
+                          fixture = fix;
                           _setFixture(true);
+                        } else {
+                          showDialog(
+                            context: context,
+                            child: AlertDialog(
+                              title: Text(
+                                "${fix.brand} ${fix.name}"
+                              ),
+                              actions: <Widget>[
+                                FlatButton(
+                                  child: Text(
+                                    "Edit",
+                                    style: TextStyle(
+                                      color: Colors.green
+                                    ),
+                                  ),
+                                  onPressed: (){
+                                    fixture = fix;
+                                    _setFixture(true);
+                                    Navigator.pop(context);
+                                  },
+                                ),
+                                FlatButton(
+                                  child: Text(
+                                    "Delete",
+                                    style: TextStyle(
+                                      color: Colors.red
+                                    ),
+                                  ),
+                                  onPressed: (){
+                                    sid.deleteUserFixture(fix);
+                                    Navigator.pop(context);
+                                    _buildList();
+                                  },
+                                ),
+                                FlatButton(
+                                  child: Text(
+                                    "Cancel",
+                                    style: TextStyle(
+                                    ),
+                                  ),
+                                  onPressed: (){
+                                    Navigator.pop(context);
+                                  },
+                                ),
+                              ],
+                            )
+                          );
                         }
                       } :
                     null,

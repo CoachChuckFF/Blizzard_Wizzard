@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:blizzard_wizzard/models/globals.dart';
 
 class SceneButtonBar extends StatefulWidget {
   final ValueChanged<int> callback;
@@ -21,14 +22,18 @@ class SceneButtonBarState extends State<SceneButtonBar> {
             child: new IconButton(
               icon: new Icon(Icons.save),
               tooltip: 'Save Scene',
-              onPressed: () { print("Save"); },
+              onPressed: () {
+                sid.writeTestFile();
+              },
             ),
           ),
           Expanded(
             child: new IconButton(
               icon: new Icon(Icons.schedule),
               tooltip: 'Load Scene',
-              onPressed: () { print("Load"); },
+              onPressed: () {
+                sid.readTestFile();
+              },
             ),
           ),
           Expanded(
