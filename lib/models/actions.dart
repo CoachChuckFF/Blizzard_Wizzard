@@ -53,7 +53,23 @@ class ChangeShowName{
 
 
 // Patched Fixtures
+class AddPatchFixture{
+  final int slot;
+  final PatchedFixture fixture;
 
+  AddPatchFixture(this.slot, this.fixture);
+}
+
+class RemovePatchFixture{
+  final int slot;
+
+  RemovePatchFixture(this.slot);
+}
+
+class ClearPatchFixture{
+
+  ClearPatchFixture();
+}
 
 // Patched Devices
 class AddPatchDevice{
@@ -74,11 +90,6 @@ class ClearPatchDevice{
   ClearPatchDevice();
 }
 
-class AddPatchFixture{
-  final int slot;
-  final PatchedFixture fixture;
 
-  AddPatchFixture(this.slot, this.fixture);
-}
 
 

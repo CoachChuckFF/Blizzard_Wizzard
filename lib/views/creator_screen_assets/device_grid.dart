@@ -9,11 +9,11 @@ import 'package:blizzard_wizzard/models/mac.dart';
 import 'package:blizzard_wizzard/models/patched_device.dart';
 import 'package:blizzard_wizzard/models/patched_fixture.dart';
 import 'package:blizzard_wizzard/views/fixes/list_view_alert_dialog.dart';
+import 'package:blizzard_wizzard/views/fixes/list_view_alert_buttons_dialog.dart';
 
 
 class DeviceGrid extends StatelessWidget {
   final int cols;
-  final double fontSize = 20.0;
   final String fontFamily = "Roboto";
   final Map<int, PatchedDevice> patchedDevices;
   final List<int> selectedDevices;
@@ -32,6 +32,7 @@ class DeviceGrid extends StatelessWidget {
       gridDelegate: new SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: cols),
       itemCount: BlizzardWizzardConfigs.artnetMaxUniverses,
       itemBuilder: (BuildContext context, int index) {
+        double fontSize = 21.0;
         bool isPatched = false;
         bool isConnected = false;
         bool isSelected = false;
@@ -54,6 +55,7 @@ class DeviceGrid extends StatelessWidget {
             isConnected = true;
           }
           isPatched = true;
+          fontSize = 13.0;
 
           if(selectedDevices.contains(index)){
             textColor = Colors.white;
@@ -69,8 +71,7 @@ class DeviceGrid extends StatelessWidget {
               child: Center(
                 child: Text(
                   info,
-                  overflow: TextOverflow.ellipsis,
-                  maxLines: 1,
+                  textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: fontSize,
                     fontFamily: fontFamily,
@@ -192,7 +193,7 @@ class PatchDeviceDialog extends StatelessWidget {
       }
     });
 
-    return ListViewAlertDialog(
+    return ListViewAlertButtonsDialog(
       title: Text('Select Device to Patch',
         style: TextStyle(
           fontSize: 23.0,
@@ -200,6 +201,15 @@ class PatchDeviceDialog extends StatelessWidget {
           fontFamily: "Robot",
         ),
       ),
+      actions: <Widget>[
+        BlizzardDialogButton(
+          text: "Cancel",
+          color: Colors.red,
+          onTap: (){
+            Navigator.pop(context);
+          }
+        ),
+      ],
       content: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
@@ -208,7 +218,7 @@ class PatchDeviceDialog extends StatelessWidget {
             child: (availableDevices.length == 0) ?
             Tooltip(
               preferBelow: false,
-              message: "Stop that tickles",
+              message: "Connect a device?",
               child: Text(
                 "No Devices Found",
                 style: Theme.of(context).textTheme.title,
@@ -260,36 +270,12 @@ class PatchDeviceDialog extends StatelessWidget {
                           )));
                       }
                     }
-      
                     callback([this.index]);
                     Navigator.pop(context);
                   },
                 );
               },
             ),
-          ),
-          Expanded(
-            flex: 1,
-            child: Material(
-              color: Colors.blue,
-              child: Container(
-                child: InkWell(
-                  child: Center(
-                    child: Text(
-                      "Cancel",
-                      style: TextStyle(
-                        fontSize: 21.0,
-                        fontFamily: "Robot",
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
-                  onTap: (){
-                    Navigator.pop(context);
-                  },
-                ),
-              )
-            )
           ),
         ]
       )
@@ -334,7 +320,7 @@ class EditDeviceDialogState extends State<EditDeviceDialog> {
       }
     });
 
-    return ListViewAlertDialog(
+    return ListViewAlertButtonsDialog(
       title: Text('Fixtures Connected to ${widget.patchedDevices[widget.index].name}',
         style: TextStyle(
           fontSize: 23.0,
@@ -342,6 +328,34 @@ class EditDeviceDialogState extends State<EditDeviceDialog> {
           fontFamily: "Robot",
         ),
       ),
+      actions: <Widget>[
+        BlizzardDialogButton(
+          text: (clearAll) ? "Unpatch All" : "Unpatch Device",
+          color: Colors.red,
+          onTap: (){
+            if(clearAll){
+              StoreProvider.of<AppState>(context).dispatch(ClearPatchDevice());
+            } else {
+              StoreProvider.of<AppState>(context).dispatch(RemovePatchDevice(
+                widget.index));
+            }
+            widget.callback([]);
+            Navigator.pop(context);
+          },
+          onLongPress: (){
+            setState(() {
+              clearAll = !clearAll;
+            });
+          },
+        ),
+        BlizzardDialogButton(
+          text: "Cancel",
+          color: Colors.blue,
+          onTap: (){
+            Navigator.pop(context);
+          },
+        ),
+      ],
       content: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
@@ -382,64 +396,6 @@ class EditDeviceDialogState extends State<EditDeviceDialog> {
                 );
               },
             ),
-          ),
-          Expanded(
-            flex: 1,
-            child: Material(
-              color: Colors.red,
-              child: Container(
-                child: InkWell(
-                  child: Center(
-                    child: Text(
-                      (clearAll) ? "Unpatch All Devices" : "Unpatch Device",
-                      style: TextStyle(
-                        fontSize: 21.0,
-                        fontFamily: "Robot",
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
-                  onTap: (){
-                    if(clearAll){
-                      StoreProvider.of<AppState>(context).dispatch(ClearPatchDevice());
-                    } else {
-                      StoreProvider.of<AppState>(context).dispatch(RemovePatchDevice(
-                        widget.index));
-                    }
-                    widget.callback([]);
-                    Navigator.pop(context);
-                  },
-                  onLongPress: (){
-                    setState(() {
-                      clearAll = !clearAll;
-                    });
-                  },
-                ),
-              )
-            )
-          ),
-          Expanded(
-            flex: 1,
-            child: Material(
-              color: Colors.blue,
-              child: Container(
-                child: InkWell(
-                  child: Center(
-                    child: Text(
-                      "Cancel",
-                      style: TextStyle(
-                        fontSize: 21.0,
-                        fontFamily: "Robot",
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
-                  onTap: (){
-                    Navigator.pop(context);
-                  },
-                ),
-              )
-            )
           ),
         ]
       )

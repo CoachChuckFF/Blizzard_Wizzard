@@ -63,10 +63,16 @@ class ChannelControlArea extends StatelessWidget {
     _init();
     print(channels);
 
+    if(channels.length == 0){
+      return Center(
+        child: Text(
+          "No Channels Possible"
+        )
+      );
+    }
+
     return Card(
-      child: (channels.length == 0) ? 
-      Text("No Channels Possible") :
-      ListView.builder(   
+      child: ListView.builder(   
         itemCount: channels.length,
         itemBuilder: (BuildContext context, int index){
 

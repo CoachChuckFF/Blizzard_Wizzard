@@ -84,12 +84,12 @@ class CreatorScreenState extends State<CreatorScreen> {
     return Column(
       children: <Widget>[
         Expanded(
-          flex: 3,
+          flex: 4,
           child: Card(
             child: Row(
               children: <Widget>[
                 Expanded(
-                  flex: 1,
+                  flex: 2,
                   child: Column(
                     children: <Widget>[
                       Expanded(
@@ -97,10 +97,13 @@ class CreatorScreenState extends State<CreatorScreen> {
                         message: "Fixtures",
                           child: FlatButton(
                             color: (deviceFixtureState == DeviceFixtureGridState.fixture) ? Colors.black : Colors.white,
-                            child: Icon(
-                              Icons.ac_unit,
-                              color: (deviceFixtureState == DeviceFixtureGridState.fixture) ? Colors.white : Colors.black,
-                            ), 
+                            child: Center(
+                              child: Icon(
+                                Icons.ac_unit,
+                                size: 30.0,
+                                color: (deviceFixtureState == DeviceFixtureGridState.fixture) ? Colors.white : Colors.black,
+                              ), 
+                            ),
                             onPressed: (){
                               if(deviceFixtureState != DeviceFixtureGridState.fixture){
                                 setState(() {
@@ -119,6 +122,7 @@ class CreatorScreenState extends State<CreatorScreen> {
                             color: (deviceFixtureState == DeviceFixtureGridState.device) ? Colors.black : Colors.white,
                             child: Icon(
                               Icons.adjust,
+                              size: 30.0,
                               color: (deviceFixtureState == DeviceFixtureGridState.device) ? Colors.white : Colors.black,
                             ), 
                             onPressed: (){
@@ -136,7 +140,7 @@ class CreatorScreenState extends State<CreatorScreen> {
                   )
                 ),
                 Expanded(
-                  flex: 8,
+                  flex: 10,
                   child: Column(
                     children: <Widget>[
                       Expanded(

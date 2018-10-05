@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:numberpicker/numberpicker.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:blizzard_wizzard/models/actions.dart';
 import 'package:blizzard_wizzard/models/app_state.dart';
@@ -9,12 +10,11 @@ import 'package:blizzard_wizzard/models/mac.dart';
 import 'package:blizzard_wizzard/models/patched_device.dart';
 import 'package:blizzard_wizzard/models/patched_fixture.dart';
 import 'package:blizzard_wizzard/views/creator_screen_assets/fixture_grid_assets/patch_fixture_dialog.dart';
-import 'package:blizzard_wizzard/views/fixes/list_view_alert_dialog.dart';
+import 'package:blizzard_wizzard/views/fixes/list_view_alert_buttons_dialog.dart';
 
 
 class FixtureGrid extends StatelessWidget {
   final int cols;
-  final double fontSize = 20.0;
   final String fontFamily = "Roboto";
   final Map<int, PatchedFixture> patchedFixtures;
   final List<int> selectedFixtures;
@@ -37,6 +37,7 @@ class FixtureGrid extends StatelessWidget {
         bool isPatched = false;
         bool isConnected = false;
         bool isSelected = false;
+        double fontSize = 21.0;
         Color textColor = Theme.of(context).primaryColor;
         Color boxColor = Colors.white;
         String info = "${index + 1}";
@@ -56,6 +57,7 @@ class FixtureGrid extends StatelessWidget {
             isConnected = true;
           }
           isPatched = true;
+          fontSize = 13.0; 
 
           if(selectedFixtures.contains(index)){
             textColor = Colors.white;
@@ -71,8 +73,7 @@ class FixtureGrid extends StatelessWidget {
               child: Center(
                 child: Text(
                   info,
-                  overflow: TextOverflow.ellipsis,
-                  maxLines: 1,
+                  textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: fontSize,
                     fontFamily: fontFamily,
@@ -134,20 +135,19 @@ class FixtureGrid extends StatelessWidget {
               },
               onLongPress: (){
                 if(isPatched && isConnected){
-                  /*showDialog(
+                  showDialog(
                     context: context,
                     child: StoreConnector<AppState, List<Device>>(
                       converter: (store) => store.state.availableDevices,
                       builder: (context, availableDevices) {
-                        return EditDeviceDialog(
+                        return EditFixtureDialog(
                           index: index,
-                          devices: availableDevices,
-                          patchedDevices: patchedDevices,
+                          fixture: patchedFixtures[index],
                           callback: callback,
                         );
                       },
                     ),
-                  );*/
+                  );
                 } else if(!isPatched){
                   /*showDialog(
                     context: context,
@@ -173,203 +173,181 @@ class FixtureGrid extends StatelessWidget {
   }
 }
 
-class PatchDeviceDialog extends StatelessWidget {
+class EditFixtureDialog extends StatefulWidget {
  
-  PatchDeviceDialog({this.index, this.devices, this.patchedDevices, this.callback});
+  EditFixtureDialog({this.fixture, this.callback, this.index});
 
-  final List<Device> devices;
-  final Map<int, PatchedDevice> patchedDevices;
-  final ValueChanged<List<int>> callback;
-  final int index;
-
-  Widget build(BuildContext context) {
-    Map<int, PatchedFixture> patchedFixtures;
-    List<Device> availableDevices = List<Device>();
-
-    devices.forEach((device){
-      if(!patchedDevices.containsValue(PatchedDevice(
-        mac: device.mac,
-      ))){
-        availableDevices.add(device);
-      }
-    });
-
-    return ListViewAlertDialog(
-      title: new Text('Pick Device to Patch to slot ${index + 1}'),
-      actions: <Widget>[
-        new FlatButton(
-          child: const Text("Cancel"),
-          onPressed: ()=> Navigator.pop(context),
-        ),
-      ],
-      content: 
-      (availableDevices.length == 0) ?
-      Text(
-        "No Available Devices",
-        style: Theme.of(context).textTheme.title,
-      ) :
-      ListView.builder(
-        itemCount: availableDevices.length,
-        shrinkWrap: true,
-        itemBuilder: (BuildContext buildContext, int index){
-          return InkWell(
-            child: new ListTile(
-              title: new Text(
-                availableDevices[index].name,
-                style: Theme.of(context).textTheme.title,
-              ),
-            ),
-            onTap: (){
-              StoreProvider.of<AppState>(context).dispatch(AddPatchDevice(
-                this.index, 
-                PatchedDevice(
-                  mac: availableDevices[index].mac,
-                  name: availableDevices[index].name,
-                )));
-
-
-              if(availableDevices[index].fixture != null){
-                patchedFixtures = StoreProvider.of<AppState>(context).state.show.patchedFixtures;
-                PatchedFixture fixture = patchedFixtures.values.firstWhere((fix){
-                  return fix.fromDevice;
-                }, orElse: (){return null;});
-
-                if(fixture == null){
-                  StoreProvider.of<AppState>(context).dispatch(AddPatchFixture(
-                    this.index, 
-                    PatchedFixture(
-                      mac: availableDevices[index].mac,
-                      name: "D ${availableDevices[index].fixture.name}",
-                      fixture: availableDevices[index].fixture,
-                      fromDevice: true,
-                    )));
-                }
-              } 
- 
-              callback([this.index]);
-              Navigator.pop(context);
-            },
-          );
-        },
-      ),
-    );
-  }
-}
-
-class EditDeviceDialog extends StatefulWidget {
- 
-  EditDeviceDialog({this.index, this.devices, this.patchedDevices, this.callback});
-
-  final List<Device> devices;
-  final Map<int, PatchedDevice> patchedDevices;
+  final PatchedFixture fixture;
   final ValueChanged<List<int>> callback;
   final int index;
 
   @override
-  createState() => EditDeviceDialogState();
+  createState() => EditFixtureDialogState();
 }
 
-class EditDeviceDialogState extends State<EditDeviceDialog> {
-  bool clearAll;
+class EditFixtureDialogState extends State<EditFixtureDialog> {
+  bool _clearAll;
+  int _startAddress;
+  Key _startKey;
 
-  EditDeviceDialogState();
+
+  EditFixtureDialogState();
 
   @override
   initState() {
     super.initState();
-    clearAll = false;
+    _clearAll = false;
+    _startAddress = widget.fixture.fixture.patchAddress;
+    _startKey = Key("SK");
   }
 
   Widget build(BuildContext context) {
-    Mac searchMac = widget.patchedDevices[widget.index].mac;
-    Map<int, PatchedFixture> patchedFixtures;
-    List<PatchedFixture> fixtures = List<PatchedFixture>();
 
-    patchedFixtures = StoreProvider.of<AppState>(context).state.show.patchedFixtures;
 
-    patchedFixtures.values.forEach((fixture){
-      if(fixture.mac == searchMac){
-        fixtures.add(fixture);
-      }
-    });
-
-    return ListViewAlertDialog(
-      title: new Text('Fixtures Connected to ${widget.patchedDevices[widget.index].name}'),
+    return ListViewAlertButtonsDialog(
+      title: Text(
+        widget.fixture.name,
+        style: TextStyle(
+          fontSize: 23.0,
+          fontWeight: FontWeight.bold,
+          fontFamily: "Robot",
+        ),
+      ),
       actions: <Widget>[
-        new FlatButton(
-          child: const Text("Exit"),
-          onPressed: ()=> Navigator.pop(context),
+        BlizzardDialogButton(
+          text: (_clearAll) ? "Unpatch All" : "Unpatch Fixture",
+          color: Colors.red,
+          onTap: (){
+            if(_clearAll){
+              StoreProvider.of<AppState>(context).dispatch(ClearPatchFixture());
+            } else {
+              StoreProvider.of<AppState>(context).dispatch(RemovePatchFixture(
+                widget.index));
+            }
+            widget.callback([]);
+            Navigator.pop(context);
+          },
+          onLongPress: (){
+            setState(() {
+              _clearAll = !_clearAll;
+            });
+          },
+        ),
+        BlizzardDialogButton(
+          text: (widget.fixture.fixture.patchAddress == _startAddress) ? "Cancel" : "Save",
+          color: (widget.fixture.fixture.patchAddress == _startAddress) ? Colors.blue : Colors.green,
+          onTap: (){
+            StoreProvider.of<AppState>(context).dispatch(AddPatchFixture(
+              widget.index,
+              widget.fixture
+            ));
+            Navigator.pop(context);
+          },
         ),
       ],
       content: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
-          Expanded(
-            flex: 8,
-            child: (fixtures.length == 0) ?
-            Text(
-              "No Fixtures Connected",
-              style: Theme.of(context).textTheme.title,
-            ) :
-            ListView.builder(
-              itemCount: fixtures.length,
-              shrinkWrap: true,
-              itemBuilder: (BuildContext buildContext, int index){
-                return Tooltip(
-                  message: fixtures[index].name,
-                  child: ListTile(
-                    title: Text(
-                      fixtures[index].name,
-                      style: Theme.of(context).textTheme.title,
-                      overflow: TextOverflow.ellipsis,
-                      maxLines: 1,
-                    ),
-                    trailing: Text(
-                      "Address: ${fixtures[index].fixture.patchAddress}",
-                      style: Theme.of(context).textTheme.title,
-                      overflow: TextOverflow.ellipsis,
-                      maxLines: 1,
-                    ),
-                  ),
-                );
-              },
-            ),
-          ),
+          (widget.fixture.fixture.profile.length == 1) ?
+          Container() :
           Expanded(
             flex: 1,
-            child: Material(
-              color: Colors.red,
-              child: Container(
-                child: InkWell(
-                  child: Center(
-                    child: Text(
-                      (clearAll) ? "Unpatch All" : "Unpatch",
-                      style: TextStyle(
-                        fontSize: 21.0,
-                        fontFamily: "Robot",
-                        color: Colors.white,
+            child: Column(
+              children: <Widget>[
+                Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: Text(
+                    "Channel Mode",
+                    style: TextStyle(
+                      fontSize: 21.0,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+                Expanded(
+                  child: ListView.builder(
+                    primary: false,
+                    shrinkWrap: true,
+                    itemCount: widget.fixture.fixture.profile.length,
+                    itemBuilder: (context, index){
+                      return Card(
+                        child: ListTile(
+                          selected: (widget.fixture.fixture.channelMode == index),
+                          title: Text(
+                            widget.fixture.fixture.profile[index].name,
+                            style: TextStyle(
+                              fontSize: 21.0,
+                            )
+                          ),
+                          onTap: (){
+                            setState(() {
+                              widget.fixture.fixture.channelMode = index;
+                            });
+                          },
+                        )
+                      );
+                    }
+                  ),
+                )
+              ],
+            )
+          ),
+          Expanded(
+            flex: 2,
+            child: Card(
+              child: Column(
+                children: <Widget>[
+                  GestureDetector(
+                    child: Padding(
+                      padding: EdgeInsets.all(8.0),
+                      child: Text(
+                        "Address",
+                        style: TextStyle(
+                          fontSize: 21.0,
+                          fontWeight: FontWeight.bold,
+                        ),
+                        textAlign: TextAlign.center,
                       ),
                     ),
-                  ),
-                  onTap: (){
-                    if(clearAll){
-                      StoreProvider.of<AppState>(context).dispatch(ClearPatchDevice());
-                    } else {
-                      StoreProvider.of<AppState>(context).dispatch(RemovePatchDevice(
-                        widget.index));
+                    onLongPress: (){
+                      setState(() {
+                        _startKey = Key("SK${widget.fixture.fixture.patchAddress}");
+                        widget.fixture.fixture.patchAddress = _startAddress;
+                      });
                     }
-                    widget.callback([]);
-                    Navigator.pop(context);
-                  },
-                  onLongPress: (){
-                    setState(() {
-                      clearAll = !clearAll;
-                    });
-                  },
-                ),
-              )
+                  ),
+                  Theme(
+                    data: Theme.of(context).copyWith(
+                      textTheme: Theme.of(context).textTheme.copyWith(
+                        headline: TextStyle(
+                          fontSize: 50.0,
+                          fontWeight: FontWeight.bold
+                        ),
+                        body1: TextStyle(
+                          fontSize: 30.0,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.grey
+                        )
+                      )
+                    ),
+                    child: NumberPicker.integer(
+                      key: _startKey,
+                      listViewWidth: double.infinity,
+                      itemExtent: 69.0,
+                      initialValue: widget.fixture.fixture.patchAddress,
+                      minValue: 1,
+                      maxValue: 512,
+                      onChanged: (address){
+                      setState(() {
+                        widget.fixture.fixture.patchAddress = address;
+                      });
+                    }),
+                  )
+                ],
+              ),
             )
-          )
+          ),
         ]
       )
     );

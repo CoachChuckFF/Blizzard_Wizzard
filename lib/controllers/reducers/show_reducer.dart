@@ -10,6 +10,8 @@ final showReducer = combineReducers<Show>([
   new TypedReducer<Show, RemovePatchDevice>(_removePatchDevice),
   new TypedReducer<Show, ClearPatchDevice>(_clearPatchDevice),
   new TypedReducer<Show, AddPatchFixture>(_addPatchFixture),
+  new TypedReducer<Show, RemovePatchFixture>(_removePatchFixture),
+  new TypedReducer<Show, ClearPatchFixture>(_clearPatchFixture),
 ]);
 
 Show _addPatchDevice(Show state, AddPatchDevice action) {
@@ -50,6 +52,20 @@ Show _clearPatchDevice(Show state, ClearPatchDevice action) {
 Show _addPatchFixture(Show state, AddPatchFixture action) {
 
   return state.copyWith(
-    patchedFixtures: Map.from(state.patchedFixtures)..putIfAbsent(action.slot, () => action.fixture)
+    patchedFixtures: Map.from(state.patchedFixtures)..[action.slot] = action.fixture
   );
+}
+
+Show _removePatchFixture(Show state, RemovePatchFixture action) {
+
+  return state.copyWith(
+    patchedFixtures: Map.from(state.patchedFixtures)..remove(action.slot)
+  ); 
+}
+
+Show _clearPatchFixture(Show state, ClearPatchFixture action) {
+
+  return state.copyWith(
+    patchedFixtures: Map<int, PatchedFixture>()
+  ); 
 }

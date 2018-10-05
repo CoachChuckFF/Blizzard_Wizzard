@@ -130,6 +130,10 @@ class FixtureManager{
 
     if(!fixtureDir.existsSync()){
       fixtureDir.createSync();
+
+      _userFixtures = fixtures;
+      _updated = true;
+
       return fixtures;
     }
 
