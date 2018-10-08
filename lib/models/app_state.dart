@@ -22,7 +22,7 @@ class AppState {
     availableDevices: new List<Device>(), 
     hasKeyboard: false, 
     show: Show(
-      ques: const [],
+      cues: const [],
       patchedDevices: Map<int,PatchedDevice>(),
       patchedCues: Map<int,int>(),
       patchedFixtures: Map<int,PatchedFixture>(), 

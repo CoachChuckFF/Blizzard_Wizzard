@@ -1,14 +1,14 @@
 import 'package:blizzard_wizzard/models/scene.dart';
 
-class Que{
+class Cue{
   static int idCount = 1;
-  QueMode mode;
+  int id = 0;
 
   String name;
-  int id = 0;
+  CueMode mode;
   List<Scene> scenes;
 
-  Que(this.name, {this.id}){
+  Cue({this.name, this.id = 0, this.scenes = const []}){
     if(this.id == 0){
       this.id = idCount++;
     } else {
@@ -16,13 +16,14 @@ class Que{
         idCount = this.id + 1;
       }
     }
-    scenes = List<Scene>();
-
+    if(this.name == null){
+      this.name = "Cue $id";
+    }
   }
 
 }
 
-class QueMode{
+class CueMode{
   static const int chase = 1;
   static const int step = 2;
 }

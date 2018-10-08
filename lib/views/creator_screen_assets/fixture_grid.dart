@@ -188,6 +188,7 @@ class EditFixtureDialog extends StatefulWidget {
 class EditFixtureDialogState extends State<EditFixtureDialog> {
   bool _clearAll;
   int _startAddress;
+  int _startMode;
   Key _startKey;
 
 
@@ -198,6 +199,7 @@ class EditFixtureDialogState extends State<EditFixtureDialog> {
     super.initState();
     _clearAll = false;
     _startAddress = widget.fixture.fixture.patchAddress;
+    _startMode = widget.fixture.fixture.channelMode;
     _startKey = Key("SK");
   }
 
@@ -234,8 +236,10 @@ class EditFixtureDialogState extends State<EditFixtureDialog> {
           },
         ),
         BlizzardDialogButton(
-          text: (widget.fixture.fixture.patchAddress == _startAddress) ? "Cancel" : "Save",
-          color: (widget.fixture.fixture.patchAddress == _startAddress) ? Colors.blue : Colors.green,
+          text: (widget.fixture.fixture.patchAddress == _startAddress &&
+          widget.fixture.fixture.channelMode == _startMode) ? "Cancel" : "Save",
+          color: (widget.fixture.fixture.patchAddress == _startAddress &&
+          widget.fixture.fixture.channelMode == _startMode) ? Colors.blue : Colors.green,
           onTap: (){
             StoreProvider.of<AppState>(context).dispatch(AddPatchFixture(
               widget.index,

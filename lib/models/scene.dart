@@ -4,6 +4,7 @@ class Scene{
   static int sceneCount = 1;
   List<SceneUniverse> scene;
   String name;
+  int id;
   double xFade;
   double hold;
   double fadeIn;
@@ -20,6 +21,7 @@ class Scene{
     if(this.name == null){
       name = "Scene $sceneCount";
     }
+    id = sceneCount;
     sceneCount++;
   }
 
