@@ -10,27 +10,6 @@ class SceneItem extends StatelessWidget {
 
   SceneItem({Key key, @required this.scene, this.selected = false, this.index = 0, this.onTap, this.onDoubleTap}) : super(key: key);
 
-  String _timeToText(double seconds){
-    int hr, min, sec;
-
-    if(seconds < 60){
-      return "${seconds}s";
-    }
-
-    if(seconds < 60*60){
-      min = (seconds/60).truncate();
-      sec = ((seconds/60 - min) * 60).truncate();
-      return "${min}m${sec}s";
-    }
-
-    hr = (seconds/(60*60)).truncate();
-    min = ((seconds/(60*60) - hr) * 60).truncate();
-    sec = ((((seconds/(60*60) - hr) * 60) - min) * 60).truncate();
-
-    return "${hr}h${min}m${sec}s";
-
-  }
-
   @override
   Widget build(BuildContext context) {
 
@@ -103,7 +82,7 @@ class SceneItem extends StatelessWidget {
                     child: Text(
                       (scene.hold == 0) ?
                       "Halt" :
-                      "${_timeToText(scene.hold)}",
+                      "${scene.hold}",
                       overflow: TextOverflow.ellipsis,
                       maxLines: 1,
                       textAlign: TextAlign.right,
@@ -131,7 +110,7 @@ class SceneItem extends StatelessWidget {
                   Expanded(
                     flex:3,
                     child: Text(
-                      "${_timeToText(scene.xFade)}",
+                      "${scene.xFade}",
                       overflow: TextOverflow.ellipsis,
                       maxLines: 1,
                       textAlign: TextAlign.right,
@@ -159,7 +138,7 @@ class SceneItem extends StatelessWidget {
                   Expanded(
                     flex:3,
                     child: Text(
-                      "${_timeToText(scene.fadeIn)}",
+                      "${scene.fadeIn}",
                       overflow: TextOverflow.ellipsis,
                       maxLines: 1,
                       textAlign: TextAlign.right,
@@ -187,7 +166,7 @@ class SceneItem extends StatelessWidget {
                   Expanded(
                     flex:3,
                     child: Text(
-                      "${_timeToText(scene.fadeOut)}",
+                      "${scene.fadeOut}",
                       overflow: TextOverflow.ellipsis,
                       maxLines: 1,
                       textAlign: TextAlign.right,

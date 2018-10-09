@@ -133,6 +133,14 @@ class DeviceConfigureCategoryState{
   static const int protocol = 4;
 }
 
+class SceneEditState{
+  static const int name = 1;
+  static const int hold = 2;
+  static const int xFade = 3;
+  static const int fadeIn = 4;
+  static const int fadeOut = 5;
+}
+
 class DeviceConfigureCategoryColor{
   static const Color device = Colors.deepOrange;
   static const Color deviceAccent = Colors.deepOrangeAccent;

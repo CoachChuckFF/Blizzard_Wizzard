@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:blizzard_wizzard/models/scene.dart';
+import 'package:blizzard_wizzard/views/editor_screen_assets/scene_edit_dialog.dart';
 import 'package:blizzard_wizzard/views/editor_screen_assets/scene_item.dart';
 
 class SceneListArea extends StatefulWidget {
@@ -22,7 +23,7 @@ class SceneListAreaState extends State<SceneListArea> {
     scenes = List<Scene>();
     selected = List<bool>();
     for(int i = 0; i < 30; i++){
-      scenes.add(Scene(hold: i*30.3));
+      scenes.add(Scene());
       selected.add(false);
     }
   }
@@ -59,7 +60,12 @@ class SceneListAreaState extends State<SceneListArea> {
           selected: selected[i],
           index: i,
           onTap: (index){
-            //edit
+            showDialog(
+              context: context,
+              child: SceneEditDialog(
+                scene: scenes[index],
+              )
+            );
           },
           onDoubleTap: (index){
             setState(() {
@@ -82,3 +88,5 @@ class SceneListAreaState extends State<SceneListArea> {
     return list;
   }
 }
+
+

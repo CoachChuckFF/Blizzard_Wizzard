@@ -12,7 +12,7 @@ class ShowSelectorArea extends StatelessWidget {
       child: Column(
         children: <Widget>[
           Text(
-            "Cues",
+            "Shows",
             textAlign: TextAlign.center,
             style: TextStyle(
               fontSize: 20.0

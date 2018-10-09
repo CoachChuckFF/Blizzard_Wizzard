@@ -97,7 +97,6 @@ class DeviceNameCard extends SettingsCard {
         ),
       ),
     );
-
   }
 
   void _submit() {

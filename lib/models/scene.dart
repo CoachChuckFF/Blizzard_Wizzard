@@ -1,3 +1,4 @@
+import 'package:blizzard_wizzard/models/delay_time.dart';
 import 'package:blizzard_wizzard/models/mac.dart';
 
 class Scene{
@@ -5,17 +6,17 @@ class Scene{
   List<SceneUniverse> scene;
   String name;
   int id;
-  double xFade;
-  double hold;
-  double fadeIn;
-  double fadeOut;
+  DelayTime xFade;
+  DelayTime hold;
+  DelayTime fadeIn;
+  DelayTime fadeOut;
 
   Scene({
     this.name, 
-    this.xFade = 1.0, 
-    this.hold = 1.0,
-    this.fadeIn = 1.0,
-    this.fadeOut = 1.0,
+    this.xFade = const DelayTime(), 
+    this.hold = const DelayTime(sec: 1),
+    this.fadeIn = const DelayTime(),
+    this.fadeOut = const DelayTime(),
     this.scene = const <SceneUniverse>[],
   }){
     if(this.name == null){
