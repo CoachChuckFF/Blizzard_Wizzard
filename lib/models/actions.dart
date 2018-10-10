@@ -1,7 +1,9 @@
 import 'package:blizzard_wizzard/models/device.dart';
+import 'package:blizzard_wizzard/models/cue.dart';
 import 'package:blizzard_wizzard/models/patched_device.dart';
 import 'package:blizzard_wizzard/models/patched_fixture.dart';
-import 'package:blizzard_wizzard/models/mac.dart';
+import 'package:blizzard_wizzard/models/scene.dart';
+import 'package:blizzard_wizzard/models/show.dart';
 
 /* Is Loading */
 class SetLoaded{}
@@ -49,6 +51,12 @@ class ChangeShowName{
   ChangeShowName(this.name);
 }
 
+class UpdateShow{
+  final Show show;
+
+  UpdateShow(this.show);
+}
+
 // Patched Ques
 
 
@@ -88,6 +96,13 @@ class RemovePatchDevice{
 class ClearPatchDevice{
 
   ClearPatchDevice();
+}
+
+class UpdateSceneList{
+  final List<Scene> scenes;
+  final int cueIndex;
+
+  UpdateSceneList({this.scenes, this.cueIndex = 0});
 }
 
 

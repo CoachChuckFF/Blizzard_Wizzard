@@ -9,6 +9,9 @@ import 'package:blizzard_wizzard/models/blizzard_devices.dart';
 import 'package:blizzard_wizzard/models/device.dart';
 import 'package:blizzard_wizzard/models/fixture.dart';
 import 'package:blizzard_wizzard/models/globals.dart';
+import 'package:blizzard_wizzard/models/show.dart';
+import 'package:blizzard_wizzard/models/cue.dart';
+import 'package:blizzard_wizzard/models/scene.dart';
 import 'package:blizzard_wizzard/views/screens/blizzard_screen.dart';
 import 'package:blizzard_wizzard/controllers/artnet_controller.dart';
 import 'package:blizzard_wizzard/controllers/reducers.dart';
@@ -59,7 +62,33 @@ void initTestStructs(Store store){
 
   _store.dispatch(AddAvailableDevice(blizzardDev));
 
+  _initTestShow();
+
   _resetDeviceTick();
+}
+
+void _initTestShow(){
+  _store.dispatch(UpdateShow(
+    Show(
+      name: "Test",
+      cues: <Cue>[
+        Cue(),
+        Cue(
+          name: "1 Scene",
+          scenes: <Scene>[
+            Scene(),
+          ]
+        ),
+        Cue(
+          name: "2 Scenes",
+          scenes: <Scene>[
+            Scene(),
+            Scene(),
+          ]
+        )
+      ]
+    )
+  ));
 }
 
 void _resetDeviceTick(){

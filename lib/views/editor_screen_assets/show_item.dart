@@ -3,8 +3,11 @@ import 'package:flutter/material.dart';
 class ShowItem extends StatelessWidget {
   final String show;
   final bool selected;
+  final Function onTap;
+  final Function onLongPress;
+  final Function onDoubleTap;
 
-  ShowItem({Key key, @required this.show, this.selected}) : super(key: key);
+  ShowItem({Key key, @required this.show, this.selected, this.onTap, this.onLongPress, this.onDoubleTap}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -40,12 +43,9 @@ class ShowItem extends StatelessWidget {
             ],
           ),
         ),
-        onTap: (){
-          print("tap");
-        },
-        onDoubleTap: (){
-          print("double tap");
-        },
+        onTap: onTap,
+        onLongPress: onLongPress,
+        onDoubleTap: onDoubleTap,
       )
     );
   }

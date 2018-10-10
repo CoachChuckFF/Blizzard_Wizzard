@@ -46,6 +46,7 @@ class CueItem extends StatelessWidget {
         ),
         onTap: (){onTap(index);},
         onDoubleTap: (){onDoubleTap(index);},
+        onLongPress: (){onDoubleTap(index);},
       )
     );
   }

@@ -80,7 +80,7 @@ class SceneItem extends StatelessWidget {
                   Expanded(
                     flex:3,
                     child: Text(
-                      (scene.hold == 0) ?
+                      (scene.hold.getDelay() == 0) ?
                       "Halt" :
                       "${scene.hold}",
                       overflow: TextOverflow.ellipsis,

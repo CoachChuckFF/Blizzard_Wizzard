@@ -5,19 +5,29 @@ import 'package:blizzard_wizzard/models/cue.dart';
 
 
 class Show{
-  final List<Cue> cues;
-  final Map<int, PatchedFixture> patchedFixtures;
-  final Map<int, int> patchedCues;
-  final Map<int, PatchedDevice> patchedDevices;
-  final String name;
+  List<Cue> cues;
+  Map<int, PatchedFixture> patchedFixtures;
+  Map<int, PatchedDevice> patchedDevices;
+  Map<int, int> patchedCues;
+  String name;
 
   Show({
-    this.cues,
+    this.cues = const <Cue>[],
     this.patchedDevices,
     this.patchedCues,
     this.patchedFixtures,
     this.name
-  });
+  }){
+    if(this.patchedCues == null){
+      this.patchedCues = Map<int, int>();
+    }
+    if(this.patchedDevices == null){
+      this.patchedDevices = Map<int, PatchedDevice>();
+    }
+    if(this.patchedFixtures == null){
+      this.patchedFixtures = Map<int, PatchedFixture>();
+    }
+  }
 
   Show copyWith({
     List<Cue> cues,

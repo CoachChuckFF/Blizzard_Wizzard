@@ -1,57 +1,76 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_redux/flutter_redux.dart';
+import 'package:blizzard_wizzard/models/actions.dart';
+import 'package:blizzard_wizzard/models/app_state.dart';
 import 'package:blizzard_wizzard/models/scene.dart';
 import 'package:blizzard_wizzard/views/editor_screen_assets/scene_edit_dialog.dart';
 import 'package:blizzard_wizzard/views/editor_screen_assets/scene_item.dart';
 
 class SceneListArea extends StatefulWidget {
+  final List<Scene>scenes;
+  final int cueIndex;
 
-  SceneListArea({Key key}) : super(key: key);
+  SceneListArea({Key key, this.scenes, this.cueIndex}) : super(key: key);
 
   @override
   createState() => SceneListAreaState();
 }
 
 
-
 class SceneListAreaState extends State<SceneListArea> {
-  List<Scene> scenes;
-  List<bool> selected;
+  List<bool> _selected;
+  List<Scene> _scenes;
 
   void _handleEdit(Scene scene, int index){
-    int count = 1;
+    int count = 0;
 
-    if(selected.contains(true)){
-      for(int i = 0; i < selected.length; i++){
-        if(selected[i]){
-          scenes[i] = scenes[i].copyWith(
-            name: (scenes[index].name == scene.name) ?
-            null : "${scene.name} ${count++}",
-            hold: scene.hold,
-            xFade: scene.xFade,
-            fadeIn: scene.fadeIn,
-            fadeOut: scene.fadeOut,
-          );
+    if(_selected.contains(true)){
+      if(scene == null){
+        _scenes.removeWhere((test){
+          return _selected[count++];
+        });
+      } else {
+        count = 1;
+        for(int i = 0; i < _selected.length; i++){
+          if(_selected[i]){
+            _scenes[i] = _scenes[i].copyWith(
+              name: (_scenes[index].name == scene.name) ?
+              null : "${scene.name} ${count++}",
+              hold: scene.hold,
+              xFade: scene.xFade,
+              fadeIn: scene.fadeIn,
+              fadeOut: scene.fadeOut,
+            );
+          }
         }
       }
     } else {
-      scenes[index] = scenes[index].copyWith(
-        name: scene.name,
-        hold: scene.hold,
-        xFade: scene.xFade,
-        fadeIn: scene.fadeIn,
-        fadeOut: scene.fadeOut,
-      );
+      if(scene == null){
+        _scenes.removeAt(index);
+      } else {
+        _scenes[index] = _scenes[index].copyWith(
+          name: scene.name,
+          hold: scene.hold,
+          xFade: scene.xFade,
+          fadeIn: scene.fadeIn,
+          fadeOut: scene.fadeOut,
+        );
+      }
     }
+
+    StoreProvider.of<AppState>(context).dispatch(UpdateSceneList(
+      cueIndex: widget.cueIndex,
+      scenes: _scenes
+    ));
   }
+
 
   @override
   initState() {
     super.initState();
-    scenes = List<Scene>();
-    selected = List<bool>();
-    for(int i = 0; i < 30; i++){
-      scenes.add(Scene());
-      selected.add(false);
+    if(widget.scenes != null){
+      _scenes = List.from(widget.scenes);
+      _selected = List<bool>(widget.scenes.length)..fillRange(0, widget.scenes.length, false);
     }
   }
 
@@ -66,10 +85,20 @@ class SceneListAreaState extends State<SceneListArea> {
           ),
         ),
         children: _buildListView(),
-        onReorder: (pre, post){
-          setState(() {
-            scenes.insert(post, scenes.removeAt(pre));
-          });
+        onReorder: (_scenes == null) ? 
+        (pre, post){
+          print("Nope");
+        } :
+        (pre, post){
+          if(post == _scenes.length){
+            post = _scenes.length - 1;
+          }
+          print("$pre, $post");
+          _scenes.insert(post, _scenes.removeAt(pre));
+          StoreProvider.of<AppState>(context).dispatch(UpdateSceneList(
+            cueIndex: widget.cueIndex,
+            scenes: _scenes
+          ));
         },
       ),
     );
@@ -79,36 +108,43 @@ class SceneListAreaState extends State<SceneListArea> {
     List<Widget> list = List<Widget>();
     int i = 0;
 
-    scenes.forEach((scene){
+    if(_scenes == null){
+      return list..add(
+        Text(
+          "No Scenes Created",
+          key: Key("NADA_SCENES")
+        )
+      );
+    }
+
+    _scenes.forEach((scene){
       list.add(
         SceneItem(
           key: Key("SCENE_${scene.id}"),
           scene: scene,
-          selected: selected[i],
+          selected: _selected[i],
           index: i,
           onTap: (index){
             showDialog(
               context: context,
               child: SceneEditDialog(
-                scene: scenes[index],
+                scene: _scenes[index],
                 callback: (scene){
-                  setState(() {
-                    _handleEdit(scene, index);                                 
-                  });
+                  _handleEdit(scene, index);                                 
                 },
               )
             );
           },
           onDoubleTap: (index){
             setState(() {
-              if(selected[index]){
-                if(selected.contains(false)){
-                  selected.fillRange(0, selected.length, true);
+              if(_selected[index]){
+                if(_selected.contains(false)){
+                  _selected.fillRange(0, _selected.length, true);
                 } else {
-                  selected.fillRange(0, selected.length, false);
+                  _selected.fillRange(0, _selected.length, false);
                 }
               } else {
-                selected[index] = true;
+                _selected[index] = true;
               }    
             });
           },

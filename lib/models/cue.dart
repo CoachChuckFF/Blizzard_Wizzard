@@ -2,10 +2,9 @@ import 'package:blizzard_wizzard/models/scene.dart';
 
 class Cue{
   static int idCount = 1;
-  int id = 0;
+  int id;
 
   String name;
-  CueMode mode;
   List<Scene> scenes;
 
   Cue({this.name, this.id = 0, this.scenes = const []}){
@@ -21,9 +20,16 @@ class Cue{
     }
   }
 
-}
+  Cue copyWith({
+    String name,
+    List<Scene> scenes,
+    int id,
+  }) {
+    return Cue(
+      name: name ?? this.name,
+      scenes: scenes ?? this.scenes,
+      id: id ?? this.id,
+    );
+  }
 
-class CueMode{
-  static const int chase = 1;
-  static const int step = 2;
 }

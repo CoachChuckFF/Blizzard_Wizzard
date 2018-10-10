@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:blizzard_wizzard/models/cue.dart';
+import 'package:blizzard_wizzard/views/editor_screen_assets/cue_edit_dialog.dart';
 import 'package:blizzard_wizzard/views/editor_screen_assets/cue_item.dart';
 
 class CueListArea extends StatefulWidget {
@@ -13,6 +14,15 @@ class CueListArea extends StatefulWidget {
 class CueListAreaState extends State<CueListArea> {
   List<Cue> cues;
   int selected;
+
+  void _handleEdit(Cue cue, int index){
+
+    if(cue == null){
+      print("delete ${cues[index].name}");
+    } else {
+      cues[index] = cues[index].copyWith(name: cue.name);
+    }
+  }
 
   @override
   initState() {
@@ -61,6 +71,19 @@ class CueListAreaState extends State<CueListArea> {
                 selected = index;                
               });
             }
+          },
+          onDoubleTap: (index){
+            showDialog(
+              context: context,
+              child: CueEditDialog(
+                cue: cues[index],
+                callback: (cue){
+                  setState(() {
+                    _handleEdit(cue, index);                                 
+                  });
+                },
+              )
+            );
           },
         )
       );

@@ -139,6 +139,17 @@ class SceneEditState{
   static const int xFade = 3;
   static const int fadeIn = 4;
   static const int fadeOut = 5;
+  static const int delete = 6;
+}
+
+class CueEditState{
+  static const int name = 1;
+  static const int delete = 6;
+}
+
+class ShowEditState{
+  static const int name = 1;
+  static const int delete = 6;
 }
 
 class DeviceConfigureCategoryColor{

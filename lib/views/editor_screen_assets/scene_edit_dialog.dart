@@ -109,6 +109,28 @@ class SceneEditDialogState extends State<SceneEditDialog> {
                   },
                 )
               ),
+              Expanded(
+                child: new FlatButton(
+                  color: (_state == SceneEditState.delete) ?
+                    
+                    Colors.red : Colors.white,
+                  child: new Text(
+                    "Delete",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: (_state == SceneEditState.delete) ?
+                      Colors.white : Colors.black,
+                    ),
+                  ),
+                  onPressed: (){
+                    if(_state != SceneEditState.delete){
+                      setState(() {
+                        _state = SceneEditState.delete;
+                      });
+                    }
+                  },
+                )
+              ),
             ],
           ),
           Row(
@@ -267,7 +289,7 @@ class SceneEditDialogState extends State<SceneEditDialog> {
                         child: Text(
                           'CLEAR',
                           style: TextStyle(
-                            color: Colors.blue
+                            color: Theme.of(context).accentColor
                           )
                         ),
                         onPressed: (){ _onClear(); },
@@ -664,6 +686,38 @@ class SceneEditDialogState extends State<SceneEditDialog> {
         return _scene.fadeOut;
         break;
     }
+
+    return DelayTime();
+  }
+
+  Widget _buildDelete(){
+    return Center(
+      child: Row(
+        children: <Widget>[
+          Expanded(
+            child: Tooltip(
+              message: "Will delete all selected",
+              preferBelow: false,
+              child: FlatButton(
+                color: Colors.red,
+                child:Text(
+                  "Delete",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 18.0,
+                    color: Colors.white
+                  ),
+                ),
+                onPressed: (){
+                  widget.callback(null);
+                  Navigator.pop(context);
+                }
+              ),
+            )
+          ),
+        ]
+      ),
+    );
   }
 
   Widget build(BuildContext context) {
@@ -686,6 +740,9 @@ class SceneEditDialogState extends State<SceneEditDialog> {
             });
           }
         ));
+        break;
+      case SceneEditState.delete:
+        children.add(_buildDelete());
         break;
       case SceneEditState.xFade:
         children.add(_buildFade(

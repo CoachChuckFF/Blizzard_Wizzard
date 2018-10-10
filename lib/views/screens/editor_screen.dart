@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_redux/flutter_redux.dart';
+import 'package:blizzard_wizzard/models/app_state.dart';
+import 'package:blizzard_wizzard/models/scene.dart';
 import 'package:blizzard_wizzard/views/editor_screen_assets/scene_list_area.dart';
-import 'package:blizzard_wizzard/views/editor_screen_assets/show_selector_area.dart';
+import 'package:blizzard_wizzard/views/editor_screen_assets/show_area.dart';
 import 'package:blizzard_wizzard/views/editor_screen_assets/cue_list_area.dart';
 
 class EditorScreen extends StatefulWidget {
@@ -9,11 +12,16 @@ class EditorScreen extends StatefulWidget {
 }
 
 class EditorScreenState extends State<EditorScreen> {
-
+  String tempShow;
+  int _cueIndex;
 
   @override
   void initState() {
     super.initState();
+
+    _cueIndex = 2;
+
+    tempShow = "Hello world!";
   }
 
   @override
@@ -35,8 +43,17 @@ class EditorScreenState extends State<EditorScreen> {
                         data: ThemeData(
                           primarySwatch: Colors.green
                         ),
-                        child: ShowSelectorArea(
-                          name: "Hello World"  
+                        child: ShowArea(
+                          name: tempShow,
+                          nameChanged: (name){
+                            setState(() {
+                              if(name == null){
+                                print("delete $tempShow");
+                              } else {
+                                tempShow = name; 
+                              }                             
+                            });
+                          },  
                         ),
                       )
                     ),
@@ -54,8 +71,17 @@ class EditorScreenState extends State<EditorScreen> {
               ),
               Expanded(
                 flex: 6,
-                child: SceneListArea(
-                  key: Key("Scenes")
+                child: StoreConnector<AppState, List<Scene>>(
+                  converter: (store) => (store.state.show.cues.length == 0) ?
+                    null :
+                    store.state.show.cues[_cueIndex].scenes,
+                  builder: (context, scenes) {
+                    return SceneListArea(
+                      key: Key("Scenes"),
+                      scenes: scenes,
+                      cueIndex: _cueIndex,
+                    );
+                  },
                 ),
               ),
             ],
