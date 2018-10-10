@@ -30,6 +30,7 @@ class SceneEditDialog extends StatefulWidget {
 class SceneEditDialogState extends State<SceneEditDialog> {
   TextEditingController _textController = TextEditingController();
   Key _scrollKey;
+  Key _fadeKey;
   int _scrollIndex;
   Scene _scene;
   int _state;
@@ -54,6 +55,8 @@ class SceneEditDialogState extends State<SceneEditDialog> {
 
     _scrollIndex = 0;
     _scrollKey = Key("SCROLL_KEY_$_scrollIndex");
+
+    _fadeKey = Key("FADE_KEY_$_scrollIndex");
   }
 
   Widget _buildButtonBar(){
@@ -127,6 +130,7 @@ class SceneEditDialogState extends State<SceneEditDialog> {
                     if(_state != SceneEditState.xFade){
                       setState(() {
                         _state = SceneEditState.xFade;
+                        _fadeKey = Key("FADE_KEY_${++_scrollIndex}"); 
                       });
                     }
                   },
@@ -148,6 +152,7 @@ class SceneEditDialogState extends State<SceneEditDialog> {
                     if(_state != SceneEditState.fadeIn){
                       setState(() {
                         _state = SceneEditState.fadeIn;
+                        _fadeKey = Key("FADE_KEY_${++_scrollIndex}"); 
                       });
                     }
                   },
@@ -169,6 +174,7 @@ class SceneEditDialogState extends State<SceneEditDialog> {
                     if(_state != SceneEditState.fadeOut){
                       setState(() {
                         _state = SceneEditState.fadeOut;
+                        _fadeKey = Key("FADE_KEY_${++_scrollIndex}"); 
                       });
                     }
                   },
@@ -258,7 +264,12 @@ class SceneEditDialogState extends State<SceneEditDialog> {
                   child: ButtonBar(
                     children: <Widget>[
                       FlatButton(
-                        child: const Text('CLEAR'),
+                        child: Text(
+                          'CLEAR',
+                          style: TextStyle(
+                            color: Colors.blue
+                          )
+                        ),
                         onPressed: (){ _onClear(); },
                       ),
                     ],
@@ -274,7 +285,6 @@ class SceneEditDialogState extends State<SceneEditDialog> {
   }
 
   Widget _buildHold(){
-
     return Card(
       child: Row(
         children: <Widget>[
@@ -446,7 +456,120 @@ class SceneEditDialogState extends State<SceneEditDialog> {
     );
   }
 
-  Widget _buildZero({String message = "Zero", Function onTap, Function onDoubleTap, Function onLongPress}){
+  Widget _buildFade(int state, ValueChanged<int> onMinChange, ValueChanged<double> onSecChange){
+
+    return Card(
+      key: _fadeKey,
+      child: Row(
+        children: <Widget>[
+          Expanded(
+            flex: 2,
+            child: Column(
+              children: <Widget>[
+                GestureDetector(
+                  child: Padding(
+                    padding: EdgeInsets.all(10.0),
+                    child: Text(
+                      (_getTime(state).min == 0) ?
+                      "Min" : "${_getTime(state).min}m",
+                      style: TextStyle(
+                        fontSize: 21.0,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                  onTap: (){
+                    setState(() {
+                      
+                    });
+                  }
+                ),
+                Theme(
+                  data: Theme.of(context).copyWith(
+                    accentColor: Colors.green,
+                    textTheme: Theme.of(context).textTheme.copyWith(
+                      headline: TextStyle(
+                        fontSize: 30.0,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.red,
+                      ),
+                      body1: TextStyle(
+                        fontSize: 20.0,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.grey
+                      )
+                    )
+                  ),
+                  child: NumberPicker.integer(
+                    listViewWidth: widget.itemWidth,
+                    itemExtent: widget.itemExtent,
+                    initialValue: _getTime(state).min,
+                    minValue: 0,
+                    maxValue: 59,
+                    onChanged: (min){
+                      onMinChange(min);
+                  }),
+                )
+              ],
+            )
+          ),
+          Expanded(
+            flex: 3,
+            child: Column(
+              children: <Widget>[
+                GestureDetector(
+                  child: Padding(
+                    padding: EdgeInsets.all(10.0),
+                    child: Text(
+                      (_getTime(state).getDoubleSecond() == 0) ?
+                      "Sec" : "${_getTime(state).getDoubleSecond()}s",
+                      style: TextStyle(
+                        fontSize: 21.0,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                  onTap: (){
+                    setState(() {
+                      
+                    });
+                  }
+                ),
+                Theme(
+                  data: Theme.of(context).copyWith(
+                    textTheme: Theme.of(context).textTheme.copyWith(
+                      headline: TextStyle(
+                        fontSize: 30.0,
+                        fontWeight: FontWeight.bold
+                      ),
+                      body1: TextStyle(
+                        fontSize: 20.0,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.grey
+                      )
+                    )
+                  ),
+                  child: NumberPicker.decimal(
+                    listViewWidth: widget.itemWidth,
+                    itemExtent: widget.itemExtent,
+                    initialValue: _getTime(state).getDoubleSecond(),
+                    minValue: 0,
+                    maxValue: 59,
+                    onChanged: (sec){
+                      onSecChange(sec);
+                  }),
+                )
+              ],
+            )
+          ),
+        ],
+      )
+    );
+  }
+
+  Widget _buildHaltButton({Function onTap, Function onDoubleTap, Function onLongPress}){
     return Row(
       children: <Widget>[
         Expanded(
@@ -454,7 +577,7 @@ class SceneEditDialogState extends State<SceneEditDialog> {
             child: FlatButton(
               color: Colors.black,
               child:Text(
-                message,
+                "HALT",
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 18.0,
@@ -474,6 +597,75 @@ class SceneEditDialogState extends State<SceneEditDialog> {
     );
   }
 
+  Widget _buildZero(int state, Function onTap){
+    return Row(
+      children: <Widget>[
+        Expanded(
+          child: InkWell(
+            child: FlatButton(
+              color: Colors.black,
+              child:Text(
+                "Zero",
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 18.0,
+                  color: Colors.white
+                ),
+              ),
+              onPressed: onTap
+            ),
+            onLongPress: (){
+              setState(() {
+                _scene.xFade = DelayTime();
+                _scene.fadeIn = DelayTime();
+                _scene.fadeOut = DelayTime();
+                _fadeKey = Key("FADE_KEY_${++_scrollIndex}"); 
+              });
+            },
+          ),
+        ),
+        Expanded(
+          child: Tooltip(
+            message: "Set all fades to ${_getTime(state)}",
+            preferBelow: false,
+            child: FlatButton(
+              color: Colors.grey,
+              child:Text(
+                "Set All",
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 18.0,
+                  color: Colors.white
+                ),
+              ),
+              onPressed: (){
+                setState(() {
+                  _scene.xFade = _getTime(state).copyWith();
+                  _scene.fadeIn = _getTime(state).copyWith();
+                  _scene.fadeOut = _getTime(state).copyWith();
+                });
+              }
+            ),
+          ),
+        ),
+      ]
+    );
+  }
+
+  DelayTime _getTime(int state){
+    switch(_state){
+      case SceneEditState.xFade:
+        return _scene.xFade;
+        break;
+      case SceneEditState.fadeIn:
+        return _scene.fadeIn;
+        break;
+      case SceneEditState.fadeOut:
+        return _scene.fadeOut;
+        break;
+    }
+  }
+
   Widget build(BuildContext context) {
 
     List<Widget> children = List<Widget>();
@@ -486,8 +678,7 @@ class SceneEditDialogState extends State<SceneEditDialog> {
         break;
       case SceneEditState.hold:
         children.add(_buildHold());
-        children.add(_buildZero(
-          message: "HALT",
+        children.add(_buildHaltButton(
           onTap: (){
             setState(() {
               _scene.hold = DelayTime();
@@ -497,9 +688,77 @@ class SceneEditDialogState extends State<SceneEditDialog> {
         ));
         break;
       case SceneEditState.xFade:
+        children.add(_buildFade(
+          _state,
+          (min){
+            setState(() {
+              _scene.xFade = _scene.xFade.copyWith(min: min);
+            });
+          },
+          (sec){
+            setState(() {
+              _scene.xFade = _scene.xFade.copyWithDouble(sec);
+            });
+          }
+        ));
+        children.add(_buildZero(
+          _state,
+          (){
+            setState(() {
+              _scene.xFade = DelayTime();
+              _fadeKey = Key("FADE_KEY_${++_scrollIndex}"); 
+            });
+          }
+        ));
+        break;
       case SceneEditState.fadeIn:
+        children.add(_buildFade(
+          _state,
+          (min){
+            setState(() {
+              _scene.fadeIn = _scene.fadeIn.copyWith(min: min);
+            });
+          },
+          (sec){
+            setState(() {
+              _scene.fadeIn = _scene.fadeIn.copyWithDouble(sec);
+            });
+          }
+        ));
+        children.add(_buildZero(
+          _state,
+          (){
+            setState(() {
+              _scene.fadeIn = DelayTime();
+              _fadeKey = Key("FADE_KEY_${++_scrollIndex}"); 
+            });
+          }
+        ));
+        break;
       case SceneEditState.fadeOut:
-
+        children.add(_buildFade(
+          _state,
+          (min){
+            setState(() {
+              _scene.fadeOut = _scene.fadeOut.copyWith(min: min);
+            });
+          },
+          (sec){
+            setState(() {
+              _scene.fadeOut = _scene.fadeOut.copyWithDouble(sec);
+            });
+          }
+        ));
+        children.add(_buildZero(
+          _state,
+          (){
+            setState(() {
+              _scene.fadeOut = DelayTime();
+              _fadeKey = Key("FADE_KEY_${++_scrollIndex}"); 
+            });
+          }
+        ));
+        break;
     }
 
     return ListViewAlertButtonsDialog(
@@ -530,7 +789,9 @@ class SceneEditDialogState extends State<SceneEditDialog> {
           text: "Save",
           color: Colors.green,
           onTap: (){
-            //make sure to save name
+            _scene.name = _textController.text;
+            widget.callback(_scene);
+            Navigator.of(context).pop();
           }
         ),
       ],

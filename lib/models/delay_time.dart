@@ -14,7 +14,7 @@ class DelayTime{
 
   double getDoubleSecond(){
   
-    return ((this.sec + (this.ms.toDouble() / 100)) * 10).round() / 10;
+    return ((this.sec + (this.ms.toDouble() / 1000)) * 10).round() / 10;
   }
 
   @override
@@ -28,7 +28,7 @@ class DelayTime{
       time += "${min}m";
     }
 
-    time += "$sec.${(ms/100).truncate()}";
+    time += "$sec.${(ms/100).truncate()}s";
 
     return time;
   }
@@ -41,7 +41,7 @@ class DelayTime{
       hr: hr ?? this.hr,
       min: min ?? this.min,
       sec: sec.truncate(),
-      ms: ((sec - sec.truncate()) * 100).truncate()
+      ms: ((sec - sec.truncate()) * 1000).truncate()
     );
   }
 

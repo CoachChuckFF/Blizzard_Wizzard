@@ -17,6 +17,33 @@ class SceneListAreaState extends State<SceneListArea> {
   List<Scene> scenes;
   List<bool> selected;
 
+  void _handleEdit(Scene scene, int index){
+    int count = 1;
+
+    if(selected.contains(true)){
+      for(int i = 0; i < selected.length; i++){
+        if(selected[i]){
+          scenes[i] = scenes[i].copyWith(
+            name: (scenes[index].name == scene.name) ?
+            null : "${scene.name} ${count++}",
+            hold: scene.hold,
+            xFade: scene.xFade,
+            fadeIn: scene.fadeIn,
+            fadeOut: scene.fadeOut,
+          );
+        }
+      }
+    } else {
+      scenes[index] = scenes[index].copyWith(
+        name: scene.name,
+        hold: scene.hold,
+        xFade: scene.xFade,
+        fadeIn: scene.fadeIn,
+        fadeOut: scene.fadeOut,
+      );
+    }
+  }
+
   @override
   initState() {
     super.initState();
@@ -64,6 +91,11 @@ class SceneListAreaState extends State<SceneListArea> {
               context: context,
               child: SceneEditDialog(
                 scene: scenes[index],
+                callback: (scene){
+                  setState(() {
+                    _handleEdit(scene, index);                                 
+                  });
+                },
               )
             );
           },
