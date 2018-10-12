@@ -102,9 +102,69 @@ class UpdateSceneList{
   final List<Scene> scenes;
   final int cueIndex;
 
-  UpdateSceneList({this.scenes, this.cueIndex = 0});
+  UpdateSceneList(this.scenes, this.cueIndex);
 }
 
+class SetCurrentScene{
+  final int currentScene;
+
+  SetCurrentScene(this.currentScene);
+}
+
+class AddScene{
+  final Scene scene;
+  final int cueIndex;
+
+  AddScene(this.scene, this.cueIndex);
+}
+
+class RemoveScene{
+  final int sceneIndex;
+  final int cueIndex;
+
+  RemoveScene(this.sceneIndex, this.cueIndex);
+
+}
+
+class UpdateScene{
+  final Scene scene;
+  final int sceneIndex;
+  final int cueIndex;
+
+  UpdateScene(this.scene, this.sceneIndex, this.cueIndex);
+
+}
+
+class UpdateCueList{
+  final List<Cue> cues;
+
+  UpdateCueList(this.cues);
+}
+
+class SetCurrentCue{
+  final int currentCue;
+
+  SetCurrentCue(this.currentCue);
+}
+
+class AddCue{
+  final Cue cue;
+
+  AddCue(this.cue);
+}
+
+class RemoveCue{
+  final int cueIndex;
+
+  RemoveCue(this.cueIndex);
+}
+
+class UpdateCue{
+  final Cue cue;
+  final int cueIndex;
+
+  UpdateCue(this.cue, this.cueIndex);
+}
 
 
 

@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:blizzard_wizzard/models/actions.dart';
 import 'package:blizzard_wizzard/models/app_state.dart';
+import 'package:blizzard_wizzard/models/device.dart';
+import 'package:blizzard_wizzard/models/globals.dart';
+import 'package:blizzard_wizzard/models/mac.dart';
 import 'package:blizzard_wizzard/models/scene.dart';
 import 'package:blizzard_wizzard/views/editor_screen_assets/scene_edit_dialog.dart';
 import 'package:blizzard_wizzard/views/editor_screen_assets/scene_item.dart';
@@ -20,6 +23,42 @@ class SceneListArea extends StatefulWidget {
 class SceneListAreaState extends State<SceneListArea> {
   List<bool> _selected;
   List<Scene> _scenes;
+
+  void _showScene(Scene scene){
+    int index = 0;
+    scene.sceneData.forEach((data){
+      Device dev = StoreProvider.of<AppState>(context).state.availableDevices.firstWhere((device){
+        return device.mac == data.mac;
+      }, orElse: (){return null;});
+
+      if(dev != null){
+        data.dmx.forEach((val){
+          dev.dmxData.setDmxValue(index++, val);
+        });
+        tron.server.sendPacket(dev.dmxData.udpPacket, dev.address);
+      }
+    });
+  }
+
+  void _hideScenes(){
+    List<Mac> macs = List<Mac>();
+
+    _scenes.forEach((scene){
+      for(int i = 0; i < scene.sceneData.length; i++){
+        if(!macs.contains(scene.sceneData[i].mac)){
+          macs.add(scene.sceneData[i].mac);
+        }
+      }
+    });
+
+    StoreProvider.of<AppState>(context).state.availableDevices.where((device){
+      return macs.contains(device.mac);
+    }).forEach((device){
+      device.dmxData.blackout();
+      tron.server.sendPacket(device.dmxData.udpPacket, device.address);
+    });
+    
+  }
 
   void _handleEdit(Scene scene, int index){
     int count = 0;
@@ -59,8 +98,8 @@ class SceneListAreaState extends State<SceneListArea> {
     }
 
     StoreProvider.of<AppState>(context).dispatch(UpdateSceneList(
-      cueIndex: widget.cueIndex,
-      scenes: _scenes
+      _scenes,
+      widget.cueIndex,
     ));
   }
 
@@ -85,19 +124,15 @@ class SceneListAreaState extends State<SceneListArea> {
           ),
         ),
         children: _buildListView(),
-        onReorder: (_scenes == null) ? 
-        (pre, post){
-          print("Nope");
-        } :
-        (pre, post){
+        onReorder: (pre, post){
           if(post == _scenes.length){
             post = _scenes.length - 1;
           }
           print("$pre, $post");
           _scenes.insert(post, _scenes.removeAt(pre));
           StoreProvider.of<AppState>(context).dispatch(UpdateSceneList(
-            cueIndex: widget.cueIndex,
-            scenes: _scenes
+            _scenes,
+            widget.cueIndex,
           ));
         },
       ),
@@ -125,6 +160,7 @@ class SceneListAreaState extends State<SceneListArea> {
           selected: _selected[i],
           index: i,
           onTap: (index){
+            _showScene(_scenes[index]);
             showDialog(
               context: context,
               child: SceneEditDialog(
@@ -139,11 +175,14 @@ class SceneListAreaState extends State<SceneListArea> {
             setState(() {
               if(_selected[index]){
                 if(_selected.contains(false)){
+                  _showScene(_scenes[index]);
                   _selected.fillRange(0, _selected.length, true);
                 } else {
+                  _hideScenes();
                   _selected.fillRange(0, _selected.length, false);
                 }
               } else {
+                _showScene(_scenes[index]);
                 _selected[index] = true;
               }    
             });

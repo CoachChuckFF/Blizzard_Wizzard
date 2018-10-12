@@ -10,13 +10,17 @@ class Show{
   Map<int, PatchedDevice> patchedDevices;
   Map<int, int> patchedCues;
   String name;
+  int currentCue;
+  int currentScene;
 
   Show({
     this.cues = const <Cue>[],
     this.patchedDevices,
     this.patchedCues,
     this.patchedFixtures,
-    this.name
+    this.name,
+    this.currentCue = 0,
+    this.currentScene = 0,
   }){
     if(this.patchedCues == null){
       this.patchedCues = Map<int, int>();
@@ -34,13 +38,17 @@ class Show{
     Map<int, int> patchedCues,
     Map<int, PatchedFixture> patchedFixtures,
     Map<int, PatchedDevice> patchedDevices,
-    String name }){
+    String name,
+    int currentCue,
+    int currentScene
+    }){
     return Show(
       cues: cues ?? this.cues,
       patchedFixtures: patchedFixtures ?? this.patchedFixtures,
       patchedCues: patchedCues ?? this.patchedCues,
       patchedDevices: patchedDevices ?? this.patchedDevices,
       name: name ?? this.name,
+      currentCue: currentCue ?? this.currentCue,
     );
   }
 

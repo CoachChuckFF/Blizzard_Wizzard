@@ -1,37 +1,76 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_redux/flutter_redux.dart';
+import 'package:blizzard_wizzard/models/actions.dart';
+import 'package:blizzard_wizzard/models/app_state.dart';
 import 'package:blizzard_wizzard/models/cue.dart';
+import 'package:blizzard_wizzard/models/globals.dart';
+import 'package:blizzard_wizzard/models/mac.dart';
 import 'package:blizzard_wizzard/views/editor_screen_assets/cue_edit_dialog.dart';
 import 'package:blizzard_wizzard/views/editor_screen_assets/cue_item.dart';
 
 class CueListArea extends StatefulWidget {
+  final List<Cue> cues;
+  final ValueChanged<int> callback;
+  final int startIndex;
 
-  CueListArea({Key key}) : super(key: key);
+  CueListArea({Key key, this.cues, this.callback, this.startIndex = 0}) : super(key: key);
 
   @override
   createState() => CueListAreaState();
 }
 
 class CueListAreaState extends State<CueListArea> {
-  List<Cue> cues;
-  int selected;
+  List<Cue> _cues;
+  int _selected;
+
+  void _hideAllScenes(){
+    List<Mac> macs = List<Mac>();
+
+    _cues[_selected].scenes.forEach((scene){
+      scene.sceneData.forEach((data){
+        if(!macs.contains(data.mac)){
+          macs.add(data.mac);
+        }
+      });
+    });
+
+    StoreProvider.of<AppState>(context).state.availableDevices.where((device){
+      return macs.contains(device.mac);
+    }).forEach((device){
+      device.dmxData.blackout();
+      tron.server.sendPacket(device.dmxData.udpPacket, device.address);
+    });
+  }
 
   void _handleEdit(Cue cue, int index){
 
     if(cue == null){
-      print("delete ${cues[index].name}");
+      if(index == _selected){
+        _hideAllScenes();
+        setState(() {
+          _selected = 0;               
+        });
+      } else if(index < _selected){
+        setState(() {
+          _selected--;               
+        });
+      }
+      _cues.removeAt(index);
+      widget.callback(_selected);
     } else {
-      cues[index] = cues[index].copyWith(name: cue.name);
+      _cues[index] = _cues[index].copyWith(name: cue.name);
     }
+
+    StoreProvider.of<AppState>(context).dispatch(UpdateCueList(
+      _cues,
+    ));
   }
 
   @override
   initState() {
     super.initState();
-    cues = List<Cue>();
-    selected = 0;
-    for(int i = 0; i < 50; i++){
-      cues.add(Cue());
-    }
+    _cues = List.from(widget.cues);
+    _selected = widget.startIndex;
   }
 
   @override
@@ -58,17 +97,19 @@ class CueListAreaState extends State<CueListArea> {
       ),
     );
 
-    cues.forEach((cue){
+    _cues.forEach((cue){
       list.add(
         CueItem(
           key: Key("CUE_${cue.id}"),
           cue: cue,
-          selected: (i == selected),
+          selected: (i == _selected),
           index: i++,
           onTap: (index){
-            if(index != selected){
+            if(index != _selected){
               setState(() {
-                selected = index;                
+                _hideAllScenes();
+                _selected = index;    
+                widget.callback(index);       
               });
             }
           },
@@ -76,7 +117,7 @@ class CueListAreaState extends State<CueListArea> {
             showDialog(
               context: context,
               child: CueEditDialog(
-                cue: cues[index],
+                cue: _cues[index],
                 callback: (cue){
                   setState(() {
                     _handleEdit(cue, index);                                 

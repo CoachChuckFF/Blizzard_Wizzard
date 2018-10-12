@@ -1,17 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
+import 'package:blizzard_wizzard/models/actions.dart';
 import 'package:blizzard_wizzard/models/app_state.dart';
+import 'package:blizzard_wizzard/models/cue.dart';
 import 'package:blizzard_wizzard/models/device.dart';
 import 'package:blizzard_wizzard/models/fixture.dart';
 import 'package:blizzard_wizzard/models/globals.dart';
 import 'package:blizzard_wizzard/models/mac.dart';
 import 'package:blizzard_wizzard/models/patched_device.dart';
 import 'package:blizzard_wizzard/models/patched_fixture.dart';
+import 'package:blizzard_wizzard/models/scene.dart';
 import 'package:blizzard_wizzard/views/creator_screen_assets/device_grid.dart';
 import 'package:blizzard_wizzard/views/creator_screen_assets/fixture_grid.dart';
 import 'package:blizzard_wizzard/views/creator_screen_assets/scene_button_bar.dart';
 import 'package:blizzard_wizzard/views/creator_screen_assets/scene_manipulator_area.dart';
 import 'package:blizzard_wizzard/views/creator_screen_assets/scene_manipulator_button_bar.dart';
+import 'package:blizzard_wizzard/views/creator_screen_assets/scene_select_dialog.dart';
 
 
 class CreatorScreen extends StatefulWidget {
@@ -28,6 +32,193 @@ class CreatorScreenState extends State<CreatorScreen> {
   
   int configState;
   int deviceFixtureState;
+
+  void _handleSaveTap(){
+    showDialog(
+      context: context,
+      child: SceneSelectDialog(
+        isLoad: false,
+        selectedDevices: (deviceFixtureState == DeviceFixtureGridState.device) ? selectedDevices: null,
+        selectedFixtures: (deviceFixtureState == DeviceFixtureGridState.fixture) ? selectedFixtures: null,
+      )
+    );
+  }
+
+  void _handleSaveDoubleTap(){
+    List<SceneData> data = List<SceneData>();
+    List<Mac> macs = List<Mac>();
+
+    if(deviceFixtureState == DeviceFixtureGridState.fixture){
+      selectedFixtures.forEach((key){
+        macs.add(StoreProvider.of<AppState>(context).state.show.patchedFixtures[key].mac);
+      });
+    } else {
+      selectedDevices.forEach((key){
+        macs.add(StoreProvider.of<AppState>(context).state.show.patchedDevices[key].mac);
+      });
+    }
+
+    StoreProvider.of<AppState>(context).state.availableDevices.forEach((device){
+      if(macs.contains(device.mac)){
+        data.add(
+          SceneData(
+            device.mac,
+            List.from(device.dmxData.dmx)
+          )
+        );
+      }
+    });
+
+    if(StoreProvider.of<AppState>(context).state.show.cues.length == 0){
+      StoreProvider.of<AppState>(context).dispatch(AddCue(
+        Cue(
+          scenes: List<Scene>()..add(
+            Scene(
+              sceneData: data
+            )
+          ) 
+        )
+      ));
+      StoreProvider.of<AppState>(context).dispatch(SetCurrentCue(0));
+    } else {
+      Scene newScene = Scene(
+        sceneData:data,
+      );
+      Scene lastScene = StoreProvider.of<AppState>(context).state.show.cues.last.scenes.last;
+
+      if(lastScene != null){
+        newScene = newScene.copyWith(
+          hold: lastScene.hold,
+          xFade: lastScene.xFade,
+          fadeIn: lastScene.fadeIn,
+          fadeOut: lastScene.fadeOut,
+        );
+      }
+
+      StoreProvider.of<AppState>(context).dispatch(AddScene(
+        newScene,
+        StoreProvider.of<AppState>(context).state.show.currentCue,
+      ));
+    }
+  }
+
+  void _handleLoadTap(){
+    showDialog(
+      context: context,
+      child: SceneSelectDialog(
+        isLoad: true,
+        selectedDevices: (deviceFixtureState == DeviceFixtureGridState.device) ? selectedDevices: null,
+        selectedFixtures: (deviceFixtureState == DeviceFixtureGridState.fixture) ? selectedFixtures: null,
+        callback: (selected){
+          if(deviceFixtureState == DeviceFixtureGridState.device){
+            setState((){
+              selectedDevices = selected;
+            });
+          } else {
+            setState((){
+              selectedFixtures = selected;
+            });
+          }
+        },
+      )
+    );
+  }
+
+  void _handleLoadDoubleTap(){
+
+    if(StoreProvider.of<AppState>(context).state.show.cues.length == 0){
+      return;
+    }
+
+    Cue cue = StoreProvider.of<AppState>(context).state.show.cues[StoreProvider.of<AppState>(context).state.show.currentCue];
+
+    if(cue.scenes.length == 0){
+      return;
+    }
+
+    Scene scene = cue.scenes.last;
+
+    scene.sceneData.forEach((data){
+      Device dev = StoreProvider.of<AppState>(context).state.availableDevices.firstWhere((device){
+        return device.mac == data.mac;
+      }, orElse: (){return null;});
+
+      if(dev != null){
+        int i = 0;
+
+        if(deviceFixtureState == DeviceFixtureGridState.fixture){
+          StoreProvider.of<AppState>(context).state.show.patchedFixtures.forEach((key, value){
+            if(value.mac == data.mac){
+              if(!selectedFixtures.contains(key)){
+                selectedFixtures.add(key);
+              }
+            }
+          });
+        } else {
+          StoreProvider.of<AppState>(context).state.show.patchedDevices.forEach((key, value){
+            if(value.mac == data.mac){
+              if(!selectedDevices.contains(key)){
+                selectedDevices.add(key);
+              }
+            }
+          });
+        }
+
+        data.dmx.forEach((value){
+          dev.dmxData.setDmxValue(i++, value);
+        });
+
+        tron.server.sendPacket(dev.dmxData.udpPacket, dev.address);
+      }
+
+    });
+
+    setState(() {});
+  }
+
+  void _handleBlackoutTap(){
+    List<Mac> macs = List<Mac>();
+
+    if(deviceFixtureState == DeviceFixtureGridState.fixture){
+      selectedFixtures.forEach((key){
+        macs.add(StoreProvider.of<AppState>(context).state.show.patchedFixtures[key].mac);
+      });
+    } else {
+      selectedDevices.forEach((key){
+        macs.add(StoreProvider.of<AppState>(context).state.show.patchedDevices[key].mac);
+      });
+    }
+
+    StoreProvider.of<AppState>(context).state.availableDevices.where((device){
+      return macs.contains(device.mac);
+    }).forEach((device){
+      device.dmxData.blackout();
+      tron.server.sendPacket(device.dmxData.udpPacket, device.address);
+    });
+  }
+
+  void _handleBlackoutDoubleTap(){
+    List<Mac> macs = List<Mac>();
+
+    StoreProvider.of<AppState>(context).state.show.patchedFixtures.values.forEach((fixture){
+      if(!macs.contains(fixture.mac)){
+        macs.add(fixture.mac);
+      }
+    });
+
+    StoreProvider.of<AppState>(context).state.show.patchedDevices.values.forEach((device){
+      if(!macs.contains(device.mac)){
+        macs.add(device.mac);
+      }
+    });
+
+    StoreProvider.of<AppState>(context).state.availableDevices.where((device){
+      return macs.contains(device.mac);
+    }).forEach((device){
+      device.dmxData.blackout();
+      tron.server.sendPacket(device.dmxData.udpPacket, device.address);
+    });
+  }
 
   List<Device> _generateDeviceList(){
     List<Device> devices = List<Device>();
@@ -200,15 +391,14 @@ class CreatorScreenState extends State<CreatorScreen> {
         ),
         Expanded(
           flex: 1,
-          child: SceneButtonBar(callback: (command){
-            if(command == 0){
-              StoreProvider.of<AppState>(context).state.availableDevices.forEach((device){
-                device.dmxData.blackout();
-                tron.server.sendPacket(device.dmxData.udpPacket, device.address);
-              });
-              setState(() {});
-            }
-          },),
+          child: SceneButtonBar(
+            onSaveTap: _handleSaveTap,
+            onSaveDoubleTap: _handleSaveDoubleTap,
+            onLoadTap: _handleLoadTap,
+            onLoadDoubleTap: _handleLoadDoubleTap,
+            onBlackoutTap: _handleBlackoutTap,
+            onBlackoutDoubleTap: _handleBlackoutDoubleTap,
+          ),
         ),
         Expanded(
           flex: 1,

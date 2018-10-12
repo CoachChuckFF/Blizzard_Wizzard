@@ -152,6 +152,11 @@ class ShowEditState{
   static const int delete = 6;
 }
 
+class SelectSceneState{
+  static const int cue = 1;
+  static const int scene = 6;
+}
+
 class DeviceConfigureCategoryColor{
   static const Color device = Colors.deepOrange;
   static const Color deviceAccent = Colors.deepOrangeAccent;

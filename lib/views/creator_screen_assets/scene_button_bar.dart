@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:blizzard_wizzard/models/globals.dart';
 
-class SceneButtonBar extends StatefulWidget {
-  final ValueChanged<int> callback;
+class SceneButtonBar extends StatelessWidget {
+  final Function onSaveTap;
+  final Function onSaveDoubleTap;
 
-  SceneButtonBar({this.callback});
+  final Function onLoadTap;
+  final Function onLoadDoubleTap;
 
-  @override
-  createState() => SceneButtonBarState();
-}
+  final Function onBlackoutTap;
+  final Function onBlackoutDoubleTap;
 
-class SceneButtonBarState extends State<SceneButtonBar> {
+
+  SceneButtonBar({this.onSaveTap, this.onSaveDoubleTap,
+    this.onLoadTap, this.onLoadDoubleTap,
+    this.onBlackoutTap, this.onBlackoutDoubleTap,});
 
   @override
   Widget build(BuildContext context) {
@@ -19,29 +22,34 @@ class SceneButtonBarState extends State<SceneButtonBar> {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
           Expanded(
-            child: new IconButton(
-              icon: new Icon(Icons.save),
-              tooltip: 'Save Scene',
-              onPressed: () {
-                sid.writeTestFile();
-              },
-            ),
+            child: GestureDetector(
+              child: new IconButton(
+                icon: new Icon(Icons.save),
+                tooltip: 'Save Scene',
+                onPressed: onSaveTap
+              ),
+              onDoubleTap: onSaveDoubleTap,
+            )
           ),
           Expanded(
-            child: new IconButton(
-              icon: new Icon(Icons.schedule),
-              tooltip: 'Load Scene',
-              onPressed: () {
-                sid.readTestFile();
-              },
-            ),
+            child: GestureDetector(
+              child: new IconButton(
+                icon: new Icon(Icons.schedule),
+                tooltip: 'Load Scene',
+                onPressed: onLoadTap
+              ),
+              onDoubleTap: onLoadDoubleTap,
+            )
           ),
           Expanded(
-            child: new IconButton(
-              icon: new Icon(Icons.clear),
-              tooltip: 'Blackout',
-              onPressed: () { widget.callback(0);},
-            ),
+            child: GestureDetector(
+              child: new IconButton(
+                icon: new Icon(Icons.clear),
+                tooltip: 'Blackout',
+                onPressed: onBlackoutTap,
+              ),
+              onDoubleTap: onBlackoutDoubleTap,
+            )
           )
         ],
       ),
