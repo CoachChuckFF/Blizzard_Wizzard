@@ -3,6 +3,7 @@ import 'package:blizzard_wizzard/models/globals.dart';
 import 'package:blizzard_wizzard/views/screens/creator_screen.dart'; 
 import 'package:blizzard_wizzard/views/screens/editor_screen.dart'; 
 import 'package:blizzard_wizzard/views/screens/manager_screen.dart';
+import 'package:blizzard_wizzard/views/screens/player_screen.dart'; 
 
 
 class BlizzardScreen extends StatefulWidget {
@@ -34,7 +35,7 @@ class BlizzardScreenState extends State<BlizzardScreen> {
         screen = EditorScreen();
         break;
       case PageState.player:
-        screen = Text("Player");
+        screen = PlayerScreen();
         break;
       case PageState.helper:
         screen = Text("Help");
