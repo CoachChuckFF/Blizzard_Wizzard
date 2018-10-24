@@ -9,7 +9,7 @@ class Cue{
 
   Cue({this.name, this.id = 0, this.scenes = const []}){
     if(this.id == 0){
-      this.id = idCount++;
+      this.id = ++idCount;
     } else {
       if(this.id >= idCount){
         idCount = this.id + 1;

@@ -9,6 +9,7 @@ class Show{
   Map<int, PatchedFixture> patchedFixtures;
   Map<int, PatchedDevice> patchedDevices;
   Map<int, int> patchedCues;
+  Map<int, Map<Mac,List<int>>> patchedChannels;
   String name;
   int currentCue;
   int currentScene;
@@ -17,6 +18,7 @@ class Show{
     this.cues = const <Cue>[],
     this.patchedDevices,
     this.patchedCues,
+    this.patchedChannels,
     this.patchedFixtures,
     this.name,
     this.currentCue = 0,
@@ -24,6 +26,9 @@ class Show{
   }){
     if(this.patchedCues == null){
       this.patchedCues = Map<int, int>();
+    }
+    if(this.patchedChannels == null){
+      this.patchedChannels = Map<int, Map<Mac,List<int>>>();
     }
     if(this.patchedDevices == null){
       this.patchedDevices = Map<int, PatchedDevice>();
@@ -36,6 +41,7 @@ class Show{
   Show copyWith({
     List<Cue> cues,
     Map<int, int> patchedCues,
+    Map<int, Map<Mac,List<int>>> patchedChannels,
     Map<int, PatchedFixture> patchedFixtures,
     Map<int, PatchedDevice> patchedDevices,
     String name,
@@ -46,6 +52,7 @@ class Show{
       cues: cues ?? this.cues,
       patchedFixtures: patchedFixtures ?? this.patchedFixtures,
       patchedCues: patchedCues ?? this.patchedCues,
+      patchedChannels: patchedChannels ?? this.patchedChannels,
       patchedDevices: patchedDevices ?? this.patchedDevices,
       name: name ?? this.name,
       currentCue: currentCue ?? this.currentCue,

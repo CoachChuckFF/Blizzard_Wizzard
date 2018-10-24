@@ -4,7 +4,7 @@ import 'package:redux/redux.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:blizzard_wizzard/models/actions.dart';
-import 'package:blizzard_wizzard/models/app_state.dart';
+import 'package:blizzard_wizzard/models/mac.dart';
 import 'package:blizzard_wizzard/models/blizzard_devices.dart';
 import 'package:blizzard_wizzard/models/device.dart';
 import 'package:blizzard_wizzard/models/fixture.dart';
@@ -86,7 +86,9 @@ void _initTestShow(){
             Scene(),
           ]
         )
-      ]
+      ],
+      patchedCues: {0:1},
+      patchedChannels: {1:{Mac([0,0,0,0,0,0]): [1,2,3]}}
     )
   ));
 }

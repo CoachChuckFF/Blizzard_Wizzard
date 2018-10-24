@@ -25,20 +25,21 @@ class BlizzardFader extends StatelessWidget {
 
   Widget build(BuildContext context) {
 
-    print("$max, ${(max+1).truncate().toString()}");
-
     return Padding(
       padding: EdgeInsets.symmetric(
-        vertical: 20.0,
+        vertical: BlizzardSizes.vertSliderPadding,
+        horizontal: BlizzardSizes.vertSliderPadding,
       ),
       child: SliderTheme(
         data: SliderTheme.of(context).copyWith(
           thumbShape: _CustomThumbShape(
-            value: value,
+            valueSlider: value,
             max: max,
             activeColor: activeColor,
             inactiveColor: inactiveColor
           ),
+          thumbColor: Colors.blue,
+          //thumbShape: _ThumbShape(),
           activeTrackColor: activeColor,
           inactiveTrackColor: inactiveColor,
           overlayColor: (value/max <= 0.5) ? 
@@ -48,9 +49,9 @@ class BlizzardFader extends StatelessWidget {
         child: VerticalSlider(
           value: value,
           onChanged: callback,
-          min: 0,
+          min: 0.0,
           max: max,
-          divisions: (max + 1).truncate(),
+          divisions: max.truncate(),
         )
       )
     );
@@ -58,16 +59,16 @@ class BlizzardFader extends StatelessWidget {
 }
 
 class _CustomThumbShape extends SliderComponentShape {
-  static const double _thumbSize = 25.0;
+  static const double _thumbSize = BlizzardSizes.vertSliderPadding;
   static const double _disabledThumbSize = 1.0;
 
-  final double value;
+  final double valueSlider;
   final double max;
 
   final Color activeColor;
   final Color inactiveColor;
 
-  _CustomThumbShape({this.value = 0, this.max = 255, this.activeColor = Colors.red, this.inactiveColor = Colors.grey});
+  _CustomThumbShape({this.valueSlider = 0, this.max = 255, this.activeColor = Colors.red, this.inactiveColor = Colors.grey});
 
   @override
   Size getPreferredSize(bool isEnabled, bool isDiscrete) {
@@ -93,26 +94,14 @@ class _CustomThumbShape extends SliderComponentShape {
     double value,
   }) {
     final Canvas canvas = context.canvas;
-    final double size = _thumbSize * sizeTween.evaluate(enableAnimation);
-    //canvas.drawPath(thumbPath, Paint()..color = colorTween.evaluate(enableAnimation));
+
     Paint notValid = Paint()
     ..strokeWidth = 10.0
     ..color = inactiveColor
     ..strokeCap = StrokeCap.round
     ..style = PaintingStyle.stroke;
 
-    /*canvas.drawArc(
-      Rect.fromCircle(
-        center: thumbCenter,
-        radius: size,
-      ), 
-      (math.pi+(math.pi/4)),
-      ((math.pi*2)-(math.pi/2)), 
-      false, 
-      notValid
-    );*/
-
-    canvas.drawCircle(thumbCenter, size, notValid);    
+    canvas.drawCircle(thumbCenter, _thumbSize, notValid);    
 
     Paint valid = Paint()
     ..strokeWidth = 10.0
@@ -123,20 +112,20 @@ class _CustomThumbShape extends SliderComponentShape {
     canvas.drawArc(
       Rect.fromCircle(
         center: thumbCenter,
-        radius: size,
+        radius: _thumbSize,
       ), 
       (math.pi),
-      ((math.pi)) * (this.value/this.max), 
+      ((math.pi)) * (this.valueSlider/this.max), 
       false, 
       valid
     );
     canvas.drawArc(
       Rect.fromCircle(
         center: thumbCenter,
-        radius: size,
+        radius: _thumbSize,
       ), 
       (math.pi),
-      ((math.pi)) * (this.value/this.max) * -1, 
+      ((math.pi)) * (this.valueSlider/this.max) * -1, 
       false, 
       valid
     );

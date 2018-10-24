@@ -8,6 +8,7 @@ import 'package:blizzard_wizzard/models/show.dart';
 import 'package:blizzard_wizzard/views/editor_screen_assets/scene_list_area.dart';
 import 'package:blizzard_wizzard/views/editor_screen_assets/show_area.dart';
 import 'package:blizzard_wizzard/views/player_screen_assets/master_fader.dart';
+import 'package:blizzard_wizzard/views/player_screen_assets/fader_area.dart';
 
 class PlayerScreen extends StatefulWidget {
   @override
@@ -32,7 +33,15 @@ class PlayerScreenState extends State<PlayerScreen> {
         ),
         Expanded( //main lists
           flex: 4,
-          child: Container(),
+          child: StoreConnector<AppState, Show>(
+            converter: (store) => store.state.show,
+            builder: (context, show){
+              return FaderArea(
+                patchedChannels: show.patchedChannels,
+                patchedCues: show.patchedCues
+              );
+            },
+          ),
         ),
       ],
     );

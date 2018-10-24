@@ -28,7 +28,11 @@ class BlizzardWizzardConfigs{
   static final int artnetConfigCallbackPreWait= 0; //ms 
   static final int artnetConfigCallbackTimeout = 3000; //ms
   static final int artnetConfigDisconnectTimeout = 5; //seconds
-    static final int artnetConfigNeverReturnTimeout = 13; //seconds
+  static final int artnetConfigNeverReturnTimeout = 13; //seconds
+
+  //DMX Configs
+  static final int dmxMaxChannels = 512;
+  static final int dmxMaxChannelValue = 255;
 
   //sACN Configs
   static final int sACNMaxUniverses = 64000;
@@ -182,4 +186,9 @@ class KeypadSecrets{
   static const String smokey = "420";
   static const String guy = "1015512";
   static const int tickle = 21;
+}
+
+class BlizzardSizes{
+  static const double vertSliderThumb = 25.0;
+  static const double vertSliderPadding = 20.0;
 }
