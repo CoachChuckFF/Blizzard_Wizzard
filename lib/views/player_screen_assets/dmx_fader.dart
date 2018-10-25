@@ -2,7 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:numberpicker/numberpicker.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:blizzard_wizzard/models/cue.dart';
+import 'package:blizzard_wizzard/models/actions.dart';
 import 'package:blizzard_wizzard/models/app_state.dart';
 import 'package:blizzard_wizzard/models/device.dart';
 import 'package:blizzard_wizzard/models/delay_time.dart';
@@ -18,8 +18,9 @@ class DmxFader extends StatefulWidget {
   final Color activeColor = Colors.deepPurple;
   final Color inactiveColor = Colors.black;
   final Map<Mac,List<int>> patchedChannels;
+  final int index;
 
-  DmxFader(this.patchedChannels);
+  DmxFader({this.patchedChannels, this.index});
 
   createState() => DmxFaderState();
 }
@@ -85,7 +86,9 @@ class DmxFaderState extends State<DmxFader> {
                       name: name,
                       patchedChannels: widget.patchedChannels,
                       callback: (){
-                        print("Delete patched Channel");
+                        setState(() {
+                          StoreProvider.of<AppState>(context).dispatch(UnpatchDmxFader(widget.index));                                
+                        });
                       },
                     ),
                   );
@@ -239,7 +242,7 @@ class DmxFaderDialog extends StatelessWidget {
           }
         ),
         BlizzardDialogButton(
-          text: "Delete",
+          text: "Unpatch",
           color: Colors.red,
           onTap: (){
             callback();

@@ -14,11 +14,12 @@ import 'package:blizzard_wizzard/views/player_screen_assets/fader_button.dart';
 import 'package:blizzard_wizzard/views/player_screen_assets/dmx_fader.dart';
 
 class ChannelsPatchFaderPage extends StatefulWidget {
+  final Color color;
   final List<int> channels;
   final ValueChanged<int> callback;
-  final int index;
+  final String name;
 
-  ChannelsPatchFaderPage({this.callback, this.index, this.channels});
+  ChannelsPatchFaderPage({this.color,this.name, this.callback, this.channels});
 
   @override
   createState() => ChannelsPatchFaderPageState();
@@ -40,7 +41,7 @@ class ChannelsPatchFaderPageState extends State<ChannelsPatchFaderPage> {
           child: Padding(
             padding: EdgeInsets.all(10.0),
             child: Text(
-              "Select Channels",
+              "Select Channels for ${widget.name}",
               style: TextStyle(
                 fontSize: 21.0,
                 fontWeight: FontWeight.bold
@@ -64,7 +65,11 @@ class ChannelsPatchFaderPageState extends State<ChannelsPatchFaderPage> {
           onTap: (){
             widget.channels.sort();
             widget.callback(PatchFaderState.submit);
-          }
+          },
+          onLongPress: (){
+            widget.channels.sort();
+            widget.callback(PatchFaderState.submitAll);
+          },
         ),
       ],
       content: GridView.count(
@@ -83,7 +88,7 @@ class ChannelsPatchFaderPageState extends State<ChannelsPatchFaderPage> {
                 )
               ),
             ),
-            primaryColor: (isSelected) ? Colors.green : Colors.white,
+            primaryColor: (isSelected) ? widget.color: Colors.white,
             onTap: (){
               if(isSelected){
                 widget.channels.remove(index);

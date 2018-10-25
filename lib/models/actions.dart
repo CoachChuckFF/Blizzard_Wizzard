@@ -1,5 +1,6 @@
 import 'package:blizzard_wizzard/models/device.dart';
 import 'package:blizzard_wizzard/models/cue.dart';
+import 'package:blizzard_wizzard/models/mac.dart';
 import 'package:blizzard_wizzard/models/patched_device.dart';
 import 'package:blizzard_wizzard/models/patched_fixture.dart';
 import 'package:blizzard_wizzard/models/scene.dart';
@@ -166,5 +167,29 @@ class UpdateCue{
   UpdateCue(this.cue, this.cueIndex);
 }
 
+class PatchCueFader{
+  final int faderIndex;
+  final int cueId;
 
+  PatchCueFader(this.faderIndex, this.cueId);
+}
+
+class UnpatchCueFader{
+  final int faderIndex;
+
+  UnpatchCueFader(this.faderIndex);
+}
+
+class PatchDmxFader{
+  final int faderIndex;
+  final Map<Mac, List<int>> channels;
+
+  PatchDmxFader(this.faderIndex, this.channels);
+}
+
+class UnpatchDmxFader{
+  final int faderIndex;
+
+  UnpatchDmxFader(this.faderIndex);
+}
 

@@ -25,6 +25,10 @@ final showReducer = combineReducers<Show>([
   new TypedReducer<Show, AddCue>(_addCue),
   new TypedReducer<Show, RemoveCue>(_removeCue),  
   new TypedReducer<Show, UpdateCue>(_updateCue),
+  new TypedReducer<Show, PatchCueFader>(_patchCueFader),
+  new TypedReducer<Show, UnpatchCueFader>(_unpatchCueFader),
+  new TypedReducer<Show, PatchDmxFader>(_patchDmxFader),
+  new TypedReducer<Show, UnpatchDmxFader>(_unpatchDmxFader),
 ]);
 
 Show _updateShow(Show state, UpdateShow action){
@@ -193,5 +197,29 @@ Show _updateCue(Show state, UpdateCue action){
       }
       return cue;
     }).toList()
+  );
+}
+
+Show _patchCueFader(Show state, PatchCueFader action){
+  return state.copyWith(
+    patchedCues: Map.from(state.patchedCues)..[action.faderIndex] = action.cueId
+  );
+}
+
+Show _unpatchCueFader(Show state, UnpatchCueFader action){
+  return state.copyWith(
+    patchedCues: Map.from(state.patchedCues)..remove(action.faderIndex)
+  );
+}
+
+Show _patchDmxFader(Show state, PatchDmxFader action){
+  return state.copyWith(
+    patchedChannels: Map.from(state.patchedChannels)..[action.faderIndex] = action.channels 
+  );
+}
+
+Show _unpatchDmxFader(Show state, UnpatchDmxFader action){
+  return state.copyWith(
+    patchedChannels: Map.from(state.patchedChannels)..remove(action.faderIndex)
   );
 }

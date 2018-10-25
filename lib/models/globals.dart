@@ -167,6 +167,7 @@ class PatchFaderState{
   static const int devices = 3;
   static const int channels = 4;
   static const int submit = 5;
+  static const int submitAll = 6;
 }
 
 class DeviceConfigureCategoryColor{

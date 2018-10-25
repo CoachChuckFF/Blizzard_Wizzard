@@ -7,7 +7,7 @@ import 'package:blizzard_wizzard/models/app_state.dart';
 import 'package:blizzard_wizzard/models/mac.dart';
 import 'package:blizzard_wizzard/models/device.dart';
 import 'package:blizzard_wizzard/models/globals.dart';
-import 'package:blizzard_wizzard/models/patched_device.dart';
+import 'package:blizzard_wizzard/models/actions.dart';
 import 'package:blizzard_wizzard/models/patched_fixture.dart';
 import 'package:blizzard_wizzard/models/scene.dart';
 import 'package:blizzard_wizzard/views/fixes/list_view_alert_buttons_dialog.dart';
@@ -80,16 +80,18 @@ class PatchFaderDialog extends StatefulWidget {
 }
 
 class PatchFaderDialogState extends State<PatchFaderDialog> {
-  List<int> _channels;
-  List<Mac> _macs;
+  List<Device> _devs;
+  Map<Mac, List<int>> _patched;
   int _state;
+  int _devCount;
 
   @override
   void initState() {
     super.initState();
     _state = PatchFaderState.main;
-    _channels = List<int>();
-    _macs = List<Mac>();
+    _patched = Map<Mac, List<int>>();
+    _devs = List<Device>();
+    _devCount = 0;
   }
 
   @override
@@ -119,7 +121,11 @@ class PatchFaderDialogState extends State<PatchFaderDialog> {
                   return; 
                 }
 
-                //add cue fader
+                StoreProvider.of<AppState>(context).dispatch(PatchCueFader(
+                  widget.index,
+                  val)
+                );
+                Navigator.pop(context);
               },
             );
           },
@@ -130,9 +136,15 @@ class PatchFaderDialogState extends State<PatchFaderDialog> {
           builder: (context, devices){
             return DevicesPatchFaderPage(
               devices: devices,
-              macs: _macs,
+              devs: _devs,
               index: widget.index,
               callback: (state){
+                if(state == PatchFaderState.channels){
+                  _patched.clear();
+                  _devs.forEach((dev){
+                    _patched[dev.mac] = List<int>();
+                  });
+                }
                 setState(() {
                   _state = state;
                 });
@@ -142,17 +154,44 @@ class PatchFaderDialogState extends State<PatchFaderDialog> {
         );  
       case PatchFaderState.channels:
         return ChannelsPatchFaderPage(
-          index: widget.index,
-          channels: _channels,
+          name: _devs[_devCount].name,
+          channels: _patched[_devs[_devCount].mac],
           callback: (state){
-            if(state != PatchFaderState.submit){
-              setState((){
+            if(state != PatchFaderState.submit && state != PatchFaderState.submitAll){
+              if(_devCount <= 0){
+                _devCount = 0;
                 _state = PatchFaderState.devices;
+              } else {
+                _devCount--;
+              }
+              setState((){});
+              return;
+            }
+            if(state == PatchFaderState.submitAll){
+              List<int> toCopy = List.from(_patched[_devs[_devCount].mac]);
+              _patched.keys.toList().forEach((key){
+                _patched[key].clear();
+                _patched[key].addAll(toCopy);
               });
+
+              StoreProvider.of<AppState>(context).dispatch(PatchDmxFader(
+                widget.index,
+                _patched)
+              );
+              Navigator.pop(context);
+              return;
+            }
+            if(_devCount == _devs.length-1 || state == PatchFaderState.submitAll){
+
+              StoreProvider.of<AppState>(context).dispatch(PatchDmxFader(
+                widget.index,
+                _patched)
+              );
+              Navigator.pop(context);
               return;
             }
 
-            //add device fader
+            setState(() {_devCount++;});
           },
         );
     }

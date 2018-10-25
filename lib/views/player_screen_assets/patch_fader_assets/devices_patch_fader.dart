@@ -16,10 +16,10 @@ import 'package:blizzard_wizzard/views/player_screen_assets/dmx_fader.dart';
 class DevicesPatchFaderPage extends StatefulWidget {
   final List<Device> devices;
   final ValueChanged<int> callback;
-  final List<Mac> macs;
+  final List<Device> devs;
   final int index;
 
-  DevicesPatchFaderPage({this.callback, this.index, this.devices, this.macs});
+  DevicesPatchFaderPage({this.callback, this.index, this.devices, this.devs});
 
   @override
   createState() => DevicesPatchFaderPageState();
@@ -71,7 +71,8 @@ class DevicesPatchFaderPageState extends State<DevicesPatchFaderPage> {
         itemCount: widget.devices.length,
         itemBuilder: (context, index){
 
-          bool isSelected = widget.macs.contains(widget.devices[index].mac);
+          
+          bool isSelected = widget.devs.contains(widget.devices[index]);
 
           return FaderButton(
             child: Padding(
@@ -87,19 +88,19 @@ class DevicesPatchFaderPageState extends State<DevicesPatchFaderPage> {
             primaryColor: (isSelected) ? Colors.blue : Colors.white,
             onTap: (){
               if(isSelected){
-                widget.macs.remove(widget.devices[index].mac);
+                widget.devs.remove(widget.devices[index]);
               } else {
-                widget.macs.add(widget.devices[index].mac);
+                widget.devs.add(widget.devices[index]);
               }
               setState(() {});
             },
             onDoubleTap: (){
               if(isSelected){
-                widget.macs.clear();
+                widget.devs.clear();
               } else {
                 widget.devices.forEach((dev){
-                  if(!widget.macs.contains(dev.mac)){
-                    widget.macs.add(dev.mac);
+                  if(!widget.devs.contains(dev)){
+                    widget.devs.add(dev);
                   }
                 });
               }
