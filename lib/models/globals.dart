@@ -161,6 +161,14 @@ class SelectSceneState{
   static const int scene = 6;
 }
 
+class PatchFaderState{
+  static const int main = 1;
+  static const int cue = 2;
+  static const int devices = 3;
+  static const int channels = 4;
+  static const int submit = 5;
+}
+
 class DeviceConfigureCategoryColor{
   static const Color device = Colors.deepOrange;
   static const Color deviceAccent = Colors.deepOrangeAccent;
@@ -175,6 +183,31 @@ class DeviceConfigureCategoryColor{
 class DeviceFixtureGridColor{
   static const Color device = Colors.lightBlue;
   static const Color fixture = Colors.purple;
+}
+
+class ColorsList{
+  static const int count = 8;
+  static const Color zero = Colors.red;
+  static const Color one = Colors.orange;
+  static const Color two = Colors.yellow;
+  static const Color three = Colors.green;
+  static const Color four = Colors.cyan;
+  static const Color five = Colors.blue;
+  static const Color six = Colors.purple;
+  static const Color seven = Colors.black;
+
+  static Color getColor(int index){
+    switch(index % count){
+      case 0: return zero;
+      case 1: return one;
+      case 2: return two;
+      case 3: return three;
+      case 4: return four;
+      case 5: return five;
+      case 6: return six;
+      case 7: return seven;
+    }
+  }
 }
 
 class KeypadSecrets{

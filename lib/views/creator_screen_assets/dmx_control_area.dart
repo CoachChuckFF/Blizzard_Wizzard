@@ -54,7 +54,6 @@ class DMXControlAreaState extends State<DMXControlArea> {
             crossAxisCount: 8,
             shrinkWrap: true,
             primary: false,
-            // Generate 100 Widgets that display their index in the List
             children: List.generate(512, (index) {
               return new InkWell(
                 onLongPress: () {
@@ -79,7 +78,7 @@ class DMXControlAreaState extends State<DMXControlArea> {
                     );
                   }
                 },
-                child: new SizedBox(
+                child: SizedBox(
                   child: Center(
                     child: Column(
                       children: <Widget>[

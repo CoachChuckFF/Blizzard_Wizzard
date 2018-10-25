@@ -38,7 +38,6 @@ class MasterFaderState extends State<MasterFader> {
 
   Widget build(BuildContext context) {
     return Card(
-      color: Colors.black,
       child: Column(
         children: <Widget>[
           Expanded(
@@ -61,12 +60,12 @@ class MasterFaderState extends State<MasterFader> {
                 "Zero",
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  color: Colors.black,
+                  color: Colors.white,
                   fontSize: 21.0,
                   fontWeight: FontWeight.bold
                 )
               ),
-              primaryColor: Colors.white,
+              primaryColor: Colors.red,
               onTap: (){
                 setState((){
                   _value = 0;
@@ -93,10 +92,10 @@ class MasterFaderState extends State<MasterFader> {
             )
           ),
           Expanded(
-            flex: 8,
+            flex: 11,
             child: BlizzardFader(
               activeColor: Colors.red,
-              inactiveColor: Colors.white,
+              inactiveColor: Colors.black,
               callback: (newValue){
                 setState(() {
                   _value = newValue; 

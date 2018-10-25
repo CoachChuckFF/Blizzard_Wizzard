@@ -136,11 +136,12 @@ class CueFaderState extends State<CueFader> {
             Expanded(
               child: FaderButton(
                 child: Text(
-                  "${(value/(BlizzardWizzardConfigs.dmxMaxChannelValue)*100).truncate()}%",
+                  "look 1",
                   textAlign: TextAlign.center,
+                  overflow: TextOverflow.fade,
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: 21.0,
+                    fontSize: 15.0,
                   )
                 ),
                 primaryColor: widget.activeColor,
