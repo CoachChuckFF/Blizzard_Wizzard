@@ -38,7 +38,7 @@ class BlizzardScreenState extends State<BlizzardScreen> {
         screen = PlayerScreen();
         break;
       case PageState.helper:
-        screen = Text("Help");
+        screen = Text("Whether you think you can or you think you can’t, you’re right. -Henry Ford");
         break;
       default:
         screen = Text("Oh golly gosh - this isn't suppost to happen!");

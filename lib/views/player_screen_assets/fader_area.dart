@@ -33,10 +33,21 @@ class FaderArea extends StatelessWidget {
 
   Widget builder(BuildContext context, int index){
     Widget child;
+
     if(patchedCues.containsKey(index)){
-      child = CueFader(
-        index: index,
-        cueId: patchedCues[index],
+      child = StoreConnector<AppState, List<Cue>>(
+        converter: (store) => store.state.show.cues,
+        builder: (context, cues){
+
+          Cue cue = cues.firstWhere((cue){
+            return cue.id == patchedCues[index];
+          }, orElse: (){return null;});
+
+          return CueFader(
+            index: index,
+            cue: cue
+          );
+        }
       );
     } else if(patchedChannels.containsKey(index)){
       child = DmxFader(

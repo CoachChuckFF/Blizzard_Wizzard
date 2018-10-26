@@ -13,8 +13,6 @@ import 'package:blizzard_wizzard/controllers/artnet_controller.dart';
 import 'package:blizzard_wizzard/controllers/fixture_manager.dart';
 import 'package:blizzard_wizzard/controllers/reducers.dart';
 
-import 'test_structs.dart';
-
 void main(){
   final store = Store<AppState>(
     appReducer,
@@ -47,7 +45,6 @@ class MyAppState extends State<MyApp> with WidgetsBindingObserver{
     WidgetsBinding.instance.addObserver(this);
     tron = ArtnetController(widget.store);
     sid = FixtureManager();
-    initTestStructs(widget.store);
   }
 
   @override

@@ -17,15 +17,14 @@ import 'package:blizzard_wizzard/views/player_screen_assets/blizzard_fader.dart'
 import 'package:blizzard_wizzard/views/player_screen_assets/fader_button.dart';
 
 class CueFader extends StatefulWidget {
+  final Cue cue;
   final Color activeColor = Colors.deepOrange;
   final Color inactiveColor = Colors.black;
   final int index;
-  final int cueId;
-  CueFader({this.index, this.cueId});
+  CueFader({this.index, this.cue});
 
   createState() => CueFaderState();
 }
-
 
 class CueFaderState extends State<CueFader> {
   String name;
@@ -65,31 +64,19 @@ class CueFaderState extends State<CueFader> {
                 onTap: (){
                   showDialog(
                     context: context,
-                    child: StoreConnector<AppState, List<Cue>>(
-                      converter: (store) => store.state.show.cues,
-                      builder: (context, cues){
-                        Cue cue = cues.firstWhere((cue){
-                          return cue.id == widget.cueId;
-                        }, orElse: (){return null;});
-
-                        return CueFaderDialog(
-                          cue: cue,
-                          index: widget.index,
-                          cueId: widget.cueId,
-                          sceneIndex: _sceneIndex,
-                          callback: (val){
-                            if(val == -1){
-                              StoreProvider.of<AppState>(context).dispatch(UnpatchCueFader(
-                                widget.index,
-                              ));
-                              return;
-                            }
-
-                            setState(() {
-                              _sceneIndex = val;                          
-                            });
-                          },
-                        );
+                    child: CueFaderDialog(
+                      cue: widget.cue,
+                      sceneIndex: _sceneIndex,
+                      callback: (val){
+                        if(val == -1){
+                          StoreProvider.of<AppState>(context).dispatch(UnpatchCueFader(
+                            widget.index,
+                          ));
+                          return;
+                        }
+                        setState(() {
+                          _sceneIndex = val;                          
+                        });
                       },
                     ),
                   );
@@ -194,11 +181,10 @@ class CueFaderState extends State<CueFader> {
 class CueFaderDialog extends StatelessWidget {
   final ValueChanged<int> callback;
   final Cue cue;
-  final int index;
   final int cueId;
   final int sceneIndex;
 
-  CueFaderDialog({this.callback, this.cue, this.index, this.cueId, this.sceneIndex});
+  CueFaderDialog({this.callback, this.cue, this.cueId, this.sceneIndex});
 
   Widget build(BuildContext context) {
 

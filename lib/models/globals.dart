@@ -212,7 +212,7 @@ class ColorsList{
 }
 
 class KeypadSecrets{
-  static const String konami = "228846468 @ ";
+  static const String konami = "228846468 @ -> ";
   static const String dreams = "3111 -> 1 -> 1 -> 1331";
   static const String escape = "111 -> 333 -> 111";
   static const String don = "69";
