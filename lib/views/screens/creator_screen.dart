@@ -179,27 +179,6 @@ class CreatorScreenState extends State<CreatorScreen> {
   void _handleBlackoutTap(){
     List<Mac> macs = List<Mac>();
 
-    if(deviceFixtureState == DeviceFixtureGridState.fixture){
-      selectedFixtures.forEach((key){
-        macs.add(StoreProvider.of<AppState>(context).state.show.patchedFixtures[key].mac);
-      });
-    } else {
-      selectedDevices.forEach((key){
-        macs.add(StoreProvider.of<AppState>(context).state.show.patchedDevices[key].mac);
-      });
-    }
-
-    StoreProvider.of<AppState>(context).state.availableDevices.where((device){
-      return macs.contains(device.mac);
-    }).forEach((device){
-      device.dmxData.blackout();
-      tron.server.sendPacket(device.dmxData.udpPacket, device.address);
-    });
-  }
-
-  void _handleBlackoutDoubleTap(){
-    List<Mac> macs = List<Mac>();
-
     StoreProvider.of<AppState>(context).state.show.patchedFixtures.values.forEach((fixture){
       if(!macs.contains(fixture.mac)){
         macs.add(fixture.mac);
@@ -215,6 +194,14 @@ class CreatorScreenState extends State<CreatorScreen> {
     StoreProvider.of<AppState>(context).state.availableDevices.where((device){
       return macs.contains(device.mac);
     }).forEach((device){
+      device.dmxData.blackout();
+      tron.server.sendPacket(device.dmxData.udpPacket, device.address);
+    });
+  }
+
+  void _handleBlackoutDoubleTap(){
+
+    StoreProvider.of<AppState>(context).state.availableDevices.forEach((device){
       device.dmxData.blackout();
       tron.server.sendPacket(device.dmxData.udpPacket, device.address);
     });

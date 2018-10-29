@@ -29,6 +29,7 @@ class ColorPickerAreaState extends State<ColorPickerArea> {
   FocusNode _focusR = new FocusNode();
   FocusNode _focusG = new FocusNode();
   FocusNode _focusB = new FocusNode();
+  double dimmer;
   double hue;
   double saturation;
   double value;
@@ -58,7 +59,7 @@ class ColorPickerAreaState extends State<ColorPickerArea> {
           device.dmxData.setDmxValue(blueChannel + fixture.patchAddress, color.blue);
         }
         if(dimmerChannel != -1){
-          device.dmxData.setDmxValue(dimmerChannel + fixture.patchAddress, (color.computeLuminance() * 255).toInt());
+          device.dmxData.setDmxValue(dimmerChannel + fixture.patchAddress, dimmer.toInt());
         }
 
       });
@@ -121,6 +122,7 @@ class ColorPickerAreaState extends State<ColorPickerArea> {
     hue = color.hue;
     saturation = color.saturation;
     value = 1.0;
+    dimmer = 255.0;
   }
 
 
@@ -273,11 +275,15 @@ class ColorPickerAreaState extends State<ColorPickerArea> {
           child: Slider(
             onChanged: (val){
               setState(() {
-                this.value = val;
+                this.dimmer = val;
+                value = (val/255.0);
                 _callback();
               });
             },
-            value: this.value,
+            min: 0.0,
+            max: 255.0,
+            divisions: 255,
+            value: this.dimmer,
           ),
         ),
       ],

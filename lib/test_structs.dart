@@ -25,15 +25,17 @@ void initTestStructs(Store store){
   _store = store;
   _ticker = 1;
 
+  
   blizzardDev = Device([0x00, 0x01, 0x02, 0x03, 0x04, 0x05],
     name: "Blizzard Device",
     typeId: 0x34,
     isBlizzard: true,
-    isPatched: true,
+    isPatched: false,
     address: InternetAddress("192.168.1.89"),
   );
+  
 
- 
+  /*
   ChannelMode mode = ChannelMode(
     name: "5 Channel",
     channels: <Channel>[
@@ -51,18 +53,18 @@ void initTestStructs(Store store){
     channelMode: 0,
     profile: List<ChannelMode>()..add(mode)
   );
- 
+ */
   
-
+/*
   genDev = Device([0x03, 0x01, 0x02, 0x03, 0x04, 0x05],
     name: "Generic Device",
     typeId: 0x00,
     address: InternetAddress("192.168.1.89"),
-  );
+  );*/
 
   _store.dispatch(AddAvailableDevice(blizzardDev));
 
-  _initTestShow();
+  //_initTestShow();
 
   _resetDeviceTick();
 }
@@ -97,9 +99,5 @@ void _initTestShow(){
 
 void _resetDeviceTick(){
   _store.dispatch(TickResetAvailableDevice(blizzardDev));
-  if(_ticker++ % 4 == 0){
-    genDev.activeTick = BlizzardWizzardConfigs.checkIpTO;
-    _store.dispatch(AddAvailableDevice(genDev));
-  }
   Timer(Duration(seconds: 5), _resetDeviceTick);
 }

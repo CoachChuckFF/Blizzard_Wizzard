@@ -103,7 +103,7 @@ class FixtureManager{
     fixture.profile.forEach((mode){
       fileString += '<mode name="${mode.name}">';
       mode.channels.forEach((channel){
-        fileString += '<channel number="${channel.number}" name="${channel.name}">';
+        fileString += '<channel number="${channel.number + 1}" name="${channel.name}">';
         channel.segments.forEach((segment){
           fileString += '<segment name="${segment.name}" start="${segment.start}" end="${segment.end}"></segment>';
         });

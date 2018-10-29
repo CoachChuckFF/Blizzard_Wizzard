@@ -15,6 +15,7 @@ import 'package:blizzard_wizzard/views/fixes/list_view_alert_buttons_dialog.dart
 import 'package:blizzard_wizzard/views/editor_screen_assets/scene_item.dart';
 import 'package:blizzard_wizzard/views/player_screen_assets/blizzard_fader.dart';
 import 'package:blizzard_wizzard/views/player_screen_assets/fader_button.dart';
+import 'package:blizzard_wizzard/controllers/playback_manager.dart';
 
 class CueFader extends StatefulWidget {
   final Cue cue;
@@ -28,6 +29,7 @@ class CueFader extends StatefulWidget {
 
 class CueFaderState extends State<CueFader> {
   String name;
+  LightPlayer _player;
   int _sceneIndex;
   bool pause;
   double value;
@@ -41,6 +43,13 @@ class CueFaderState extends State<CueFader> {
     name = "Cue";
     pause = true;
     _sceneIndex = 0;
+    _player = LightPlayer(widget.cue.scenes);
+  }
+
+  @override
+  dispose() {
+    super.dispose();
+    _player.pause();
   }
 
   Widget build(BuildContext context) {
@@ -75,7 +84,8 @@ class CueFaderState extends State<CueFader> {
                           return;
                         }
                         setState(() {
-                          _sceneIndex = val;                          
+                          _sceneIndex = val;  
+                          _player.setIndex(_sceneIndex);                        
                         });
                       },
                     ),
@@ -94,6 +104,9 @@ class CueFaderState extends State<CueFader> {
                   )
                 ),
                 primaryColor: widget.activeColor,
+                onTap: (){
+                  _player.prev();
+                },
               )
             ),
             Expanded(
@@ -107,18 +120,26 @@ class CueFaderState extends State<CueFader> {
                   )
                 ),
                 primaryColor: widget.activeColor,
+                onTap: (){
+                  _player.next();
+                },
               )
             ),
             Expanded(
               child: FaderButton(
                 child: Icon(
-                  (pause) ?
+                  (!pause) ?
                   Icons.pause:
                   Icons.play_arrow,
                   color: Colors.white
                 ),
                 primaryColor: widget.activeColor,
                 onTap: (){
+                  if(pause){
+                    _player.play();
+                  } else {
+                    _player.pause();
+                  }
                   setState((){
                     pause = !pause;
                   });
@@ -137,6 +158,7 @@ class CueFaderState extends State<CueFader> {
                 ),
                 primaryColor: widget.activeColor,
                 onTap: (){
+                  _player.reset();
                   setState((){
                     value = 0;
                   });

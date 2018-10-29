@@ -61,7 +61,6 @@ class ChannelControlArea extends StatelessWidget {
   Widget build(BuildContext context) {
 
     _init();
-    print(channels);
 
     if(channels.length == 0){
       return Center(

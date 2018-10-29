@@ -95,7 +95,6 @@ class SceneSelectDialogState extends State<SceneSelectDialog> {
       }, orElse: (){return null;});
 
       if(dev != null){
-        int i = 0;
 
         if(widget.selectedDevices == null){
           StoreProvider.of<AppState>(context).state.show.patchedFixtures.forEach((key, value){
@@ -111,9 +110,9 @@ class SceneSelectDialogState extends State<SceneSelectDialog> {
           });
         }
 
-        data.dmx.forEach((value){
-          dev.dmxData.setDmxValue(i++, value);
-        });
+        for(int i = 0; i < 512; i++){
+          dev.dmxData.setDmxValue(i + 1, data.dmx[i]);
+        }
 
         tron.server.sendPacket(dev.dmxData.udpPacket, dev.address);
       }
@@ -172,14 +171,16 @@ class SceneSelectDialogState extends State<SceneSelectDialog> {
 
     return ListView.builder(
       itemCount: scenes.length,
-      itemBuilder: (context, index){
+      itemBuilder: (context, i){
+        print(i);
         return SceneItem(
-          scene: scenes[index],
-          onTap: (index){
+          scene: scenes[i],
+          onTap: (val){
+            print(i);
             if(widget.isLoad){
-              _handleLoad(index);
+              _handleLoad(i);
             } else {
-              _handleSave(index);
+              _handleSave(i);
             }
           },
         );

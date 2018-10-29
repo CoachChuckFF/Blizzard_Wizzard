@@ -11,13 +11,17 @@ import 'package:blizzard_wizzard/models/ws_fixtures.dart';
 import 'package:blizzard_wizzard/views/screens/blizzard_screen.dart';
 import 'package:blizzard_wizzard/controllers/artnet_controller.dart';
 import 'package:blizzard_wizzard/controllers/fixture_manager.dart';
+import 'package:blizzard_wizzard/controllers/playback_manager.dart';
 import 'package:blizzard_wizzard/controllers/reducers.dart';
+import 'test_structs.dart';
 
 void main(){
   final store = Store<AppState>(
     appReducer,
     initialState: AppState.init(),
   );
+
+  initTestStructs(store);
 
   runApp(MyApp(
     title: 'Artnet Tester',
@@ -43,6 +47,7 @@ class MyAppState extends State<MyApp> with WidgetsBindingObserver{
   void initState() {
     super.initState();
     WidgetsBinding.instance.addObserver(this);
+    lsexplorer = LightPlayerStoreProvider(widget.store);
     tron = ArtnetController(widget.store);
     sid = FixtureManager();
   }

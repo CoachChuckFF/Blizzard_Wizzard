@@ -25,16 +25,15 @@ class SceneListAreaState extends State<SceneListArea> {
   List<Scene> _scenes;
 
   void _showScene(Scene scene){
-    int index = 0;
     scene.sceneData.forEach((data){
       Device dev = StoreProvider.of<AppState>(context).state.availableDevices.firstWhere((device){
         return device.mac == data.mac;
       }, orElse: (){return null;});
 
       if(dev != null){
-        data.dmx.forEach((val){
-          dev.dmxData.setDmxValue(index++, val);
-        });
+        for(int i = 0; i < 512; i++){
+          dev.dmxData.setDmxValue(i + 1, data.dmx[i]);
+        }
         tron.server.sendPacket(dev.dmxData.udpPacket, dev.address);
       }
     });
