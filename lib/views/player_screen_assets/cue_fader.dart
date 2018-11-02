@@ -39,7 +39,7 @@ class CueFaderState extends State<CueFader> {
   @override
   initState() {
     super.initState();
-    value = 0;
+    value = 255;
     name = "Cue";
     pause = true;
     _sceneIndex = 0;

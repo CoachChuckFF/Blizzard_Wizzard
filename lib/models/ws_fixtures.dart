@@ -21,6 +21,7 @@ class WSFixtures{
   }
 
   static const List<WSFixtureType> fixtures = <WSFixtureType>[
+    WSFixtureType('SoC', 'Marshmellow Head', 'BEEP.fix', isWS: false),
     WSFixtureType('MS Lighting', '10R 280 DA', '10R280DA.fix'),
     WSFixtureType('American DJ', '12P HEX', '12P-Hex.fix'),
     WSFixtureType('Verey_Stage', '12PC RGBWAUV 6-in-1', '12RGBWAUV.fix'),

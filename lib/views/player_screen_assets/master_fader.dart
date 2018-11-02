@@ -18,7 +18,7 @@ class MasterFader extends StatefulWidget {
   final double value;
   final double max;
 
-  MasterFader({this.value = 0, this.max = 255});
+  MasterFader({this.value = 255, this.max = 255});
 
   @override
   createState() => MasterFaderState();
@@ -33,7 +33,7 @@ class MasterFaderState extends State<MasterFader> {
   @override
   initState() {
     super.initState();
-    _value = (widget.value >= widget.max) ? widget.max : widget.value;
+    _value = (widget.value > widget.max) ? widget.max : widget.value;
   }
 
   Widget build(BuildContext context) {

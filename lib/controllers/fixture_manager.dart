@@ -171,9 +171,33 @@ class FixtureManager{
     fixture.profile = List<ChannelMode>();
 
     file.findElements("mode").forEach((mode){
+      String reference = mode.getAttribute("ref");
       ChannelMode cm = ChannelMode();
       cm.name = mode.getAttribute("name");
       cm.channels = List<Channel>();
+
+      if(reference != null){
+        xml.XmlElement referenceMode = file.findElements("mode").firstWhere((refMode){
+          return refMode.getAttribute("name") == reference;
+        }, orElse: null);
+
+        referenceMode.findAllElements("channel").forEach((channel){
+          Channel c = Channel();
+          c.name = channel.getAttribute("name");
+          c.number = int.parse(channel.getAttribute("number"))-1;
+          c.segments = List<Segment>();
+          
+          channel.findElements("segment").forEach((segment){
+            c.segments.add(Segment(
+              name: segment.getAttribute("name"),
+              start: int.parse(segment.getAttribute("start")),
+              end: int.parse(segment.getAttribute("end"))
+            ));
+          });
+
+          cm.channels.add(c);
+        });
+      }
 
       mode.findAllElements("channel").forEach((channel){
         Channel c = Channel();
@@ -189,7 +213,9 @@ class FixtureManager{
           ));
         });
 
-        cm.channels.add(c);
+        if(!cm.channels.contains(c)){
+          cm.channels.add(c);
+        }
       });
 
       fixture.profile.add(cm);

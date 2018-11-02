@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ofl>
+	<brand short_name="SoC" name="SoC" url="https://chuckandbuck.com/"></brand>
+	<fixture brand="SoC" short_name="Marshmellow Head" name="Marshmellow Head" version="2018-03-30 03:22">
+		<mode name="Mode(12)" number_of_channels="12">
+			<channels>
+				<channel number="1" bits="8" priority="LTP" name="Red" subelement="0"></channel>
+				<channel number="2" bits="8" priority="LTP" name="Green" subelement="0"></channel>
+				<channel number="3" bits="8" priority="LTP" name="Blue" subelement="0"></channel>
+				<channel number="4" bits="8" priority="LTP" name="Backgrounds" subelement="0"></channel>
+                    <segment name="Solid" start="0" end="25"></segment>
+					<segment name="Strobe" start="26" end="50"></segment>
+					<segment name="Cols" start="51" end="75"></segment>
+					<segment name="Rows" start="76" end="100"></segment>
+					<segment name="Cross" start="101" end="125"></segment>
+					<segment name="Plaid" start="126" end="150"></segment>
+					<segment name="Sparkles" start="151" end="175"></segment>
+					<segment name="Rainbow Fade" start="176" end="225"></segment>
+					<segment name="Rainbow Strobe" start="226" end="256"></segment>
+				<channel number="5" bits="8" priority="LTP" name="Background Speed" subelement="0"></channel>
+				<channel number="6" bits="8" priority="LTP" name="Background Control" subelement="0"></channel>
+				<channel number="7" bits="8" priority="LTP" name="Background Alt Control" subelement="0"></channel>
+				<channel number="8" bits="8" priority="LTP" name="Foregrounds" subelement="0"></channel>
+					<segment name="None" start="0" end="25"></segment>
+					<segment name="Arrows" start="26" end="50"></segment>
+					<segment name="Danger" start="51" end="75"></segment>
+					<segment name="Checkers" start="76" end="100"></segment>
+					<segment name="Mountain" start="101" end="125"></segment>
+					<segment name="Camo" start="126" end="150"></segment>
+					<segment name="SoC" start="151" end="175"></segment>
+					<segment name="Blizzard" start="176" end="200"></segment>
+					<segment name="Run" start="201" end="225"></segment>
+					<segment name="Games" start="226" end="256"></segment>
+				<channel number="9" bits="8" priority="LTP" name="Foreground Speed" subelement="0"></channel>
+				<channel number="10" bits="8" priority="LTP" name="Forground Control" subelement="0"></channel>
+				<channel number="11" bits="8" priority="HTP" name="Pan" subelement="0"></channel>
+				<channel number="12" bits="8" priority="LTP" name="Tilt" subelement="0"></channel>
+			</channels>
+        </mode>
+	</fixture>
+</ofl>

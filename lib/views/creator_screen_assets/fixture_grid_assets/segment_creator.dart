@@ -46,8 +46,8 @@ class SegmentCreatorState extends State<SegmentCreator> {
     super.initState();
 
     int start = widget.start;
-    if(start >= 512){
-      start = 510;
+    if(start >= 255){
+      start = 253;
     }
 
     if(_segment == null){
@@ -257,7 +257,7 @@ class SegmentCreatorState extends State<SegmentCreator> {
                             initialValue: (_segment.end <= _segment.start) ? 
                               _segment.start + 1 : _segment.end,
                             minValue: _segment.start + 1,
-                            maxValue: 512,
+                            maxValue: 255,
                             onChanged: (end){
                             setState(() {
                               this._segment.end = end;  

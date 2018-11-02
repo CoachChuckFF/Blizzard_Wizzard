@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+
 class RSHealthBar extends StatelessWidget {
   final int maxStrength;
   final int strength;
